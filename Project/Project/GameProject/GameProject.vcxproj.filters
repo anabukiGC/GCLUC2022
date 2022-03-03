@@ -14,6 +14,18 @@
     <ClCompile Include="Game\Player.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="TaskSystem\TaskManager.cpp">
+      <Filter>TaskSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="TaskSystem\Task.cpp">
+      <Filter>TaskSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Enemy.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\EnemyAnimData.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -21,6 +33,9 @@
     </Filter>
     <Filter Include="Game">
       <UniqueIdentifier>{1219d6d8-3c7c-489c-8085-496e9b49bd3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TaskSystem">
+      <UniqueIdentifier>{44dbbb53-c77a-4988-8066-34ae61b5a7d1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -34,6 +49,18 @@
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Game\PlayerAnimData.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="TaskSystem\Task.h">
+      <Filter>TaskSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="TaskSystem\TaskManager.h">
+      <Filter>TaskSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Enemy.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\EnemyAnimData.h">
       <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>

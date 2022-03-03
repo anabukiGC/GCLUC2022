@@ -1,5 +1,5 @@
 #include <GLLibrary.h>
-#include "Base/Base.h"
+#include "TaskSystem/TaskManager.h"
 #include "Game/Player.h"
 #include "Game/PlayerAnimData.h"
 #include "Game/Enemy.h"
@@ -10,13 +10,15 @@
 
 
 void MainLoop(void) {
-	Base::CheckKillAll();
-	Base::UpdateAll();
-	Base::CollisionAll();
-	Base::DrawAll();
+	TaskManager::GetInstance()->UpdateAll();
+	TaskManager::GetInstance()->KillCheckAll();
+	TaskManager::GetInstance()->DrawAll();
+	//TaskManager::GetInstance()->CollicionAll();
 }
 void Init(void)
 {
+	
+
 	glClearColor(0.0, 1.0, 0.0, 1.0);
 
 	glEnable(GL_DEPTH_TEST);
@@ -86,8 +88,8 @@ void Init(void)
 	//èâä˙âª
 	ADD_RESOURCE("Player", CImage::CreateImage("Image/Enemy/Enemy1.png", player_anim_data, 256, 256));
 	ADD_RESOURCE("Enemy2", CImage::CreateImage("Image/Enemy/Enemy2.png", enemy2_anim_data, 256, 256));
-	Base::Add(new Player(CVector3D(100, 0, 500)));
-	Base::Add(new Enemy(CVector3D(300, 0, 500)));
+	new Player(CVector3D(100, 0, 500));
+	new Enemy(CVector3D(300, 0, 500));
 }
 
 
