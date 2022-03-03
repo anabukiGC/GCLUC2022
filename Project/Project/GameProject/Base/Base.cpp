@@ -22,7 +22,7 @@ void Base::Draw()
 
 void Base::Draw3D()
 {
-	CVector2D pos2D(m_pos.x - m_scroll.x - m_pos.z / 8 , m_pos.y - m_scroll.y + m_pos.z / 2 + GROUND);
+	CVector2D pos2D(m_pos.x - m_scroll.x - m_pos.z / 8 , -m_pos.y - m_scroll.y + m_pos.z / 2 + GROUND);
 	m_img.SetPos(pos2D);
 	m_img.SetFlipH(m_flip);
 	m_img.Draw();
