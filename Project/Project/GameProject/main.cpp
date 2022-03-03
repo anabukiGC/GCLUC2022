@@ -1,18 +1,17 @@
 #include <GLLibrary.h>
+#include "Base/Base.h"
+#include "Game/Player.h"
+#include "Game/PlayerAnimData.h"
+
 #define SCREEN_WIDTH 1920
 #define SCREEN_HEIGHT 1080
 
 
 void MainLoop(void) {
-
-
-
-	//世界の軸を表示
-	Utility::DrawLine(CVector3D(0, 0, 0), CVector3D(100, 0, 0), CVector4D(1, 0, 0, 1));
-	Utility::DrawLine(CVector3D(0, 0, 0), CVector3D(0, 100, 0), CVector4D(0, 1, 0, 1));
-	Utility::DrawLine(CVector3D(0, 0, 0), CVector3D(0, 0, 100), CVector4D(0, 0, 1, 1));
-
-
+	Base::CheckKillAll();
+	Base::UpdateAll();
+	Base::CollisionAll();
+	Base::DrawAll();
 }
 void Init(void)
 {
@@ -35,19 +34,23 @@ void Init(void)
 	CFPS::Init();
 	//ボタンの設定
 	CInput::Init();
-	CInput::SetButton(0, CInput::eButton1, 'Z');
-	CInput::SetButton(0, CInput::eButton2, 'X');
-	CInput::SetButton(0, CInput::eButton3, 'C');
-	CInput::SetButton(0, CInput::eButton4, 'V');
-	CInput::SetButton(0, CInput::eButton5, VK_SPACE);
-	CInput::SetButton(0, CInput::eButton10, VK_RETURN);
-	CInput::SetButton(0, CInput::eUp, VK_UP);
-	CInput::SetButton(0, CInput::eDown, VK_DOWN);
-	CInput::SetButton(0, CInput::eLeft, VK_LEFT);
-	CInput::SetButton(0, CInput::eRight, VK_RIGHT);
-	CInput::SetButton(0, CInput::eMouseL, VK_LBUTTON);
-	CInput::SetButton(0, CInput::eMouseR, VK_RBUTTON);
-	CInput::SetButton(0, CInput::eMouseC, VK_MBUTTON);
+	CInput::SetButton(0, CInput::eButton1, VK_LBUTTON);
+	CInput::SetButton(0, CInput::eButton2, VK_RBUTTON);
+	CInput::SetButton(0, CInput::eButton3, VK_SPACE);
+	CInput::SetButton(0, CInput::eButton4, VK_LSHIFT);
+	CInput::SetButton(0, CInput::eUp, 'W');
+	CInput::SetButton(0, CInput::eDown, 'S');
+	CInput::SetButton(0, CInput::eLeft, 'A');
+	CInput::SetButton(0, CInput::eRight, 'D');
+
+	CInput::SetButton(1, CInput::eButton1, VK_LBUTTON);
+	CInput::SetButton(1, CInput::eButton2, VK_RBUTTON);
+	CInput::SetButton(1, CInput::eButton3, VK_SPACE);
+	CInput::SetButton(1, CInput::eButton4, VK_LSHIFT);
+	CInput::SetButton(1, CInput::eUp, 'W');
+	CInput::SetButton(1, CInput::eDown, 'S');
+	CInput::SetButton(1, CInput::eLeft, 'A');
+	CInput::SetButton(1, CInput::eRight, 'D');
 
 //マウスをウインドウ内に制限
 //	CInput::SetMouseInside(true);
@@ -79,11 +82,8 @@ void Init(void)
 	CShader::GetInstance("SkinMesh");
 	CSound::GetInstance();
 	//初期化
-
-
-
-
-
+	ADD_RESOURCE("Player", CImage::CreateImage("Image/Enemy1/Enemy22.png", player_anim_data, 256, 256));
+	Base::Add(new Player(CVector3D(100, 0, 500)));
 }
 
 
