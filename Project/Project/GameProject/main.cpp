@@ -1,5 +1,5 @@
 #include <GLLibrary.h>
-#include "Base/Base.h"
+#include "TaskSystem/TaskManager.h"
 #include "Game/Player.h"
 #include "Game/PlayerAnimData.h"
 
@@ -8,13 +8,15 @@
 
 
 void MainLoop(void) {
-	Base::CheckKillAll();
-	Base::UpdateAll();
-	Base::CollisionAll();
-	Base::DrawAll();
+	TaskManager::GetInstance()->UpdateAll();
+	TaskManager::GetInstance()->KillCheckAll();
+	TaskManager::GetInstance()->DrawAll();
+	//TaskManager::GetInstance()->CollicionAll();
 }
 void Init(void)
 {
+	
+
 	glClearColor(0.0, 1.0, 0.0, 1.0);
 
 	glEnable(GL_DEPTH_TEST);
@@ -82,8 +84,8 @@ void Init(void)
 	CShader::GetInstance("SkinMesh");
 	CSound::GetInstance();
 	//èâä˙âª
-	ADD_RESOURCE("Player", CImage::CreateImage("Image/Enemy1/Enemy22.png", player_anim_data, 256, 256));
-	Base::Add(new Player(CVector3D(100, 0, 500)));
+	ADD_RESOURCE("Player", CImage::CreateImage("Image/Enemy/Enemy1.png", player_anim_data, 256, 256));
+new Player(CVector3D(100, 0, 500));
 }
 
 

@@ -1,6 +1,6 @@
 #include "Player.h"
 
-Player::Player(const CVector3D& pos) : Base(eType_Player)
+Player::Player(const CVector3D& pos) : Base(0,0)
 {
 	m_img = COPY_RESOURCE("Player", CImage);
 	m_img.ChangeAnimation(0);
@@ -9,6 +9,8 @@ Player::Player(const CVector3D& pos) : Base(eType_Player)
 
 void Player::Update()
 {
+	//—Dæ“x‚Ì•ÏX
+	ChangePriority(10);
 	m_img.UpdateAnimation();
 	const float speed = 2.0f;
 

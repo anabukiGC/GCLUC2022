@@ -1,6 +1,7 @@
 #pragma once
 #include <GLLibrary.h>
 #include <list>
+#include "../TaskSystem/Task.h"
 
 class Map;
 
@@ -15,10 +16,8 @@ enum  BaseType{
 };
 #define GRAVITY (9.8f/60)
 #define GROUND (500)
-class Base {
+class Base : public Task{
 public:
-	//オブジェクトの種類
-	BaseType m_type;
 	//画像オブジェクト
 	CImage m_img;
 	//座標データ
@@ -33,12 +32,8 @@ public:
 	float m_rad;
 	//矩形
 	CRect	m_rect;
-	//削除フラグ
-	bool m_kill;
 	//スクロール値
 	static CVector2D m_scroll;
-	//コンテナ
-	static std::list<Base*> m_list;
 public:
 	
 	/// <summary>
@@ -46,7 +41,7 @@ public:
 	/// </summary>
 	/// <param name="type">オブジェクトの種類</param>
 	/// <returns></returns>
-	Base(BaseType type);
+	Base(int id, int priority);
 	
 	/// <summary>
 	/// デストラクタ
@@ -74,25 +69,6 @@ public:
 	/// <param name="b">判定対象オブジェクト</param>
 	virtual void Collision(Base* b);
 	
-	/// <summary>
-	/// 全てのオブジェクトの更新
-	/// </summary>
-	static void UpdateAll();
-
-	/// <summary>
-	/// 全てのオブジェクトの描画
-	/// </summary>
-	static void DrawAll();
-
-	/// <summary>
-	/// 全てのオブジェクトの衝突チェック
-	/// </summary>
-	static void CollisionAll();
-	
-	/// <summary>
-	/// 全てのオブジェクトの削除チェック
-	/// </summary>
-	static void CheckKillAll();
 	
 	/// <summary>
 	/// 円同士の判定
@@ -101,18 +77,6 @@ public:
 	/// <param name="b2">判定オブジェクト２</param>
 	/// <returns>true:接触</returns>
 	static bool CollisionCircle(Base* b1, Base* b2);
-	/// <summary>
-	/// オブジェクトの追加
-	/// </summary>
-	/// <param name="b">追加するオブジェクト</param>
-	static void Add(Base* b);
-
-	/// <summary>
-	/// オブジェクトの検索
-	/// </summary>
-	/// <param name="type">検索するオブジェクトの種類</param>
-	/// <returns>一番初めに見つけたオブジェクトへのポインタ</returns>
-	static Base* FindObject(BaseType type);
 	
 	/// <summary>
 	/// オブジェクトの検索
@@ -120,6 +84,4 @@ public:
 	/// <param name="type">検索するオブジェクトの種類</param>
 	/// <returns>見つけたオブジェクトのリスト</returns>
 	static std::list<Base*> FindObjects(BaseType type);
-
-
 };
