@@ -12,7 +12,7 @@ static TexAnim enemy2Jump[] =
 	{ 4,10 },
 	{ 5,50 },
 	{ 6,50 },
-	{ 7,80 },
+	{ 7,70 },
 };
 
 static TexAnim enemy2Die[] =
