@@ -1,18 +1,20 @@
 #include "Enemy.h"
+#include "../Global.h"
 
 Enemy::Enemy(const CVector3D& pos, int k) : Base(0, 0)/*今後タイプ分け*/
 {
 	switch (k) {
+		
+	case 1:
+
+		m_img = COPY_RESOURCE("Enemy2", CImage);
+		m_img.ChangeAnimation(0);
+
 		m_pos = pos;
 		m_flip = true;
 		m_jump = false;
 		m_attack_effect = false;
 		m_state = eIdle;
-
-	case 1:
-
-		m_img = COPY_RESOURCE("Enemy2", CImage);
-		m_img.ChangeAnimation(0);
 
 
 		break;
@@ -42,6 +44,7 @@ void Enemy::StateRun()
 
 	if (m_flip == true) {
 		m_pos.x -= speed;
+
 	}
 	else m_pos.x += speed;
 }
@@ -83,15 +86,18 @@ void Enemy::Update()
 	m_pos.y += m_vec.y;
 
 	
-	if (m_pos.y <= -400) {//仮　地面用
-		m_pos.y = -400;
+	if (m_pos.y <= 0) {//仮　地面用
+		m_pos.y = 0;
 		m_vec.y = 0;
 		m_state = eRun;
 		m_jump = false;
-
 	}
 
-
+	if (m_pos.x <= 0) {//仮　地面用
+		m_flip =false;
+	}else if (m_pos.x >= SCREEN_WIDTH) {//仮　地面用
+		m_flip = true;
+	}
 
 
 

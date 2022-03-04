@@ -63,5 +63,6 @@
     <ClInclude Include="Game\EnemyAnimData.h">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="Global.h" />
   </ItemGroup>
 </Project>
