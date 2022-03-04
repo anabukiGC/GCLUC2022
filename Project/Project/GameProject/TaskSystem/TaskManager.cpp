@@ -78,8 +78,26 @@ void TaskManager::KillCheckAll()
 	{
 		if (t->m_kill)
 		{
-			Task* NextTask = t->mp_next;
+			Task* NextTask = t->mp_next; 
+			Task* PreviewTask = t->mp_prev;
+			if (t->mp_prev && t->mp_next)
+			{
+				t->mp_next->mp_prev = PreviewTask;
+			}
+			else
+			{
+				mp_head = t->mp_next;
+			}
+			if (t->mp_next && t->mp_prev) 
+			{
+				t->mp_prev->mp_next = NextTask;
+			}
+			else
+			{
+				mp_tail = t->mp_prev;
+			}
 			delete t;
+			if(t->mp_next)
 			t = NextTask;
 		}
 		else
