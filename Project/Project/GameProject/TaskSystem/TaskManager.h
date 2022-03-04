@@ -25,4 +25,6 @@ public:
 	std::list<Task*> GetTasks(int id) const;	//タスクリスト取得関数
 	static TaskManager* GetInstance();			//インスタンス生成取得
 	static void ClearInstance();				//格納されているものを削除
+
+	bool	m_KillObuject;					//削除フラグ
 };

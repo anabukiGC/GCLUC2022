@@ -1,5 +1,6 @@
 #pragma once
 #include "../Base/Base.h"
+#include "../TaskSystem/TaskManager.h"
 
 class Player : public Base
 {
@@ -9,5 +10,5 @@ public:
 	void Update();
 	void Draw();
 private:
-	
+	int time;
 };
