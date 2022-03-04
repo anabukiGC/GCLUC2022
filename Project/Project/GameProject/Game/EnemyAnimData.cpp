@@ -10,9 +10,9 @@ static TexAnim enemy2Idle[] =
 static TexAnim enemy2Jump[] =
 {
 	{ 4,10 },
-	{ 5,20 },
-	{ 6,20 },
-	{ 7,10 },
+	{ 5,50 },
+	{ 6,50 },
+	{ 7,80 },
 };
 
 static TexAnim enemy2Die[] =
