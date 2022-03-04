@@ -1,7 +1,7 @@
 #include "TaskManager.h"
 
 TaskManager* TaskManager::mp_instance = nullptr;
-TaskManager::TaskManager():mp_head(nullptr),mp_tail(nullptr)
+TaskManager::TaskManager():mp_head(nullptr),mp_tail(nullptr), m_KillObuject(false)
 {
 }
 
@@ -73,6 +73,20 @@ void TaskManager::DrawAll()
 
 void TaskManager::KillCheckAll()
 {
+	Task* t = mp_head;
+	while (t)
+	{
+		if (t->m_kill)
+		{
+			Task* NextTask = t->mp_next;
+			delete t;
+			t = NextTask;
+		}
+		else
+		{
+			t = t->mp_next;
+		}
+	}
 }
 
 void TaskManager::SetKillAll()

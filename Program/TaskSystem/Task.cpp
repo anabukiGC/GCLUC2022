@@ -2,7 +2,7 @@
 #include "Task.h"
 #include "TaskManager.h"
 
-Task::Task(int id, int priority):m_id(id),m_priority(m_priority)
+Task::Task(int id, int priority):m_id(id),m_priority(priority)
 {
 	//Ž©“®’Ç‰Á
 	TaskManager::GetInstance()->Add(this);
