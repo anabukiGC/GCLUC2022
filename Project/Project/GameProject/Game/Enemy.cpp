@@ -153,8 +153,8 @@ void Enemy::Update()
 
 
 	if (kind==1 &&m_cnt==180) {//•b”‚Åó‘Ô‘JˆÚ
-		//m_state = eAttack;
-		m_hp -= 100;
+		m_state = eAttack;
+		//m_hp -= 100;
 	}
 
 	if (kind == 2 && m_cnt == 300) {//•b”‚Åó‘Ô‘JˆÚ
