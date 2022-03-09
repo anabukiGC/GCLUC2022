@@ -30,6 +30,8 @@ public:
 	bool m_flip;
 	//半径
 	float m_rad;
+
+	int kind = 0;//種類識別用
 	//矩形
 	CRect	m_rect;
 	//スクロール値
