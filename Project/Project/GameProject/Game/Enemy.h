@@ -22,6 +22,8 @@ class Enemy : public Base
 
 	bool m_bound;
 
+	static const float speed;
+
 	//攻撃エフェクトフラグ
 	bool m_attack_effect;
 	//状態分岐

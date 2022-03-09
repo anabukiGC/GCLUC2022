@@ -62,3 +62,56 @@ TexAnimData enemy2_anim_data[] =
 	ANIMDATA(enemy2Jump),
 	ANIMDATA(enemy2Die),
 };
+
+static TexAnim boss1Idle[] =
+{
+	{ 0,25 },
+	{ 1,30 },
+	{ 2,30 },
+	{ 1,30 },
+};
+
+static TexAnim boss1Attack1[] =
+{
+	{ 2,120 },
+	{ 4,40 },
+	{ 5,20 },
+	{ 6,120 },
+	{ 5,20 },
+};
+
+static TexAnim boss1Attack2[] =
+{
+	{ 8,120 },
+	{ 9,15 },
+	{ 10,15 },
+	{ 11,15 },
+	{ 12,15 },
+};
+
+static TexAnim boss1Damage[] =
+{
+	{ 14,20 },
+	{ 15,20 },
+	{ 16,20 },
+	
+
+};
+
+static TexAnim boss1Change[] =
+{
+	{ 18,20 },
+	{ 19,20 },
+	{ 20,20 },
+	{ 21,20 },
+	{ 22,20 },
+};
+
+TexAnimData boss1_anim_data[] =
+{
+	ANIMDATA(boss1Idle),
+	ANIMDATA(boss1Attack1),
+	ANIMDATA(boss1Attack2),
+	ANIMDATA(boss1Damage),
+	ANIMDATA(boss1Change),
+};

@@ -7,7 +7,8 @@ class Boss : public Base
 	enum {//整数番号を振る(0～）
 		eIdle,
 		eRun,
-		eAttack,
+		eAttack1,
+		eAttack2,
 		eDamage,
 
 	};
@@ -23,7 +24,8 @@ class Boss : public Base
 
 	void StateIdle();//内部的な（限定的な）処理なのでややこしくならないようにここだけ(void)
 	void StateRun();
-	void StateAttack();
+	void StateAttack1();
+	void StateAttack2();
 	void StateDamage();
 
 public:

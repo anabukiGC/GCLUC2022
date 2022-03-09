@@ -4,6 +4,7 @@
 #include "Game/PlayerAnimData.h"
 #include "Game/Enemy.h"
 #include "Game/EnemyAnimData.h"
+#include "../GameProject/Game/EnemyManager.h"
 #include "Game/Boss.h"
 #include "Global.h"
 
@@ -89,10 +90,11 @@ void Init(void)
 	ADD_RESOURCE("Player", CImage::CreateImage("Image/Enemy/Enemy1.png", player_anim_data, 256, 256));
 	ADD_RESOURCE("Enemy1", CImage::CreateImage("Image/Enemy/Enemy1.png", enemy1_anim_data, 256, 256));
 	ADD_RESOURCE("Enemy2", CImage::CreateImage("Image/Enemy/Enemy2.png", enemy2_anim_data, 256, 256));
+	ADD_RESOURCE("Boss1", CImage::CreateImage("Image/Boss/Boss.png", boss1_anim_data, 512, 512));
 	new Player(CVector3D(100, 0, 500));
-	new Enemy(CVector3D(1600, 0, 500),1);
+	//new Enemy(CVector3D(1600, 0, 500),1);
 	new Boss(CVector3D(1100, 0, -300), 1);
-
+	new EnemyManager();
 }
 
 

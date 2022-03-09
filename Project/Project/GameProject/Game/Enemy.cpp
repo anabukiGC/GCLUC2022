@@ -1,6 +1,8 @@
 #include "Enemy.h"
 #include "../Global.h"
 
+const float Enemy::speed = 3.0;//どこでも使えるように
+
 Enemy::Enemy(const CVector3D& pos, int k) : Base(0, 0)/*今後タイプ分け*/
 {
 	kind = k;
@@ -46,7 +48,16 @@ void Enemy::StateAttack()
 {
 	const float jump_pow = 10.0f;
 	int jump_time = 10;
+
 	m_img.ChangeAnimation(1, false);
+
+	if (m_img.GetIndex() >= 2 ) {
+		if (m_flip == true) {
+			m_pos.x -= speed;
+		}
+		else m_pos.x += speed;
+	}
+
 	
 	if (m_jump == false && m_img.GetIndex() >= 2) {
 		
@@ -71,7 +82,7 @@ void Enemy::StateAttack()
 void Enemy::StateRun()
 {
 
-	const float speed = 3.0f;
+	
 	m_jump = false;
 	m_img.ChangeAnimation(0);
 
