@@ -25,7 +25,7 @@ private:
 	int m_state;
 
 	//着地フラグ
-	bool	m_is_ground;
+	bool m_bound;
 
 	//ジャンプ時着地地点座標取得
 	float JumpPosition;

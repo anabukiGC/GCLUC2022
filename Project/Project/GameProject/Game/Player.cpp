@@ -16,7 +16,8 @@ Player::Player(const CVector3D& pos, bool flip) : Base(0,0)
 	//反転フラグ
 	m_flip = flip;
 
-	m_is_ground = true;
+	m_bound = false;
+	m_jump = false;
 
 	JumpPosition = 0;
 	GetY = false;
@@ -36,14 +37,15 @@ void Player::Update()
 		break;
 	}
 
-	//重力による落下
-	/*
-	if (m_is_ground == false)
-	{
 		m_vec.y -= GRAVITY;
-		m_pos += m_vec;
-	}
-	*/
+		m_pos.y += m_vec.y;
+
+		if (m_pos.y <= 0) 
+		{//仮　地面用
+			m_pos.y = 0;
+			m_vec.y = 0;
+			m_bound = true;
+		}
 
 	//アニメーション更新
 	m_img.UpdateAnimation();
@@ -88,10 +90,13 @@ void Player::StateIdle()
 	if (PUSH(CInput::eButton3))
 	{
 		m_state = eState_Jump;
+		const float JumpPower = 10.0f;
+		m_vec.y = JumpPower;
+		m_bound = false;
 	}
 
 	//攻撃状態に以降
-	if (PUSH(CInput::eMouseL))
+	if (PUSH(CInput::eButton1))
 	{
 		m_state = eState_Attack;
 	}
@@ -109,23 +114,6 @@ void Player::StateIdle()
 
 void Player::StateJump()
 {
-	JumpTime++;
-
-	const float JumpPower = 5.0f;
-	//ジャンプ時Y座標取得
-	if (GetY == false)
-	{
-		JumpPosition = m_pos.y;
-		GetY = true;
-	}
-	if (JumpTime <= 30)
-	{
-		m_pos.y += JumpPower;
-	}
-	if (JumpTime >= 35)
-	{
-		m_pos.y -= JumpPower;
-	}
 	//移動量
 	const float WalkSpeed = 6.0f;
 	//移動フラグ
@@ -138,7 +126,6 @@ void Player::StateJump()
 		m_pos.x -= WalkSpeed;
 		//反転フラグ
 		m_flip = true;
-		MoveFlag = true;
 	}
 	//右移動
 	if (HOLD(CInput::eRight))
@@ -147,27 +134,36 @@ void Player::StateJump()
 		m_pos.x += WalkSpeed;
 		//反転フラグ
 		m_flip = false;
-		MoveFlag = true;
+	}
+	if (m_bound)
+	{
+		m_state = eState_Idle;
 	}
 
-	if (m_pos.y <= JumpPosition)
-	{
-		JumpTime = 0;
-		GetY = false;
-		m_state = eState_Idle;
+	if (m_vec.y >= 0) {
+		//上昇アニメーション
+		//m_img.ChangeAnimation(eAnimWalk);
+	}
+	else {
+		//下降アニメーション
+		//m_img.ChangeAnimation(eAnimstand);
 	}
 }
 
 void Player::StateAttack()
 {
 	//m_img.ChangeAnimation(eAnimAttack);
-	if (!m_img.CheckAnimationEnd() && PUSH(CInput::eMouseL))
-	{
-
-	}
+	
 	if(m_img.CheckAnimationEnd())
 	{
-		m_state = eState_Idle;
+		if (HOLD(CInput::eButton1))
+		{
+
+		}
+		else
+		{
+			m_state = eState_Idle;
+		}
 	}
 }
 
@@ -180,7 +176,7 @@ void Player::Collision(Task* t)
 		{
 			if (CollisionRect(b, this))
 			{
-				//SetKill();
+				SetKill();
 			}
 		}
 		break;
