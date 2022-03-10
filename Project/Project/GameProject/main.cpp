@@ -97,8 +97,8 @@ void Init(void)
     ADD_RESOURCE("BackGround1", CImage::CreateImage("Image/Map/BackGround1.png"));
 	ADD_RESOURCE("BackGround2", CImage::CreateImage("Image/Map/BackGround2.png"));
 	ADD_RESOURCE("BackGround3", CImage::CreateImage("Image/Map/BackGround3.png"));
-	ADD_RESOURCE("BackGround4", CImage::CreateImage("Image/Map/BackGround4.png"))
-	new Player(CVector3D(100, 0, 500),false);
+	ADD_RESOURCE("BackGround4", CImage::CreateImage("Image/Map/BackGround4.png"));
+	new Player(CVector3D(100, 0, 1000),false);
 	new Enemy(CVector3D(1600, 0, 500),1);
 	new Boss(CVector3D(1100, 0, -300), 1);
 	new EnemyManager();

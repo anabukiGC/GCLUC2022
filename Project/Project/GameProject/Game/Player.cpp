@@ -55,6 +55,15 @@ void Player::Update()
 			m_vec.y = 0;
 			m_bound = true;
 		}
+
+		if (m_pos.z >= 1000)
+		{
+			m_pos.z = 1000;
+		}
+		if (m_pos.z <= 600)
+		{
+			m_pos.z = 600;
+		}
 	//アニメーション更新
 	m_img.UpdateAnimation();
 
