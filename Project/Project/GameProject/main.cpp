@@ -4,7 +4,7 @@
 #include "Game/PlayerAnimData.h"
 #include "Game/Enemy.h"
 #include "Game/EnemyAnimData.h"
-//#include "../GameProject/Game/EnemyManager.h"
+#include "../GameProject/Game/EnemyManager.h"
 #include "Game/Boss.h"
 #include "Global.h"
 
