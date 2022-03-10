@@ -71,22 +71,25 @@ static TexAnim boss1Idle[] =
 	{ 1,30 },
 };
 
-static TexAnim boss1Attack1[] =
+static TexAnim boss1Attack1[] =//ãﬂê⁄
 {
+	{ 7,100 },
+	{ 8,30 },
+	{ 9,15 },
+	{ 10,15 },
+	{ 11,15 },
+	{ 12,15 },
+};
+
+static TexAnim boss1Attack2[] =
+{
+	
+
 	{ 2,120 },
 	{ 4,40 },
 	{ 5,20 },
 	{ 6,120 },
 	{ 5,20 },
-};
-
-static TexAnim boss1Attack2[] =
-{
-	{ 8,120 },
-	{ 9,15 },
-	{ 10,15 },
-	{ 11,15 },
-	{ 12,15 },
 };
 
 static TexAnim boss1Damage[] =

@@ -1,6 +1,6 @@
 #pragma once
 #include "../Base/Base.h"
-
+#include"EnemyHP.h"
 
 class Enemy : public Base
 {
@@ -37,8 +37,9 @@ class Enemy : public Base
 public:
 	Enemy(const CVector3D& pos,int k); //k=í—Ş•ª‚¯”Ô†
 
+	int GetHp();//Hp‚Ìæ“¾
 	void Update();
 	void Draw();
-private:
 
+	EnemyHp* m_e_hp;
 };

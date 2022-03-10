@@ -48,19 +48,21 @@ void Boss::StateRun()
 
 void Boss::StateAttack1()
 {
-	m_img.ChangeAnimation(2, false);
-	if (m_img.CheckAnimationEnd()) {
-		m_state = eIdle;
-		m_cnt = 181;
-	}
-}
-
-void Boss::StateAttack2()
-{
 	m_img.ChangeAnimation(1, false);
 	if (m_img.CheckAnimationEnd()) {
 		m_state = eIdle;
 		m_cnt = 0;
+	}
+
+}
+
+void Boss::StateAttack2()
+{
+	
+	m_img.ChangeAnimation(2, false);
+	if (m_img.CheckAnimationEnd()) {
+		m_state = eIdle;
+		m_cnt = 181;
 	}
 }
 
