@@ -11,10 +11,10 @@
 
 
 void MainLoop(void) {
-	TaskManager::GetInstance()->UpdateAll();
 	TaskManager::GetInstance()->KillCheckAll();
+	TaskManager::GetInstance()->UpdateAll();
+	TaskManager::GetInstance()->CollisionAll();
 	TaskManager::GetInstance()->DrawAll();
-	//TaskManager::GetInstance()->CollicionAll();
 }
 void Init(void)
 {

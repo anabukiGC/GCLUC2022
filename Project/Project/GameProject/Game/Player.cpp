@@ -1,5 +1,5 @@
 #include "Player.h"
-
+#include "../Global.h"
 
 Player::Player(const CVector3D& pos, bool flip) : Base(0,0)
 {
@@ -7,9 +7,10 @@ Player::Player(const CVector3D& pos, bool flip) : Base(0,0)
 	//画像サイズ設定
 	m_img.SetSize(256, 256);
 	//画像の中心位置設定
-	m_img.SetCenter(128, 128);
+	m_img.SetCenter(128, 256);
 	m_img.ChangeAnimation(0);
 	m_pos = pos;
+	m_rect = RectBox(-128, -256, 128, 0, 32, -32);
 	time = 0;
 
 	//反転フラグ
@@ -46,6 +47,9 @@ void Player::Update()
 
 	//アニメーション更新
 	m_img.UpdateAnimation();
+
+	//スクロール値設定
+	m_scroll.x = m_pos.x - SCREEN_WIDTH/2;
 }
 
 void Player::Draw()
@@ -174,7 +178,10 @@ void Player::Collision(Task* t)
 	case eType_Enemy:
 		if (Base* b = dynamic_cast<Base*>(t))
 		{
-			CollisionRect(b, this);
+			if (CollisionRect(b, this))
+			{
+				//SetKill();
+			}
 		}
 		break;
 	}

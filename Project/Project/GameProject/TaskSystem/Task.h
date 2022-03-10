@@ -7,9 +7,8 @@ private:
 	Task*	mp_prev;				//前のタスク
 	int		m_id;					//タスクID
 	int		m_priority;				//優先度
-
-public:
 	bool	m_kill;					//削除フラグ
+public:
 
 	Task(int id, int priority);
 	virtual ~Task();

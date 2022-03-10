@@ -11,6 +11,7 @@ public:
 	void Draw();
 	void Collision(Task* t);
 
+
 private:
 	//ó‘Ô
 	enum 
