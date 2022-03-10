@@ -19,6 +19,7 @@ class Enemy : public Base
 	int m_cnt = 0;//ŠÔ”»•Ê—p
 
 	int m_hp = 0;
+	int m_max_hp = 0;
 
 	bool m_bound;
 
@@ -38,8 +39,10 @@ public:
 	Enemy(const CVector3D& pos,int k); //k=í—Ş•ª‚¯”Ô†
 
 	int GetHp();//Hp‚Ìæ“¾
+	int GetMaxHp();//Hp‚Ìæ“¾
 	void Update();
 	void Draw();
 
 	EnemyHp* m_e_hp;
+	
 };
