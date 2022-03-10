@@ -9,6 +9,8 @@ public:
 
 	void Update();
 	void Draw();
+	void Collision(Task* t);
+
 private:
 	int time;
 };

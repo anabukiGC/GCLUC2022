@@ -26,6 +26,10 @@ void Task::Kill()
 
 }
 
+void Task::Collision(Task* t)
+{
+}
+
 void Task::ChangePriority(int priority)
 {
 	m_priority = priority;

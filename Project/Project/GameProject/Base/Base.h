@@ -16,6 +16,37 @@ enum  BaseType{
 };
 #define GRAVITY (9.8f/60)
 #define GROUND (500)
+
+class RectBox
+{
+public:
+	float m_left;
+	float m_top;
+	float m_right;
+	float m_bottom;
+	float m_near;
+	float m_far;
+	RectBox():m_left(0), m_top(0), m_right(0), m_bottom(0),m_near(0),m_far(0)
+	{
+
+	}
+
+	/**
+	* @fn
+	* コンストラクタ（矩形設定）
+	* @brief 矩形を設定する
+	* @param l	[in]　左
+	* @param t	[in]　上
+	* @param r	[in]　右
+	* @param b	[in]　下
+	*/
+	RectBox(float l, float t, float r, float b, float n, float f)
+		: m_left(l), m_top(t), m_right(r), m_bottom(b), m_near(n), m_far(f)
+	{
+
+	}
+};
+
 class Base : public Task{
 public:
 	//画像オブジェクト
@@ -28,12 +59,10 @@ public:
 	bool m_jump;
 	//反転フラグ
 	bool m_flip;
-	//半径
-	float m_rad;
 
 	int kind = 0;//種類識別用
 	//矩形
-	CRect	m_rect;
+	RectBox	m_rect;
 	//スクロール値
 	static CVector2D m_scroll;
 public:
@@ -71,15 +100,14 @@ public:
 	/// <param name="b">判定対象オブジェクト</param>
 	virtual void Collision(Base* b);
 	
-	
 	/// <summary>
-	/// 円同士の判定
+	/// 矩形同士の判定
 	/// </summary>
 	/// <param name="b1">判定オブジェクト１</param>
 	/// <param name="b2">判定オブジェクト２</param>
 	/// <returns>true:接触</returns>
-	static bool CollisionCircle(Base* b1, Base* b2);
-	
+	static bool CollisionRect(Base* b1, Base* b2);
+
 	/// <summary>
 	/// オブジェクトの検索
 	/// </summary>

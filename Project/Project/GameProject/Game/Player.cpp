@@ -32,15 +32,22 @@ void Player::Update()
 	{
 		m_pos.x += speed;
 	}
-
-	time++;
-	if (time == 60)
-	{
-		m_kill = true;
-	}
 }
 
 void Player::Draw()
 {
 	Base::Draw3D();
+}
+
+void Player::Collision(Task* t)
+{
+	switch (t->GetID())
+	{
+	case eType_Enemy:
+		if (Base* b = dynamic_cast<Base*>(t))
+		{
+			CollisionRect(b, this);
+		}
+		break;
+	}
 }

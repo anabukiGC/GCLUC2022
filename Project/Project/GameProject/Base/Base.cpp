@@ -3,7 +3,7 @@
 CVector2D Base::m_scroll(0, 0);
 
 Base::Base(int id, int priority) : Task(id,priority)
-	, m_pos(0,0,0),m_vec(0,0,0),m_jump(false),m_flip(false),m_rad(0)
+	, m_pos(0,0,0),m_vec(0,0,0),m_jump(false),m_flip(false)
 {
 	
 }
@@ -47,14 +47,30 @@ void Base::Collision(Base* b)
 {
 }
 
-bool Base::CollisionCircle(Base* b1, Base* b2)
+bool Base::CollisionRect(Base* b1, Base* b2)
 {
-	//2“_ŠÔ‚Ì‹——£
-	CVector3D v = b1->m_pos - b2->m_pos;
-	float l = v.Length();
-	//‰~“¯Žm‚Ì“–‚½‚è”»’è
-	if (l < b1->m_rad + b2->m_rad) {
+	//b1‚Ì‹éŒ`
+	RectBox rect1 = RectBox(
+		b1->m_pos.x + b1->m_rect.m_left,
+		b1->m_pos.y + b1->m_rect.m_top,
+		b1->m_pos.x + b1->m_rect.m_right,
+		b1->m_pos.y + b1->m_rect.m_bottom,
+		b1->m_pos.z + b1->m_rect.m_near,
+		b1->m_pos.z + b1->m_rect.m_far);
+	//b2‚Ì‹éŒ`
+	RectBox rect2 = RectBox(
+		b2->m_pos.x + b2->m_rect.m_left,
+		b2->m_pos.y + b2->m_rect.m_top,
+		b2->m_pos.x + b2->m_rect.m_right,
+		b2->m_pos.y + b2->m_rect.m_bottom,
+		b1->m_pos.z + b1->m_rect.m_near,
+		b1->m_pos.z + b1->m_rect.m_far);
+
+	//‹éŒ`“¯Žm‚Ì”»’è
+	if (rect1.m_left <= rect2.m_right && rect1.m_right >= rect2.m_left &&
+		rect1.m_top <= rect2.m_bottom && rect1.m_bottom >= rect2.m_top &&
+		rect1.m_near >= rect2.m_far && rect1.m_far <= rect2.m_near)
 		return true;
-	}
+
 	return false;
 }

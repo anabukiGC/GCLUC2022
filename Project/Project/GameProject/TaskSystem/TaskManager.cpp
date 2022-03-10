@@ -113,6 +113,18 @@ void TaskManager::SetKillAll()
 
 void TaskManager::CollisionAll()
 {
+	Task* t = mp_head;
+	while (t)
+	{
+		Task* p = t->mp_next;
+		while (p)
+		{
+			t->Collision(p);
+			p->Collision(t);
+			p = p->mp_next;
+		}
+		t = t->mp_next;
+	}
 }
 
 Task* TaskManager::GetTask(int id) const

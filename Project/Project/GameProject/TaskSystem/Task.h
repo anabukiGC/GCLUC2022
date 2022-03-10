@@ -16,6 +16,7 @@ public:
 	virtual void Update();
 	virtual void Draw();
 	virtual void Kill();
+	virtual void Collision(Task* t);
 
 	void SetKill()							//íœƒtƒ‰ƒOON 
 	{
