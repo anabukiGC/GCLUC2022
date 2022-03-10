@@ -12,12 +12,14 @@ Enemy::Enemy(const CVector3D& pos, int k) : Base(0, 0)/*今後タイプ分け*/
 
 		m_img = COPY_RESOURCE("Enemy2", CImage);
 		
-		m_hp = 100;
+		m_hp = 100;//変更用
+		m_max_hp = 100;
 		m_pos = pos;
 		m_flip = true;
 		m_bound = false;
 		m_jump = false;
 		m_e_hp = new EnemyHp(this);//ポインター渡すのでthis
+		
 		m_attack_effect = false;
 		m_state = eRun;
 		m_img.ChangeAnimation(0);
@@ -132,6 +134,12 @@ int Enemy::GetHp()
 
 }
 
+int Enemy::GetMaxHp()
+{
+	return m_max_hp;
+
+
+}
 void Enemy::Update()
 {
 
@@ -197,7 +205,9 @@ void Enemy::Update()
 void Enemy::Draw()
 {
 	if (m_e_hp) {//ｈｐを持ってたらNULL対策用
+	
 		m_e_hp->m_pos = m_pos;//ゲージに自分の座標を入れている調整可能
+		
 	}
 	Base::Draw3D();
 }
