@@ -1,7 +1,7 @@
 #include "Player.h"
 #include "../Global.h"
 
-Player::Player(const CVector3D& pos, bool flip) : Base(0,0)
+Player::Player(const CVector3D& pos, bool flip) : Base(eType_Player,1)
 {
 	m_img = COPY_RESOURCE("Player", CImage);
 	//画像サイズ設定
@@ -35,6 +35,15 @@ void Player::Update()
 	case eState_Jump:
 		StateJump();
 		break;
+	case eState_Attack1:
+		StateAttack1();
+		break;
+	case eState_Attack2:
+		StateAttack2();
+		break;
+	case eState_Attack3:
+		StateAttack3();
+		break;
 	}
 
 		m_vec.y -= GRAVITY;
@@ -46,7 +55,6 @@ void Player::Update()
 			m_vec.y = 0;
 			m_bound = true;
 		}
-
 	//アニメーション更新
 	m_img.UpdateAnimation();
 
@@ -85,6 +93,16 @@ void Player::StateIdle()
 		m_flip = false;
 		MoveFlag = true;
 	}
+	//上移動
+	if (HOLD(CInput::eUp))
+	{
+		m_pos.z -= WalkSpeed;
+	}
+	//下移動
+	if (HOLD(CInput::eDown))
+	{
+		m_pos.z += WalkSpeed;
+	}
 
 	//ジャンプ
 	if (PUSH(CInput::eButton3))
@@ -98,7 +116,7 @@ void Player::StateIdle()
 	//攻撃状態に以降
 	if (PUSH(CInput::eButton1))
 	{
-		m_state = eState_Attack;
+		m_state = eState_Attack1;
 	}
 
 	//移動中なら
@@ -135,6 +153,18 @@ void Player::StateJump()
 		//反転フラグ
 		m_flip = false;
 	}
+	//上移動
+	if (HOLD(CInput::eUp))
+	{
+		//移動量を設定
+		m_pos.z -= WalkSpeed;
+	}
+	//下移動
+	if (HOLD(CInput::eDown))
+	{
+		//移動量を設定
+		m_pos.z += WalkSpeed;
+	}
 	if (m_bound)
 	{
 		m_state = eState_Idle;
@@ -150,11 +180,45 @@ void Player::StateJump()
 	}
 }
 
-void Player::StateAttack()
+void Player::StateAttack1()
 {
-	//m_img.ChangeAnimation(eAnimAttack);
+	//m_img.ChangeAnimation(eAnimAttack1);
 	
 	if(m_img.CheckAnimationEnd())
+	{
+		if (HOLD(CInput::eButton1))
+		{
+			m_state = eState_Attack2;
+		}
+		else
+		{
+			m_state = eState_Idle;
+		}
+	}
+}
+
+void Player::StateAttack2()
+{
+	//m_img.ChangeAnimation(eAnimAttack2);
+
+	if (m_img.CheckAnimationEnd())
+	{
+		if (HOLD(CInput::eButton1))
+		{
+
+		}
+		else
+		{
+			m_state = eState_Idle;
+		}
+	}
+}
+
+void Player::StateAttack3()
+{
+	//m_img.ChangeAnimation(eAnimAttack3);
+
+	if (m_img.CheckAnimationEnd())
 	{
 		if (HOLD(CInput::eButton1))
 		{

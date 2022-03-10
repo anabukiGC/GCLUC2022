@@ -18,7 +18,9 @@ private:
 	{
 		eState_Idle,
 		eState_Jump,
-		eState_Attack,
+		eState_Attack1,
+		eState_Attack2,
+		eState_Attack3,
 	};
 
 	//ó‘Ô•Ï”
@@ -38,7 +40,9 @@ private:
 	//Šeó‘Ô‚Å‚Ì‹““®
 	void StateIdle();
 	void StateJump();
-	void StateAttack();
+	void StateAttack1();
+	void StateAttack2();
+	void StateAttack3();
 
 	int time;
 };

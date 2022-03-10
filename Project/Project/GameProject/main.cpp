@@ -7,6 +7,7 @@
 #include "../GameProject/Game/EnemyManager.h"
 #include "Game/Boss.h"
 #include "Global.h"
+#include "Game/BackGround.h"
 
 
 
@@ -92,10 +93,15 @@ void Init(void)
 	ADD_RESOURCE("Enemy2", CImage::CreateImage("Image/Enemy/Enemy2.png", enemy2_anim_data, 256, 256));
 	ADD_RESOURCE("Boss1", CImage::CreateImage("Image/Boss/Boss.png", boss1_anim_data, 512, 512));
 	ADD_RESOURCE("HP", CImage::CreateImage("Image/UI/Block.png"));
+	ADD_RESOURCE("BackGround1", CImage::CreateImage("Image/Map/BackGround1.png"));
+	ADD_RESOURCE("BackGround2", CImage::CreateImage("Image/Map/BackGround2.png"));
+	ADD_RESOURCE("BackGround3", CImage::CreateImage("Image/Map/BackGround3.png"));
+	ADD_RESOURCE("BackGround4", CImage::CreateImage("Image/Map/BackGround4.png"));
 	new Player(CVector3D(100, 0, 500),false);
 	new Enemy(CVector3D(1600, 0, 500),1);
 	new Boss(CVector3D(1100, 0, -300), 1);
 	new EnemyManager();
+	new BackGround();
 }
 
 

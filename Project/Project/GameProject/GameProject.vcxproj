@@ -14,6 +14,7 @@
   <ItemGroup>
     <ClCompile Include="Base\Base.cpp" />
     <ClCompile Include="Base\CharaBase.cpp" />
+    <ClCompile Include="Game\BackGround.cpp" />
     <ClCompile Include="Game\Boss.cpp" />
     <ClCompile Include="Game\Enemy.cpp" />
     <ClCompile Include="Game\EnemyAnimData.cpp" />
@@ -28,6 +29,7 @@
   <ItemGroup>
     <ClInclude Include="Base\Base.h" />
     <ClInclude Include="Base\CharaBase.h" />
+    <ClInclude Include="Game\BackGround.h" />
     <ClInclude Include="Game\Boss.h" />
     <ClInclude Include="Game\Enemy.h" />
     <ClInclude Include="Game\EnemyAnimData.h" />
