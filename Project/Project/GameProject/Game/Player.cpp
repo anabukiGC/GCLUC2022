@@ -12,8 +12,13 @@ Player::Player(const CVector3D& pos, bool flip) : Base(eType_Player,1)
 	m_img.SetCenter(128, 256);
 	m_img.ChangeAnimation(0);
 	m_pos = pos;
-	m_rect = RectBox(-128, -256, 128, 0, 32, -32);
+	m_rect = RectBox(-128, 0, 128, 256, 32, -32);
 	time = 0;
+
+	m_hp = 100;//変更用
+	m_max_hp = 100;
+
+	m_p_hp = new PlayerHp(this);//ポインター渡すのでthis
 
 	//反転フラグ
 	m_flip = flip;
@@ -276,4 +281,14 @@ void Player::Collision(Task* t)
 		}
 		break;
 	}
+}
+
+int Player::GetHp()
+{
+	return m_hp;
+}
+
+int Player::GetMaxHp()
+{
+	return 0;
 }

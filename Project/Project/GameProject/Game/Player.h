@@ -1,5 +1,6 @@
 #pragma once
 #include "../Base/Base.h"
+#include "PlayerHP.h"
 #include "../TaskSystem/TaskManager.h"
 
 class Player : public Base
@@ -10,6 +11,13 @@ public:
 	void Update();
 	void Draw();
 	void Collision(Task* t);
+	int GetHp();//Hp‚Ìæ“¾
+	int GetMaxHp();//Hp‚Ìæ“¾
+
+	PlayerHp* m_p_hp;
+
+	int m_hp = 0;
+	int m_max_hp = 0;
 
 	//e‚Ì’e‚ğ‘Å‚Á‚½ƒtƒ‰ƒO
 	bool Fire;
@@ -24,6 +32,7 @@ private:
 		eState_Attack2,
 		eState_Attack3,
 	};
+
 
 	//ó‘Ô•Ï”
 	int m_state;
