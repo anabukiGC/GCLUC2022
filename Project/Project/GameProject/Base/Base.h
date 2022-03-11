@@ -13,6 +13,7 @@ enum  BaseType{
 	eType_Bullet,
 	eType_Effect,
 	eType_UI,
+	eType_NomalBullet,
 };
 #define GRAVITY (9.8f/60)
 #define GROUND (500)
