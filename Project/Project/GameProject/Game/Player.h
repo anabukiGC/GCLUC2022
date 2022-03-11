@@ -11,6 +11,8 @@ public:
 	void Draw();
 	void Collision(Task* t);
 
+	//e‚Ì’e‚ğ‘Å‚Á‚½ƒtƒ‰ƒO
+	bool Fire;
 
 private:
 	//ó‘Ô
