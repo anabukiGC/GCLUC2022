@@ -5,7 +5,7 @@
 class Bullet : public Base {
 private:
 public:
-	Bullet(BaseType type, const CVector2D& p);
+	Bullet(BaseType type, const CVector3D& p);
 	void Update();
 	void Draw();
 	//“–‚½‚è”»’èŒŸØ

@@ -50,6 +50,8 @@ public:
 
 class Base : public Task{
 public:
+	//種類分け
+	BaseType m_type;
 	//画像オブジェクト
 	CImage m_img;
 	//座標データ
