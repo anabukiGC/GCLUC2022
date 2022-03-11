@@ -90,7 +90,7 @@ public:
 	/// </summary>
 	virtual void Update();
 
-
+	static  CVector2D Get2DPos(CVector3D pos);
 	/// <summary>
 	/// •`‰æ
 	/// </summary>

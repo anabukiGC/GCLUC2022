@@ -23,7 +23,7 @@ Enemy::Enemy(const CVector3D& pos, int k) : Base(eType_Enemy, 1)/*今後タイプ分け
 		m_state = eRun;
 		m_img.ChangeAnimation(0);
 		m_img.SetCenter(128, 256);
-		m_rect = RectBox(-128, -256, 128, 0, 32, -32);
+		m_rect = RectBox(-128, 256, 128, 0, 32, -32);
 
 		break;
 	case 2:
@@ -206,15 +206,11 @@ void Enemy::Update()
 void Enemy::Collision(Base* b)
 {
 	switch (b->m_type) {
-	case eType_Bullet:
+	case eType_NomalBullet:
 		if (Base::CollisionRect(this, b))
 		{
-			if (b->m_kill == false) {
-				SOUND("SE_Hit")->Play();
-				GravityDir *= -1;
-				b->m_kill = true;//当たったものを消すので判定が一度のみになる
-				printf("hit\n");
-			}
+			m_hp -= 10;
+			
 
 		}
 		break;
