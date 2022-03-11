@@ -1,9 +1,10 @@
 #include "Enemy.h"
 #include "../Global.h"
+#include"../Game/Bullet.h"
 
 const float Enemy::speed = 3.0;//どこでも使えるように
 
-Enemy::Enemy(const CVector3D& pos, int k) : Base(0, 0)/*今後タイプ分け*/
+Enemy::Enemy(const CVector3D& pos, int k) : Base(eType_Enemy, 1)/*今後タイプ分け*/
 {
 	kind = k;
 	switch (kind) {
@@ -12,8 +13,8 @@ Enemy::Enemy(const CVector3D& pos, int k) : Base(0, 0)/*今後タイプ分け*/
 
 		m_img = COPY_RESOURCE("Enemy2", CImage);
 		
-		m_hp = 100;//変更用
-		m_max_hp = 100;
+		m_hp = 200;//変更用
+		m_max_hp = 200;
 		m_pos = pos;
 		m_flip = true;
 		m_bound = false;
@@ -23,7 +24,7 @@ Enemy::Enemy(const CVector3D& pos, int k) : Base(0, 0)/*今後タイプ分け*/
 		m_state = eRun;
 		m_img.ChangeAnimation(0);
 		m_img.SetCenter(128, 256);
-		m_rect = RectBox(-128, -256, 128, 0, 32, -32);
+		m_rect = RectBox(-128, 256, 128, 0, 32, -32);
 
 		break;
 	case 2:
@@ -98,10 +99,10 @@ void Enemy::StateRun()
 		m_pos.z += speed;
 	}
 
-	if (m_pos.z <= -200) {//跳ねかえる
+	if (m_pos.z <= 600) {//跳ねかえる
 		m_bound = true;
 	}
-	else if (m_pos.z >= 500) {
+	else if (m_pos.z >= 1000) {
 		m_bound = false;
 	}
 
@@ -111,6 +112,12 @@ void Enemy::StateRun()
 
 void Enemy::StateDamage()
 {
+	m_img.ChangeAnimation(3, false);
+	m_hp -= 100;
+	if (m_img.CheckAnimationEnd()) {
+		m_state = eRun;
+		m_cnt = 0;
+	}
 }
 
 
@@ -203,6 +210,21 @@ void Enemy::Update()
 	
 }
 
+void Enemy::Collision(Task* t)
+{
+	switch (t->GetID())
+	{
+	case eType_NomalBullet:
+		if (Bullet* bullet = dynamic_cast<Bullet*>(t))
+		{
+			if (CollisionRect(bullet, this))
+			{
+				m_state = eDamage;
+			}
+		}
+		break;
+	}
+}
 void Enemy::Draw()
 {
 	if (m_e_hp) {//ｈｐを持ってたらNULL対策用

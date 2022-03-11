@@ -16,30 +16,64 @@ void Base::Update()
 {
 }
 
+CVector2D Base::Get2DPos(CVector3D pos)
+{
+	CVector2D pos2D(pos.x - m_scroll.x - pos.z / 8, -pos.y - m_scroll.y + pos.z / 2 + GROUND);
+	return pos2D;
+}
+
 void Base::Draw()
 {
 }
 
 void Base::Draw3D()
 {
-	CVector2D pos2D(m_pos.x - m_scroll.x - m_pos.z / 8 , -m_pos.y - m_scroll.y + m_pos.z / 2 + GROUND);
+	CVector2D pos2D = Get2DPos(m_pos);
 	m_img.SetPos(pos2D);
 	m_img.SetFlipH(m_flip);
 	m_img.Draw();
 
-
 	//デバッグ用　矩形の表示
-	CRect rect = CRect(
+	
+
+	RectBox rect1 = RectBox(
 		m_pos.x + m_rect.m_left,
-		m_pos.y + m_rect.m_top,
+		m_pos.y +m_rect.m_top,
 		m_pos.x + m_rect.m_right,
-		m_pos.y + m_rect.m_bottom);
-	/*
+		m_pos.y + m_rect.m_bottom,
+		m_pos.z + m_rect.m_near,
+		m_pos.z + m_rect.m_far);
+
+	/*後面*/
+	CVector2D rect_ltf = Get2DPos(CVector3D(rect1.m_left, rect1.m_top, rect1.m_far));//３Dを２D座標に変換
+	CVector2D rect_rbf = Get2DPos(CVector3D(rect1.m_right, rect1.m_bottom, rect1.m_far));//３Dを２D座標に変換
+
+
+	CRect rect2 = CRect(
+		rect_ltf.x, rect_ltf.y, rect_rbf.x, rect_rbf.y
+	);
 	Utility::DrawQuad(
-		CVector2D(rect.m_left, rect.m_top) - m_scroll,
-		CVector2D(rect.m_width, rect.m_height),
+		CVector2D(rect2.m_left, rect2.m_top),
+		CVector2D(rect2.m_width, rect2.m_height),
+
+		CVector4D(0, 0, 1, 0.5f));
+
+
+	/*前面*/
+	CVector2D rect_ltn=Get2DPos(CVector3D(rect1.m_left,rect1.m_top,rect1.m_near));//３Dを２D座標に変換
+	CVector2D rect_rbn = Get2DPos(CVector3D(rect1.m_right, rect1.m_bottom, rect1.m_near));//３Dを２D座標に変換
+
+
+	CRect rect = CRect(
+		rect_ltn.x, rect_ltn.y, rect_rbn.x, rect_rbn.y
+	);
+	Utility::DrawQuad(
+		CVector2D(rect.m_left, rect.m_top),
+		CVector2D(rect.m_width,rect.m_height),
+	
 		CVector4D(1, 0, 0, 0.5f));
-	*/
+
+
 }
 
 
@@ -68,7 +102,7 @@ bool Base::CollisionRect(Base* b1, Base* b2)
 
 	//矩形同士の判定
 	if (rect1.m_left <= rect2.m_right && rect1.m_right >= rect2.m_left &&
-		rect1.m_top <= rect2.m_bottom && rect1.m_bottom >= rect2.m_top &&
+		rect1.m_top >= rect2.m_bottom && rect1.m_bottom <= rect2.m_top &&
 		rect1.m_near >= rect2.m_far && rect1.m_far <= rect2.m_near)
 		return true;
 

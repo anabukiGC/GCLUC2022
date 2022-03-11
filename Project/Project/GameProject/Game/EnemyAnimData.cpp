@@ -47,6 +47,14 @@ static TexAnim enemy2Jump[] =
 	{ 7,70 },
 };
 
+static TexAnim enemy2Damage[] =
+{
+	{ 9,10 },
+	{ 10,50 },
+	{ 4,50 },
+	{ 6,70 },
+};
+
 static TexAnim enemy2Die[] =
 {
 	{ 8,10 },
@@ -60,6 +68,7 @@ TexAnimData enemy2_anim_data[] =
 {
 	ANIMDATA(enemy2Idle),
 	ANIMDATA(enemy2Jump),
+	ANIMDATA(enemy2Damage),
 	ANIMDATA(enemy2Die),
 };
 

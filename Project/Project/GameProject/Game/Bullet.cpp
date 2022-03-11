@@ -8,7 +8,7 @@ Bullet::Bullet(BaseType type, const CVector3D& pos) : Base(type, 1)
 	//‰æ‘œ‚Ì’†SˆÊ’uİ’è
 	m_img.SetCenter(20, 27);
 	m_pos = pos;
-	m_rect = RectBox(-20, -27, 20, 0, 16, -16);
+	m_rect = RectBox(-20, -27, 20, 0, 32, -32);
 }
 
 void Bullet::Update()

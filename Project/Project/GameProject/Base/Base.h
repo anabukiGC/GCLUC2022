@@ -10,6 +10,7 @@ enum  BaseType{
 	eType_Field,
 	eType_Player,
 	eType_Enemy,
+	eType_Boss,
 	eType_Bullet,
 	eType_Effect,
 	eType_UI,
@@ -89,7 +90,7 @@ public:
 	/// </summary>
 	virtual void Update();
 
-
+	static  CVector2D Get2DPos(CVector3D pos);
 	/// <summary>
 	/// •`‰æ
 	/// </summary>
