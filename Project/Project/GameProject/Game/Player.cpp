@@ -24,6 +24,8 @@ Player::Player(const CVector3D& pos, bool flip) : Base(eType_Player,1)
 	JumpPosition = 0;
 	GetY = false;
 	JumpTime = 0;
+
+	Fire = false;
 }
 
 void Player::Update()
@@ -66,6 +68,8 @@ void Player::Update()
 		{
 			m_pos.z = 600;
 		}
+
+
 	//アニメーション更新
 	m_img.UpdateAnimation();
 
@@ -210,9 +214,10 @@ void Player::StateAttack1()
 	}
 
 	//弾の生成
-	if (m_img.GetIndex() == 7)
+	if (m_img.GetIndex() == 7 && Fire == false)
 	{
-		new Bullet(eType_NomalBullet, CVector3D(m_pos.x, m_pos.y + 120, m_pos.z));
+		new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 43, m_pos.y + 171, m_pos.z));
+		Fire = true;
 	}
 	/*
 	if (!m_img.CheckAnimationEnd() && PUSH(CInput::eButton1))
@@ -234,11 +239,13 @@ void Player::StateAttack2()
 	{
 		if (HOLD(CInput::eButton1))
 		{
-
+			m_state = eState_Attack3;
 		}
 		else
 		{
 			m_state = eState_Idle;
+			//銃の弾発砲フラグのリセット
+			Fire = false;
 		}
 	}
 }
@@ -249,14 +256,9 @@ void Player::StateAttack3()
 
 	if (m_img.CheckAnimationEnd())
 	{
-		if (HOLD(CInput::eButton1))
-		{
-
-		}
-		else
-		{
 			m_state = eState_Idle;
-		}
+			//銃の弾発砲フラグのリセット
+			Fire = false;
 	}
 }
 

@@ -101,7 +101,6 @@ void Init(void)
 	ADD_RESOURCE("BackGround4", CImage::CreateImage("Image/Map/BackGround4.png"));
 	ADD_RESOURCE("NomalBullet", CImage::CreateImage("Image/Player/Player2Bullet1.png"));
 	new Player(CVector3D(100, 0, 1000),false);
-	new Enemy(CVector3D(1600, 0, 500),1);
 	new Boss(CVector3D(1100, 0, -300), 1);
 	new EnemyManager();
 	new BackGround();
