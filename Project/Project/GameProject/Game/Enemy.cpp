@@ -3,7 +3,7 @@
 
 const float Enemy::speed = 3.0;//どこでも使えるように
 
-Enemy::Enemy(const CVector3D& pos, int k) : Base(0, 0)/*今後タイプ分け*/
+Enemy::Enemy(const CVector3D& pos, int k) : Base(eType_Enemy, 1)/*今後タイプ分け*/
 {
 	kind = k;
 	switch (kind) {
@@ -203,6 +203,23 @@ void Enemy::Update()
 	
 }
 
+void Enemy::Collision(Base* b)
+{
+	switch (b->m_type) {
+	case eType_Bullet:
+		if (Base::CollisionRect(this, b))
+		{
+			if (b->m_kill == false) {
+				SOUND("SE_Hit")->Play();
+				GravityDir *= -1;
+				b->m_kill = true;//当たったものを消すので判定が一度のみになる
+				printf("hit\n");
+			}
+
+		}
+		break;
+	}
+}
 void Enemy::Draw()
 {
 	if (m_e_hp) {//ｈｐを持ってたらNULL対策用

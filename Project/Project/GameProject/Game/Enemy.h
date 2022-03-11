@@ -42,7 +42,7 @@ public:
 	int GetMaxHp();//Hp�̎擾
 	void Update();
 	void Draw();
-
+	void Collision(Base* b);
 	EnemyHp* m_e_hp;
 	
 };

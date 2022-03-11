@@ -1,7 +1,7 @@
 #include "Boss.h"
 
 
-Boss::Boss(const CVector3D& pos, int k):Base(0,0)
+Boss::Boss(const CVector3D& pos, int k):Base(eType_Boss,1)
 {
 	kind = k;
 	switch (kind) {

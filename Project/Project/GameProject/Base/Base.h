@@ -10,6 +10,7 @@ enum  BaseType{
 	eType_Field,
 	eType_Player,
 	eType_Enemy,
+	eType_Boss,
 	eType_Bullet,
 	eType_Effect,
 	eType_UI,
