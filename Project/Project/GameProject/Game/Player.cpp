@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "PlayerAnimData.h"
 #include "../Global.h"
 
 Player::Player(const CVector3D& pos, bool flip) : Base(eType_Player,1)
@@ -106,11 +107,13 @@ void Player::StateIdle()
 	if (HOLD(CInput::eUp))
 	{
 		m_pos.z -= WalkSpeed;
+		MoveFlag = true;
 	}
 	//下移動
 	if (HOLD(CInput::eDown))
 	{
 		m_pos.z += WalkSpeed;
+		MoveFlag = true;
 	}
 
 	//ジャンプ
@@ -131,11 +134,11 @@ void Player::StateIdle()
 	//移動中なら
 	if (MoveFlag) {
 		//歩くアニメーション
-		//m_img.ChangeAnimation(eAnimWalk);
+		m_img.ChangeAnimation(2);
 	}
 	else {
 		//待機アニメーション
-		//m_img.ChangeAnimation(eAnimstand);
+		m_img.ChangeAnimation(0);
 	}
 }
 
@@ -181,17 +184,17 @@ void Player::StateJump()
 
 	if (m_vec.y >= 0) {
 		//上昇アニメーション
-		//m_img.ChangeAnimation(eAnimWalk);
+		m_img.ChangeAnimation(3);
 	}
 	else {
 		//下降アニメーション
-		//m_img.ChangeAnimation(eAnimstand);
+		m_img.ChangeAnimation(5);
 	}
 }
 
 void Player::StateAttack1()
 {
-	//m_img.ChangeAnimation(eAnimAttack1);
+	m_img.ChangeAnimation(6, false);
 	
 	if(m_img.CheckAnimationEnd())
 	{
@@ -204,6 +207,17 @@ void Player::StateAttack1()
 			m_state = eState_Idle;
 		}
 	}
+
+	/*
+	if (!m_img.CheckAnimationEnd() && PUSH(CInput::eButton1))
+	{
+		m_state = eState_Attack2;
+	}
+	else if (m_img.CheckAnimationEnd())
+	{
+		m_state = eState_Idle;
+	}
+	*/
 }
 
 void Player::StateAttack2()
