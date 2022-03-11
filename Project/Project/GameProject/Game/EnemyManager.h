@@ -28,4 +28,5 @@ public:
 	void Draw();
 
 	bool isEnd();//boolŒ^‚Åtrue‚©false‚©‚Ì“ñ‘ð
+	bool m_ivent=false;
 };

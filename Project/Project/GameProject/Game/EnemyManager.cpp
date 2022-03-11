@@ -36,7 +36,7 @@ void EnemyManager::Update()
 	if (m_wave_idx >= m_wave_size) return;//ウェーブ全体が終わったら終了
 	EnemyWave* wave = &wave_data[m_wave_idx];//ウェーブの値の内容を入れる
 	if (m_scroll.x > wave->pos_x) {//指定地点に来たら
-
+		m_ivent = true;
 		if (m_idx < wave->size) {//設定した1WAVEのデータを超えたら終了
 			m_cnt++;
 			EnemyData* data = &_stage1[m_idx];
@@ -62,8 +62,9 @@ void EnemyManager::Draw()
 
 bool EnemyManager::isEnd()//まだ敵が出てくるかどうかの判定用
 {
-	if (m_idx >= m_wave_size)//全部またはウェーブ終了出現したら
+	if (m_idx >= m_wave_size) {//全部またはウェーブ終了出現したら
 		return true;
+	}
 	else//まだ残っているなら
 		return false;
 
