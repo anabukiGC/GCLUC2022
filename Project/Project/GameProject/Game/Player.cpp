@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "PlayerAnimData.h"
+#include "Bullet.h"
 #include "../Global.h"
 
 Player::Player(const CVector3D& pos, bool flip) : Base(eType_Player,1)
@@ -208,6 +209,11 @@ void Player::StateAttack1()
 		}
 	}
 
+	//íeÇÃê∂ê¨
+	if (m_img.GetIndex() == 7)
+	{
+		new Bullet(eType_NomalBullet, CVector3D(m_pos.x, m_pos.y + 120, m_pos.z));
+	}
 	/*
 	if (!m_img.CheckAnimationEnd() && PUSH(CInput::eButton1))
 	{
