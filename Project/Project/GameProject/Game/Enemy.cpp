@@ -19,10 +19,11 @@ Enemy::Enemy(const CVector3D& pos, int k) : Base(0, 0)/*今後タイプ分け*/
 		m_bound = false;
 		m_jump = false;
 		m_e_hp = new EnemyHp(this);//ポインター渡すのでthis
-		
 		m_attack_effect = false;
 		m_state = eRun;
 		m_img.ChangeAnimation(0);
+		m_img.SetCenter(128, 256);
+		m_rect = RectBox(-128, -256, 128, 0, 32, -32);
 
 		break;
 	case 2:
