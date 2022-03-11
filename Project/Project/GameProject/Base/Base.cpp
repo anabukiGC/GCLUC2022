@@ -44,9 +44,9 @@ void Base::Draw3D()
 		m_pos.z + m_rect.m_near,
 		m_pos.z + m_rect.m_far);
 
-
-	CVector2D rect_ltf = Get2DPos(CVector3D(rect1.m_left, rect1.m_top, rect1.m_near));//‚RD‚ğ‚QDÀ•W‚É•ÏŠ·
-	CVector2D rect_rbf = Get2DPos(CVector3D(rect1.m_right, rect1.m_bottom, rect1.m_near));//‚RD‚ğ‚QDÀ•W‚É•ÏŠ·
+	/*Œã–Ê*/
+	CVector2D rect_ltf = Get2DPos(CVector3D(rect1.m_left, rect1.m_top, rect1.m_far));//‚RD‚ğ‚QDÀ•W‚É•ÏŠ·
+	CVector2D rect_rbf = Get2DPos(CVector3D(rect1.m_right, rect1.m_bottom, rect1.m_far));//‚RD‚ğ‚QDÀ•W‚É•ÏŠ·
 
 
 	CRect rect2 = CRect(
@@ -59,9 +59,9 @@ void Base::Draw3D()
 		CVector4D(0, 0, 1, 0.5f));
 
 
-
-	CVector2D rect_ltn=Get2DPos(CVector3D(rect1.m_left,rect1.m_top,rect1.m_far));//‚RD‚ğ‚QDÀ•W‚É•ÏŠ·
-	CVector2D rect_rbn = Get2DPos(CVector3D(rect1.m_right, rect1.m_bottom, rect1.m_far));//‚RD‚ğ‚QDÀ•W‚É•ÏŠ·
+	/*‘O–Ê*/
+	CVector2D rect_ltn=Get2DPos(CVector3D(rect1.m_left,rect1.m_top,rect1.m_near));//‚RD‚ğ‚QDÀ•W‚É•ÏŠ·
+	CVector2D rect_rbn = Get2DPos(CVector3D(rect1.m_right, rect1.m_bottom, rect1.m_near));//‚RD‚ğ‚QDÀ•W‚É•ÏŠ·
 
 
 	CRect rect = CRect(
@@ -102,7 +102,7 @@ bool Base::CollisionRect(Base* b1, Base* b2)
 
 	//‹éŒ`“¯m‚Ì”»’è
 	if (rect1.m_left <= rect2.m_right && rect1.m_right >= rect2.m_left &&
-		rect1.m_top <= rect2.m_bottom && rect1.m_bottom >= rect2.m_top &&
+		rect1.m_top >= rect2.m_bottom && rect1.m_bottom <= rect2.m_top &&
 		rect1.m_near >= rect2.m_far && rect1.m_far <= rect2.m_near)
 		return true;
 
