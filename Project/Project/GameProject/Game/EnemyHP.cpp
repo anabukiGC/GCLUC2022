@@ -15,9 +15,9 @@ EnemyHp::EnemyHp(Enemy*enemy):Base(0,0)
 }
 
 void EnemyHp::Draw() {
-	/*m_img. SetRect(0, 260,645 , 373);//Ô
+	m_img. SetRect(54, 260,645 , 373);//Ô
 	m_img.SetSize(m_enemy->GetMaxHp(),32);
-	Draw3D();*/
+	Draw3D();
 
 	
 	

@@ -7,9 +7,16 @@ struct EnemyData {//構造体（データをまとめる）
 	int cnt;
 
 };
+
+struct EnemyWave {
+	int pos_x;
+	EnemyData* data;
+	int size;
+};
 class EnemyManager :public Base {//敵の出現を管理するクラス
 private:
-
+	int m_wave_idx;//waveの数（何WAVEあるのか）
+	int m_wave_size;//全体のサイズ
 	int m_cnt;//時間計測用
 	int m_idx;//データ位置（０～何番目か）
 	int m_size;//データサイズ(いくつあるのか決める配列の中身的な）
