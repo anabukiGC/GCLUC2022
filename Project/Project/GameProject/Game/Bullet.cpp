@@ -34,4 +34,17 @@ void Bullet::Draw()
 
 void Bullet::Collision(Base* b)
 {
+	switch (b->GetID())
+	{
+	case eType_Enemy:
+	case eType_Boss:
+		if (Base* b = dynamic_cast<Base*>(b))
+		{
+			if (CollisionRect(b, this))
+			{
+				SetKill();
+			}
+		}
+		break;
+	}
 }

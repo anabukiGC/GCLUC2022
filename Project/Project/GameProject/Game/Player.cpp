@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "PlayerAnimData.h"
 #include "Bullet.h"
+#include "EnemyManager.h"
 #include "../Global.h"
 
 Player::Player(const CVector3D& pos, bool flip) : Base(eType_Player,1)
