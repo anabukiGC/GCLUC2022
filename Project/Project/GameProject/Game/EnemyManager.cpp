@@ -20,10 +20,10 @@ EnemyData _stage2[] = {//出現データをまとめる
 };
 EnemyWave wave_data[] = {
 	{512,_stage1,sizeof(_stage1) / sizeof(_stage1[0])},
-	{1024,_stage2,sizeof(_stage2) / sizeof(_stage2[0])}
+	{1200,_stage2,sizeof(_stage2) / sizeof(_stage2[0])}
 };
 EnemyManager::EnemyManager()
-	:Base(0,0), m_cnt(0)//初期化の別の例
+	:Base(eType_EnemyManager,0), m_cnt(0)//初期化の別の例
 {
 	m_wave_idx = 0;
 	m_cnt = 0;
@@ -64,7 +64,7 @@ bool EnemyManager::isEnd()//まだ敵が出てくるかどうかの判定用
 {
 	if (m_idx >= m_wave_size)
 	{//全部またはウェーブ終了出現したら
-		Task* t = TaskManager::GetInstance()->GetTask(eType_Enemy);
+		Task* t = TaskManager::GetInstance()->GetTask(eType_Enemy);//敵がいるかどうか判別
 		if(t==NULL)
 		return true;
 	}

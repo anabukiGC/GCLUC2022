@@ -113,7 +113,7 @@ void Enemy::StateRun()
 void Enemy::StateDamage()
 {
 	m_img.ChangeAnimation(3, false);
-	m_hp -= 160;
+	m_hp -= 50;
 	if (m_img.CheckAnimationEnd() && m_hp > 0) {
 		m_state = eRun;
 		m_cnt = 0;
