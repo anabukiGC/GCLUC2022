@@ -114,9 +114,12 @@ void Enemy::StateDamage()
 {
 	m_img.ChangeAnimation(3, false);
 	m_hp -= 160;
-	if (m_img.CheckAnimationEnd()) {
+	if (m_img.CheckAnimationEnd() && m_hp > 0) {
 		m_state = eRun;
 		m_cnt = 0;
+	}
+	if (m_img.CheckAnimationEnd() && m_hp <= 0) {
+		m_state = eDie;
 	}
 }
 
