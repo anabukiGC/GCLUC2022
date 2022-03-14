@@ -1,6 +1,7 @@
 #include "Enemy.h"
 #include "../Global.h"
 #include"../Game/Bullet.h"
+#include"EnemyManager.h"
 
 const float Enemy::speed = 3.0;//どこでも使えるように
 
@@ -9,7 +10,7 @@ Enemy::Enemy(const CVector3D& pos, int k) : Base(eType_Enemy, 1)/*今後タイプ分け
 	kind = k;
 	switch (kind) {
 		
-	case 1:
+	case EnemyData::eEnemy1:
 
 		m_img = COPY_RESOURCE("Enemy2", CImage);
 		
@@ -27,7 +28,7 @@ Enemy::Enemy(const CVector3D& pos, int k) : Base(eType_Enemy, 1)/*今後タイプ分け
 		m_rect = RectBox(-128, 256, 128, 0, 32, -32);
 
 		break;
-	case 2:
+	case EnemyData::eEnemy2:
 
 		m_img = COPY_RESOURCE("Enemy2", CImage);
 
@@ -119,7 +120,7 @@ void Enemy::StateDamage()
 
 	if (m_img.CheckAnimationEnd() && m_hp > 0) {
 		m_state = eRun;
-		m_hp -= 50;
+		m_hp -= 200;
 		m_cnt = 0;
 	}
 	if (m_img.CheckAnimationEnd() && m_hp <= 0) {
