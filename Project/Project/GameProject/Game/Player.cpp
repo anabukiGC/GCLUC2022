@@ -327,6 +327,7 @@ void Player::Collision(Task* t)
 			if (CollisionRect(b, this))
 			{
 				m_mutekiTime = 180;
+				m_hp -= 10;
 				//SetKill();
 			}
 		}

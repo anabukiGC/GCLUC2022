@@ -12,14 +12,9 @@ PlayerHp::PlayerHp(Player* player) :Base(0, 2)
 
 void PlayerHp::Draw() 
 {
-	m_img.SetRect(11, 0, 535, 287);	//プレイヤーHP
-	m_img.SetSize(500, 200);
-	m_img.SetPos(0, 0);
-	m_img.Draw();
-
 	m_img.SetRect(87, 226, 489, 287);//赤
-	m_img.SetSize(m_player->GetMaxHp() * 5, 200);
-	m_img.SetPos(0, 0);
+	m_img.SetSize(m_player->GetMaxHp() * 3.45, 32);
+	m_img.SetPos(115, 0);
 	m_img.Draw();
 	
 	if (m_player)
@@ -31,8 +26,13 @@ void PlayerHp::Draw()
 			return;//-になったら描画しない
 		}
 		m_img.SetRect(87, 393, 489, 454);//青
-		m_img.SetSize(w * 5, 32);
-		m_img.SetPos(0, 0);
+		m_img.SetSize(w * 3.45, 32);
+		m_img.SetPos(115, 45);
 		m_img.Draw();
 	}
+
+	m_img.SetRect(11, 0, 535, 287);	//プレイヤーHP
+	m_img.SetSize(500, 200);
+	m_img.SetPos(0, 0);
+	m_img.Draw();
 }
