@@ -7,5 +7,5 @@ public:
 	BossHp(Boss* boss);//対象の敵を渡せる用
 
 	void Draw();
-	Boss* m_boss;//enemyHpのメンバー
+	Boss* m_boss;//bossHpのメンバー
 };

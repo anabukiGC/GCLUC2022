@@ -1,6 +1,6 @@
 #include "Boss.h"
 #include"EnemyManager.h"
-
+#include"../Game/Bullet.h"
 Boss::Boss(const CVector3D& pos, int k) :Base(eType_Boss, 1)
 {
 	kind = k;
@@ -9,9 +9,10 @@ Boss::Boss(const CVector3D& pos, int k) :Base(eType_Boss, 1)
 	case EnemyData::eBoss:
 		m_img = COPY_RESOURCE("Boss1", CImage);
 
-
+		m_hp = 500;//変更用
+		m_max_hp = 500;
 		m_pos = pos;
-
+		m_b_hp = new BossHp(this);//ポインター渡すのでthis
 		m_flip = false;
 		m_jump = false;
 		m_attack_effect = false;
@@ -22,6 +23,16 @@ Boss::Boss(const CVector3D& pos, int k) :Base(eType_Boss, 1)
 		break;
 
 	}
+}
+
+int Boss::GetHp()
+{
+	return m_hp;
+}
+
+int Boss::GetMaxHp()
+{
+	return m_max_hp;
 }
 
 void Boss::StateIdle()
@@ -55,6 +66,33 @@ void Boss::StateAttack2()
 
 void Boss::StateDamage()
 {
+	m_img.ChangeAnimation(2, false);
+	/*if (m_img.GetIndex() == 0) {
+
+	}*/
+
+	if (m_img.CheckAnimationEnd() && m_hp > 0) {
+		m_state = eRun;
+		m_hp -= 200;
+		m_cnt = 0;
+	}
+	if (m_img.CheckAnimationEnd() && m_hp <= 0) {
+		m_state = eDie;
+	}
+}
+
+void Boss::StateDie()
+{
+	m_img.ChangeAnimation(3, false);
+
+
+	if (m_img.CheckAnimationEnd()) {
+		SetKill();
+		if (m_b_hp) {//ｈｐを持ってたら
+			m_b_hp->SetKill();
+			m_b_hp = NULL;//消えた時用
+		}
+	}
 }
 
 
@@ -78,6 +116,9 @@ void Boss::Update()
 	case eDamage:
 		StateDamage();
 		break;
+	case eDie:
+		StateDie();
+		break;
 	}
 
 
@@ -97,10 +138,36 @@ void Boss::Update()
 	if (kind == 1 && m_cnt == 360) {//秒数で状態遷移
 		m_state = eAttack2;
 	}
+
+	if (m_hp <= 0) {
+		m_state = eDie;
+
+	}
 	m_img.UpdateAnimation();
 }
 
 void Boss::Draw()
 {
+	if (m_b_hp) {//ｈｐを持ってたらNULL対策用
+
+		m_b_hp->m_pos = CVector3D(m_pos.x-100,m_pos.y,m_pos.z);//ゲージに自分の座標を入れている調整可能
+
+	}
 	Base::Draw3D();
+}
+
+void Boss::Collision(Task* t)
+{
+	switch (t->GetID())
+	{
+	case eType_NomalBullet:
+		if (Bullet* bullet = dynamic_cast<Bullet*>(t))
+		{
+			if (CollisionRect(bullet, this))
+			{
+				m_state = eDamage;
+			}
+		}
+		break;
+	}
 }

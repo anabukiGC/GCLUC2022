@@ -2,7 +2,7 @@
 #include"Enemy.h"
 #include"Boss.h"
 EnemyData _stage1[] = {//出現データをまとめる
-	{CVector3D(1600,0,500),0,EnemyData::eBoss},//（座標）、時間（フレーム）
+	{CVector3D(1600,0,500),0,EnemyData::eEnemy1},//（座標）、時間（フレーム）
 	{CVector3D(1600,0,500),30,EnemyData::eEnemy1},
 	{CVector3D(1600,0,500),30,EnemyData::eEnemy1},
 	{CVector3D(1600,0,500),30,EnemyData::eEnemy1},
@@ -43,7 +43,8 @@ void EnemyManager::Update()
 		m_ivent = true;
 		if (m_idx < wave->size) {//設定した1WAVEのデータを超えたら終了
 			m_cnt++;
-			EnemyData* data = &_stage1[m_idx];
+			
+			EnemyData* data = &wave->data[m_idx];
 			if (m_cnt >= data->cnt) {//出現位置をデータから引っ張ってくるdata->pos.x,
 				switch (data->type)//出現管理
 				{
@@ -61,6 +62,8 @@ void EnemyManager::Update()
 		}
 		else {
 			if (isEnd()) {
+				GetWave();
+				m_ivent = false;
 				m_wave_idx++;
 				m_idx = 0;
 			}

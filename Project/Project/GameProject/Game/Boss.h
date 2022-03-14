@@ -1,6 +1,6 @@
 #pragma once
 #include "../Base/Base.h"
-
+#include"BossHP.h"
 
 class Boss : public Base
 {
@@ -10,11 +10,14 @@ class Boss : public Base
 		eAttack1,
 		eAttack2,
 		eDamage,
-
+		eDie,
 	};
 
 	//ó‘Ô
 	int m_state;
+
+	int m_hp = 0;
+	int m_max_hp = 0;
 
 	int m_cnt = 0;//ŠÔ”»•Ê—p
 
@@ -27,12 +30,13 @@ class Boss : public Base
 	void StateAttack1();
 	void StateAttack2();
 	void StateDamage();
-
+	void StateDie();
 public:
 	Boss(const CVector3D& pos, int k); //k=í—Ş•ª‚¯”Ô†
-
+	int GetHp();//Hp‚Ìæ“¾
+	int GetMaxHp();//Hp‚Ìæ“¾
 	void Update();
 	void Draw();
-private:
-
+	void Collision(Task* t);
+	BossHp* m_b_hp;
 };

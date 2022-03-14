@@ -103,20 +103,20 @@ static TexAnim boss1Attack2[] =
 
 static TexAnim boss1Damage[] =
 {
-	{ 14,20 },
-	{ 15,20 },
-	{ 16,20 },
+	{ 14,2 },
+	{ 15,2 },
+	{ 16,2 },
 	
 
 };
 
 static TexAnim boss1Change[] =
 {
-	{ 18,20 },
-	{ 19,20 },
-	{ 20,20 },
-	{ 21,20 },
-	{ 22,20 },
+	{ 18,10 },
+	{ 19,10 },
+	{ 20,10 },
+	{ 21,10 },
+	{ 22,10 },
 };
 
 TexAnimData boss1_anim_data[] =
