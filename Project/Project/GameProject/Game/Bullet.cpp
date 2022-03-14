@@ -32,13 +32,13 @@ void Bullet::Draw()
 	Base::Draw3D();
 }
 
-void Bullet::Collision(Base* b)
+void Bullet::Collision(Task* t)
 {
-	switch (b->GetID())
+	switch (t->GetID())
 	{
 	case eType_Enemy:
 	case eType_Boss:
-		if (Base* b = dynamic_cast<Base*>(b))
+		if (Base* b = dynamic_cast<Base*>(t))
 		{
 			if (CollisionRect(b, this))
 			{

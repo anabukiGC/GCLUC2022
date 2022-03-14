@@ -9,5 +9,5 @@ public:
 	void Update();
 	void Draw();
 	//“–‚½‚è”»’èŒŸØ
-	void Collision(Base* b);
+	void Collision(Task* t);
 };
