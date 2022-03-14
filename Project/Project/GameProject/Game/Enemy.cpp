@@ -112,10 +112,14 @@ void Enemy::StateRun()
 
 void Enemy::StateDamage()
 {
-	m_img.ChangeAnimation(3, false);
-	m_hp -= 50;
+	m_img.ChangeAnimation(2, false);
+	/*if (m_img.GetIndex() == 0) {
+		
+	}*/
+
 	if (m_img.CheckAnimationEnd() && m_hp > 0) {
 		m_state = eRun;
+		m_hp -= 50;
 		m_cnt = 0;
 	}
 	if (m_img.CheckAnimationEnd() && m_hp <= 0) {
@@ -126,7 +130,7 @@ void Enemy::StateDamage()
 
 void Enemy::StateDie()
 {
-	m_img.ChangeAnimation(2, false);
+	m_img.ChangeAnimation(3, false);
 
 
 	if (m_img.CheckAnimationEnd()) {
