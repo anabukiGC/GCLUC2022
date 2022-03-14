@@ -22,6 +22,7 @@ public:
 	//銃の弾を打ったフラグ
 	bool Fire;
 
+
 private:
 	//状態
 	enum 
@@ -40,6 +41,8 @@ private:
 	//着地フラグ
 	bool m_bound;
 
+	//無敵時間
+	int m_mutekiTime;
 	//ジャンプ時着地地点座標取得
 	float JumpPosition;
 	//一度だけY座標を取得するためのフラグ

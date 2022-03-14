@@ -128,6 +128,15 @@ void TaskManager::CollisionAll()
 
 Task* TaskManager::GetTask(int id) const
 {
+	Task* t = mp_head;
+	while (t) 
+	{
+		if (t->m_id == id)
+		{
+			return t;
+		}
+		t = t->mp_next;
+	}
 	return nullptr;
 }
 

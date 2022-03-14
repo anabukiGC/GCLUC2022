@@ -30,6 +30,8 @@ Player::Player(const CVector3D& pos, bool flip) : Base(eType_Player,1)
 	GetY = false;
 	JumpTime = 0;
 
+	m_mutekiTime = 0;
+
 	Fire = false;
 }
 
@@ -54,7 +56,6 @@ void Player::Update()
 		StateAttack3();
 		break;
 	}
-
 		m_vec.y -= GRAVITY;
 		m_pos.y += m_vec.y;
 
@@ -74,6 +75,10 @@ void Player::Update()
 			m_pos.z = 600;
 		}
 
+		if (m_mutekiTime > 0)
+		{
+			m_mutekiTime--;
+		}
 
 	//アニメーション更新
 	m_img.UpdateAnimation();
@@ -84,6 +89,14 @@ void Player::Update()
 
 void Player::Draw()
 {
+	if (m_mutekiTime % 20 > 10)
+	{
+		m_img.SetColor(1, 1, 1, 0.5);
+	}
+	else
+	{
+		m_img.SetColor(1, 1, 1, 1);
+	}
 	Base::Draw3D();
 }
 
@@ -221,7 +234,15 @@ void Player::StateAttack1()
 	//弾の生成
 	if (m_img.GetIndex() == 7 && Fire == false)
 	{
-		new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 43, m_pos.y + 171, m_pos.z));
+		if (m_flip)
+		{
+			new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 43, m_pos.y + 171, m_pos.z), false);
+		}
+
+		if (!m_flip)
+		{
+			new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 43, m_pos.y + 171, m_pos.z), true);
+		}
 		Fire = true;
 	}
 	/*
@@ -274,9 +295,14 @@ void Player::Collision(Task* t)
 	case eType_Enemy:
 		if (Base* b = dynamic_cast<Base*>(t))
 		{
+			if (m_mutekiTime > 0)
+			{
+				break;
+			}
 			if (CollisionRect(b, this))
 			{
-				SetKill();
+				m_mutekiTime = 180;
+				//SetKill();
 			}
 		}
 		break;
