@@ -50,6 +50,9 @@ private:
 	//ジャンプ時間
 	int JumpTime;
 
+	//左右のRect
+	RectBox RectRight;
+	RectBox RectLeft;
 
 	//各状態での挙動
 	void StateIdle();

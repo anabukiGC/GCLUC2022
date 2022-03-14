@@ -13,7 +13,9 @@ Player::Player(const CVector3D& pos, bool flip) : Base(eType_Player,1)
 	m_img.SetCenter(128, 256);
 	m_img.ChangeAnimation(0);
 	m_pos = pos;
-	m_rect = RectBox(-128, 0, 128, 256, 32, -32);
+	RectRight = RectBox(-80, 0, 40, 238, 32, -32);
+	RectLeft = RectBox(-40, 0, 80, 238, 32, -32);
+	m_rect = RectRight;
 	time = 0;
 
 	m_hp = 100;//変更用
@@ -85,7 +87,25 @@ void Player::Update()
 	m_img.UpdateAnimation();
 
 	//スクロール値設定
-	m_scroll.x = m_pos.x - SCREEN_WIDTH/2;
+	if (EnemyManager* b = dynamic_cast<EnemyManager*>(TaskManager::GetInstance()->GetTask(eType_EnemyManager)))
+	{
+		if (b->GetWave())
+		{
+		}
+		else
+		{
+			m_scroll.x = m_pos.x - SCREEN_WIDTH / 2;
+		}
+	}
+	//横移動制限
+	if (m_pos.x <= m_scroll.x - m_rect.m_left)
+	{
+		m_pos.x = m_scroll.x - m_rect.m_left;
+	}
+	if (m_pos.x >= m_scroll.x + SCREEN_WIDTH)
+	{
+		m_pos.x = m_scroll.x + SCREEN_WIDTH;
+	}
 }
 
 void Player::Draw()
@@ -117,6 +137,7 @@ void Player::StateIdle()
 		//反転フラグ
 		m_flip = true;
 		MoveFlag = true;
+		m_rect = RectLeft;
 	}
 	//右移動
 	if (HOLD(CInput::eRight))
@@ -126,6 +147,7 @@ void Player::StateIdle()
 		//反転フラグ
 		m_flip = false;
 		MoveFlag = true;
+		m_rect = RectRight;
 	}
 	//上移動
 	if (HOLD(CInput::eUp))
@@ -237,12 +259,12 @@ void Player::StateAttack1()
 	{
 		if (m_flip)
 		{
-			new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 43, m_pos.y + 171, m_pos.z), false);
+			new Bullet(eType_NomalBullet, CVector3D(m_pos.x - 80, m_pos.y + 171, m_pos.z), false);
 		}
 
 		if (!m_flip)
 		{
-			new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 43, m_pos.y + 171, m_pos.z), true);
+			new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 80, m_pos.y + 171, m_pos.z), true);
 		}
 		Fire = true;
 	}
