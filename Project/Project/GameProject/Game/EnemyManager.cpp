@@ -1,13 +1,13 @@
 #include "EnemyManager.h"
 #include"Enemy.h"
 EnemyData _stage1[] = {//出現データをまとめる
-	{CVector3D(1000,0,500),0},//（座標）、時間（フレーム）
-	{CVector3D(1000,0,500),60},
-	{CVector3D(1000,0,500),60},
-	{CVector3D(1000,0,500),60},
-	{CVector3D(1000,0,500),60},
-	{CVector3D(1000,0,500),60},
-	{CVector3D(1000,0,500),60},
+	{CVector3D(1600,0,500),0},//（座標）、時間（フレーム）
+	{CVector3D(1600,0,500),30},
+	{CVector3D(1600,0,500),30},
+	{CVector3D(1600,0,500),30},
+	{CVector3D(1600,0,500),30},
+	{CVector3D(1600,0,500),30},
+	{CVector3D(1600,0,500),30},
 };
 EnemyData _stage2[] = {//出現データをまとめる
 	{CVector3D(1600,0,500),0},//（座標）、時間（フレーム）
@@ -62,11 +62,19 @@ void EnemyManager::Draw()
 
 bool EnemyManager::isEnd()//まだ敵が出てくるかどうかの判定用
 {
-	if (m_idx >= m_wave_size) {//全部またはウェーブ終了出現したら
+	if (m_idx >= m_wave_size)
+	{//全部またはウェーブ終了出現したら
+		Task* t = TaskManager::GetInstance()->GetTask(eType_Enemy);
+		if(t==NULL)
 		return true;
 	}
-	else//まだ残っているなら
 		return false;
 
 	
+}
+
+bool EnemyManager::GetWave()
+{
+
+	return m_ivent;
 }
