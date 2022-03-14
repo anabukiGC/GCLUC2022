@@ -103,7 +103,6 @@ void Init(void)
 	ADD_RESOURCE("Stage2", CImage::CreateImage("Image/Map/Stage2.png"));
 	ADD_RESOURCE("NomalBullet", CImage::CreateImage("Image/Player/Player2Bullet1.png"));
 	new Player(CVector3D(100, 0, 1000),false);
-	new Boss(CVector3D(1100, 0, -300), 1);
 	new EnemyManager();
 	new BackGround();
 }

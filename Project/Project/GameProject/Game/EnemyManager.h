@@ -5,6 +5,12 @@
 struct EnemyData {//構造体（データをまとめる）
 	CVector3D pos;
 	int cnt;
+	enum {
+		eEnemy1,
+		eEnemy2,
+		eBoss
+	};
+	int type;
 
 };
 

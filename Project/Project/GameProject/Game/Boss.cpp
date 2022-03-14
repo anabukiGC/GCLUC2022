@@ -1,40 +1,27 @@
 #include "Boss.h"
+#include"EnemyManager.h"
 
-
-Boss::Boss(const CVector3D& pos, int k):Base(eType_Boss,1)
+Boss::Boss(const CVector3D& pos, int k) :Base(eType_Boss, 1)
 {
 	kind = k;
 	switch (kind) {
 
-	case 1:
-
+	case EnemyData::eBoss:
 		m_img = COPY_RESOURCE("Boss1", CImage);
 
 
 		m_pos = pos;
-		
+
 		m_flip = false;
 		m_jump = false;
 		m_attack_effect = false;
 		m_state = eIdle;
-
-
-		break;
-	case 2:
-
-		m_img = COPY_RESOURCE("Enemy2", CImage);
-
-
-		m_pos = pos;
-		m_flip = true;
-		m_jump = false;
-		m_attack_effect = false;
-		m_state = eRun;
-
+		m_img.SetCenter(128*2, 256*2);
+		m_rect = RectBox(-128*2, 256*2, 128*2, 0, 32, -32);
 
 		break;
+
 	}
-
 }
 
 void Boss::StateIdle()
