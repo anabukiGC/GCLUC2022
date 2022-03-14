@@ -62,4 +62,6 @@ private:
 	void StateAttack3();
 
 	int time;
+
+	int HoldTime;
 };

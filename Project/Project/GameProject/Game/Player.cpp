@@ -17,6 +17,8 @@ Player::Player(const CVector3D& pos, bool flip) : Base(eType_Player,1)
 	RectLeft = RectBox(-40, 0, 80, 238, 32, -32);
 	m_rect = RectRight;
 	time = 0;
+	//ボタンの押し時間
+	HoldTime = 0;
 
 	m_hp = 100;//変更用
 	m_max_hp = 100;

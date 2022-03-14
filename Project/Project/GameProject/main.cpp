@@ -95,6 +95,7 @@ void Init(void)
 	ADD_RESOURCE("Boss1", CImage::CreateImage("Image/Boss/Boss.png", boss1_anim_data, 512, 512));
 	ADD_RESOURCE("HP", CImage::CreateImage("Image/UI/Block.png"));
     ADD_RESOURCE("HP2", CImage::CreateImage("Image/UI/Block2.png"));
+	ADD_RESOURCE("Player2HP", CImage::CreateImage("Image/Player/Player2HP.png"));
     ADD_RESOURCE("BackGround1", CImage::CreateImage("Image/Map/BackGround1.png"));
 	ADD_RESOURCE("BackGround2", CImage::CreateImage("Image/Map/BackGround2.png"));
 	ADD_RESOURCE("BackGround3", CImage::CreateImage("Image/Map/BackGround3.png"));

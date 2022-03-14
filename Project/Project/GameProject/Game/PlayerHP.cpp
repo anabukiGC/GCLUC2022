@@ -3,7 +3,7 @@
 
 PlayerHp::PlayerHp(Player* player) :Base(0, 0)
 {
-	m_img = COPY_RESOURCE("HP", CImage);
+	m_img = COPY_RESOURCE("Player2HP", CImage);
 	m_player = player;
 	m_img.SetCenter(0, 0);
 	m_img.SetRect(54, 464, 644, 577);//Â
@@ -11,7 +11,9 @@ PlayerHp::PlayerHp(Player* player) :Base(0, 0)
 }
 
 void PlayerHp::Draw() {
-	m_img.SetRect(54, 260, 645, 373);//Ô
+	//m_img.SetRect()
+
+	//m_img.SetRect(54, 260, 645, 373);//Ô
 	m_img.SetSize(m_player->GetMaxHp(), 32);
 	m_img.SetPos(0, 0);
 	m_img.Draw();
