@@ -9,7 +9,7 @@
 #include "Global.h"
 #include "Game/BackGround.h"
 #include"Game/Ranking.h"
-
+#include"Game/Game.h"
 
 void MainLoop(void) {
 	TaskManager::GetInstance()->KillCheckAll();
@@ -110,9 +110,7 @@ void Init(void)
 	ADD_RESOURCE("Stage2", CImage::CreateImage("Image/Map/Stage2.png"));
 	ADD_RESOURCE("NomalBullet", CImage::CreateImage("Image/Player/Player2Bullet1.png"));
 	ADD_RESOURCE("Shadow", CImage::CreateImage("Image/UI/Block2.png"));
-	new Player(CVector3D(100, 0, 1000),false);
-	new EnemyManager();
-	new BackGround();
+	new Game();
 }
 
 
