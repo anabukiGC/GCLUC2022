@@ -29,6 +29,7 @@ private:
 	{
 		eState_Idle,
 		eState_Jump,
+		eState_JumpAttack,
 		eState_Attack1,
 		eState_Attack2,
 		eState_Attack3,
@@ -57,6 +58,7 @@ private:
 	//Šeó‘Ô‚Å‚Ì‹““®
 	void StateIdle();
 	void StateJump();
+	void StateJumpAttack();
 	void StateAttack1();
 	void StateAttack2();
 	void StateAttack3();

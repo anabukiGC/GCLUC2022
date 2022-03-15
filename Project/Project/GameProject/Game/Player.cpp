@@ -51,6 +51,9 @@ void Player::Update()
 	case eState_Jump:
 		StateJump();
 		break;
+	case eState_JumpAttack:
+		StateJumpAttack();
+		break;
 	case eState_Attack1:
 		StateAttack1();
 		break;
@@ -225,6 +228,13 @@ void Player::StateJump()
 		//à⁄ìÆó Çê›íË
 		m_pos.z += WalkSpeed;
 	}
+
+	//ÉWÉÉÉìÉvçUåÇ
+	if (PUSH(CInput::eButton1))
+	{
+		m_state = eState_Attack1;
+	}
+
 	if (m_bound)
 	{
 		m_state = eState_Idle;
@@ -240,10 +250,19 @@ void Player::StateJump()
 	}
 }
 
+void Player::StateJumpAttack()
+{
+}
+
 void Player::StateAttack1()
 {
+	if (HOLD(CInput::eButton1))
+	{
+		HoldTime++;
+	}
+
 	m_img.ChangeAnimation(6, false);
-	
+
 	if(m_img.CheckAnimationEnd())
 	{
 		if (HOLD(CInput::eButton1))
@@ -284,7 +303,12 @@ void Player::StateAttack1()
 
 void Player::StateAttack2()
 {
-	//m_img.ChangeAnimation(eAnimAttack2);
+	m_img.ChangeAnimation(7, false);
+
+	if (HOLD(CInput::eButton1))
+	{
+		HoldTime++;
+	}
 
 	if (m_img.CheckAnimationEnd())
 	{
@@ -303,7 +327,7 @@ void Player::StateAttack2()
 
 void Player::StateAttack3()
 {
-	//m_img.ChangeAnimation(eAnimAttack3);
+	m_img.ChangeAnimation(8, false);
 
 	if (m_img.CheckAnimationEnd())
 	{

@@ -47,7 +47,7 @@ static TexAnim playerJumpDown[] =
 {
 	{ 38,6 },
 };
-//一段階攻撃モーション
+//一段階攻撃待機モーション
 static TexAnim playerAttack1[] =
 {
 	{ 48,3 },
@@ -59,14 +59,46 @@ static TexAnim playerAttack1[] =
 	{ 54,3 },
 	{ 55,3 },
 };
+//二段階攻撃モーション
+static TexAnim playerAttack2[] =
+{
+	{ 60,3 },
+	{ 61,3 },
+	{ 72,3 },
+	{ 73,3 },
+	{ 74,3 },
+	{ 75,3 },
+	{ 76,3 },
+	{ 77,3 },
+	{ 78,3 },
+	{ 79,3 },
+	{ 80,3 },
+	{ 81,3 },
+	{ 82,3 },
+	{ 83,3 },
+	{ 84,3 },
+};
+
+static TexAnim playerWeapon3[] =
+{
+	{ 97,3 },
+	{ 98,3 },
+	{ 99,3 },
+	{ 100,3 },
+	{ 101,3 },
+	{ 102,3 },
+	{ 103,3 },
+};
 
 TexAnimData player_anim_data[] =
 {
-	ANIMDATA(playerIdle1),		//0
-	ANIMDATA(playerIdle2),		//1
-	ANIMDATA(playerWalk),		//2
-	ANIMDATA(playerJumpUp),		//3
-	ANIMDATA(playerJumpStand),	//4
-	ANIMDATA(playerJumpDown),	//5
-	ANIMDATA(playerAttack1),	//6
+	ANIMDATA(playerIdle1),			//0
+	ANIMDATA(playerIdle2),			//1
+	ANIMDATA(playerWalk),			//2
+	ANIMDATA(playerJumpUp),			//3
+	ANIMDATA(playerJumpStand),		//4
+	ANIMDATA(playerJumpDown),		//5
+	ANIMDATA(playerAttack1),		//6
+	ANIMDATA(playerAttack2),		//7
+	ANIMDATA(playerWeapon3),		//8
 };
