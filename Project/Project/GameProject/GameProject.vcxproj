@@ -29,6 +29,8 @@
     <ClCompile Include="Game\Ranking.cpp" />
     <ClCompile Include="Game\Shadow.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Scene\Clear.cpp" />
+    <ClCompile Include="Scene\Title.cpp" />
     <ClCompile Include="TaskSystem\Task.cpp" />
     <ClCompile Include="TaskSystem\TaskManager.cpp" />
   </ItemGroup>
@@ -50,6 +52,8 @@
     <ClInclude Include="Game\Ranking.h" />
     <ClInclude Include="Game\Shadow.h" />
     <ClInclude Include="Global.h" />
+    <ClInclude Include="Scene\Clear.h" />
+    <ClInclude Include="Scene\Title.h" />
     <ClInclude Include="TaskSystem\Task.h" />
     <ClInclude Include="TaskSystem\TaskManager.h" />
   </ItemGroup>

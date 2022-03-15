@@ -1,7 +1,7 @@
 #pragma once
 #include "../Base/Base.h"
 #include"BossHP.h"
-
+#include"Game.h"
 class Boss : public Base
 {
 	enum {//®””Ô†‚ğU‚é(0`j
@@ -15,6 +15,8 @@ class Boss : public Base
 
 	//ó‘Ô
 	int m_state;
+
+	
 
 	int m_hp = 0;
 	int m_max_hp = 0;
@@ -39,4 +41,5 @@ public:
 	void Draw();
 	void Collision(Task* t);
 	BossHp* m_b_hp;
+	Game* m_game;
 };

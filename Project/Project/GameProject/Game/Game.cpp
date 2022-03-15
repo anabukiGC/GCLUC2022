@@ -2,13 +2,12 @@
 #include "../TaskSystem/TaskManager.h"
 #include "Player.h"
 #include "PlayerAnimData.h"
-#include "Enemy.h"
 #include "EnemyAnimData.h"
 #include "EnemyManager.h"
-#include "Boss.h"
 #include "../Global.h"
 #include "BackGround.h"
 #include"Ranking.h"
+#include"../Scene/Clear.h"
 Game::Game() :Base(eType_Scene,0)
 {
 	new Player(CVector3D(100, 0, 1000), false);
@@ -18,10 +17,17 @@ Game::Game() :Base(eType_Scene,0)
 
 Game::~Game()
 {
+
+	new Clear();
 }
 
 void Game::Update()
 {
+
+	if (m_clear == true) {
+		SetKill();
+	}
+	
 }
 
 void Game::Draw()

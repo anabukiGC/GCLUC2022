@@ -87,10 +87,16 @@ void Boss::StateDie()
 
 
 	if (m_img.CheckAnimationEnd()) {
+		Game* g = dynamic_cast<Game*>(TaskManager::GetInstance()->GetTask(eType_Scene));
+		g->m_clear = true;
+
+		
 		SetKill();
 		if (m_b_hp) {//ÇàÇêÇéùÇ¡ÇƒÇΩÇÁ
+			
 			m_b_hp->SetKill();
 			m_b_hp = NULL;//è¡Ç¶ÇΩéûóp
+			
 		}
 	}
 }

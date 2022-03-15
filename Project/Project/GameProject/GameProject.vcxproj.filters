@@ -56,6 +56,12 @@
     <ClCompile Include="Game\Game.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="Scene\Title.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\Clear.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -66,6 +72,9 @@
     </Filter>
     <Filter Include="TaskSystem">
       <UniqueIdentifier>{44dbbb53-c77a-4988-8066-34ae61b5a7d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{e0e55428-d559-4e82-b225-2c25ac4eb344}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -123,6 +132,12 @@
     </ClInclude>
     <ClInclude Include="Game\Game.h">
       <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\Title.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\Clear.h">
+      <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

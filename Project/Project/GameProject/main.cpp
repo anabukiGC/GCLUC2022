@@ -1,16 +1,12 @@
 #include <GLLibrary.h>
 #include "TaskSystem/TaskManager.h"
-#include "Game/Player.h"
 #include "Game/PlayerAnimData.h"
-#include "Game/Enemy.h"
 #include "Game/EnemyAnimData.h"
-#include "../GameProject/Game/EnemyManager.h"
-#include "Game/Boss.h"
 #include "Global.h"
 #include "Game/BackGround.h"
 #include"Game/Ranking.h"
-#include"Game/Game.h"
 
+#include"Scene/Title.h"
 void MainLoop(void) {
 	TaskManager::GetInstance()->KillCheckAll();
 	TaskManager::GetInstance()->UpdateAll();
@@ -110,7 +106,9 @@ void Init(void)
 	ADD_RESOURCE("Stage2", CImage::CreateImage("Image/Map/Stage2.png"));
 	ADD_RESOURCE("NomalBullet", CImage::CreateImage("Image/Player/Player2Bullet1.png"));
 	ADD_RESOURCE("Shadow", CImage::CreateImage("Image/UI/Block2.png"));
-	new Game();
+	ADD_RESOURCE("Title", CImage::CreateImage("Image/Scene/Title.png"));
+	ADD_RESOURCE("Clear", CImage::CreateImage("Image/Scene/Clear.png"));
+	new Title();
 }
 
 
