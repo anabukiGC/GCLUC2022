@@ -12,6 +12,7 @@ private:
 private:
 	static TaskManager* mp_instance;			//自身ポインタ
 	void Kill(Task* t);							//タスク削除関数
+	Task* Remove(Task* t);
 public:
 	TaskManager();
 	~TaskManager();

@@ -78,9 +78,10 @@ void Player::Update()
 		{
 			m_pos.z = 1000;
 		}
-		if (m_pos.z <= 600)
+
+		if (m_pos.z <= GROUND)
 		{
-			m_pos.z = 600;
+			m_pos.z = GROUND;
 		}
 
 		if (m_mutekiTime > 0)
