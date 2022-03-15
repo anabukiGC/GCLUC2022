@@ -11,83 +11,70 @@ static TexAnim playerIdle1[] =
 //待機モーション(瞬きあり)
 static TexAnim playerIdle2[] =
 {
-	{ 12,20},
-	{ 13,20},
-	{ 14,20},
-	{ 15,20},
+	{ 5,20},
+	{ 6,20},
+	{ 7,20},
+	{ 8,20},
 };
 //歩きモーション
 static TexAnim playerWalk[] =
 {
-	{ 24,5},
-	{ 25,5},
-	{ 26,5},
-	{ 27,5},
-	{ 28,5},
-	{ 29,5},
-	{ 30,5},
-	{ 31,5},
-	{ 32,5},
-	{ 33,5},
-	{ 34,5},
-	{ 35,5},
+	{ 10,5},
+	{ 11,5},
+	{ 12,5},
+	{ 13,5},
+	{ 14,5},
+	{ 15,5},
+	{ 16,5},
+	{ 17,5},
+	{ 18,5},
+	{ 19,5},
+	{ 20,5},
+	{ 21,5},
 };
 //ジャンプ(上昇)
 static TexAnim playerJumpUp[] = 
 {
-	{ 36,3 },
+	{ 24,3 },
 };
 //ジャンプ(対空)
 static TexAnim playerJumpStand[] = 
 {
-	{ 37,4 },
+	{ 25,4 },
 };
 //ジャンプ(下降)
 static TexAnim playerJumpDown[] = 
 {
-	{ 38,6 },
-};
-//一段階攻撃待機モーション
-static TexAnim playerAttack1[] =
-{
-	{ 48,3 },
-	{ 49,3 },
-	{ 50,3 },
-	{ 51,3 },
-	{ 52,3 },
-	{ 53,3 },
-	{ 54,3 },
-	{ 55,3 },
-};
-//二段階攻撃モーション
-static TexAnim playerAttack2[] =
-{
-	{ 60,3 },
-	{ 61,3 },
-	{ 72,3 },
-	{ 73,3 },
-	{ 74,3 },
-	{ 75,3 },
-	{ 76,3 },
-	{ 77,3 },
-	{ 78,3 },
-	{ 79,3 },
-	{ 80,3 },
-	{ 81,3 },
-	{ 82,3 },
-	{ 83,3 },
-	{ 84,3 },
+	{ 26,6 },
 };
 
-static TexAnim playerWeapon3[] =
+//1段階攻撃かまえモーション
+static TexAnim playerReady1[] =
 {
-	{ 97,3 },
-	{ 98,3 },
-	{ 99,3 },
-	{ 100,3 },
-	{ 101,3 },
-	{ 102,3 },
-	{ 103,3 },
+	{ 27,6 },
+	{ 28,6 },
+	{ 29,6 },
+	{ 30,6 },
+	{ 31,6 },
+	{ 32,6 },
+};
+//1段階攻撃チャージモーション
+static TexAnim playerChrage1[] =
+{
+	{ 36,6 },
+	{ 37,6 },
+};
+//1段階通常攻撃モーション
+static TexAnim playerNomalAttack1[] =
+{
+	{ 34,3 },
+	{ 35,3 },
+};
+//1段階チャージ攻撃モーション
+static TexAnim playerChrageAttack1[] =
+{
+	{ 39,3 },
+	{ 40,3 },
 };
 
 TexAnimData player_anim_data[] =
@@ -98,7 +85,8 @@ TexAnimData player_anim_data[] =
 	ANIMDATA(playerJumpUp),			//3
 	ANIMDATA(playerJumpStand),		//4
 	ANIMDATA(playerJumpDown),		//5
-	ANIMDATA(playerAttack1),		//6
-	ANIMDATA(playerAttack2),		//7
-	ANIMDATA(playerWeapon3),		//8
+	ANIMDATA(playerReady1),			//6
+	ANIMDATA(playerChrage1),		//7
+	ANIMDATA(playerNomalAttack1),	//8
+	ANIMDATA(playerChrageAttack1),	//9
 };

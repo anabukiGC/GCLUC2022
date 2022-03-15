@@ -39,6 +39,9 @@ private:
 	//ó‘Ô•Ï”
 	int m_state;
 
+	//UŒ‚ó‘Ô•Ï”
+	int m_state_attack;
+
 	//’…’nƒtƒ‰ƒO
 	bool m_bound;
 

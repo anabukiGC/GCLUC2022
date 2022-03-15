@@ -3,7 +3,7 @@
 
 Bullet::Bullet(BaseType type, const CVector3D& pos, bool flip) : Base(type, 1)
 {
-	m_img = COPY_RESOURCE("NomalBullet", CImage);
+	m_img = COPY_RESOURCE("NomalBullet1", CImage);
 	//画像サイズ設定
 	m_img.SetSize(40, 40);
 	//画像の中心位置設定

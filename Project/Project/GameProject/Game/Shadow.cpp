@@ -1,6 +1,6 @@
 #include "Shadow.h"
 
-Shadow::Shadow(Base* b):Base(0,0)
+Shadow::Shadow(Base* b):Base(0,2)
 {
 	m_img = COPY_RESOURCE("Shadow", CImage);
 	m_chara = b;

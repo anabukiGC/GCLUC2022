@@ -103,7 +103,8 @@ void Init(void)
 	ADD_RESOURCE("BackGround3", CImage::CreateImage("Image/Map/BackGround3.png"));
 	ADD_RESOURCE("BackGround4", CImage::CreateImage("Image/Map/BackGround4.png"));
 	ADD_RESOURCE("Stage1", CImage::CreateImage("Image/Map/Stage1.png"));
-	ADD_RESOURCE("NomalBullet", CImage::CreateImage("Image/Player/Player2Bullet1.png"));
+	ADD_RESOURCE("NomalBullet1", CImage::CreateImage("Image/Player/Player2Bullet1.png"));
+	ADD_RESOURCE("ChargeBullet1", CImage::CreateImage("Image/Player/Player2ChargeBullet1.png"));
 	ADD_RESOURCE("Shadow", CImage::CreateImage("Image/UI/Block2.png"));
 	ADD_RESOURCE("Title", CImage::CreateImage("Image/Scene/Title.png"));
 	ADD_RESOURCE("Clear", CImage::CreateImage("Image/Scene/Clear.png"));
