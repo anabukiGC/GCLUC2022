@@ -18,7 +18,7 @@ enum  BaseType{
 	eType_NomalBullet,
 };
 #define GRAVITY (9.8f/60)
-#define GROUND (500)
+#define GROUND (500)//ТnЦ╩В╠Т▓Ро
 
 class RectBox
 {

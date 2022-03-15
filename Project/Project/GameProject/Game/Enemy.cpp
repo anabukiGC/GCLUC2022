@@ -3,6 +3,7 @@
 #include"../Game/Bullet.h"
 #include"EnemyManager.h"
 
+
 const float Enemy::speed = 3.0;//どこでも使えるように
 
 Enemy::Enemy(const CVector3D& pos, int k) : Base(eType_Enemy, 1)/*今後タイプ分け*/
@@ -21,6 +22,7 @@ Enemy::Enemy(const CVector3D& pos, int k) : Base(eType_Enemy, 1)/*今後タイプ分け
 		m_bound = false;
 		m_jump = false;
 		m_e_hp = new EnemyHp(this);//ポインター渡すのでthis
+		m_shadow = new Shadow(this);//ポインター渡すのでthis
 		m_attack_effect = false;
 		m_state = eRun;
 		m_img.ChangeAnimation(0);
@@ -91,8 +93,12 @@ void Enemy::StateRun()
 	m_jump = false;
 	m_img.ChangeAnimation(0);
 
+	if (m_flip == true) {
+		m_pos.x -= speed;
+	}
+	else m_pos.x += speed;
 
-	m_pos.x -= speed;
+	
 	if (m_bound == false) {
 		m_pos.z -= speed;
 	}
@@ -100,12 +106,20 @@ void Enemy::StateRun()
 		m_pos.z += speed;
 	}
 
-	if (m_pos.z <= 600) {//跳ねかえる
+	if (m_pos.z <= 600) {//跳ねかえるO～５００までで良い
 		m_bound = true;
 	}
 	else if (m_pos.z >= 1000) {
 		m_bound = false;
 	}
+
+	if (m_scroll.x > m_pos.x) {
+		m_flip = false;
+	}
+	else if (m_scroll.x + 1900 < m_pos.x) {
+		m_flip = true;
+	}
+
 
 
 }
@@ -139,6 +153,12 @@ void Enemy::StateDie()
 		if (m_e_hp) {//ｈｐを持ってたら
 			m_e_hp->SetKill();
 			m_e_hp = NULL;//消えた時用
+
+		}
+		if (m_shadow) {//ｈｐを持ってたら
+			m_shadow->SetKill();
+			m_shadow = NULL;//消えた時用
+
 		}
 	}
 }
@@ -200,7 +220,7 @@ void Enemy::Update()
 	
 
 
-	if (kind==1 &&m_cnt==180) {//秒数で状態遷移
+	if (kind== EnemyData::eEnemy1 &&m_cnt==180) {//秒数で状態遷移
 		m_state = eAttack;
 		//m_hp -= 100;
 	}

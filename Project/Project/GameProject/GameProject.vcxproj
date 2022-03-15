@@ -25,6 +25,8 @@
     <ClCompile Include="Game\Player.cpp" />
     <ClCompile Include="Game\PlayerAnimData.cpp" />
     <ClCompile Include="Game\PlayerHP.cpp" />
+    <ClCompile Include="Game\Ranking.cpp" />
+    <ClCompile Include="Game\Shadow.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TaskSystem\Task.cpp" />
     <ClCompile Include="TaskSystem\TaskManager.cpp" />
@@ -43,6 +45,8 @@
     <ClInclude Include="Game\Player.h" />
     <ClInclude Include="Game\PlayerAnimData.h" />
     <ClInclude Include="Game\PlayerHP.h" />
+    <ClInclude Include="Game\Ranking.h" />
+    <ClInclude Include="Game\Shadow.h" />
     <ClInclude Include="Global.h" />
     <ClInclude Include="TaskSystem\Task.h" />
     <ClInclude Include="TaskSystem\TaskManager.h" />

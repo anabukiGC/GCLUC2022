@@ -47,6 +47,12 @@
     <ClCompile Include="Game\BossHP.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Shadow.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Ranking.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -104,6 +110,12 @@
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Game\BossHP.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Shadow.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Ranking.h">
       <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>

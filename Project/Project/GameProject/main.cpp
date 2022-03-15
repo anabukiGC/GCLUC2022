@@ -8,7 +8,7 @@
 #include "Game/Boss.h"
 #include "Global.h"
 #include "Game/BackGround.h"
-
+#include"Game/Ranking.h"
 
 
 void MainLoop(void) {
@@ -16,6 +16,12 @@ void MainLoop(void) {
 	TaskManager::GetInstance()->UpdateAll();
 	TaskManager::GetInstance()->CollisionAll();
 	TaskManager::GetInstance()->DrawAll();
+
+	if (PUSH(CInput::eButton3)) {
+		Ranking::GetInstance()->Add(100);
+		Ranking::GetInstance()->WriteScore();
+		Ranking::GetInstance()->ReadScore();
+	}
 }
 void Init(void)
 {
@@ -103,6 +109,7 @@ void Init(void)
 	ADD_RESOURCE("Stage1", CImage::CreateImage("Image/Map/Stage1.png"));
 	ADD_RESOURCE("Stage2", CImage::CreateImage("Image/Map/Stage2.png"));
 	ADD_RESOURCE("NomalBullet", CImage::CreateImage("Image/Player/Player2Bullet1.png"));
+	ADD_RESOURCE("Shadow", CImage::CreateImage("Image/UI/Block2.png"));
 	new Player(CVector3D(100, 0, 1000),false);
 	new EnemyManager();
 	new BackGround();
@@ -189,7 +196,7 @@ int __main(int* argcp, char** argv) {
 	}
 
 	glfwMakeContextCurrent(GL::window);
-	glfwSwapInterval(0);
+	glfwSwapInterval(0);//１ならつないだデバイスのFPSに合わせる０なら通常
 	ResizeCallback(GL::window, SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	GLenum err = glewInit();

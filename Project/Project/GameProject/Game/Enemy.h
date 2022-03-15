@@ -1,7 +1,7 @@
 #pragma once
 #include "../Base/Base.h"
 #include"EnemyHP.h"
-
+#include"Shadow.h"
 class Enemy : public Base
 {
 	enum {//®””Ô†‚ğU‚é(0`j
@@ -44,5 +44,5 @@ public:
 	void Draw();
 	void Collision(Task* t);
 	EnemyHp* m_e_hp;
-	
+	Shadow* m_shadow;
 };
