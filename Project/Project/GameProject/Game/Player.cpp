@@ -38,6 +38,8 @@ Player::Player(const CVector3D& pos, bool flip) : Base(eType_Player,1)
 	m_mutekiTime = 0;
 
 	Fire = false;
+
+	m_state_attack = 0;
 }
 
 void Player::Update()
@@ -136,7 +138,7 @@ void Player::StateIdle()
 	bool MoveFlag = false;
 
 	//ç∂à⁄ìÆ
-	if (HOLD(CInput::eLeft)) 
+	if (HOLD_PAD(0, CInput::eLeft))
 	{
 		//à⁄ìÆó Çê›íË
 		m_pos.x -= WalkSpeed;
@@ -146,7 +148,7 @@ void Player::StateIdle()
 		m_rect = RectLeft;
 	}
 	//âEà⁄ìÆ
-	if (HOLD(CInput::eRight))
+	if (HOLD_PAD(0, CInput::eRight))
 	{
 		//à⁄ìÆó Çê›íË
 		m_pos.x += WalkSpeed;
@@ -156,20 +158,20 @@ void Player::StateIdle()
 		m_rect = RectRight;
 	}
 	//è„à⁄ìÆ
-	if (HOLD(CInput::eUp))
+	if (HOLD_PAD(0, CInput::eUp))
 	{
 		m_pos.z -= WalkSpeed;
 		MoveFlag = true;
 	}
 	//â∫à⁄ìÆ
-	if (HOLD(CInput::eDown))
+	if (HOLD_PAD(0, CInput::eDown))
 	{
 		m_pos.z += WalkSpeed;
 		MoveFlag = true;
 	}
 
 	//ÉWÉÉÉìÉv
-	if (PUSH(CInput::eButton3))
+	if (PUSH_PAD(0, CInput::eButton3))
 	{
 		m_state = eState_Jump;
 		const float JumpPower = 10.0f;
@@ -178,9 +180,10 @@ void Player::StateIdle()
 	}
 
 	//çUåÇèÛë‘Ç…à»ç~
-	if (PUSH(CInput::eButton1))
+	if (PUSH_PAD(0, CInput::eButton1))
 	{
 		m_state = eState_Attack1;
+		m_state_attack = 0;
 	}
 
 	//à⁄ìÆíÜÇ»ÇÁ
@@ -202,7 +205,7 @@ void Player::StateJump()
 	bool MoveFlag = false;
 
 	//ç∂à⁄ìÆ
-	if (HOLD(CInput::eLeft))
+	if (HOLD_PAD(0, CInput::eLeft))
 	{
 		//à⁄ìÆó Çê›íË
 		m_pos.x -= WalkSpeed;
@@ -210,7 +213,7 @@ void Player::StateJump()
 		m_flip = true;
 	}
 	//âEà⁄ìÆ
-	if (HOLD(CInput::eRight))
+	if (HOLD_PAD(0, CInput::eRight))
 	{
 		//à⁄ìÆó Çê›íË
 		m_pos.x += WalkSpeed;
@@ -218,20 +221,20 @@ void Player::StateJump()
 		m_flip = false;
 	}
 	//è„à⁄ìÆ
-	if (HOLD(CInput::eUp))
+	if (HOLD_PAD(0, CInput::eUp))
 	{
 		//à⁄ìÆó Çê›íË
 		m_pos.z -= WalkSpeed;
 	}
 	//â∫à⁄ìÆ
-	if (HOLD(CInput::eDown))
+	if (HOLD_PAD(0, CInput::eDown))
 	{
 		//à⁄ìÆó Çê›íË
 		m_pos.z += WalkSpeed;
 	}
 
 	//ÉWÉÉÉìÉvçUåÇ
-	if (PUSH(CInput::eButton1))
+	if (PUSH_PAD(0, CInput::eButton1))
 	{
 		m_state = eState_Attack1;
 	}
@@ -257,63 +260,78 @@ void Player::StateJumpAttack()
 
 void Player::StateAttack1()
 {
-	if (HOLD(CInput::eButton1))
+	switch (m_state_attack)
 	{
-		HoldTime++;
-	}
-
-	m_img.ChangeAnimation(6, false);
-
-	if(m_img.CheckAnimationEnd())
-	{
-		if (HOLD(CInput::eButton1))
+	case 0:
+		Fire = false;
+		HoldTime = 0;
+		m_img.ChangeAnimation(6, false);
+		if (m_img.CheckAnimationEnd())
 		{
-			m_state = eState_Attack2;
+			m_state_attack++;
 		}
-		else
+		break;
+	case 1:
+		m_img.ChangeAnimation(7, true);
+		HoldTime++;
+		if (FREE_PAD(0,CInput::eButton1))
+		{
+			if (HoldTime >= 60 * 2)
+			{
+				m_state_attack = 2;
+			}
+			else
+			{
+				m_state_attack = 3;
+			}
+		}
+		break;
+	case 2:
+		m_img.ChangeAnimation(3, false);
+		if (m_img.CheckAnimationEnd())
+		{
+			m_state_attack = 4;
+		}
+		break;
+	case 3:
+		m_img.ChangeAnimation(8, false);
+
+		if (m_img.GetIndex() == 1 && Fire == false)
+		{
+			if (m_flip)
+			{
+				new Bullet(eType_NomalBullet, CVector3D(m_pos.x - 80, m_pos.y + 171, m_pos.z), false);
+			}
+
+			if (!m_flip)
+			{
+				new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 80, m_pos.y + 171, m_pos.z), true);
+			}
+			Fire = true;
+			m_state_attack = 4;
+		}
+		break;
+	case 4:
+		if (m_img.CheckAnimationEnd())
 		{
 			m_state = eState_Idle;
 		}
+		break;
 	}
-
-	//íeÇÃê∂ê¨
-	if (m_img.GetIndex() == 7 && Fire == false)
-	{
-		if (m_flip)
-		{
-			new Bullet(eType_NomalBullet, CVector3D(m_pos.x - 80, m_pos.y + 171, m_pos.z), false);
-		}
-
-		if (!m_flip)
-		{
-			new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 80, m_pos.y + 171, m_pos.z), true);
-		}
-		Fire = true;
-	}
-	/*
-	if (!m_img.CheckAnimationEnd() && PUSH(CInput::eButton1))
-	{
-		m_state = eState_Attack2;
-	}
-	else if (m_img.CheckAnimationEnd())
-	{
-		m_state = eState_Idle;
-	}
-	*/
 }
 
 void Player::StateAttack2()
 {
 	m_img.ChangeAnimation(7, false);
 
-	if (HOLD(CInput::eButton1))
+	if (HOLD_PAD(0, CInput::eButton1))
 	{
 		HoldTime++;
 	}
 
 	if (m_img.CheckAnimationEnd())
 	{
-		if (HOLD(CInput::eButton1))
+		if (HOLD_PAD(0, CInput::eButton1))
 		{
 			m_state = eState_Attack3;
 		}
