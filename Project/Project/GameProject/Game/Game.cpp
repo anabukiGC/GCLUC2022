@@ -4,15 +4,17 @@
 #include "PlayerAnimData.h"
 #include "EnemyAnimData.h"
 #include "EnemyManager.h"
-#include "../Global.h"
+
 #include "BackGround.h"
 #include"Ranking.h"
 #include"../Scene/Clear.h"
+#include"UI.h"
 Game::Game() :Base(eType_Scene,0)
 {
 	new Player(CVector3D(100, 0, 1000), false);
 	new EnemyManager();
 	new BackGround();
+	
 }
 
 Game::~Game()
