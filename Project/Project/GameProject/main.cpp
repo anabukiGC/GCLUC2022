@@ -13,11 +13,11 @@ void MainLoop(void) {
 	TaskManager::GetInstance()->CollisionAll();
 	TaskManager::GetInstance()->DrawAll();
 
-	if (PUSH(CInput::eButton3)) {
+	/*if (PUSH(CInput::eButton3)) {
 		Ranking::GetInstance()->Add(100);
 		Ranking::GetInstance()->WriteScore();
 		Ranking::GetInstance()->ReadScore();
-	}
+	}*/
 }
 void Init(void)
 {
