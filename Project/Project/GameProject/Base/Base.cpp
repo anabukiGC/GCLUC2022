@@ -18,7 +18,7 @@ void Base::Update()
 
 CVector2D Base::Get2DPos(CVector3D pos)
 {
-	CVector2D pos2D(pos.x - m_scroll.x - pos.z / 8, -pos.y - m_scroll.y + pos.z / 2 + GROUND);
+	CVector2D pos2D(pos.x - m_scroll.x - pos.z / 4, -pos.y - m_scroll.y + pos.z / 2 + GROUND);
 	return pos2D;
 }
 

@@ -1,5 +1,19 @@
 #pragma once
 
+//Ží—Þ‚Ì—ñ‹“
+enum  BaseType {
+	eType_Field,
+	eType_Player,
+	eType_Enemy,
+	eType_EnemyManager,
+	eType_Boss,
+	eType_Bullet,
+	eType_Effect,
+	eType_UI,
+	eType_NomalBullet,
+	eType_Scene
+};
+
 class Task
 {
 private:

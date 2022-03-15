@@ -5,7 +5,7 @@ class BackGround : public Base {
 private:
 	CImage m_inFrontGround[3];
 	CImage m_backGround;
-	CImage m_stage[2];
+	CImage m_stage;
 public:
 	BackGround();
 	void Update();

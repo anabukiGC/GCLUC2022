@@ -13,13 +13,40 @@ void TaskManager::Kill(Task* t)
 {
 }
 
+Task* TaskManager::Remove(Task* t)
+{
+	Task* NextTask = t->mp_next;
+	Task* PreviewTask = t->mp_prev;
+	if (t->mp_next)
+	{
+		t->mp_next->mp_prev = PreviewTask;
+	}
+	else
+	{
+		mp_tail = t->mp_prev;
+	}
+	if (t->mp_prev)
+	{
+		t->mp_prev->mp_next = NextTask;
+	}
+	else
+	{
+		mp_head = t->mp_next;
+	}
+	t->mp_next = nullptr;
+	t->mp_prev = nullptr;
+
+
+	return NextTask;
+}
+
 void TaskManager::Add(Task* p)
 {
 	Task* t = mp_head;
 	//t (次)の値がNULL以外
 	while (t)
 	{
-		if (t->m_priority > p->m_priority)
+		if (t->m_priority >= p->m_priority)
 			break;
 		t = t->mp_next;
 	}
@@ -78,24 +105,8 @@ void TaskManager::KillCheckAll()
 	{
 		if (t->m_kill)
 		{
-			Task* NextTask = t->mp_next; 
-			Task* PreviewTask = t->mp_prev;
-			if (t->mp_next)
-			{
-				t->mp_next->mp_prev = PreviewTask;
-			}
-			else
-			{
-				mp_tail = t->mp_prev;
-			}
-			if (t->mp_prev) 
-			{
-				t->mp_prev->mp_next = NextTask;
-			}
-			else
-			{
-				mp_head = t->mp_next;
-			}
+			Task* NextTask = Remove(t);
+
 			delete t;
 			t = NextTask;
 		}
@@ -108,6 +119,13 @@ void TaskManager::KillCheckAll()
 
 void TaskManager::SetKillAll()
 {
+	//全手のタスクへSetKill
+	Task* t = mp_head;
+	while (t) 
+	{
+		t->SetKill();
+		t = t->mp_next;
+	}
 }
 
 void TaskManager::CollisionAll()

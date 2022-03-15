@@ -5,19 +5,6 @@
 
 class Map;
 
-//í—Ş‚Ì—ñ‹“
-enum  BaseType{
-	eType_Field,
-	eType_Player,
-	eType_Enemy,
-	eType_EnemyManager,
-	eType_Boss,
-	eType_Bullet,
-	eType_Effect,
-	eType_UI,
-	eType_NomalBullet,
-	eType_Scene
-};
 #define GRAVITY (9.8f/60)
 #define GROUND (500)//’n–Ê‚Ì’²®
 
