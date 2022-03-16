@@ -6,8 +6,7 @@ BossHp::BossHp(Boss* boss) :Base(0, 3)
 	m_img = COPY_RESOURCE("BossHP", CImage);
 	m_boss = boss;
 	m_img.SetCenter(0, 0);
-	m_img.SetRect(54, 464, 644, 577);//Â
-	m_img.SetSize(m_boss->GetHp(), 50);
+	
 }
 
 void BossHp::Draw()
@@ -22,7 +21,8 @@ void BossHp::Draw()
 	m_img.SetSize(w, 50);
 	Draw3D();
 
-	m_img.SetRect(26, 15, 685, 192);//˜g
+	//m_img.SetRect(26, 15, 685, 192);//˜g
+	m_img.SetRect(54, 53, 644, 172);//˜g
 	m_img.SetSize(m_boss->GetMaxHp(), 50);
 	Draw3D();
 }

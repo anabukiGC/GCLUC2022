@@ -8,8 +8,7 @@ EnemyHp::EnemyHp(Enemy*enemy):Base(0,3)
 		m_enemy = enemy;
 		m_img.SetCenter(0,0);
 		
-		m_img.SetRect(20, 26, 202, 54);//˜g
-		m_img.SetSize(m_enemy->GetHp(), 32);
+	
 }
 
 void EnemyHp::Draw() {

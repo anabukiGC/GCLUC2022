@@ -108,9 +108,10 @@ void Init(void)
 	ADD_RESOURCE("Shadow", CImage::CreateImage("Image/UI/Block2.png"));
 	ADD_RESOURCE("Title", CImage::CreateImage("Image/Scene/Title.png"));
 	ADD_RESOURCE("Clear", CImage::CreateImage("Image/Scene/Clear.png"));
-	ADD_RESOURCE("UI", CImage::CreateImage("Image/UI/UI.png"));
-
+	ADD_RESOURCE("ScoreTime", CImage::CreateImage("Image/UI/UI.png"));
+	ADD_RESOURCE("TitleRogo", CImage::CreateImage("Image/UI/TitleRogo.png"));
 	new Title();
+	Ranking::GetInstance()->ReadScore();
 }
 
 

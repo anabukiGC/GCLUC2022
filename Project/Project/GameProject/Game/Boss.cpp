@@ -49,7 +49,7 @@ void Boss::StateAttack1()
 	m_img.ChangeAnimation(1, false);//‰“‹——£UŒ‚
 	if (m_img.CheckAnimationEnd()) {
 		m_state = eIdle;
-		m_cnt = 0;
+		m_cnt = 181;
 	}
 
 }
@@ -57,9 +57,10 @@ void Boss::StateAttack1()
 void Boss::StateAttack2()
 {
 	
-	m_img.ChangeAnimation(2, false);
+	m_img.ChangeAnimation(2, false);//‹ßÚUŒ‚
 	if (m_img.CheckAnimationEnd()) {
 		m_state = eIdle;
+		m_cnt = 0;
 	}
 }
 
@@ -135,8 +136,11 @@ void Boss::Update()
 
 	}
 
-	if (kind == 1 && m_cnt == 180) {//•b”‚Åó‘Ô‘JˆÚ
+	if (kind == EnemyData::eBoss && m_cnt == 180) {//•b”‚Åó‘Ô‘JˆÚ
 		m_state = eAttack1;
+	}
+	if (kind == EnemyData::eBoss && m_cnt == 360) {//•b”‚Åó‘Ô‘JˆÚ
+		m_state = eAttack2;
 	}
 
 

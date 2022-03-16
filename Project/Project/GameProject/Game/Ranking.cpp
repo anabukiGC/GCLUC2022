@@ -31,7 +31,8 @@ void Ranking::ReadScore()
 	fopen_s(&fp, "ranking.txt", "r");
 
 
-
+	if (fp == NULL)
+		return;//voidなので戻り値なし
 	while (fscanf_s(fp, "%d\n", &score)!=EOF)//EOF＝最後
 	{
 		m_ranking.push_back(score);
@@ -49,6 +50,10 @@ void Ranking::Add(int score)
 {
 	m_ranking.push_back(score);//追加
 	std::sort(m_ranking.begin(), m_ranking.end(), std::greater<int>());//sortで小さい順に並べ替え、greaterで降順
+	if (m_ranking.size() >= 6/*個数調べる*/) {
+		m_ranking.pop_back();//削除
+	}
+
 }
 
 Ranking* Ranking::GetInstance()//シングルトン
