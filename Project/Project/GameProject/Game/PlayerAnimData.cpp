@@ -76,6 +76,29 @@ static TexAnim playerChrageAttack1[] =
 	{ 39,3 },
 	{ 40,3 },
 };
+//2段階武器チェンジモーション
+static TexAnim playerWeponChenge1[] =
+{
+	{ 42,3 },
+	{ 43,3 },
+};
+//2段階通常攻撃モーション
+static TexAnim playerAttack2[] =
+{
+	{ 45,3 },
+	{ 46,3 },
+	{ 47,3 },
+	{ 48,3 },
+	{ 49,3 },
+	{ 50,3 },
+	{ 51,3 },
+	{ 52,3 },
+	{ 53,3 },
+	{ 54,3 },
+	{ 55,3 },
+	{ 56,3 },
+	{ 57,3 },
+};
 
 TexAnimData player_anim_data[] =
 {

@@ -89,6 +89,23 @@ void TaskManager::UpdateAll()
 	}
 }
 
+void TaskManager::UpdatePriority()
+{
+	Task* t = mp_head;
+	while (t) 
+	{
+		if (t->m_priority == t->m_old_priority)
+		{
+			t = t->mp_next;
+			continue;
+		}
+		Task* Nexttask = Remove(t);
+		Add(t);
+		t->m_priority = t->m_old_priority;
+		t = Nexttask;
+	}
+}
+
 void TaskManager::DrawAll()
 {
 	Task* t = mp_head;

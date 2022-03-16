@@ -11,7 +11,9 @@ void MainLoop(void) {
 	TaskManager::GetInstance()->KillCheckAll();
 	TaskManager::GetInstance()->UpdateAll();
 	TaskManager::GetInstance()->CollisionAll();
+	TaskManager::GetInstance()->UpdatePriority();
 	TaskManager::GetInstance()->DrawAll();
+
 
 	/*if (PUSH(CInput::eButton3)) {
 		Ranking::GetInstance()->Add(100);

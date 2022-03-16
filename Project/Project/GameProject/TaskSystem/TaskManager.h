@@ -18,6 +18,7 @@ public:
 	~TaskManager();
 	void Add(Task* p);							//リスト追加関数
 	void UpdateAll();							//リスト更新関数
+	void UpdatePriority();						//リストの優先順位を総入れ替え
 	void DrawAll();								//リスト描画関数
 	void KillCheckAll();						//リスト削除チェック関数
 	void SetKillAll();							//リスト削除関数

@@ -41,7 +41,11 @@ private:
 
 	//UŒ‚ó‘Ô•Ï”
 	int m_state_attack;
+	int m_state_attack2;
+	int m_state_attack3;
 
+	//UŒ‚ƒRƒ“ƒ{—P—\ŠÔ
+	int m_secondAttackTime;
 	//’…’nƒtƒ‰ƒO
 	bool m_bound;
 
