@@ -4,7 +4,7 @@
 #include "EnemyManager.h"
 #include "../Global.h"
 
-Player::Player(const CVector3D& pos, bool flip) : Base(eType_Player,1)
+Player::Player(const CVector3D& pos, bool flip) : Base(eType_Player,ePriorityPlayer)
 {
 	m_img = COPY_RESOURCE("Player", CImage);
 	//画像サイズ設定
@@ -40,6 +40,10 @@ Player::Player(const CVector3D& pos, bool flip) : Base(eType_Player,1)
 	Fire = false;
 
 	m_state_attack = 0;
+	m_state_attack2 = 0;
+	m_state_attack3 = 0;
+
+	m_secondAttackTime = 0;
 }
 
 void Player::Update()
@@ -76,20 +80,23 @@ void Player::Update()
 			m_bound = true;
 		}
 
-		if (m_pos.z >= 1000)
+		if (m_pos.z >= 500)
 		{
-			m_pos.z = 1000;
+			m_pos.z = 500;
 		}
 
-		if (m_pos.z <= GROUND)
+		if (m_pos.z <= 0)
 		{
-			m_pos.z = GROUND;
+			m_pos.z = 0;
 		}
 
 		if (m_mutekiTime > 0)
 		{
 			m_mutekiTime--;
 		}
+
+	//優先度変更
+	ChangePriority(ePriorityPlayer + m_pos.z);
 
 	//アニメーション更新
 	m_img.UpdateAnimation();
@@ -265,6 +272,7 @@ void Player::StateAttack1()
 	case 0:
 		Fire = false;
 		HoldTime = 0;
+		m_secondAttackTime = 0;
 		m_img.ChangeAnimation(6, false);
 		if (m_img.CheckAnimationEnd())
 		{
@@ -276,7 +284,7 @@ void Player::StateAttack1()
 		HoldTime++;
 		if (FREE_PAD(0,CInput::eButton1))
 		{
-			if (HoldTime >= 60 * 2)
+			if (HoldTime >= 60)
 			{
 				m_state_attack = 2;
 			}
@@ -285,11 +293,25 @@ void Player::StateAttack1()
 				m_state_attack = 3;
 			}
 		}
+		if (HoldTime >= 100)
+		{
+			m_state_attack = 2;
+		}
 		break;
 	case 2:
-		m_img.ChangeAnimation(3, false);
-		if (m_img.CheckAnimationEnd())
+		m_img.ChangeAnimation(9, false);
+		if (m_img.GetIndex() == 1 && Fire == false)
 		{
+			if (m_flip)
+			{
+				new Bullet(eType_NomalBullet, CVector3D(m_pos.x - 80, m_pos.y + 171, m_pos.z), false);
+			}
+
+			if (!m_flip)
+			{
+				new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 80, m_pos.y + 171, m_pos.z), true);
+			}
+			Fire = true;
 			m_state_attack = 4;
 		}
 		break;
@@ -312,7 +334,12 @@ void Player::StateAttack1()
 		}
 		break;
 	case 4:
-		if (m_img.CheckAnimationEnd())
+		m_secondAttackTime++;
+		if (m_secondAttackTime < 15 && HOLD_PAD(0, CInput::eButton1))
+		{
+			m_state = eState_Attack2;
+		}
+		else
 		{
 			m_state = eState_Idle;
 		}
@@ -322,37 +349,150 @@ void Player::StateAttack1()
 
 void Player::StateAttack2()
 {
-	m_img.ChangeAnimation(7, false);
-
-	if (HOLD_PAD(0, CInput::eButton1))
+	switch (m_state_attack2)
 	{
+	case 0:
+		Fire = false;
+		HoldTime = 0;
+		m_secondAttackTime = 0;
+		m_img.ChangeAnimation(6, false);
+		if (m_img.CheckAnimationEnd())
+		{
+			m_state_attack2++;
+		}
+		break;
+	case 1:
+		m_img.ChangeAnimation(7, true);
 		HoldTime++;
-	}
+		if (FREE_PAD(0, CInput::eButton1))
+		{
+			if (HoldTime >= 60 * 2)
+			{
+				m_state_attack2 = 2;
+			}
+			else
+			{
+				m_state_attack2 = 3;
+			}
+		}
+		break;
+	case 2:
+		m_img.ChangeAnimation(9, false);
+		if (m_img.GetIndex() == 1 && Fire == false)
+		{
+			if (m_flip)
+			{
+				new Bullet(eType_NomalBullet, CVector3D(m_pos.x - 80, m_pos.y + 171, m_pos.z), false);
+			}
 
-	if (m_img.CheckAnimationEnd())
-	{
-		if (HOLD_PAD(0, CInput::eButton1))
+			if (!m_flip)
+			{
+				new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 80, m_pos.y + 171, m_pos.z), true);
+			}
+			Fire = true;
+			m_state_attack2 = 4;
+		}
+		break;
+	case 3:
+		m_img.ChangeAnimation(8, false);
+
+		if (m_img.GetIndex() == 1 && Fire == false)
+		{
+			if (m_flip)
+			{
+				new Bullet(eType_NomalBullet, CVector3D(m_pos.x - 80, m_pos.y + 171, m_pos.z), false);
+			}
+
+			if (!m_flip)
+			{
+				new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 80, m_pos.y + 171, m_pos.z), true);
+			}
+			Fire = true;
+			m_state_attack2 = 4;
+		}
+		break;
+	case 4:
+		m_secondAttackTime++;
+		if (m_secondAttackTime < 15 && HOLD_PAD(0, CInput::eButton1))
 		{
 			m_state = eState_Attack3;
 		}
 		else
 		{
 			m_state = eState_Idle;
-			//銃の弾発砲フラグのリセット
-			Fire = false;
 		}
+		break;
 	}
 }
 
 void Player::StateAttack3()
 {
-	m_img.ChangeAnimation(8, false);
-
-	if (m_img.CheckAnimationEnd())
+	switch (m_state_attack3)
 	{
+	case 0:
+		Fire = false;
+		HoldTime = 0;
+		m_secondAttackTime = 0;
+		m_img.ChangeAnimation(6, false);
+		if (m_img.CheckAnimationEnd())
+		{
+			m_state_attack3++;
+		}
+		break;
+	case 1:
+		m_img.ChangeAnimation(7, true);
+		HoldTime++;
+		if (FREE_PAD(0, CInput::eButton1))
+		{
+			if (HoldTime >= 60 * 2)
+			{
+				m_state_attack3 = 2;
+			}
+			else
+			{
+				m_state_attack3 = 3;
+			}
+		}
+		break;
+	case 2:
+		m_img.ChangeAnimation(9, false);
+		if (m_img.GetIndex() == 1 && Fire == false)
+		{
+			if (m_flip)
+			{
+				new Bullet(eType_NomalBullet, CVector3D(m_pos.x - 80, m_pos.y + 171, m_pos.z), false);
+			}
+
+			if (!m_flip)
+			{
+				new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 80, m_pos.y + 171, m_pos.z), true);
+			}
+			Fire = true;
+			m_state_attack3 = 4;
+		}
+		break;
+	case 3:
+		m_img.ChangeAnimation(8, false);
+
+		if (m_img.GetIndex() == 1 && Fire == false)
+		{
+			if (m_flip)
+			{
+				new Bullet(eType_NomalBullet, CVector3D(m_pos.x - 80, m_pos.y + 171, m_pos.z), false);
+			}
+
+			if (!m_flip)
+			{
+				new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 80, m_pos.y + 171, m_pos.z), true);
+			}
+			Fire = true;
+		}
+
+		if (m_img.CheckAnimationEnd())
+		{
 			m_state = eState_Idle;
-			//銃の弾発砲フラグのリセット
-			Fire = false;
+		}
+		break;
 	}
 }
 

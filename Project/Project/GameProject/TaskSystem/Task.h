@@ -14,6 +14,13 @@ enum  BaseType {
 	eType_Scene,
 };
 
+//優先度の列挙
+enum
+{
+	ePriorityPlayer = 100,
+	ePriorityEnemy = 100,
+};
+
 class Task
 {
 private:
@@ -22,6 +29,8 @@ private:
 	int		m_id;					//タスクID
 	int		m_priority;				//優先度
 	bool	m_kill;					//削除フラグ
+
+	int m_old_priority;
 public:
 
 	Task(int id, int priority);

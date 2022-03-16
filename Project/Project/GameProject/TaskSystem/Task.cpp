@@ -32,6 +32,7 @@ void Task::Collision(Task* t)
 
 void Task::ChangePriority(int priority)
 {
+	m_old_priority = m_priority;
 	m_priority = priority;
 	//リスト内の並び替えが必要
 }
