@@ -10,7 +10,7 @@ struct EnemyData {//構造体（データをまとめる）
 		eEnemy2,
 		eBoss
 	};
-	int type;
+	int type;//種類分け
 
 };
 
@@ -36,5 +36,5 @@ public:
 
 	bool isEnd();//bool型でtrueかfalseかの二択
 	
-	bool GetWave();//bool型でtrueかfalseかの二択
+	bool GetWave();//敵がいるか判別
 };

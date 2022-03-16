@@ -9,11 +9,11 @@ void Ranking::WriteScore()
 {
 	FILE* fp;//値を引き継がないので関数毎に作る
 
-	//「fprintfExample.txt」のファイルを書き込みモード（"w"）で開く
+	//「ranking.txt」のファイルを書き込みモード（"w"）で開く
 	fopen_s(&fp, "ranking.txt", "w");
 
-	//「fprintfExample.txt」に「aは100です」と書き込む
 
+	//「ranking.txt」のファイルに書き込む
 	for (auto& v : m_ranking) {
 		fprintf(fp, "%d\n", v);
 
@@ -27,12 +27,12 @@ void Ranking::ReadScore()
 	m_ranking.clear();//何回も呼んでも大丈夫なように
 	FILE* fp;//値を引き継がないので関数毎に作る
 	int score;
-	//「fprintfExample.txt」のファイルをよみ込みモード（"ｒ"）で開く
+	//「eanking.txt」のファイルをよみ込みモード（"ｒ"）で開く
 	fopen_s(&fp, "ranking.txt", "r");
 
 
 
-	while (fscanf_s(fp, "%d\n", &score)!=EOF)
+	while (fscanf_s(fp, "%d\n", &score)!=EOF)//EOF＝最後
 	{
 		m_ranking.push_back(score);
 	} 
@@ -47,7 +47,7 @@ std::vector<int> Ranking::GetScore()
 
 void Ranking::Add(int score)
 {
-	m_ranking.push_back(score);
+	m_ranking.push_back(score);//追加
 	std::sort(m_ranking.begin(), m_ranking.end(), std::greater<int>());//sortで小さい順に並べ替え、greaterで降順
 }
 

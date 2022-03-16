@@ -14,7 +14,7 @@ Game::Game() :Base(eType_Scene,0)
 	new Player(CVector3D(100, 0, 1000), false);
 	new EnemyManager();
 	new BackGround();
-	
+	new UI(CVector2D(0,1000),1);
 }
 
 Game::~Game()
@@ -26,7 +26,7 @@ Game::~Game()
 void Game::Update()
 {
 
-	if (m_clear == true) {
+	if (m_clear == true) {//ƒQ[ƒ€ƒNƒŠƒA‚È‚ç
 		SetKill();
 	}
 	

@@ -109,6 +109,7 @@ void Init(void)
 	ADD_RESOURCE("Title", CImage::CreateImage("Image/Scene/Title.png"));
 	ADD_RESOURCE("Clear", CImage::CreateImage("Image/Scene/Clear.png"));
 	ADD_RESOURCE("UI", CImage::CreateImage("Image/UI/UI.png"));
+
 	new Title();
 }
 

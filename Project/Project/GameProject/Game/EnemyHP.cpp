@@ -1,7 +1,7 @@
 #include "EnemyHP.h"
 #include"Enemy.h"
 
-EnemyHp::EnemyHp(Enemy*enemy):Base(0,0)
+EnemyHp::EnemyHp(Enemy*enemy):Base(0,3)
 {
 	
 		m_img = COPY_RESOURCE("EnemyHP", CImage);
