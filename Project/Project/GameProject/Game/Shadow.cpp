@@ -12,7 +12,7 @@ void Shadow::Draw()
 {
 	if (m_chara) {//NULL対策用
 
-		m_pos = m_chara->m_pos;//ゲージに自分の座標を入れている調整可能
+		m_pos = m_chara->m_pos;//ゲージに自分の座標を入れている。座標調整可能
 		m_pos.y = 0;
 
 	}

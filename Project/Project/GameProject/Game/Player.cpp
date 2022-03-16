@@ -243,7 +243,7 @@ void Player::StateJump()
 	//ジャンプ攻撃
 	if (PUSH_PAD(0, CInput::eButton1))
 	{
-		m_state = eState_Attack1;
+		//m_state = eState_Attack1;
 	}
 
 	if (m_bound)
@@ -253,11 +253,11 @@ void Player::StateJump()
 
 	if (m_vec.y >= 0) {
 		//上昇アニメーション
-		m_img.ChangeAnimation(3);
+		m_img.ChangeAnimation(3, false);
 	}
 	else {
 		//下降アニメーション
-		m_img.ChangeAnimation(5);
+		m_img.ChangeAnimation(5,false);
 	}
 }
 

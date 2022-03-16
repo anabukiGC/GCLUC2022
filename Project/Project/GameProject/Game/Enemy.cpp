@@ -1,8 +1,7 @@
 #include "Enemy.h"
-#include "../Global.h"
 #include"../Game/Bullet.h"
 #include"EnemyManager.h"
-
+#include"../Global.h"
 
 const float Enemy::speed = 3.0;//どこでも使えるように
 
@@ -58,7 +57,7 @@ void Enemy::StateAttack()
 
 	m_img.ChangeAnimation(1, false);
 
-	if (m_img.GetIndex() >= 2 ) {
+	if (m_img.GetIndex() >= 2 ) {//移動
 		if (m_flip == true) {
 			m_pos.x -= speed;
 		}
@@ -76,8 +75,6 @@ void Enemy::StateAttack()
 	
 	
 }
-	//for (int i = 0; i <= jump_time; i++) {}
-		
 	
 	
 	if (m_img.CheckAnimationEnd()) {
@@ -93,13 +90,13 @@ void Enemy::StateRun()
 	m_jump = false;
 	m_img.ChangeAnimation(0);
 
-	if (m_flip == true) {
+	if (m_flip == true) {//移動
 		m_pos.x -= speed;
 	}
 	else m_pos.x += speed;
 
 	
-	if (m_bound == false) {
+	if (m_bound == false) {//ジグザグ移動
 		m_pos.z -= speed;
 	}
 	else if (m_bound == true) {
@@ -128,9 +125,6 @@ void Enemy::StateRun()
 void Enemy::StateDamage()
 {
 	m_img.ChangeAnimation(2, false);
-	/*if (m_img.GetIndex() == 0) {
-		
-	}*/
 
 	if (m_img.CheckAnimationEnd() && m_hp > 0) {
 		m_state = eRun;
@@ -150,6 +144,7 @@ void Enemy::StateDie()
 
 	if (m_img.CheckAnimationEnd()) {
 		SetKill();
+		g_score += 100;
 		if (m_e_hp) {//ｈｐを持ってたら
 			m_e_hp->SetKill();
 			m_e_hp = NULL;//消えた時用

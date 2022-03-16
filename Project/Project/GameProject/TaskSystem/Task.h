@@ -11,7 +11,7 @@ enum  BaseType {
 	eType_Effect,
 	eType_UI,
 	eType_NomalBullet,
-	eType_Scene
+	eType_Scene,
 };
 
 //—Dæ“x‚Ì—ñ‹“

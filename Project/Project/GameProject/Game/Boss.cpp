@@ -46,7 +46,7 @@ void Boss::StateRun()
 
 void Boss::StateAttack1()
 {
-	m_img.ChangeAnimation(1, false);
+	m_img.ChangeAnimation(1, false);//‰“‹——£UŒ‚
 	if (m_img.CheckAnimationEnd()) {
 		m_state = eIdle;
 		m_cnt = 0;
@@ -60,21 +60,18 @@ void Boss::StateAttack2()
 	m_img.ChangeAnimation(2, false);
 	if (m_img.CheckAnimationEnd()) {
 		m_state = eIdle;
-		m_cnt = 181;
 	}
 }
 
 void Boss::StateDamage()
 {
-	m_img.ChangeAnimation(2, false);
-	/*if (m_img.GetIndex() == 0) {
-
-	}*/
+	m_img.ChangeAnimation(3, false);
 
 	if (m_img.CheckAnimationEnd() && m_hp > 0) {
-		m_state = eRun;
+		
 		m_hp -= 200;
 		m_cnt = 0;
+		m_state = eIdle;
 	}
 	if (m_img.CheckAnimationEnd() && m_hp <= 0) {
 		m_state = eDie;
@@ -83,7 +80,7 @@ void Boss::StateDamage()
 
 void Boss::StateDie()
 {
-	m_img.ChangeAnimation(3, false);
+	m_img.ChangeAnimation(4, false);
 
 
 	if (m_img.CheckAnimationEnd()) {
@@ -141,9 +138,7 @@ void Boss::Update()
 	if (kind == 1 && m_cnt == 180) {//•b”‚Åó‘Ô‘JˆÚ
 		m_state = eAttack1;
 	}
-	if (kind == 1 && m_cnt == 360) {//•b”‚Åó‘Ô‘JˆÚ
-		m_state = eAttack2;
-	}
+
 
 	if (m_hp <= 0) {
 		m_state = eDie;
