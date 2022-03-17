@@ -1,5 +1,5 @@
 #pragma once
-#include"../Base/Base.h"
+#include "Base.h"
 class UI;//ƒNƒ‰ƒX‚ğéŒ¾‚µ‚Ä‹³‚¦‚é
 
 class UI :public Base {

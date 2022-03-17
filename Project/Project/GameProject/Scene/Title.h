@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Base/Base.h"
+#include "Base.h"
 class Title : public Base {
 public:
 	Title();

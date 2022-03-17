@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Base/Base.h"
+#include "Base.h"
 class BackGround : public Base {
 private:
 	CImage m_inFrontGround[3];

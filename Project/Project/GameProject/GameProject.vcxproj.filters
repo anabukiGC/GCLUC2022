@@ -8,49 +8,13 @@
     <ClCompile Include="Base\CharaBase.cpp">
       <Filter>Base</Filter>
     </ClCompile>
-    <ClCompile Include="Game\PlayerAnimData.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Player.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="TaskSystem\TaskManager.cpp">
       <Filter>TaskSystem</Filter>
     </ClCompile>
     <ClCompile Include="TaskSystem\Task.cpp">
       <Filter>TaskSystem</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Enemy.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\EnemyAnimData.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Boss.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\EnemyManager.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\EnemyHP.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="Game\BackGround.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Bullet.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\PlayerHP.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\BossHP.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Shadow.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Game\Ranking.cpp">
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="Game\Game.cpp">
@@ -62,12 +26,45 @@
     <ClCompile Include="Scene\Clear.cpp">
       <Filter>Game\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Game\UI.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="Global.cpp" />
-    <ClCompile Include="Game\AttackObject.cpp">
-      <Filter>Game</Filter>
+    <ClCompile Include="Game\Enemy\Boss.cpp">
+      <Filter>Game\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Enemy\BossHP.cpp">
+      <Filter>Game\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Enemy\Bullet.cpp">
+      <Filter>Game\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Enemy\Enemy.cpp">
+      <Filter>Game\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Enemy\EnemyAnimData.cpp">
+      <Filter>Game\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Enemy\EnemyHP.cpp">
+      <Filter>Game\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Enemy\EnemyManager.cpp">
+      <Filter>Game\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\UI\Ranking.cpp">
+      <Filter>Game\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\UI\Shadow.cpp">
+      <Filter>Game\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\UI\UI.cpp">
+      <Filter>Game\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Player\Player.cpp">
+      <Filter>Game\Palyer</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Player\PlayerAnimData.cpp">
+      <Filter>Game\Palyer</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Player\PlayerHP.cpp">
+      <Filter>Game\Palyer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -83,6 +80,15 @@
     <Filter Include="Game\Scene">
       <UniqueIdentifier>{e0e55428-d559-4e82-b225-2c25ac4eb344}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Palyer">
+      <UniqueIdentifier>{b58272f1-174a-4b29-ad15-fbf20fb172f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Enemy">
+      <UniqueIdentifier>{a4141f77-f078-4803-8490-e525ad3f08fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\UI">
+      <UniqueIdentifier>{c3484fb8-2199-41a4-9fc5-11279e0d0007}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Base\Base.h">
@@ -91,50 +97,14 @@
     <ClInclude Include="Base\CharaBase.h">
       <Filter>Base</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Player.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\PlayerAnimData.h">
-      <Filter>Game</Filter>
-    </ClInclude>
     <ClInclude Include="TaskSystem\Task.h">
       <Filter>TaskSystem</Filter>
     </ClInclude>
     <ClInclude Include="TaskSystem\TaskManager.h">
       <Filter>TaskSystem</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Enemy.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\EnemyAnimData.h">
-      <Filter>Game</Filter>
-    </ClInclude>
     <ClInclude Include="Global.h" />
-    <ClInclude Include="Game\Boss.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\EnemyManager.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\EnemyHP.h">
-      <Filter>Game</Filter>
-    </ClInclude>
     <ClInclude Include="Game\BackGround.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Bullet.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\PlayerHP.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\BossHP.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Shadow.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Game\Ranking.h">
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Game\Game.h">
@@ -146,11 +116,44 @@
     <ClInclude Include="Scene\Clear.h">
       <Filter>Game\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Game\UI.h">
-      <Filter>Game</Filter>
+    <ClInclude Include="Game\Enemy\Boss.h">
+      <Filter>Game\Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="Game\AttackObject.h">
-      <Filter>Game</Filter>
+    <ClInclude Include="Game\Enemy\BossHP.h">
+      <Filter>Game\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Enemy\Bullet.h">
+      <Filter>Game\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Enemy\Enemy.h">
+      <Filter>Game\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Enemy\EnemyAnimData.h">
+      <Filter>Game\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Enemy\EnemyHP.h">
+      <Filter>Game\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Enemy\EnemyManager.h">
+      <Filter>Game\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\UI\Ranking.h">
+      <Filter>Game\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\UI\Shadow.h">
+      <Filter>Game\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\UI\UI.h">
+      <Filter>Game\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Player\Player.h">
+      <Filter>Game\Palyer</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Player\PlayerAnimData.h">
+      <Filter>Game\Palyer</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Player\PlayerHP.h">
+      <Filter>Game\Palyer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

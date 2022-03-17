@@ -1,8 +1,8 @@
 #include "Clear.h"
 #include "Title.h"
 #include"../Global.h"
-#include "../TaskSystem/TaskManager.h"
-#include "../Game/Ranking.h"
+#include "TaskManager.h"
+#include "Ranking.h"
 Clear::Clear() : Base(eType_Scene, 10)
 {
 	m_img = COPY_RESOURCE("Clear", CImage);

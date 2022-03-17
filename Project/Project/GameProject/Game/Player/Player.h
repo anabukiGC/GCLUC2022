@@ -1,7 +1,7 @@
 #pragma once
-#include "../Base/Base.h"
+#include "Base.h"
 #include "PlayerHP.h"
-#include "../TaskSystem/TaskManager.h"
+#include "TaskManager.h"
 
 class Player : public Base
 {

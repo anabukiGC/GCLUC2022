@@ -1,6 +1,6 @@
 #include "Title.h"
-#include "../Game/Game.h"
-#include "../TaskSystem/TaskManager.h"
+#include "Game.h"
+#include "TaskManager.h"
 Title::Title() : Base(eType_Scene, 11)
 {
 	m_img = COPY_RESOURCE("Title", CImage);
