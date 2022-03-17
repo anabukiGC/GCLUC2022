@@ -1,5 +1,5 @@
 #pragma once
-#include "Base.h"
+
 #include"BossHP.h"
 #include"Game.h"
 
@@ -40,7 +40,7 @@ class Boss : public Base
 	void Draw();
 
 public:
-	Boss(const CVector3D& pos, int k); //k=í—Ş•ª‚¯”Ô†
+	Boss(const CVector3D& pos); //k=í—Ş•ª‚¯”Ô†
 	int GetHp();//Hp‚Ìæ“¾
 	int GetMaxHp();//Hp‚Ìæ“¾
 	BossHp* m_b_hp;

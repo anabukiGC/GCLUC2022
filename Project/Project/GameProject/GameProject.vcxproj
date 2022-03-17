@@ -19,6 +19,8 @@
     <ClCompile Include="Game\Bullet\Bullet.cpp" />
     <ClCompile Include="Game\Bullet\Laser.cpp" />
     <ClCompile Include="Game\Enemy\Boss.cpp" />
+    <ClCompile Include="Game\Enemy\Boss2.cpp" />
+    <ClCompile Include="Game\Enemy\Boss2HP.cpp" />
     <ClCompile Include="Game\Enemy\BossHP.cpp" />
     <ClCompile Include="Game\Enemy\Enemy.cpp" />
     <ClCompile Include="Game\Enemy\EnemyAnimData.cpp" />
@@ -46,6 +48,8 @@
     <ClInclude Include="Game\Bullet\Bullet.h" />
     <ClInclude Include="Game\Bullet\Laser.h" />
     <ClInclude Include="Game\Enemy\Boss.h" />
+    <ClInclude Include="Game\Enemy\Boss2.h" />
+    <ClInclude Include="Game\Enemy\Boss2HP.h" />
     <ClInclude Include="Game\Enemy\BossHP.h" />
     <ClInclude Include="Game\Enemy\Enemy.h" />
     <ClInclude Include="Game\Enemy\EnemyAnimData.h" />
