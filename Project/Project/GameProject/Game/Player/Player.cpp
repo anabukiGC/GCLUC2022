@@ -191,6 +191,8 @@ void Player::StateIdle()
 	{
 		m_state = eState_Attack1;
 		m_state_attack = 0;
+		m_state_attack2 = 0;
+		m_state_attack3 = 0;
 	}
 
 	//ˆÚ“®’†‚È‚ç
@@ -304,12 +306,12 @@ void Player::StateAttack1()
 		{
 			if (m_flip)
 			{
-				new Bullet(eType_NomalBullet, CVector3D(m_pos.x - 80, m_pos.y + 171, m_pos.z), false);
+				new Bullet(eType_NomalBullet, CVector3D(m_pos.x - 80, m_pos.y + 171, m_pos.z), m_flip);
 			}
 
 			if (!m_flip)
 			{
-				new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 80, m_pos.y + 171, m_pos.z), true);
+				new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 80, m_pos.y + 171, m_pos.z), m_flip);
 			}
 			Fire = true;
 			m_state_attack = 4;
@@ -322,12 +324,12 @@ void Player::StateAttack1()
 		{
 			if (m_flip)
 			{
-				new Bullet(eType_NomalBullet, CVector3D(m_pos.x - 80, m_pos.y + 171, m_pos.z), false);
+				new Bullet(eType_NomalBullet, CVector3D(m_pos.x - 80, m_pos.y + 171, m_pos.z), m_flip);
 			}
 
 			if (!m_flip)
 			{
-				new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 80, m_pos.y + 171, m_pos.z), true);
+				new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 80, m_pos.y + 171, m_pos.z), m_flip);
 			}
 			Fire = true;
 			m_state_attack = 4;
@@ -367,44 +369,44 @@ void Player::StateAttack2()
 		{
 			if (m_flip)
 			{
-				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x + 86, m_pos.y + 153, m_pos.z), false);
+				new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 86, m_pos.y + 153, m_pos.z), m_flip);
 			}
-			else
+			if(!m_flip)
 			{
-				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x - 86, m_pos.y + 153, m_pos.z), false);
+				new Bullet(eType_NomalBullet, CVector3D(m_pos.x - 86, m_pos.y + 153, m_pos.z), m_flip);
 			}
 		}
 		if (m_img.GetIndex() == 4 && Fire == false)
 		{
 			if (m_flip)
 			{
-				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x + 94, m_pos.y + 176, m_pos.z), false);
+				new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 94, m_pos.y + 176, m_pos.z), m_flip);
 			}
-			else
+			if (!m_flip)
 			{
-				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x - 94, m_pos.y + 176, m_pos.z), false);
+				new Bullet(eType_NomalBullet, CVector3D(m_pos.x - 94, m_pos.y + 176, m_pos.z), m_flip);
 			}
 		}
 		if (m_img.GetIndex() == 6 && Fire == false)
 		{
 			if (m_flip)
 			{
-				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x + 90, m_pos.y + 194, m_pos.z), false);
+				new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 90, m_pos.y + 194, m_pos.z), m_flip);
 			}
-			else
+			if (!m_flip)
 			{
-				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x - 90, m_pos.y + 194, m_pos.z), false);
+				new Bullet(eType_NomalBullet, CVector3D(m_pos.x - 90, m_pos.y + 194, m_pos.z), m_flip);
 			}
 		}
 		if (m_img.GetIndex() == 8 && Fire == false)
 		{
 			if (m_flip)
 			{
-				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x + 71, m_pos.y + 232, m_pos.z), false);
+				new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 71, m_pos.y + 232, m_pos.z), m_flip);
 			}
-			else
+			if (!m_flip)
 			{
-				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x - 71, m_pos.y + 232, m_pos.z), false);
+				new Bullet(eType_NomalBullet, CVector3D(m_pos.x - 71, m_pos.y + 232, m_pos.z), m_flip);
 			}
 			Fire = true;
 			m_state_attack2 = 2;
@@ -417,7 +419,7 @@ void Player::StateAttack2()
 		break;
 	case 2:
 		m_secondAttackTime++;
-		if (m_secondAttackTime < 15 && HOLD_PAD(0, CInput::eButton1))
+		if (m_secondAttackTime < 120 && HOLD_PAD(0, CInput::eButton1))
 		{
 			m_state = eState_Attack3;
 		}
@@ -464,12 +466,12 @@ void Player::StateAttack3()
 		{
 			if (m_flip)
 			{
-				new Bullet(eType_NomalBullet, CVector3D(m_pos.x - 80, m_pos.y + 171, m_pos.z), false);
+				new Bullet(eType_NomalBullet, CVector3D(m_pos.x - 80, m_pos.y + 171, m_pos.z), m_flip);
 			}
 
 			if (!m_flip)
 			{
-				new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 80, m_pos.y + 171, m_pos.z), true);
+				new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 80, m_pos.y + 171, m_pos.z), m_flip);
 			}
 			Fire = true;
 		}
@@ -485,12 +487,12 @@ void Player::StateAttack3()
 		{
 			if (m_flip)
 			{
-				new Bullet(eType_ChargeBullet2, CVector3D(m_pos.x - 80, m_pos.y + 171, m_pos.z), false);
+				new Bullet(eType_NomalBullet, CVector3D(m_pos.x - 80, m_pos.y + 171, m_pos.z), m_flip);
 			}
 
 			if (!m_flip)
 			{
-				new Bullet(eType_ChargeBullet2, CVector3D(m_pos.x + 80, m_pos.y + 171, m_pos.z), true);
+				new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 80, m_pos.y + 171, m_pos.z), m_flip);
 			}
 			Fire = true;
 		}

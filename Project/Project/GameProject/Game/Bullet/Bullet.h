@@ -5,8 +5,8 @@ class Bullet : public Base {
 private:
 	void Update();
 	void Draw();
+	int m_ang;
 
-	float m_ang;
 public:
 	Bullet(BaseType type, const CVector3D& p, bool flip);
 

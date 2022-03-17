@@ -13,14 +13,15 @@ Bullet::Bullet(BaseType type, const CVector3D& pos, bool flip) : Base(type, 1)
 		m_rect = RectBox(-20, -27, 20, 0, 32, -32);
 	}
 
-	if (type == eType_NomalBullet2)
+	if (type == eType_FirstNomalBullet2 || type == eType_SecondNomalBullet2 ||
+		type == eType_ThirdNomalBullet2 || type == eType_ForceNomalBullet2)
 	{
 		m_img = COPY_RESOURCE("NomalBullet2", CImage);
 		//画像サイズ設定
-		m_img.SetSize(1000, 200);
+		m_img.SetSize(128, 128);
 		//画像の中心位置設定
-		m_img.SetCenter(20, 27);
-		m_rect = RectBox(-20, -27, 20, 0, 32, -32);
+		m_img.SetCenter(64, 64);
+		m_rect = RectBox(-23, -10, 20, 0, 4, 27);
 		float m_ang = 0;
 
 	}
@@ -49,20 +50,40 @@ void Bullet::Update()
 		const float BulletSpeed = 20.0f;
 		if (m_flip)
 		{
-			m_pos.x += BulletSpeed;
+			m_pos.x -= BulletSpeed;
 		}
 		if (!m_flip)
 		{
-			m_pos.x -= BulletSpeed;
+			m_pos.x += BulletSpeed;
 		}
+	
+	/*
+	if (eType_FirstNomalBullet2)
+	{
+		m_ang += DtoR(30);
+		//m_img.SetAng(m_ang);
+	}
+	if (eType_SecondNomalBullet2)
+	{
+		m_ang += DtoR(30);
+		//m_img.SetAng(m_ang);
+	}
+	if (eType_ThirdNomalBullet2)
+	{
+		m_ang += DtoR(30);
+		//m_img.SetAng(m_ang);
+	}
+	if (eType_ForceNomalBullet2)
+	{
+		m_ang += DtoR(30);
+		//m_img.SetAng(m_ang);
+	}
+	*/
 }
 
 void Bullet::Draw()
 {
 	Base::Draw3D();
-
-	m_ang += DtoR(30);
-	m_img.SetAng(m_ang);
 }
 
 void Bullet::Collision(Task* t)
