@@ -384,44 +384,44 @@ void Player::StateAttack2()
 		{
 			if (m_flip)
 			{
-				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x + 86, m_pos.y + 153, m_pos.z), m_flip, DtoR(-30));
+				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x + 66, m_pos.y + 153, m_pos.z), m_flip, DtoR(-30));
 			}
 			if(!m_flip)
 			{
-				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x - 86, m_pos.y + 153, m_pos.z), m_flip, DtoR(-30));
+				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x - 66, m_pos.y + 153, m_pos.z), m_flip, DtoR(-30));
 			}
 		}
 		if (m_img.GetIndex() == 4 && Fire == false)
 		{
 			if (m_flip)
 			{
-				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x + 94, m_pos.y + 176, m_pos.z), m_flip, DtoR(0));
+				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x + 74, m_pos.y + 176, m_pos.z), m_flip, DtoR(0));
 			}
 			if (!m_flip)
 			{
-				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x - 94, m_pos.y + 176, m_pos.z), m_flip, DtoR(0));
+				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x - 74, m_pos.y + 176, m_pos.z), m_flip, DtoR(0));
 			}
 		}
 		if (m_img.GetIndex() == 6 && Fire == false)
 		{
 			if (m_flip)
 			{
-				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x + 90, m_pos.y + 194, m_pos.z), m_flip, DtoR(60));
+				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x + 70, m_pos.y + 194, m_pos.z), m_flip, DtoR(60));
 			}
 			if (!m_flip)
 			{
-				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x - 90, m_pos.y + 194, m_pos.z), m_flip, DtoR(60));
+				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x - 70, m_pos.y + 194, m_pos.z), m_flip, DtoR(60));
 			}
 		}
 		if (m_img.GetIndex() == 8 && Fire == false)
 		{
 			if (m_flip)
 			{
-				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x + 71, m_pos.y + 232, m_pos.z), m_flip, DtoR(80));
+				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x + 51, m_pos.y + 232, m_pos.z), m_flip, DtoR(80));
 			}
 			if (!m_flip)
 			{
-				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x - 71, m_pos.y + 232, m_pos.z), m_flip, DtoR(80));
+				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x - 51, m_pos.y + 232, m_pos.z), m_flip, DtoR(80));
 			}
 			Fire = true;
 			m_state_attack2 = 2;
