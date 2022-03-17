@@ -355,7 +355,7 @@ void Player::StateAttack2()
 		Fire = false;
 		HoldTime = 0;
 		m_secondAttackTime = 0;
-		m_img.ChangeAnimation(6, false);
+		m_img.ChangeAnimation(10, false);
 		if (m_img.CheckAnimationEnd())
 		{
 			m_state_attack2++;
@@ -433,14 +433,14 @@ void Player::StateAttack3()
 		Fire = false;
 		HoldTime = 0;
 		m_secondAttackTime = 0;
-		m_img.ChangeAnimation(6, false);
+		m_img.ChangeAnimation(12, false);
 		if (m_img.CheckAnimationEnd())
 		{
 			m_state_attack3++;
 		}
 		break;
 	case 1:
-		m_img.ChangeAnimation(7, true);
+		m_img.ChangeAnimation(13, true);
 		HoldTime++;
 		if (FREE_PAD(0, CInput::eButton1))
 		{
@@ -455,7 +455,7 @@ void Player::StateAttack3()
 		}
 		break;
 	case 2:
-		m_img.ChangeAnimation(9, false);
+		m_img.ChangeAnimation(14, false);
 		if (m_img.GetIndex() == 1 && Fire == false)
 		{
 			if (m_flip)
@@ -472,7 +472,7 @@ void Player::StateAttack3()
 		}
 		break;
 	case 3:
-		m_img.ChangeAnimation(8, false);
+		m_img.ChangeAnimation(14, false);
 
 		if (m_img.GetIndex() == 1 && Fire == false)
 		{
