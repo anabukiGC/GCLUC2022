@@ -103,7 +103,7 @@ void Enemy::StateRun()
 		m_pos.z += speed;
 	}
 
-	if (m_pos.z <= 600) {//’µ‚Ë‚©‚¦‚éO`‚T‚O‚O‚Ü‚Å‚Å—Ç‚¢
+	if (m_pos.z <= 0) {//’µ‚Ë‚©‚¦‚éO`‚T‚O‚O‚Ü‚Å‚Å—Ç‚¢
 		m_bound = true;
 	}
 	else if (m_pos.z >= 1000) {
