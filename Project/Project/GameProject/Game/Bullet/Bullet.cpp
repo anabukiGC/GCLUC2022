@@ -13,7 +13,19 @@ Bullet::Bullet(BaseType type, const CVector3D& pos, bool flip) : Base(type, 1)
 		m_rect = RectBox(-20, -27, 20, 0, 32, -32);
 	}
 
-	else if (type == eType_ChargeBullet2)
+	if (type == eType_NomalBullet2)
+	{
+		m_img = COPY_RESOURCE("NomalBullet2", CImage);
+		//画像サイズ設定
+		m_img.SetSize(1000, 200);
+		//画像の中心位置設定
+		m_img.SetCenter(20, 27);
+		m_rect = RectBox(-20, -27, 20, 0, 32, -32);
+		float m_ang = 0;
+
+	}
+
+	if (type == eType_ChargeBullet2)
 	{
 		m_img = COPY_RESOURCE("ChargeBullet2", CImage);
 		//画像サイズ設定
@@ -21,6 +33,8 @@ Bullet::Bullet(BaseType type, const CVector3D& pos, bool flip) : Base(type, 1)
 		//画像の中心位置設定
 		m_img.SetCenter(20, 27);
 		m_rect = RectBox(-20, -27, 20, 0, 32, -32);
+		float m_ang = 0;
+
 	}
 	else
 	{
@@ -46,6 +60,9 @@ void Bullet::Update()
 void Bullet::Draw()
 {
 	Base::Draw3D();
+
+	m_ang += DtoR(30);
+	m_img.SetAng(m_ang);
 }
 
 void Bullet::Collision(Task* t)

@@ -335,7 +335,7 @@ void Player::StateAttack1()
 		break;
 	case 4:
 		m_secondAttackTime++;
-		if (m_secondAttackTime < 15 && HOLD_PAD(0, CInput::eButton1))
+		if (m_secondAttackTime < 120 && HOLD_PAD(0, CInput::eButton1))
 		{
 			m_state = eState_Attack2;
 		}
@@ -364,46 +364,58 @@ void Player::StateAttack2()
 	case 1:
 		m_img.ChangeAnimation(11, false);
 		if (m_img.GetIndex() == 2 && Fire == false)
+		{
+			if (m_flip)
+			{
+				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x + 86, m_pos.y + 153, m_pos.z), false);
+			}
+			else
+			{
+				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x - 86, m_pos.y + 153, m_pos.z), false);
+			}
+		}
 		if (m_img.GetIndex() == 4 && Fire == false)
+		{
+			if (m_flip)
+			{
+				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x + 94, m_pos.y + 176, m_pos.z), false);
+			}
+			else
+			{
+				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x - 94, m_pos.y + 176, m_pos.z), false);
+			}
+		}
 		if (m_img.GetIndex() == 6 && Fire == false)
+		{
+			if (m_flip)
+			{
+				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x + 90, m_pos.y + 194, m_pos.z), false);
+			}
+			else
+			{
+				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x - 90, m_pos.y + 194, m_pos.z), false);
+			}
+		}
 		if (m_img.GetIndex() == 8 && Fire == false)
+		{
+			if (m_flip)
+			{
+				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x + 71, m_pos.y + 232, m_pos.z), false);
+			}
+			else
+			{
+				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x - 71, m_pos.y + 232, m_pos.z), false);
+			}
+			Fire = true;
+			m_state_attack2 = 2;
+		}
+
+		if (m_img.CheckAnimationEnd())
+		{
+			m_state_attack2 = 2;
+		}
 		break;
 	case 2:
-		m_img.ChangeAnimation(9, false);
-		if (m_img.GetIndex() == 1 && Fire == false)
-		{
-			if (m_flip)
-			{
-				new Bullet(eType_NomalBullet, CVector3D(m_pos.x - 80, m_pos.y + 171, m_pos.z), false);
-			}
-
-			if (!m_flip)
-			{
-				new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 80, m_pos.y + 171, m_pos.z), true);
-			}
-			Fire = true;
-			m_state_attack2 = 4;
-		}
-		break;
-	case 3:
-		m_img.ChangeAnimation(8, false);
-
-		if (m_img.GetIndex() == 1 && Fire == false)
-		{
-			if (m_flip)
-			{
-				new Bullet(eType_NomalBullet, CVector3D(m_pos.x - 80, m_pos.y + 171, m_pos.z), false);
-			}
-
-			if (!m_flip)
-			{
-				new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 80, m_pos.y + 171, m_pos.z), true);
-			}
-			Fire = true;
-			m_state_attack2 = 4;
-		}
-		break;
-	case 4:
 		m_secondAttackTime++;
 		if (m_secondAttackTime < 15 && HOLD_PAD(0, CInput::eButton1))
 		{
@@ -460,7 +472,10 @@ void Player::StateAttack3()
 				new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 80, m_pos.y + 171, m_pos.z), true);
 			}
 			Fire = true;
-			m_state_attack3 = 4;
+		}
+		if (m_img.CheckAnimationEnd())
+		{
+			m_state = eState_Idle;
 		}
 		break;
 	case 3:
