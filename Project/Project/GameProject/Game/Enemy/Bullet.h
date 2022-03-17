@@ -1,7 +1,6 @@
 #pragma once
 
-#pragma once
-#include "../Base/Base.h"
+#include "Base.h"
 class Bullet : public Base {
 private:
 public:

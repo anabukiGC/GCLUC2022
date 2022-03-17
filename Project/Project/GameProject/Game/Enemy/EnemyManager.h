@@ -1,7 +1,7 @@
 #pragma once
 #include <GLLibrary.h>
-#include "../Base/Base.h"
-#include "../TaskSystem/TaskManager.h"
+#include "Base.h"
+#include "TaskManager.h"
 struct EnemyData {//構造体（データをまとめる）
 	CVector3D pos;
 	int cnt;

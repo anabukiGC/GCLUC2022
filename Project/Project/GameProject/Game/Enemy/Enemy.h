@@ -1,5 +1,5 @@
 #pragma once
-#include "../Base/Base.h"
+#include "Base.h"
 #include"EnemyHP.h"
 #include"Shadow.h"
 class Enemy : public Base

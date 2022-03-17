@@ -1,12 +1,12 @@
 #include <GLLibrary.h>
-#include "TaskSystem/TaskManager.h"
-#include "Game/PlayerAnimData.h"
-#include "Game/EnemyAnimData.h"
+#include "TaskManager.h"
+#include "PlayerAnimData.h"
+#include "EnemyAnimData.h"
 #include "Global.h"
-#include "Game/BackGround.h"
-#include"Game/Ranking.h"
+#include "BackGround.h"
+#include"Ranking.h"
 
-#include"Scene/Title.h"
+#include"Title.h"
 void MainLoop(void) {
 	TaskManager::GetInstance()->KillCheckAll();
 	TaskManager::GetInstance()->UpdateAll();

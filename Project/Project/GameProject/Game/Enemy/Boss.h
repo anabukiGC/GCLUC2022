@@ -1,7 +1,8 @@
 #pragma once
-#include "../Base/Base.h"
+#include "Base.h"
 #include"BossHP.h"
 #include"Game.h"
+
 class Boss : public Base
 {
 	enum {//®””Ô†‚ğU‚é(0`j

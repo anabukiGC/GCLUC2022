@@ -1,5 +1,5 @@
 #include "Game.h"
-#include "../TaskSystem/TaskManager.h"
+#include "TaskManager.h"
 #include "Player.h"
 #include "PlayerAnimData.h"
 #include "EnemyAnimData.h"
@@ -7,7 +7,7 @@
 
 #include "BackGround.h"
 #include"Ranking.h"
-#include"../Scene/Clear.h"
+#include"Clear.h"
 #include"UI.h"
 Game::Game() :Base(eType_Scene,0)
 {

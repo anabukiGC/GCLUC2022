@@ -1,6 +1,6 @@
 #include "UI.h"
 #include "../Global.h"
-#include "../TaskSystem/TaskManager.h"
+#include "TaskManager.h"
 #include "Player.h"
 UI::UI(const CVector2D& pos, int k) : Base(eType_UI, 2)
 {

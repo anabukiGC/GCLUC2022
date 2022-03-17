@@ -1,6 +1,6 @@
 #include "Boss.h"
 #include"EnemyManager.h"
-#include"../Game/Bullet.h"
+#include"Bullet.h"
 Boss::Boss(const CVector3D& pos, int k) :Base(eType_Boss, 1)
 {
 	kind = k;
