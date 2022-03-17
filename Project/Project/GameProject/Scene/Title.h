@@ -8,5 +8,5 @@ public:
 private:
 	void Update();
 	void Draw();
-
+	
 };

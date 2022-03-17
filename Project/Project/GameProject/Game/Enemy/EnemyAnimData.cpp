@@ -82,8 +82,12 @@ static TexAnim boss1Idle[] =
 
 static TexAnim boss1Attack1[] =//ãﬂê⁄
 {
-	{ 7,100 },
-	{ 8,30 },
+	{ 7,15 },
+	{ 8,15 },
+	{ 9,15 },
+	{ 8,15 },
+	{ 7,15 },
+	{ 8,15 },
 	{ 9,15 },
 	{ 10,15 },
 	{ 11,15 },
@@ -94,11 +98,11 @@ static TexAnim boss1Attack2[] =
 {
 	
 
-	{ 2,120 },
-	{ 4,40 },
-	{ 5,20 },
+	{ 2,60 },
+	{ 4,10 },
+	{ 5,10 },
 	{ 6,120 },
-	{ 5,20 },
+	{ 5,10 },
 };
 
 static TexAnim boss1Damage[] =
@@ -116,7 +120,14 @@ static TexAnim boss1Change[] =
 	{ 19,20 },
 	{ 20,20 },
 	{ 21,20 },
-	{ 22,20 },
+	{ 22,80 },
+	{ 24,10 },
+	{ 25,10 },
+	{ 26,10 },
+	{ 27,10 },
+	{ 28,10 },
+	{ 29,10 },
+
 };
 
 TexAnimData boss1_anim_data[] =
@@ -126,4 +137,61 @@ TexAnimData boss1_anim_data[] =
 	ANIMDATA(boss1Attack2),
 	ANIMDATA(boss1Damage),
 	ANIMDATA(boss1Change),
+};
+
+static TexAnim boss2Idle[] =
+{
+	{ 5,20 },
+	{ 6,20 },
+	{ 7,20 },
+	
+};
+
+static TexAnim boss2Attack1[] =//ãﬂê⁄
+{
+	{ 15,30 },
+	{ 16,30 },
+	{ 17,30 },
+	{ 18,50 },
+	
+	
+};
+
+static TexAnim boss2Attack2[] =
+{
+
+
+	{ 2,60 },
+	{ 4,10 },
+	{ 5,10 },
+	{ 6,120 },
+	{ 5,10 },
+};
+
+static TexAnim boss2Damage[] =
+{
+	
+	{ 21,10 },
+	{ 22,10 },
+
+};
+
+static TexAnim boss2Change[] =
+{
+	{ 0,20 },
+	{ 1,20 },
+	{ 2,20 },
+	{ 3,20 },
+	{ 4,20 },
+	{ 5,40 },
+
+};
+
+TexAnimData boss2_anim_data[] =
+{
+	ANIMDATA(boss2Idle),
+	ANIMDATA(boss2Attack1),
+	ANIMDATA(boss2Attack2),
+	ANIMDATA(boss2Damage),
+	ANIMDATA(boss2Change),
 };

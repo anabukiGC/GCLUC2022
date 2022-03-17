@@ -52,6 +52,7 @@ void Enemy::StateIdle()
 
 void Enemy::StateAttack()
 {
+	m_invin = true;
 	const float jump_pow = 10.0f;
 	int jump_time = 10;
 
@@ -79,6 +80,7 @@ void Enemy::StateAttack()
 	
 	if (m_img.CheckAnimationEnd()) {
 		m_state = eRun;
+		m_invin = false;
 		m_cnt = 0;
 	}
 }
@@ -106,7 +108,7 @@ void Enemy::StateRun()
 	if (m_pos.z <= 0) {//íµÇÀÇ©Ç¶ÇÈOÅ`ÇTÇOÇOÇ‹Ç≈Ç≈ó«Ç¢
 		m_bound = true;
 	}
-	else if (m_pos.z >= 1000) {
+	else if (m_pos.z >= GROUND) {
 		m_bound = false;
 	}
 
@@ -139,12 +141,15 @@ void Enemy::StateDamage()
 
 void Enemy::StateDie()
 {
+	m_invin = true;
 	m_img.ChangeAnimation(3, false);
 
 
 	if (m_img.CheckAnimationEnd()) {
+		m_invin = false;
 		SetKill();
 		g_score += 100;
+		
 		if (m_e_hp) {//ÇàÇêÇéùÇ¡ÇƒÇΩÇÁ
 			m_e_hp->SetKill();
 			m_e_hp = NULL;//è¡Ç¶ÇΩéûóp
@@ -242,7 +247,11 @@ void Enemy::Collision(Task* t)
 		{
 			if (CollisionRect(bullet, this))
 			{
-				m_state = eDamage;
+				if (m_invin == false) {
+					m_state = eDamage;
+				}
+				else m_hp -= 200;
+				
 			}
 		}
 		break;

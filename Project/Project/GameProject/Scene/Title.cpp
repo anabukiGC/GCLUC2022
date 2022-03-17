@@ -1,6 +1,7 @@
 #include "Title.h"
 #include "Game.h"
 #include "TaskManager.h"
+#include"../Global.h"
 Title::Title() : Base(eType_Scene, 11)
 {
 	m_img = COPY_RESOURCE("Title", CImage);
@@ -21,4 +22,5 @@ void Title::Update()
 void Title::Draw()
 {
 	m_img.Draw();
+	
 }

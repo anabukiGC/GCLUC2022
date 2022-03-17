@@ -97,6 +97,7 @@ void Init(void)
 	ADD_RESOURCE("Enemy1", CImage::CreateImage("Image/Enemy/Enemy1.png", enemy1_anim_data, 256, 256));
 	ADD_RESOURCE("Enemy2", CImage::CreateImage("Image/Enemy/Enemy2.png", enemy2_anim_data, 256, 256));
 	ADD_RESOURCE("Boss1", CImage::CreateImage("Image/Boss/Boss.png", boss1_anim_data, 512, 512));
+	ADD_RESOURCE("Boss2", CImage::CreateImage("Image/Boss/Boss2.png", boss2_anim_data, 512, 512));
 	ADD_RESOURCE("BossHP", CImage::CreateImage("Image/UI/BossBar.png"));
     ADD_RESOURCE("EnemyHP", CImage::CreateImage("Image/UI/EnemyBar.png"));
 	ADD_RESOURCE("Player2HP", CImage::CreateImage("Image/Player/Player2HP.png"));
@@ -114,7 +115,7 @@ void Init(void)
 	ADD_RESOURCE("Clear", CImage::CreateImage("Image/Scene/Clear.png"));
 	ADD_RESOURCE("ScoreTime", CImage::CreateImage("Image/UI/UI.png"));
 	ADD_RESOURCE("TitleRogo", CImage::CreateImage("Image/UI/TitleRogo.png"));
-	ADD_RESOURCE("Boss2", CImage::CreateImage("Image/Boss/Boss2.png"));
+	
 	new Title();
 	Ranking::GetInstance()->ReadScore();
 }

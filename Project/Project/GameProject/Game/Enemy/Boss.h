@@ -11,7 +11,7 @@ class Boss : public Base
 		eAttack1,
 		eAttack2,
 		eDamage,
-		eDie,
+		eChange,
 	};
 
 	//状態
@@ -24,6 +24,7 @@ class Boss : public Base
 
 	int m_cnt = 0;//時間判別用
 
+	static const float speed;
 	//攻撃エフェクトフラグ
 	bool m_attack_effect;
 	//状態分岐
@@ -33,12 +34,15 @@ class Boss : public Base
 	void StateAttack1();
 	void StateAttack2();
 	void StateDamage();
-	void StateDie();
+	void StateChange();
 
 
 	void Update();
 	void Draw();
 
+	int m_second = 0;
+	bool m_bound;//跳ね返り用
+	bool m_invin = false;//攻撃中断防止
 public:
 	Boss(const CVector3D& pos); //k=種類分け番号
 	int GetHp();//Hpの取得
@@ -46,4 +50,6 @@ public:
 	BossHp* m_b_hp;
 	Game* m_game;
 	void Collision(Task* t);
+
+
 };

@@ -46,4 +46,5 @@ void Clear::Draw()
 			FONT_T()->Draw(SCREEN_WIDTH / 2,SCREEN_HEIGHT /2+i * 64, 0, 0, 0, "%d", v);//‰¼•\Ž¦
 				i++;
 		}
+		
 }

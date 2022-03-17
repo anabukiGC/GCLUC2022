@@ -21,13 +21,15 @@ class Enemy : public Base
 	int m_hp = 0;
 	int m_max_hp = 0;
 
-	bool m_bound;
+	bool m_bound;//跳ね返り用
 
 	//ジャンプフラグ
 	bool m_jump;
 	int kind = 0;//種類識別用
 
 	static const float speed;
+
+	bool m_invin = false;//攻撃中断防止
 
 	//攻撃エフェクトフラグ
 	bool m_attack_effect;

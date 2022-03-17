@@ -4,8 +4,8 @@ Shadow::Shadow(Base* b):Base(0,2)
 {
 	m_img = COPY_RESOURCE("Shadow", CImage);
 	m_chara = b;
-	m_img.SetCenter(16, 16);
-	m_img.SetSize(32, 32);
+	m_img.SetCenter(128, 128);
+	m_img.SetSize(256, 256);
 }
 
 void Shadow::Draw()

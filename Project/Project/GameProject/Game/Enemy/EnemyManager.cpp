@@ -22,8 +22,8 @@ EnemyData _stage3[] = {//出現データをまとめる
 	
 };
 EnemyWave wave_data[] = {
-	{512,_stage1,sizeof(_stage1) / sizeof(_stage1[0])},
-	{1200,_stage2,sizeof(_stage2) / sizeof(_stage2[0])},
+	/*{512,_stage1,sizeof(_stage1) / sizeof(_stage1[0])},
+	{1200,_stage2,sizeof(_stage2) / sizeof(_stage2[0])},*/
 	{3000,_stage3,sizeof(_stage3) / sizeof(_stage3[0])}
 };
 EnemyManager::EnemyManager()
@@ -53,7 +53,7 @@ void EnemyManager::Update()
 					new Enemy(CVector3D(wave->pos_x + data->pos.x, data->pos.y, data->pos.z), data->type);
 					break;
 				case EnemyData::eBoss:
-					new Boss(CVector3D(wave->pos_x + data->pos.x, data->pos.y, data->pos.z));
+ 					new Boss(CVector3D(wave->pos_x + data->pos.x, data->pos.y, data->pos.z));
 					break;
 				}
 				m_cnt = 0;
@@ -81,8 +81,11 @@ bool EnemyManager::isEnd()//まだ敵が出てくるかどうかの判定用
 	if (m_idx >= m_wave_size)
 	{//全部またはウェーブ終了出現したら
 		Task* t = TaskManager::GetInstance()->GetTask(eType_Enemy);//敵がいるかどうか判別
-		if(t==NULL)
+		Task* t2 = TaskManager::GetInstance()->GetTask(eType_Boss);//敵がいるかどうか判別
+		if(t==NULL&&t2==NULL)//敵がいないなら
 		return true;
+
+
 	}
 		return false;
 

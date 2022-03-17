@@ -10,6 +10,7 @@ class Boss2 : public Base
 		eAttack1,
 		eAttack2,
 		eDamage,
+		eChange,
 		eDie,
 	};
 
@@ -32,12 +33,16 @@ class Boss2 : public Base
 	void StateAttack1();
 	void StateAttack2();
 	void StateDamage();
+	void StateChange();
 	void StateDie();
 
 
 	void Update();
 	void Draw();
-
+	static const float speed;
+	int m_second = 0;
+	bool m_bound;//’µ‚Ë•Ô‚è—p
+	bool m_invin = false;//UŒ‚’†’f–h~
 public:
 	Boss2(const CVector3D& pos); //k=í—Ş•ª‚¯”Ô†
 	int GetHp();//Hp‚Ìæ“¾

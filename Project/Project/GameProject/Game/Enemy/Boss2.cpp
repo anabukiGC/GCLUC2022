@@ -3,19 +3,19 @@
 #include"Bullet.h"
 #include "Boss2.h"
 #include"TaskManager.h"
-
+const float Boss2::speed = 3.0;//‚Ç‚±‚Å‚àg‚¦‚é‚æ‚¤‚É
 Boss2::Boss2(const CVector3D& pos) :Base(eType_Boss, 1)
 {
 
-	m_img = COPY_RESOURCE("Boss1", CImage);
+	m_img = COPY_RESOURCE("Boss2", CImage);
 
-	m_hp = 500;//•ÏX—p
-	m_max_hp = 500;
+	m_hp = 5000;//•ÏX—p
+	m_max_hp = 5000;
 	m_pos = pos;
-	m_b2_hp = new Boss2Hp(this);//ƒ|ƒCƒ“ƒ^[“n‚·‚Ì‚Åthis
+
 	m_flip = false;
 	m_attack_effect = false;
-	m_state = eIdle;
+	m_state = eChange;
 	m_img.SetCenter(128 * 2, 256 * 2);
 	m_rect = RectBox(-128 * 2, 256 * 2, 128 * 2, 0, 32, -32);
 
@@ -23,6 +23,20 @@ Boss2::Boss2(const CVector3D& pos) :Base(eType_Boss, 1)
 void Boss2::StateIdle()
 {
 	m_img.ChangeAnimation(0);
+	if (m_bound == false) {//cˆÚ“®
+		m_pos.z -= speed;
+	}
+	else if (m_bound == true) {
+		m_pos.z += speed;
+	}
+
+
+	if (m_pos.z <= 0) {//’µ‚Ë‚©‚¦‚éO`GROUND‚Ü‚Å
+		m_bound = true;
+	}
+	else if (m_pos.z >= GROUND) {
+		m_bound = false;
+	}
 }
 
 void Boss2::StateRun()
@@ -35,7 +49,7 @@ void Boss2::StateAttack1()
 	m_img.ChangeAnimation(1, false);//‰“‹——£UŒ‚
 	if (m_img.CheckAnimationEnd()) {
 		m_state = eIdle;
-		m_cnt = 181;
+		
 	}
 }
 
@@ -43,8 +57,7 @@ void Boss2::StateAttack2()
 {
 	m_img.ChangeAnimation(2, false);//‹ßÚUŒ‚
 	if (m_img.CheckAnimationEnd()) {
-		m_state = eIdle;
-		m_cnt = 0;
+	
 	}
 }
 
@@ -63,6 +76,16 @@ void Boss2::StateDamage()
 	}
 }
 
+void Boss2::StateChange()
+{
+	m_img.ChangeAnimation(4, false);
+
+
+	if (m_img.CheckAnimationEnd()) {
+		m_b2_hp = new Boss2Hp(this);//ƒ|ƒCƒ“ƒ^[“n‚·‚Ì‚Åthis
+		m_state = eAttack1;
+	}
+}
 void Boss2::StateDie()
 {
 	m_img.ChangeAnimation(4, false);
@@ -82,7 +105,6 @@ void Boss2::StateDie()
 		}
 	}
 }
-
 void Boss2::Update()
 {
 	m_cnt++;
@@ -103,6 +125,9 @@ void Boss2::Update()
 	case eDamage:
 		StateDamage();
 		break;
+	case eChange:
+		StateChange();
+		break;
 	case eDie:
 		StateDie();
 		break;
@@ -119,12 +144,7 @@ void Boss2::Update()
 
 	}
 
-	if (m_cnt == 180) {//•b”‚Åó‘Ô‘JˆÚ
-		m_state = eAttack1;
-	}
-	if (m_cnt == 360) {//•b”‚Åó‘Ô‘JˆÚ
-		m_state = eAttack2;
-	}
+	
 
 
 	if (m_hp <= 0) {
