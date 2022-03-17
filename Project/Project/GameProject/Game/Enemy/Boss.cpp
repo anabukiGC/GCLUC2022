@@ -1,7 +1,8 @@
 #include "Boss.h"
 #include"EnemyManager.h"
 #include"Bullet.h"
-Boss::Boss(const CVector3D& pos, int k) :Base(eType_Boss, 1)
+#include"TaskManager.h"
+Boss::Boss(const CVector3D& pos) :Base(eType_Boss, 1)
 {
 
 		m_img = COPY_RESOURCE("Boss1", CImage);

@@ -53,7 +53,7 @@ void EnemyManager::Update()
 					new Enemy(CVector3D(wave->pos_x + data->pos.x, data->pos.y, data->pos.z), data->type);
 					break;
 				case EnemyData::eBoss:
-					new Boss(CVector3D(wave->pos_x + data->pos.x, data->pos.y, data->pos.z), data->type);
+					new Boss(CVector3D(wave->pos_x + data->pos.x, data->pos.y, data->pos.z));
 					break;
 				}
 				m_cnt = 0;
