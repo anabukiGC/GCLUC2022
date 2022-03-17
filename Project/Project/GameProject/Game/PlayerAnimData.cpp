@@ -58,7 +58,7 @@ static TexAnim playerReady1[] =
 	{ 31,6 },
 	{ 32,6 },
 };
-//1段階攻撃チャージモーション
+//1段階チャージモーション
 static TexAnim playerChrage1[] =
 {
 	{ 36,6 },
@@ -99,6 +99,29 @@ static TexAnim playerAttack2[] =
 	{ 56,3 },
 	{ 57,3 },
 };
+//3段階武器チェンジモーション
+static TexAnim playerWeponChenge2[] =
+{
+	{ 64,3 },
+	{ 65,3 },
+	{ 66,3 },
+	{ 67,3 },
+	{ 68,3 },
+	{ 69,3 },
+	{ 70,3 },
+};
+//3段階チャージモーション
+static TexAnim playerChrage3[] =
+{
+	{ 72,6 },
+	{ 73,6 },
+};
+//3段階攻撃モーション
+static TexAnim playerAttack3[] =
+{
+	{ 75,6 },
+	{ 76,6 },
+};
 
 TexAnimData player_anim_data[] =
 {
@@ -112,4 +135,9 @@ TexAnimData player_anim_data[] =
 	ANIMDATA(playerChrage1),		//7
 	ANIMDATA(playerNomalAttack1),	//8
 	ANIMDATA(playerChrageAttack1),	//9
+	ANIMDATA(playerWeponChenge1),	//10
+	ANIMDATA(playerAttack2),		//11
+	ANIMDATA(playerWeponChenge2),	//12
+	ANIMDATA(playerChrage3),		//13
+	ANIMDATA(playerAttack3),		//14
 };
