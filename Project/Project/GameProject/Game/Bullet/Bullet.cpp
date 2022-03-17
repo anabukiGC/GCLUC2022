@@ -18,9 +18,9 @@ Bullet::Bullet(BaseType type, const CVector3D& pos, bool flip, float ang) : Base
 	{
 		m_img = COPY_RESOURCE("NomalBullet2", CImage);
 		//画像サイズ設定
-		m_img.SetSize(1000, 200);
+		m_img.SetSize(100, 100);
 		//画像の中心位置設定
-		m_img.SetCenter(20, 27);
+		m_img.SetCenter(50, 50);
 		m_rect = RectBox(-20, -27, 20, 0, 32, -32);
 		float m_ang = 0;
 
@@ -53,26 +53,11 @@ void Bullet::Update()
 
 	CVector3D v = m_vec;
 
-	if (eType_NomalBullet)
-	{
-		if (m_flip)
-		{
-			m_pos.x -= BulletSpeed;
-		}
-		if (!m_flip)
-		{
-			m_pos.x += BulletSpeed;
-		}
-	}
-
-	if (eType_NomalBullet2)
-	{
 		if (m_flip)
 		{
 			v.x *= -1;
 		}
 		m_pos += v * BulletSpeed;
-	}
 }
 
 void Bullet::Draw()

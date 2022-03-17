@@ -122,6 +122,20 @@ static TexAnim playerAttack3[] =
 	{ 75,6 },
 	{ 76,120 },
 };
+//被弾モーション
+static TexAnim playerDamage[] =
+{
+	{ 78,10 },
+	{ 79,20 },
+};
+//撃破モーション
+static TexAnim playerDie[] =
+{
+	{ 81,6 },
+	{ 82,6 },
+	{ 83,6 },
+	{ 84,6 },
+};
 
 TexAnimData player_anim_data[] =
 {
@@ -140,4 +154,6 @@ TexAnimData player_anim_data[] =
 	ANIMDATA(playerWeponChenge2),	//12
 	ANIMDATA(playerChrage3),		//13
 	ANIMDATA(playerAttack3),		//14
+	ANIMDATA(playerDamage),			//15
+	ANIMDATA(playerDie),			//16
 };

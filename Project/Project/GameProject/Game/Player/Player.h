@@ -6,7 +6,7 @@
 class Player : public Base
 {
 public:
-	Player(const CVector3D& pos, bool flip);
+	Player(int kind, const CVector3D& pos, bool flip);
 	void Collision(Task* t);
 	int GetHp();//Hpの取得
 	int GetMaxHp();//Hpの取得
@@ -16,14 +16,24 @@ public:
 	int m_hp = 0;
 	int m_max_hp = 0;
 
+	int m_kind;
+	enum
+	{
+		eSword,
+		eGun,
+	};
+private:
+	void Update();
+	void Draw();
+
+
 	//銃の弾を打ったフラグ
 	bool Fire;
 
 	//ジャンプフラグ
 	bool m_jump;
-private:
-	void Update();
-	void Draw();
+
+	CVector2D m_key_dir;
 
 	//状態
 	enum 

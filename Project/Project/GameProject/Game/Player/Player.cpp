@@ -5,7 +5,7 @@
 #include "Laser.h"
 #include "../Global.h"
 
-Player::Player(const CVector3D& pos, bool flip) : Base(eType_Player,ePriorityPlayer)
+Player::Player(int kind,const CVector3D& pos, bool flip) : Base(eType_Player,ePriorityPlayer)
 {
 	m_img = COPY_RESOURCE("Player", CImage);
 	//画像サイズ設定
@@ -45,10 +45,35 @@ Player::Player(const CVector3D& pos, bool flip) : Base(eType_Player,ePriorityPla
 	m_state_attack3 = 0;
 
 	m_secondAttackTime = 0;
+
+	//プレイヤーの種類
+	m_kind = kind;
 }
 
 void Player::Update()
 {
+	m_key_dir = CInput::GetLStick(m_kind);
+	//左移動
+	if (HOLD_PAD(m_kind, CInput::eLeft))
+	{
+		m_key_dir.x = -1;
+	}
+	//右移動
+	else if (HOLD_PAD(m_kind, CInput::eRight))
+	{
+		m_key_dir.x = 1;
+	}
+	//上移動
+	if (HOLD_PAD(m_kind, CInput::eUp))
+	{
+		m_key_dir.y = -1;
+	}
+	//下移動
+	else if (HOLD_PAD(m_kind, CInput::eDown))
+	{
+		m_key_dir.y = 1;
+	}
+
 	switch (m_state) 
 	{
 		//通常状態
@@ -69,6 +94,12 @@ void Player::Update()
 		break;
 	case eState_Attack3:
 		StateAttack3();
+		break;
+	case eState_Damage:
+		StateDamage();
+		break;
+	case eState_Die:
+		StateDie();
 		break;
 	}
 		m_vec.y -= GRAVITY;
@@ -103,14 +134,17 @@ void Player::Update()
 	m_img.UpdateAnimation();
 
 	//スクロール値設定
-	if (EnemyManager* b = dynamic_cast<EnemyManager*>(TaskManager::GetInstance()->GetTask(eType_EnemyManager)))
+	if (m_kind == 0)
 	{
-		if (b->GetWave())
+		if (EnemyManager* b = dynamic_cast<EnemyManager*>(TaskManager::GetInstance()->GetTask(eType_EnemyManager)))
 		{
-		}
-		else
-		{
-			m_scroll.x = m_pos.x - SCREEN_WIDTH / 2;
+			if (b->GetWave())
+			{
+			}
+			else
+			{
+				m_scroll.x = m_pos.x - SCREEN_WIDTH / 2;
+			}
 		}
 	}
 	//横移動制限
@@ -142,44 +176,32 @@ void Player::StateIdle()
 {
 	//移動量
 	const float WalkSpeed = 6.0f;
+
+	m_pos.x += m_key_dir.x* WalkSpeed;
+	m_pos.z += m_key_dir.y * WalkSpeed;
+	const float free_space = 0.0001f;
+
+
 	//移動フラグ
 	bool MoveFlag = false;
 
-	//左移動
-	if (HOLD_PAD(0, CInput::eLeft))
+	if (m_key_dir.LengthSq() > free_space)
 	{
-		//移動量を設定
-		m_pos.x -= WalkSpeed;
-		//反転フラグ
-		m_flip = true;
 		MoveFlag = true;
+	}
+	if (m_key_dir.x < -free_space)
+	{
 		m_rect = RectLeft;
+		m_flip = true;
 	}
-	//右移動
-	if (HOLD_PAD(0, CInput::eRight))
+	else if (m_key_dir.x > free_space)
 	{
-		//移動量を設定
-		m_pos.x += WalkSpeed;
-		//反転フラグ
-		m_flip = false;
-		MoveFlag = true;
 		m_rect = RectRight;
-	}
-	//上移動
-	if (HOLD_PAD(0, CInput::eUp))
-	{
-		m_pos.z -= WalkSpeed;
-		MoveFlag = true;
-	}
-	//下移動
-	if (HOLD_PAD(0, CInput::eDown))
-	{
-		m_pos.z += WalkSpeed;
-		MoveFlag = true;
+		m_flip = false;
 	}
 
 	//ジャンプ
-	if (PUSH_PAD(0, CInput::eButton3))
+	if (PUSH_PAD(m_kind, CInput::eButton3))
 	{
 		m_state = eState_Jump;
 		const float JumpPower = 10.0f;
@@ -188,7 +210,7 @@ void Player::StateIdle()
 	}
 
 	//攻撃状態に以降
-	if (PUSH_PAD(0, CInput::eButton1))
+	if (PUSH_PAD(m_kind, CInput::eButton1))
 	{
 		m_state = eState_Attack1;
 		m_state_attack = 0;
@@ -211,40 +233,32 @@ void Player::StateJump()
 {
 	//移動量
 	const float WalkSpeed = 6.0f;
+
+	m_pos.x += m_key_dir.x * WalkSpeed;
+	m_pos.z += m_key_dir.y * WalkSpeed;
+	const float free_space = 0.0001f;
+
+
 	//移動フラグ
 	bool MoveFlag = false;
 
-	//左移動
-	if (HOLD_PAD(0, CInput::eLeft))
+	if (m_key_dir.LengthSq() > free_space)
 	{
-		//移動量を設定
-		m_pos.x -= WalkSpeed;
-		//反転フラグ
+		MoveFlag = true;
+	}
+	if (m_key_dir.x < -free_space)
+	{
+		m_rect = RectLeft;
 		m_flip = true;
 	}
-	//右移動
-	if (HOLD_PAD(0, CInput::eRight))
+	else if (m_key_dir.x > free_space)
 	{
-		//移動量を設定
-		m_pos.x += WalkSpeed;
-		//反転フラグ
+		m_rect = RectRight;
 		m_flip = false;
-	}
-	//上移動
-	if (HOLD_PAD(0, CInput::eUp))
-	{
-		//移動量を設定
-		m_pos.z -= WalkSpeed;
-	}
-	//下移動
-	if (HOLD_PAD(0, CInput::eDown))
-	{
-		//移動量を設定
-		m_pos.z += WalkSpeed;
 	}
 
 	//ジャンプ攻撃
-	if (PUSH_PAD(0, CInput::eButton1))
+	if (PUSH_PAD(m_kind , CInput::eButton1))
 	{
 		//m_state = eState_Attack1;
 	}
@@ -285,7 +299,7 @@ void Player::StateAttack1()
 	case 1:
 		m_img.ChangeAnimation(7, true);
 		HoldTime++;
-		if (FREE_PAD(0,CInput::eButton1))
+		if (FREE_PAD(m_kind,CInput::eButton1))
 		{
 			if (HoldTime >= 60)
 			{
@@ -338,7 +352,7 @@ void Player::StateAttack1()
 		break;
 	case 4:
 		m_secondAttackTime++;
-		if (m_secondAttackTime < 120 && HOLD_PAD(0, CInput::eButton1))
+		if (m_secondAttackTime < 120 && HOLD_PAD(m_kind, CInput::eButton1))
 		{
 			m_state = eState_Attack2;
 		}
@@ -392,22 +406,22 @@ void Player::StateAttack2()
 		{
 			if (m_flip)
 			{
-				new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 90, m_pos.y + 194, m_pos.z), m_flip, DtoR(60));
+				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x + 90, m_pos.y + 194, m_pos.z), m_flip, DtoR(60));
 			}
 			if (!m_flip)
 			{
-				new Bullet(eType_NomalBullet, CVector3D(m_pos.x - 90, m_pos.y + 194, m_pos.z), m_flip, DtoR(60));
+				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x - 90, m_pos.y + 194, m_pos.z), m_flip, DtoR(60));
 			}
 		}
 		if (m_img.GetIndex() == 8 && Fire == false)
 		{
 			if (m_flip)
 			{
-				new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 71, m_pos.y + 232, m_pos.z), m_flip, DtoR(80));
+				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x + 71, m_pos.y + 232, m_pos.z), m_flip, DtoR(80));
 			}
 			if (!m_flip)
 			{
-				new Bullet(eType_NomalBullet, CVector3D(m_pos.x - 71, m_pos.y + 232, m_pos.z), m_flip, DtoR(80));
+				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x - 71, m_pos.y + 232, m_pos.z), m_flip, DtoR(80));
 			}
 			Fire = true;
 			m_state_attack2 = 2;
@@ -420,7 +434,7 @@ void Player::StateAttack2()
 		break;
 	case 2:
 		m_secondAttackTime++;
-		if (m_secondAttackTime < 120 && HOLD_PAD(0, CInput::eButton1))
+		if (m_secondAttackTime < 120 && HOLD_PAD(m_kind, CInput::eButton1))
 		{
 			m_state = eState_Attack3;
 		}
@@ -449,7 +463,7 @@ void Player::StateAttack3()
 	case 1:
 		m_img.ChangeAnimation(13, true);
 		HoldTime++;
-		if (FREE_PAD(0, CInput::eButton1))
+		if (FREE_PAD(m_kind, CInput::eButton1))
 		{
 			if (HoldTime >= 60 * 2)
 			{
@@ -506,6 +520,26 @@ void Player::StateAttack3()
 	}
 }
 
+void Player::StateDamage()
+{
+	m_img.ChangeAnimation(15, false);
+
+	if (m_img.CheckAnimationEnd() && m_hp > 0) 
+	{
+		m_state = eState_Idle;
+	}
+	if (m_img.CheckAnimationEnd() && m_hp <= 0) 
+	{
+		m_state = eState_Die;
+	}
+}
+
+void Player::StateDie()
+{
+	//その場で停止
+	m_img.ChangeAnimation(16, false);
+}
+
 void Player::Collision(Task* t)
 {
 	switch (t->GetID())
@@ -517,11 +551,14 @@ void Player::Collision(Task* t)
 			{
 				break;
 			}
-			if (CollisionRect(b, this))
+			if (m_hp >= 0)
 			{
-				m_mutekiTime = 180;
-				m_hp -= 10;
-				//SetKill();
+				if (CollisionRect(b, this))
+				{
+					m_mutekiTime = 180;
+					m_hp -= 200;
+					m_state = eState_Damage;
+				}
 			}
 		}
 		break;
