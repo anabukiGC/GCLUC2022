@@ -112,7 +112,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>../include;../GLLibrary</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../include;../GLLibrary;$(ProjectDir)Game/Player/;$(ProjectDir)Game/Enemy/;$(ProjectDir)Game/UI/</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
@@ -130,7 +130,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>../include;../GLLibrary</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../include;../GLLibrary;$(ProjectDir)Game/Player/;$(ProjectDir)Game/Enemy/;$(ProjectDir)Game/UI/</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
