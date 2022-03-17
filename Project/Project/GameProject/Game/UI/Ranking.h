@@ -15,7 +15,7 @@ public:
 
 private:
 	std::vector <int> m_ranking;//<型指定>
-
+	
 	static Ranking* mp_instance;			//自身ポインタ
 
 	

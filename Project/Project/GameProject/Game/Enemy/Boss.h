@@ -34,13 +34,16 @@ class Boss : public Base
 	void StateAttack2();
 	void StateDamage();
 	void StateDie();
+
+
+	void Update();
+	void Draw();
+
 public:
 	Boss(const CVector3D& pos, int k); //k=í—Ş•ª‚¯”Ô†
 	int GetHp();//Hp‚Ìæ“¾
 	int GetMaxHp();//Hp‚Ìæ“¾
-	void Update();
-	void Draw();
-	void Collision(Task* t);
 	BossHp* m_b_hp;
 	Game* m_game;
+	void Collision(Task* t);
 };

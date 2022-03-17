@@ -27,12 +27,14 @@ private:
 	int m_idx;//データ位置（０～何番目か）
 	int m_size;//データサイズ(いくつあるのか決める配列の中身的な）
 	bool m_ivent = false;
-public:
-	EnemyManager();//typeは弾の種類を区別する(型はベースで定義したものに合わせる）
+
 
 	void Update();
 
 	void Draw();
+public:
+	EnemyManager();//typeは弾の種類を区別する(型はベースで定義したものに合わせる）
+
 
 	bool isEnd();//bool型でtrueかfalseかの二択
 	

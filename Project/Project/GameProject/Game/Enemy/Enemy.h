@@ -38,14 +38,14 @@ class Enemy : public Base
 	void StateAttack();
 	void StateDamage();
 	void StateDie();
-
+	void Update();
+	void Draw();
 public:
 	Enemy(const CVector3D& pos,int k); //k=í—Ş•ª‚¯”Ô†
 
 	int GetHp();//Hp‚Ìæ“¾
 	int GetMaxHp();//Hp‚Ìæ“¾
-	void Update();
-	void Draw();
+
 	void Collision(Task* t);
 	EnemyHp* m_e_hp;
 	Shadow* m_shadow;
