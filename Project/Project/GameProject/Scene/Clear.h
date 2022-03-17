@@ -1,5 +1,5 @@
 #pragma once
-#include "../Base/Base.h"
+#include "Base.h"
 class Clear : public Base {
 public:
 	Clear();

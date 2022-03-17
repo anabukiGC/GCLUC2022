@@ -18,12 +18,12 @@ EnemyData _stage2[] = {//出現データをまとめる
 	{CVector3D(1600,0,500),30,EnemyData::eEnemy1},
 };
 EnemyData _stage3[] = {//出現データをまとめる
-	{CVector3D(1600,0,800),0,EnemyData::eBoss},//（座標）、時間（フレーム）
+	{CVector3D(1600,0,250),0,EnemyData::eBoss},//（座標）、時間（フレーム）
 	
 };
 EnemyWave wave_data[] = {
-	{512,_stage1,sizeof(_stage1) / sizeof(_stage1[0])},
-	{1200,_stage2,sizeof(_stage2) / sizeof(_stage2[0])},
+	/*{512,_stage1,sizeof(_stage1) / sizeof(_stage1[0])},
+	{1200,_stage2,sizeof(_stage2) / sizeof(_stage2[0])},*/
 	{3000,_stage3,sizeof(_stage3) / sizeof(_stage3[0])}
 };
 EnemyManager::EnemyManager()

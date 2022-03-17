@@ -40,18 +40,19 @@ public:
 
 class Base : public Task{
 public:
+<<<<<<< .mine
+
+=======
+	
+>>>>>>> .theirs
 	//画像オブジェクト
 	CImage m_img;
 	//座標データ
 	CVector3D m_pos;
 	//移動ベクトル
 	CVector3D m_vec;
-	//ジャンプフラグ
-	bool m_jump;
 	//反転フラグ
 	bool m_flip;
-
-	int kind = 0;//種類識別用
 	//矩形
 	RectBox	m_rect;
 	//スクロール値

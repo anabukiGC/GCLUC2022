@@ -3,7 +3,7 @@
 CVector2D Base::m_scroll(0, 0);
 
 Base::Base(int id, int priority) : Task(id,priority)
-	, m_pos(0,0,0),m_vec(0,0,0),m_jump(false),m_flip(false)
+	, m_pos(0,0,0),m_vec(0,0,0),m_flip(false)
 {
 	
 }

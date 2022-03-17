@@ -8,5 +8,5 @@ public:
 
 	void Update();
 	void Draw();
-	
+	int kind = 0;//Ží—ÞŽ¯•Ê—p
 };
