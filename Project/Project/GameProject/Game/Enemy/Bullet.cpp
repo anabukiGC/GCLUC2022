@@ -3,12 +3,25 @@
 
 Bullet::Bullet(BaseType type, const CVector3D& pos, bool flip) : Base(type, 1)
 {
-	m_img = COPY_RESOURCE("NomalBullet1", CImage);
-	//画像サイズ設定
-	m_img.SetSize(40, 40);
-	//画像の中心位置設定
-	m_img.SetCenter(20, 27);
-	m_rect = RectBox(-20, -27, 20, 0, 32, -32);
+	if (type == eType_NomalBullet)
+	{
+		m_img = COPY_RESOURCE("NomalBullet1", CImage);
+		//画像サイズ設定
+		m_img.SetSize(40, 40);
+		//画像の中心位置設定
+		m_img.SetCenter(20, 27);
+		m_rect = RectBox(-20, -27, 20, 0, 32, -32);
+	}
+
+	if (type == eType_ChargeBullet2)
+	{
+		m_img = COPY_RESOURCE("ChargeBullet2", CImage);
+		//画像サイズ設定
+		m_img.SetSize(100, 20);
+		//画像の中心位置設定
+		m_img.SetCenter(20, 27);
+		m_rect = RectBox(-20, -27, 20, 0, 32, -32);
+	}
 	m_pos = pos;
 	m_flip = flip;
 }

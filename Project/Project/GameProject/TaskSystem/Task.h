@@ -13,6 +13,7 @@ enum  BaseType {
 	eType_NomalBullet,
 	eType_ChargeBullet,
 	eType_NomalBullet2,
+	eType_ChargeBullet2,
 	eType_Scene,
 };
 
