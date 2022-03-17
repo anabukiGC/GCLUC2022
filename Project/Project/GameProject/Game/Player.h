@@ -22,7 +22,8 @@ public:
 	//銃の弾を打ったフラグ
 	bool Fire;
 
-
+	//ジャンプフラグ
+	bool m_jump;
 private:
 	//状態
 	enum 

@@ -3,10 +3,7 @@
 #include"../Game/Bullet.h"
 Boss::Boss(const CVector3D& pos, int k) :Base(eType_Boss, 1)
 {
-	kind = k;
-	switch (kind) {
 
-	case EnemyData::eBoss:
 		m_img = COPY_RESOURCE("Boss1", CImage);
 
 		m_hp = 500;//•ÏX—p
@@ -14,15 +11,11 @@ Boss::Boss(const CVector3D& pos, int k) :Base(eType_Boss, 1)
 		m_pos = pos;
 		m_b_hp = new BossHp(this);//ƒ|ƒCƒ“ƒ^[“n‚·‚Ì‚Åthis
 		m_flip = false;
-		m_jump = false;
 		m_attack_effect = false;
 		m_state = eIdle;
 		m_img.SetCenter(128*2, 256*2);
 		m_rect = RectBox(-128*2, 256*2, 128*2, 0, 32, -32);
 
-		break;
-
-	}
 }
 
 int Boss::GetHp()
@@ -136,10 +129,10 @@ void Boss::Update()
 
 	}
 
-	if (kind == EnemyData::eBoss && m_cnt == 180) {//•b”‚Åó‘Ô‘JˆÚ
+	if ( m_cnt == 180) {//•b”‚Åó‘Ô‘JˆÚ
 		m_state = eAttack1;
 	}
-	if (kind == EnemyData::eBoss && m_cnt == 360) {//•b”‚Åó‘Ô‘JˆÚ
+	if ( m_cnt == 360) {//•b”‚Åó‘Ô‘JˆÚ
 		m_state = eAttack2;
 	}
 

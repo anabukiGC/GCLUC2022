@@ -23,6 +23,10 @@ class Enemy : public Base
 
 	bool m_bound;
 
+	//ジャンプフラグ
+	bool m_jump;
+	int kind = 0;//種類識別用
+
 	static const float speed;
 
 	//攻撃エフェクトフラグ

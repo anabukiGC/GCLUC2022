@@ -31,7 +31,7 @@ Enemy::Enemy(const CVector3D& pos, int k) : Base(eType_Enemy, 1)/*ç°å„É^ÉCÉvï™ÇØ
 		break;
 	case EnemyData::eEnemy2:
 
-		m_img = COPY_RESOURCE("Enemy2", CImage);
+		m_img = COPY_RESOURCE("Enemy1", CImage);
 
 
 		m_pos = pos;

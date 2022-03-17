@@ -4,6 +4,7 @@
 enum  BaseType {
 	eType_Field,
 	eType_Player,
+	eType_PlayerAttack1,
 	eType_Enemy,
 	eType_EnemyManager,
 	eType_Boss,
