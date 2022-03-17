@@ -40,11 +40,6 @@ public:
 
 class Base : public Task{
 public:
-<<<<<<< .mine
-
-=======
-	
->>>>>>> .theirs
 	//画像オブジェクト
 	CImage m_img;
 	//座標データ
