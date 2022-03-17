@@ -362,19 +362,11 @@ void Player::StateAttack2()
 		}
 		break;
 	case 1:
-		m_img.ChangeAnimation(7, true);
-		HoldTime++;
-		if (FREE_PAD(0, CInput::eButton1))
-		{
-			if (HoldTime >= 60 * 2)
-			{
-				m_state_attack2 = 2;
-			}
-			else
-			{
-				m_state_attack2 = 3;
-			}
-		}
+		m_img.ChangeAnimation(11, false);
+		if (m_img.GetIndex() == 2 && Fire == false)
+		if (m_img.GetIndex() == 4 && Fire == false)
+		if (m_img.GetIndex() == 6 && Fire == false)
+		if (m_img.GetIndex() == 8 && Fire == false)
 		break;
 	case 2:
 		m_img.ChangeAnimation(9, false);
