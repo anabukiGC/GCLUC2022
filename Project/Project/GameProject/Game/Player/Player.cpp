@@ -478,12 +478,12 @@ void Player::StateAttack3()
 		{
 			if (m_flip)
 			{
-				new Bullet(eType_ChargeBullet, CVector3D(m_pos.x - 80, m_pos.y + 171, m_pos.z), false);
+				new Bullet(eType_ChargeBullet2, CVector3D(m_pos.x - 80, m_pos.y + 171, m_pos.z), false);
 			}
 
 			if (!m_flip)
 			{
-				new Bullet(eType_ChargeBullet, CVector3D(m_pos.x + 80, m_pos.y + 171, m_pos.z), true);
+				new Bullet(eType_ChargeBullet2, CVector3D(m_pos.x + 80, m_pos.y + 171, m_pos.z), true);
 			}
 			Fire = true;
 		}

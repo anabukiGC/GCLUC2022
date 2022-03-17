@@ -7,9 +7,6 @@ class Player : public Base
 {
 public:
 	Player(const CVector3D& pos, bool flip);
-
-	void Update();
-	void Draw();
 	void Collision(Task* t);
 	int GetHp();//Hpの取得
 	int GetMaxHp();//Hpの取得
@@ -25,6 +22,9 @@ public:
 	//ジャンプフラグ
 	bool m_jump;
 private:
+	void Update();
+	void Draw();
+
 	//状態
 	enum 
 	{

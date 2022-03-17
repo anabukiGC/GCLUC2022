@@ -16,9 +16,10 @@
     <ClCompile Include="Base\CharaBase.cpp" />
     <ClCompile Include="Game\AttackObject.cpp" />
     <ClCompile Include="Game\BackGround.cpp" />
+    <ClCompile Include="Game\Bullet\Bullet.cpp" />
+    <ClCompile Include="Game\Bullet\Laser.cpp" />
     <ClCompile Include="Game\Enemy\Boss.cpp" />
     <ClCompile Include="Game\Enemy\BossHP.cpp" />
-    <ClCompile Include="Game\Enemy\Bullet.cpp" />
     <ClCompile Include="Game\Enemy\Enemy.cpp" />
     <ClCompile Include="Game\Enemy\EnemyAnimData.cpp" />
     <ClCompile Include="Game\Enemy\EnemyHP.cpp" />
@@ -42,9 +43,10 @@
     <ClInclude Include="Base\CharaBase.h" />
     <ClInclude Include="Game\AttackObject.h" />
     <ClInclude Include="Game\BackGround.h" />
+    <ClInclude Include="Game\Bullet\Bullet.h" />
+    <ClInclude Include="Game\Bullet\Laser.h" />
     <ClInclude Include="Game\Enemy\Boss.h" />
     <ClInclude Include="Game\Enemy\BossHP.h" />
-    <ClInclude Include="Game\Enemy\Bullet.h" />
     <ClInclude Include="Game\Enemy\Enemy.h" />
     <ClInclude Include="Game\Enemy\EnemyAnimData.h" />
     <ClInclude Include="Game\Enemy\EnemyHP.h" />
@@ -114,7 +116,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>../include;../GLLibrary;$(ProjectDir)Game/Player/;$(ProjectDir)Game/Enemy/;$(ProjectDir)Game/UI/;$(ProjectDir)Base/;$(ProjectDir)Scene/;$(ProjectDir)TaskSystem/;$(ProjectDir)Game/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../include;../GLLibrary;$(ProjectDir)Game/Player/;$(ProjectDir)Game/Enemy/;$(ProjectDir)Game/UI/;$(ProjectDir)Base/;$(ProjectDir)Scene/;$(ProjectDir)TaskSystem/;$(ProjectDir)Game/;$(ProjectDir)Game/Bullet/</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
@@ -132,7 +134,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>../include;../GLLibrary;$(ProjectDir)Game/Player/;$(ProjectDir)Game/Enemy/;$(ProjectDir)Game/UI/;$(ProjectDir)Base/;$(ProjectDir)Scene/;$(ProjectDir)TaskSystem/;$(ProjectDir)Game/</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../include;../GLLibrary;$(ProjectDir)Game/Player/;$(ProjectDir)Game/Enemy/;$(ProjectDir)Game/UI/;$(ProjectDir)Base/;$(ProjectDir)Scene/;$(ProjectDir)TaskSystem/;$(ProjectDir)Game/;$(ProjectDir)Game/Bullet/</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>

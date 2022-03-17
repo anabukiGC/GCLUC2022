@@ -33,9 +33,6 @@
     <ClCompile Include="Game\Enemy\BossHP.cpp">
       <Filter>Game\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Enemy\Bullet.cpp">
-      <Filter>Game\Enemy</Filter>
-    </ClCompile>
     <ClCompile Include="Game\Enemy\Enemy.cpp">
       <Filter>Game\Enemy</Filter>
     </ClCompile>
@@ -66,6 +63,13 @@
     <ClCompile Include="Game\Player\PlayerHP.cpp">
       <Filter>Game\Palyer</Filter>
     </ClCompile>
+    <ClCompile Include="Game\AttackObject.cpp" />
+    <ClCompile Include="Game\Bullet\Bullet.cpp">
+      <Filter>Game\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Bullet\Laser.cpp">
+      <Filter>Game\Bullet</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -88,6 +92,9 @@
     </Filter>
     <Filter Include="Game\UI">
       <UniqueIdentifier>{c3484fb8-2199-41a4-9fc5-11279e0d0007}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Bullet">
+      <UniqueIdentifier>{2d531c34-6680-42a5-8ca5-80ebd5a2533f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -122,9 +129,6 @@
     <ClInclude Include="Game\Enemy\BossHP.h">
       <Filter>Game\Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Enemy\Bullet.h">
-      <Filter>Game\Enemy</Filter>
-    </ClInclude>
     <ClInclude Include="Game\Enemy\Enemy.h">
       <Filter>Game\Enemy</Filter>
     </ClInclude>
@@ -154,6 +158,13 @@
     </ClInclude>
     <ClInclude Include="Game\Player\PlayerHP.h">
       <Filter>Game\Palyer</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\AttackObject.h" />
+    <ClInclude Include="Game\Bullet\Bullet.h">
+      <Filter>Game\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Bullet\Laser.h">
+      <Filter>Game\Bullet</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
