@@ -5,6 +5,7 @@ class Title : public Base {
 public:
 	Title();
 	~Title();
+private:
 	void Update();
 	void Draw();
 

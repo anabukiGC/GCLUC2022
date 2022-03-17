@@ -6,6 +6,7 @@ class PlayerHp :public Base {
 public:
 	PlayerHp(Player* player);//‘ÎÛ‚Ì“G‚ğ“n‚¹‚é—p
 
-	void Draw();
 	Player* m_player;//enemyHp‚Ìƒƒ“ƒo[
+private:
+	void Draw();
 };
