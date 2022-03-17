@@ -2,11 +2,14 @@
 
 #include "Base.h"
 class Laser : public Base {
+public:
+	Laser(const CVector3D& p, bool flip, int LifeTime);
+	//“–‚½‚è”»’èŒŸØ
+	void Collision(Task* t);
+
 private:
 	void Update();
 	void Draw();
-public:
-	Laser(BaseType type, const CVector3D& p, bool flip);
-	//“–‚½‚è”»’èŒŸØ
-	void Collision(Task* t);
+
+	int m_lifeTime;
 };

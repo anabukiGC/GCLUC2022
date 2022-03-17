@@ -1,8 +1,9 @@
 #include "Bullet.h"
 #include "Player.h"
 
-Bullet::Bullet(BaseType type, const CVector3D& pos, bool flip) : Base(type, 1)
+Bullet::Bullet(BaseType type, const CVector3D& pos, bool flip, float ang) : Base(type, 1)
 {
+	m_ang = ang;
 	if (type == eType_NomalBullet)
 	{
 		m_img = COPY_RESOURCE("NomalBullet1", CImage);
@@ -13,15 +14,14 @@ Bullet::Bullet(BaseType type, const CVector3D& pos, bool flip) : Base(type, 1)
 		m_rect = RectBox(-20, -27, 20, 0, 32, -32);
 	}
 
-	if (type == eType_FirstNomalBullet2 || type == eType_SecondNomalBullet2 ||
-		type == eType_ThirdNomalBullet2 || type == eType_ForceNomalBullet2)
+	if (type == eType_NomalBullet2)
 	{
 		m_img = COPY_RESOURCE("NomalBullet2", CImage);
 		//画像サイズ設定
-		m_img.SetSize(128, 128);
+		m_img.SetSize(1000, 200);
 		//画像の中心位置設定
-		m_img.SetCenter(64, 64);
-		m_rect = RectBox(-23, -10, 20, 0, 4, 27);
+		m_img.SetCenter(20, 27);
+		m_rect = RectBox(-20, -27, 20, 0, 32, -32);
 		float m_ang = 0;
 
 	}
@@ -43,11 +43,18 @@ Bullet::Bullet(BaseType type, const CVector3D& pos, bool flip) : Base(type, 1)
 	}
 	m_pos = pos;
 	m_flip = flip;
+
+	m_vec = CVector3D(cos(ang), sin(ang), 0);
 }
 
 void Bullet::Update()
 {
-		const float BulletSpeed = 20.0f;
+	const float BulletSpeed = 20.0f;
+
+	CVector3D v = m_vec;
+
+	if (eType_NomalBullet)
+	{
 		if (m_flip)
 		{
 			m_pos.x -= BulletSpeed;
@@ -56,33 +63,24 @@ void Bullet::Update()
 		{
 			m_pos.x += BulletSpeed;
 		}
-	
-	/*
-	if (eType_FirstNomalBullet2)
-	{
-		m_ang += DtoR(30);
-		//m_img.SetAng(m_ang);
 	}
-	if (eType_SecondNomalBullet2)
+
+	if (eType_NomalBullet2)
 	{
-		m_ang += DtoR(30);
-		//m_img.SetAng(m_ang);
+		if (m_flip)
+		{
+			v.x *= -1;
+		}
+		m_pos += v * BulletSpeed;
 	}
-	if (eType_ThirdNomalBullet2)
-	{
-		m_ang += DtoR(30);
-		//m_img.SetAng(m_ang);
-	}
-	if (eType_ForceNomalBullet2)
-	{
-		m_ang += DtoR(30);
-		//m_img.SetAng(m_ang);
-	}
-	*/
 }
 
 void Bullet::Draw()
 {
+	if(m_flip)
+		m_img.SetAng(-m_ang);
+	if(!m_flip)
+		m_img.SetAng(m_ang);
 	Base::Draw3D();
 }
 

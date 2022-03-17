@@ -14,7 +14,7 @@ void PlayerHp::Draw()
 {
 	m_img.SetRect(87, 226, 489, 287);//Ô
 	m_img.SetSize(m_player->GetMaxHp() * 3.45, 32);
-	m_img.SetPos(115, 0);
+	m_img.SetPos(115, 45);
 	m_img.Draw();
 	
 	if (m_player)

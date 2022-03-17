@@ -34,6 +34,8 @@ private:
 		eState_Attack1,
 		eState_Attack2,
 		eState_Attack3,
+		eState_Damage,
+		eState_Die,
 	};
 
 
@@ -70,6 +72,8 @@ private:
 	void StateAttack1();
 	void StateAttack2();
 	void StateAttack3();
+	void StateDamage();
+	void StateDie();
 
 	int time;
 

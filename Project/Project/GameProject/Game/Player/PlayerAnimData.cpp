@@ -120,7 +120,7 @@ static TexAnim playerChrage3[] =
 static TexAnim playerAttack3[] =
 {
 	{ 75,6 },
-	{ 76,6 },
+	{ 76,120 },
 };
 
 TexAnimData player_anim_data[] =

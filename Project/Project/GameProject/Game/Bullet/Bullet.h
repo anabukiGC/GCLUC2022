@@ -5,10 +5,11 @@ class Bullet : public Base {
 private:
 	void Update();
 	void Draw();
-	int m_ang;
+	CVector3D vec;
+	float m_ang;
 
 public:
-	Bullet(BaseType type, const CVector3D& p, bool flip);
+	Bullet(BaseType type, const CVector3D& p, bool flip, float ang = 0);
 
 	//“–‚½‚è”»’èŒŸØ
 	void Collision(Task* t);
