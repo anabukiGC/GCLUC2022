@@ -3,22 +3,25 @@
 #include"Bullet.h"
 #include "Boss2.h"
 #include"TaskManager.h"
+#include"Meteor.h"
 const float Boss2::speed = 3.0;//どこでも使えるように
 Boss2::Boss2(const CVector3D& pos) :Base(eType_Boss, 1)
 {
 
 	m_img = COPY_RESOURCE("Boss2", CImage);
-
-	m_hp = 5000;//変更用
 	m_max_hp = 5000;
+	m_hp = m_max_hp;//変更用
+	m_size = 512;
 	m_pos = pos;
-
+	m_shadow = new Shadow(this);//ポインター渡すのでthis
+	m_meteo = false;
+	m_invin = true;
 	m_flip = false;
 	m_attack_effect = false;
 	m_state = eChange;
 	m_img.SetCenter(128 * 2, 256 * 2);
 	m_rect = RectBox(-128 * 2, 256 * 2, 128 * 2, 0, 32, -32);
-
+	
 }
 void Boss2::StateIdle()
 {
@@ -31,10 +34,10 @@ void Boss2::StateIdle()
 	}
 
 
-	if (m_pos.z <= 0) {//跳ねかえるO～GROUNDまで
+	if (m_pos.z <= 0) {//跳ねかえるO～500まで
 		m_bound = true;
 	}
-	else if (m_pos.z >= GROUND) {
+	else if (m_pos.z >= 500) {
 		m_bound = false;
 	}
 }
@@ -46,11 +49,7 @@ void Boss2::StateRun()
 
 void Boss2::StateAttack1()
 {
-	m_img.ChangeAnimation(1, false);//遠距離攻撃
-	if (m_img.CheckAnimationEnd()) {
-		m_state = eIdle;
-		
-	}
+	
 }
 
 void Boss2::StateAttack2()
@@ -60,10 +59,19 @@ void Boss2::StateAttack2()
 	
 	}
 }
-
+void Boss2::StateAttack3()
+{
+	
+	m_img.ChangeAnimation(3, false);//隕石攻撃
+	if (m_img.CheckAnimationEnd()) {
+		m_meteo = true;
+		m_state = eIdle;
+		m_invin = false;
+	}
+}
 void Boss2::StateDamage()
 {
-	m_img.ChangeAnimation(3, false);
+	m_img.ChangeAnimation(4, false);
 
 	if (m_img.CheckAnimationEnd() && m_hp > 0) {
 
@@ -78,12 +86,14 @@ void Boss2::StateDamage()
 
 void Boss2::StateChange()
 {
-	m_img.ChangeAnimation(4, false);
+	
+	m_img.ChangeAnimation(5, false);
 
 
 	if (m_img.CheckAnimationEnd()) {
 		m_b2_hp = new Boss2Hp(this);//ポインター渡すのでthis
-		m_state = eAttack1;
+		m_state = eAttack3;
+		m_invin = false;
 	}
 }
 void Boss2::StateDie()
@@ -122,6 +132,9 @@ void Boss2::Update()
 	case eAttack2:
 		StateAttack2();
 		break;
+	case eAttack3:
+		StateAttack3();
+		break;
 	case eDamage:
 		StateDamage();
 		break;
@@ -143,9 +156,16 @@ void Boss2::Update()
 		m_vec.y = 0;
 
 	}
-
-	
-
+	if (m_meteo) {//隕石処理
+		m_meteo_time++;
+			if (m_meteo_time > 30) {
+				new Meteor( CVector3D(
+					Utility::Rand(m_pos.x-1800.0f, m_pos.x-0.0f),//X
+					1200,//Y
+					Utility::Rand(0.0f, 450.0f)));//Z
+				m_meteo_time = 0;
+			}
+	}
 
 	if (m_hp <= 0) {
 		m_state = eDie;
@@ -184,7 +204,11 @@ void Boss2::Collision(Task* t)
 		{
 			if (CollisionRect(bullet, this))
 			{
-				m_state = eDamage;
+				if (m_invin == false) {
+					m_state = eDamage;
+				}
+				else
+					m_hp -= 200;
 			}
 		}
 		break;

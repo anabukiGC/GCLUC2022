@@ -4,8 +4,9 @@
 class Shadow :public Base {
 	void Draw();
 public:
-	Shadow(Base*b);//‘ÎÛ‚Ì“G‚ğ“n‚¹‚é—p
+	Shadow(Base*b,const CVector2D&size= CVector2D(256, 256));//‘ÎÛ‚Ì“G‚ğ“n‚¹‚é—p
 
 	
 	Base* m_chara;//enemyHp‚Ìƒƒ“ƒo[
+	CVector2D m_size;
 };

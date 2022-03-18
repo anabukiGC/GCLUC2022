@@ -9,11 +9,12 @@ Boss::Boss(const CVector3D& pos) :Base(eType_Boss, 1)
 {
 
 		m_img = COPY_RESOURCE("Boss1", CImage);
-
-		m_hp = 5000;//変更用
-		m_max_hp = 5000;
+		m_max_hp = 1000;
+		m_hp = m_max_hp;//変更用
+		m_shadow_size = CVector2D(512, 256);//画像サイズ用
 		m_pos = pos;
 		m_b_hp = new BossHp(this);//ポインター渡すのでthis
+		//m_shadow = new Shadow(this,m_shadow_size);//ポインター渡すのでthis
 		m_flip = false;
 		m_attack_effect = false;
 		m_state = eIdle;
@@ -47,7 +48,7 @@ void Boss::StateIdle()
 	if (m_pos.z <= 0) {//跳ねかえるO～GROUNDまで
 		m_bound = true;
 	}
-	else if (m_pos.z >= GROUND) {
+	else if (m_pos.z >= 500) {
 		m_bound = false;
 	}
 

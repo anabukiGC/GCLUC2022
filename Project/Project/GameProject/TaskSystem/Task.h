@@ -8,6 +8,7 @@ enum  BaseType {
 	eType_Enemy,
 	eType_EnemyManager,
 	eType_Boss,
+	eType_Boss_Meteo,
 	eType_Bullet,
 	eType_Effect,
 	eType_UI,
