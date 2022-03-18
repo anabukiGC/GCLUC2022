@@ -1,7 +1,7 @@
 #include "PlayerAnimData.h"
 
 //待機モーション(瞬きなし)
-static TexAnim playerIdle1[] =
+static TexAnim gunPlayerIdle1[] =
 {
 	{ 0,20},
 	{ 1,20},
@@ -9,7 +9,7 @@ static TexAnim playerIdle1[] =
 	{ 3,20},
 };
 //待機モーション(瞬きあり)
-static TexAnim playerIdle2[] =
+static TexAnim gunPlayerIdle2[] =
 {
 	{ 5,20},
 	{ 6,20},
@@ -17,7 +17,19 @@ static TexAnim playerIdle2[] =
 	{ 8,20},
 };
 //歩きモーション
-static TexAnim playerWalk[] =
+static TexAnim swordPlayerWalk[] =
+{
+	{ 10,5},
+	{ 11,5},
+	{ 12,5},
+	{ 13,5},
+	{ 14,5},
+	{ 15,5},
+	{ 16,5},
+	{ 17,5},
+};
+//歩きモーション
+static TexAnim gunPlayerWalk[] =
 {
 	{ 10,5},
 	{ 11,5},
@@ -33,23 +45,23 @@ static TexAnim playerWalk[] =
 	{ 21,5},
 };
 //ジャンプ(上昇)
-static TexAnim playerJumpUp[] = 
+static TexAnim PlayerJumpUp[] =
 {
 	{ 24,3 },
 };
 //ジャンプ(対空)
-static TexAnim playerJumpStand[] = 
+static TexAnim PlayerJumpStand[] =
 {
 	{ 25,4 },
 };
 //ジャンプ(下降)
-static TexAnim playerJumpDown[] = 
+static TexAnim PlayerJumpDown[] =
 {
 	{ 26,6 },
 };
 
 //1段階攻撃かまえモーション
-static TexAnim playerReady1[] =
+static TexAnim gunPlayerReady1[] =
 {
 	{ 27,6 },
 	{ 28,6 },
@@ -59,31 +71,47 @@ static TexAnim playerReady1[] =
 	{ 32,6 },
 };
 //1段階チャージモーション
-static TexAnim playerChrage1[] =
+static TexAnim gunPlayerChrage1[] =
 {
 	{ 36,6 },
 	{ 37,6 },
 };
 //1段階通常攻撃モーション
-static TexAnim playerNomalAttack1[] =
+static TexAnim swordPlayerAttack1[] =
+{
+	{ 27,3 },
+	{ 28,3 },
+	{ 29,3 },
+	{ 30,3 },
+};
+//1段階通常攻撃モーション
+static TexAnim gunPlayerAttack1[] =
 {
 	{ 34,3 },
 	{ 35,3 },
 };
 //1段階チャージ攻撃モーション
-static TexAnim playerChrageAttack1[] =
+static TexAnim gunPlayerChrageAttack1[] =
 {
 	{ 39,3 },
 	{ 40,3 },
 };
 //2段階武器チェンジモーション
-static TexAnim playerWeponChenge1[] =
+static TexAnim gunPlayerWeponChenge1[] =
 {
 	{ 42,3 },
 	{ 43,3 },
 };
 //2段階通常攻撃モーション
-static TexAnim playerAttack2[] =
+static TexAnim swordPlayerAttack2[] =
+{
+	{ 32,6 },
+	{ 33,6 },
+	{ 34,6 },
+	{ 35,6 },
+};
+//2段階通常攻撃モーション
+static TexAnim gunPlayerAttack2[] =
 {
 	{ 45,6 },
 	{ 46,6 },
@@ -100,7 +128,7 @@ static TexAnim playerAttack2[] =
 	{ 57,6 },
 };
 //3段階武器チェンジモーション
-static TexAnim playerWeponChenge2[] =
+static TexAnim gunPlayerWeponChenge2[] =
 {
 	{ 64,3 },
 	{ 65,3 },
@@ -111,25 +139,44 @@ static TexAnim playerWeponChenge2[] =
 	{ 70,3 },
 };
 //3段階チャージモーション
-static TexAnim playerChrage3[] =
+static TexAnim gunPlayerChrage3[] =
 {
 	{ 72,6 },
 	{ 73,6 },
 };
 //3段階攻撃モーション
-static TexAnim playerAttack3[] =
+static TexAnim swordPlayerAttack3[] =
+{
+	{ 39,6 },
+	{ 40,6 },
+	{ 41,6 },
+	{ 42,6 },
+	{ 43,6 },
+	{ 44,6 },
+	{ 45,6 },
+	{ 46,6 },
+	{ 47,6 },
+};
+//3段階攻撃モーション
+static TexAnim gunPlayerAttack3[] =
 {
 	{ 75,6 },
 	{ 76,120 },
 };
 //被弾モーション
-static TexAnim playerDamage[] =
+static TexAnim PlayerDamage[] =
 {
 	{ 78,10 },
 	{ 79,20 },
 };
 //撃破モーション
-static TexAnim playerDie[] =
+static TexAnim swordPlayerDie[] =
+{
+	{ 81,6 },
+	{ 82,6 },
+};
+//撃破モーション
+static TexAnim gunPlayerDie[] =
 {
 	{ 81,6 },
 	{ 82,6 },
@@ -139,21 +186,26 @@ static TexAnim playerDie[] =
 
 TexAnimData player_anim_data[] =
 {
-	ANIMDATA(playerIdle1),			//0
-	ANIMDATA(playerIdle2),			//1
-	ANIMDATA(playerWalk),			//2
-	ANIMDATA(playerJumpUp),			//3
-	ANIMDATA(playerJumpStand),		//4
-	ANIMDATA(playerJumpDown),		//5
-	ANIMDATA(playerReady1),			//6
-	ANIMDATA(playerChrage1),		//7
-	ANIMDATA(playerNomalAttack1),	//8
-	ANIMDATA(playerChrageAttack1),	//9
-	ANIMDATA(playerWeponChenge1),	//10
-	ANIMDATA(playerAttack2),		//11
-	ANIMDATA(playerWeponChenge2),	//12
-	ANIMDATA(playerChrage3),		//13
-	ANIMDATA(playerAttack3),		//14
-	ANIMDATA(playerDamage),			//15
-	ANIMDATA(playerDie),			//16
+	ANIMDATA(gunPlayerIdle1),				//0
+	ANIMDATA(gunPlayerIdle2),				//1
+	ANIMDATA(swordPlayerWalk),				//2
+	ANIMDATA(gunPlayerWalk),				//3
+	ANIMDATA(PlayerJumpUp),					//4
+	ANIMDATA(PlayerJumpStand),				//5
+	ANIMDATA(PlayerJumpDown),				//6
+	ANIMDATA(gunPlayerReady1),				//7
+	ANIMDATA(gunPlayerChrage1),				//8
+	ANIMDATA(swordPlayerAttack1),			//9
+	ANIMDATA(gunPlayerAttack1),				//10
+	ANIMDATA(gunPlayerChrageAttack1),		//11
+	ANIMDATA(gunPlayerWeponChenge1),		//12
+	ANIMDATA(swordPlayerAttack2),			//13
+	ANIMDATA(gunPlayerAttack2),				//14
+	ANIMDATA(gunPlayerWeponChenge2),		//15
+	ANIMDATA(gunPlayerChrage3),				//16
+	ANIMDATA(swordPlayerAttack3),			//17
+	ANIMDATA(gunPlayerAttack3),				//18
+	ANIMDATA(PlayerDamage),					//19
+	ANIMDATA(swordPlayerDie),				//20
+	ANIMDATA(gunPlayerDie),					//21
 };
