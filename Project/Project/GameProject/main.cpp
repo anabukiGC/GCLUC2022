@@ -93,7 +93,8 @@ void Init(void)
 	CShader::GetInstance("SkinMesh");
 	CSound::GetInstance();
 	//èâä˙âª
-	ADD_RESOURCE("Player", CImage::CreateImage("Image/Player/Player2.png", player_anim_data, 256, 256));
+	ADD_RESOURCE("SwordPlayer", CImage::CreateImage("Image/Player/Player1.png", player_anim_data, 256, 256));
+	ADD_RESOURCE("GunPlayer", CImage::CreateImage("Image/Player/Player2.png", player_anim_data, 256, 256));
 	ADD_RESOURCE("Enemy1", CImage::CreateImage("Image/Enemy/Enemy1.png", enemy1_anim_data, 256, 256));
 	ADD_RESOURCE("Enemy2", CImage::CreateImage("Image/Enemy/Enemy2.png", enemy2_anim_data, 256, 256));
 	ADD_RESOURCE("Boss1", CImage::CreateImage("Image/Boss/Boss.png", boss1_anim_data, 512, 512));

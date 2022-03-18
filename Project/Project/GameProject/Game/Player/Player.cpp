@@ -7,7 +7,15 @@
 
 Player::Player(int kind,const CVector3D& pos, bool flip) : Base(eType_Player,ePriorityPlayer)
 {
-	m_img = COPY_RESOURCE("Player", CImage);
+	if (kind == eSword)
+	{
+		m_img = COPY_RESOURCE("SwordPlayer", CImage);
+	}
+	else
+	{
+		m_img = COPY_RESOURCE("GunPlayer", CImage);
+	}
+
 	//画像サイズ設定
 	m_img.SetSize(256, 256);
 	//画像の中心位置設定
