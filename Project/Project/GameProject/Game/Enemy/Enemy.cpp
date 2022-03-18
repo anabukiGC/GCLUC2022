@@ -7,6 +7,7 @@ const float Enemy::speed = 3.0;//どこでも使えるように
 
 Enemy::Enemy(const CVector3D& pos, int k) : Base(eType_Enemy, 1)/*今後タイプ分け*/
 {
+	
 	kind = k;
 	switch (kind) {
 		
@@ -16,12 +17,13 @@ Enemy::Enemy(const CVector3D& pos, int k) : Base(eType_Enemy, 1)/*今後タイプ分け
 		
 		m_hp = 200;//変更用
 		m_max_hp = 200;
+		m_shadow_size = CVector2D(256,256);//画像サイズ用
 		m_pos = pos;
 		m_flip = true;
 		m_bound = false;
 		m_jump = false;
 		m_e_hp = new EnemyHp(this);//ポインター渡すのでthis
-		m_shadow = new Shadow(this);//ポインター渡すのでthis
+		m_shadow = new Shadow(this,m_shadow_size);//ポインター渡すのでthis
 		m_attack_effect = false;
 		m_state = eRun;
 		m_img.ChangeAnimation(0);

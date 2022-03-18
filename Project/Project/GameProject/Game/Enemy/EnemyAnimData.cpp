@@ -167,13 +167,19 @@ static TexAnim boss2Attack2[] =
 	{ 6,120 },
 	{ 5,10 },
 };
+static TexAnim boss2Attack3[] =//ãﬂê⁄
+{
+	{ 15,30 },
+	{ 16,30 },
+	{ 17,30 },
+	{ 18,50 },
 
+
+};
 static TexAnim boss2Damage[] =
 {
-	
 	{ 21,10 },
 	{ 22,10 },
-
 };
 
 static TexAnim boss2Change[] =
@@ -192,6 +198,7 @@ TexAnimData boss2_anim_data[] =
 	ANIMDATA(boss2Idle),
 	ANIMDATA(boss2Attack1),
 	ANIMDATA(boss2Attack2),
+	ANIMDATA(boss2Attack3),
 	ANIMDATA(boss2Damage),
 	ANIMDATA(boss2Change),
 };

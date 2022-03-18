@@ -1,7 +1,7 @@
 #pragma once
 #include"Boss2HP.h"
 #include"Game.h"
-
+#include"Shadow.h"
 class Boss2 : public Base
 {
 	enum {//®””Ô†‚ğU‚é(0`j
@@ -9,6 +9,7 @@ class Boss2 : public Base
 		eRun,
 		eAttack1,
 		eAttack2,
+		eAttack3,
 		eDamage,
 		eChange,
 		eDie,
@@ -32,6 +33,7 @@ class Boss2 : public Base
 	void StateRun();
 	void StateAttack1();
 	void StateAttack2();
+	void StateAttack3();
 	void StateDamage();
 	void StateChange();
 	void StateDie();
@@ -41,7 +43,9 @@ class Boss2 : public Base
 	void Draw();
 	static const float speed;
 	int m_second = 0;
+
 	bool m_bound;//’µ‚Ë•Ô‚è—p
+
 	bool m_invin = false;//UŒ‚’†’f–h~
 public:
 	Boss2(const CVector3D& pos); //k=í—Ş•ª‚¯”Ô†
@@ -49,5 +53,7 @@ public:
 	int GetMaxHp();//Hp‚Ìæ“¾
 	Boss2Hp* m_b2_hp;
 	Game* m_game;
+	Shadow* m_shadow;
 	void Collision(Task* t);
+	int m_size = 0;//‰æ‘œƒTƒCƒY—p
 };

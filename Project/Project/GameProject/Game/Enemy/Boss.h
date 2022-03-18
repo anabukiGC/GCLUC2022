@@ -1,7 +1,7 @@
 #pragma once
 
 #include"BossHP.h"
-#include"Game.h"
+#include"Shadow.h"
 
 class Boss : public Base
 {
@@ -48,8 +48,8 @@ public:
 	int GetHp();//Hpの取得
 	int GetMaxHp();//Hpの取得
 	BossHp* m_b_hp;
-	Game* m_game;
+	Shadow* m_shadow;
 	void Collision(Task* t);
 
-
+	CVector2D m_shadow_size;//画像サイズ用
 };

@@ -51,4 +51,5 @@ public:
 	void Collision(Task* t);
 	EnemyHp* m_e_hp;
 	Shadow* m_shadow;
+	CVector2D m_shadow_size ;//画像サイズ用
 };

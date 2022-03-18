@@ -8,11 +8,12 @@ Boss2::Boss2(const CVector3D& pos) :Base(eType_Boss, 1)
 {
 
 	m_img = COPY_RESOURCE("Boss2", CImage);
-
-	m_hp = 5000;//変更用
 	m_max_hp = 5000;
+	m_hp = m_max_hp;//変更用
+	m_size = 512;
 	m_pos = pos;
-
+	m_shadow = new Shadow(this);//ポインター渡すのでthis
+	m_invin = true;
 	m_flip = false;
 	m_attack_effect = false;
 	m_state = eChange;
@@ -46,11 +47,7 @@ void Boss2::StateRun()
 
 void Boss2::StateAttack1()
 {
-	m_img.ChangeAnimation(1, false);//遠距離攻撃
-	if (m_img.CheckAnimationEnd()) {
-		m_state = eIdle;
-		
-	}
+	
 }
 
 void Boss2::StateAttack2()
@@ -60,7 +57,15 @@ void Boss2::StateAttack2()
 	
 	}
 }
+void Boss2::StateAttack3()
+{
 
+	m_img.ChangeAnimation(3, false);//隕石攻撃
+	if (m_img.CheckAnimationEnd()) {
+		m_state = eIdle;
+		m_invin = false;
+	}
+}
 void Boss2::StateDamage()
 {
 	m_img.ChangeAnimation(3, false);
@@ -78,12 +83,14 @@ void Boss2::StateDamage()
 
 void Boss2::StateChange()
 {
-	m_img.ChangeAnimation(4, false);
+	
+	m_img.ChangeAnimation(5, false);
 
 
 	if (m_img.CheckAnimationEnd()) {
 		m_b2_hp = new Boss2Hp(this);//ポインター渡すのでthis
-		m_state = eAttack1;
+		m_state = eAttack3;
+		m_invin = false;
 	}
 }
 void Boss2::StateDie()
@@ -121,6 +128,9 @@ void Boss2::Update()
 		break;
 	case eAttack2:
 		StateAttack2();
+		break;
+	case eAttack3:
+		StateAttack3();
 		break;
 	case eDamage:
 		StateDamage();
@@ -184,7 +194,11 @@ void Boss2::Collision(Task* t)
 		{
 			if (CollisionRect(bullet, this))
 			{
-				m_state = eDamage;
+				if (m_invin == false) {
+					m_state = eDamage;
+				}
+				else
+					m_hp -= 200;
 			}
 		}
 		break;
