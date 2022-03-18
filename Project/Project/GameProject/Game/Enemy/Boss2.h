@@ -45,8 +45,9 @@ class Boss2 : public Base
 	int m_second = 0;
 
 	bool m_bound;//’µ‚Ë•Ô‚è—p
-
+	bool m_meteo;//è¦Î”­¶
 	bool m_invin = false;//UŒ‚’†’f–h~
+	int m_meteo_time = 0;
 public:
 	Boss2(const CVector3D& pos); //k=í—Ş•ª‚¯”Ô†
 	int GetHp();//Hp‚Ìæ“¾

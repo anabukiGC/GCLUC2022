@@ -167,7 +167,7 @@ static TexAnim boss2Attack2[] =
 	{ 6,120 },
 	{ 5,10 },
 };
-static TexAnim boss2Attack3[] =//ãﬂê⁄
+static TexAnim boss2Attack3[] =//Ë¶êŒ
 {
 	{ 15,30 },
 	{ 16,30 },
@@ -201,4 +201,23 @@ TexAnimData boss2_anim_data[] =
 	ANIMDATA(boss2Attack3),
 	ANIMDATA(boss2Damage),
 	ANIMDATA(boss2Change),
+};
+static TexAnim Meteor[] =
+{
+	{ 0,20 },
+
+};
+static TexAnim MeteorBreak[] =
+{
+	{ 4,10 },
+	{ 5,10 },
+	{ 6,10 },
+	{ 7,10 },
+
+};
+TexAnimData boss2_meteor_data[] =
+{
+	ANIMDATA(Meteor),
+	ANIMDATA(MeteorBreak),
+	
 };

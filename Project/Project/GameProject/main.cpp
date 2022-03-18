@@ -116,7 +116,7 @@ void Init(void)
 	ADD_RESOURCE("Clear", CImage::CreateImage("Image/Scene/Clear.png"));
 	ADD_RESOURCE("ScoreTime", CImage::CreateImage("Image/UI/UI.png"));
 	ADD_RESOURCE("TitleRogo", CImage::CreateImage("Image/UI/TitleRogo.png"));
-	
+	ADD_RESOURCE("Meteor", CImage::CreateImage("Image/Boss/Meteor.png", boss2_meteor_data, 128, 128));
 	new Title();
 	Ranking::GetInstance()->ReadScore();
 }

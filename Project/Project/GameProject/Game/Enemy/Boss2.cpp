@@ -3,6 +3,7 @@
 #include"Bullet.h"
 #include "Boss2.h"
 #include"TaskManager.h"
+#include"Meteor.h"
 const float Boss2::speed = 3.0;//Ç«Ç±Ç≈Ç‡égÇ¶ÇÈÇÊÇ§Ç…
 Boss2::Boss2(const CVector3D& pos) :Base(eType_Boss, 1)
 {
@@ -13,13 +14,14 @@ Boss2::Boss2(const CVector3D& pos) :Base(eType_Boss, 1)
 	m_size = 512;
 	m_pos = pos;
 	m_shadow = new Shadow(this);//É|ÉCÉìÉ^Å[ìnÇ∑ÇÃÇ≈this
+	m_meteo = false;
 	m_invin = true;
 	m_flip = false;
 	m_attack_effect = false;
 	m_state = eChange;
 	m_img.SetCenter(128 * 2, 256 * 2);
 	m_rect = RectBox(-128 * 2, 256 * 2, 128 * 2, 0, 32, -32);
-
+	
 }
 void Boss2::StateIdle()
 {
@@ -32,10 +34,10 @@ void Boss2::StateIdle()
 	}
 
 
-	if (m_pos.z <= 0) {//íµÇÀÇ©Ç¶ÇÈOÅ`GROUNDÇ‹Ç≈
+	if (m_pos.z <= 0) {//íµÇÀÇ©Ç¶ÇÈOÅ`500Ç‹Ç≈
 		m_bound = true;
 	}
-	else if (m_pos.z >= GROUND) {
+	else if (m_pos.z >= 500) {
 		m_bound = false;
 	}
 }
@@ -59,16 +61,17 @@ void Boss2::StateAttack2()
 }
 void Boss2::StateAttack3()
 {
-
+	
 	m_img.ChangeAnimation(3, false);//Ë¶êŒçUåÇ
 	if (m_img.CheckAnimationEnd()) {
+		m_meteo = true;
 		m_state = eIdle;
 		m_invin = false;
 	}
 }
 void Boss2::StateDamage()
 {
-	m_img.ChangeAnimation(3, false);
+	m_img.ChangeAnimation(4, false);
 
 	if (m_img.CheckAnimationEnd() && m_hp > 0) {
 
@@ -153,9 +156,16 @@ void Boss2::Update()
 		m_vec.y = 0;
 
 	}
-
-	
-
+	if (m_meteo) {//Ë¶êŒèàóù
+		m_meteo_time++;
+			if (m_meteo_time > 30) {
+				new Meteor( CVector3D(
+					Utility::Rand(m_pos.x-1800.0f, m_pos.x-0.0f),//X
+					1200,//Y
+					Utility::Rand(0.0f, 450.0f)));//Z
+				m_meteo_time = 0;
+			}
+	}
 
 	if (m_hp <= 0) {
 		m_state = eDie;
