@@ -18,12 +18,14 @@ enum  BaseType {
 	eType_ChargeBullet2,
 	eType_Laser,
 	eType_Scene,
+	eType_PlayerEffect,
 };
 
 //—Dæ“x‚Ì—ñ‹“
 enum
 {
 	ePriorityPlayer = 100,
+	ePriorityPlayerEffect = 100,
 	ePriorityEnemy = 100,
 };
 

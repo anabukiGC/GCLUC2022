@@ -52,12 +52,12 @@ void Base::Draw3D()
 	CRect rect2 = CRect(
 		rect_ltf.x, rect_ltf.y, rect_rbf.x, rect_rbf.y
 	);
-	/*
+	
 	Utility::DrawQuad(
 		CVector2D(rect2.m_left, rect2.m_top),
 		CVector2D(rect2.m_width, rect2.m_height),
 
-		CVector4D(0, 0, 1, 0.5f));*/
+		CVector4D(0, 0, 1, 0.5f));
 
 
 	/*‘O–Ê*/
@@ -69,11 +69,11 @@ void Base::Draw3D()
 		rect_ltn.x, rect_ltn.y, rect_rbn.x, rect_rbn.y
 	);
 
-	/*Utility::DrawQuad(
+	Utility::DrawQuad(
 		CVector2D(rect.m_left, rect.m_top),
 		CVector2D(rect.m_width,rect.m_height),
 	
-		CVector4D(1, 0, 0, 0.5f));*/
+		CVector4D(1, 0, 0, 0.5f));
 
 
 }

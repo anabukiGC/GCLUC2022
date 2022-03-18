@@ -22,7 +22,13 @@ public:
 		eSword,
 		eGun,
 	};
+
+	static Player* GetPlayer(int kind)
+	{
+		return m_players[kind];
+	}
 private:
+	static std::vector<Player*>m_players;
 	void Update();
 	void Draw();
 
