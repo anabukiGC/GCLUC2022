@@ -9,7 +9,7 @@ Boss2::Boss2(const CVector3D& pos) :Base(eType_Boss, 1)
 {
 
 	m_img = COPY_RESOURCE("Boss2", CImage);
-	m_max_hp = 5000;
+	m_max_hp = 1000;
 	m_hp = m_max_hp;//ïœçXóp
 	m_size = 512;
 	m_pos = pos;
@@ -98,7 +98,7 @@ void Boss2::StateChange()
 }
 void Boss2::StateDie()
 {
-	m_img.ChangeAnimation(4, false);
+	m_img.ChangeAnimation(6, false);
 
 
 	if (m_img.CheckAnimationEnd()) {

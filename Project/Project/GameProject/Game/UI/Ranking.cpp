@@ -50,7 +50,7 @@ void Ranking::Add(int score)
 {
 	m_ranking.push_back(score);//’Ç‰Á
 	std::sort(m_ranking.begin(), m_ranking.end(), std::greater<int>());//sort‚Å¬‚³‚¢‡‚É•À‚×‘Ö‚¦Agreater‚Å~‡
-	if (m_ranking.size() >= 6/*ŒÂ”’²‚×‚é*/) {
+	if (m_ranking.size() >= 4/*ŒÂ”’²‚×‚é*/) {
 		m_ranking.pop_back();//íœ
 	}
 

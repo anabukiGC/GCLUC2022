@@ -22,17 +22,19 @@ EnemyData _stage3[] = {//出現データをまとめる
 	
 };
 EnemyWave wave_data[] = {
-	/*{512,_stage1,sizeof(_stage1) / sizeof(_stage1[0])},
-	{1200,_stage2,sizeof(_stage2) / sizeof(_stage2[0])},*/
+	{512,_stage1,sizeof(_stage1) / sizeof(_stage1[0])},
+	{1200,_stage2,sizeof(_stage2) / sizeof(_stage2[0])},
 	{3000,_stage3,sizeof(_stage3) / sizeof(_stage3[0])}
 };
 EnemyManager::EnemyManager()
-	:Base(eType_EnemyManager,0), m_cnt(0)//初期化の別の例
+	:Base(eType_EnemyManager,1), m_cnt(0)//初期化の別の例
 {
 	m_wave_idx = 0;
 	m_cnt = 0;
 	m_idx = 0;
 	m_wave_size = sizeof(wave_data) / sizeof(wave_data[0]);//全体のウェーブの個数を計算
+	m_img = COPY_RESOURCE("NomalBullet1", CImage);
+	m_img.SetSize(500, 500);
 }
 
 void EnemyManager::Update()
@@ -74,6 +76,12 @@ void EnemyManager::Update()
 
 void EnemyManager::Draw()
 {
+	if (!GetWave()) {
+		if (m_wave_idx >= m_wave_size) return;//ウェーブ全体が終わったら終了
+		EnemyWave* wave = &wave_data[m_wave_idx];//ウェーブの値の内容を入れる
+		m_pos.x = wave->pos_x;//指定地点の値を入れるm_posが看板の場所
+		Draw3D();
+	}
 }
 
 bool EnemyManager::isEnd()//まだ敵が出てくるかどうかの判定用

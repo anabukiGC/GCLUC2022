@@ -3,8 +3,33 @@
 #include"../Global.h"
 #include "TaskManager.h"
 #include "Ranking.h"
+#include "RankingScore.h"
+#include"UI.h"
 Clear::Clear() : Base(eType_Scene, 10)
 {
+	auto ranking = Ranking::GetInstance()->GetScore();//ランキングを入れる
+	int i = 0;//座標変更用
+	const CVector2D pos[3] = {//座標配列
+		CVector2D(500, 900),//１位
+		CVector2D((SCREEN_WIDTH / 2) , SCREEN_HEIGHT - 250),//２
+		CVector2D((SCREEN_WIDTH / 2) , SCREEN_HEIGHT - 150),//３
+	};
+	float scale[3] = {//サイズ配列
+		1.0,
+		0.5,
+		0.5
+
+	};
+	new RankingScore(g_score, CVector2D((SCREEN_WIDTH / 2 - 200) - i * 150, 475),2);
+	for (auto& v : ranking)/*範囲for　autoで自動型変換*/
+	{
+		new RankingScore(v,pos[i],scale[i]);
+		i++;
+
+
+	}
+	new UI(CVector2D(0, 400), 3);
+	
 	m_img = COPY_RESOURCE("Clear", CImage);
 	if (g_time / 60 < 60) {//１分以内なら
 		g_score += 1000;
@@ -38,13 +63,19 @@ void Clear::Draw()
 {
 
 		m_img.Draw();
-		auto ranking = Ranking::GetInstance()->GetScore();//ランキングを入れる
+		/*auto ranking = Ranking::GetInstance()->GetScore();//ランキングを入れる
 		int i = 0;//座標変更用
-		for (auto& v : ranking)/*範囲for　autoで自動型変換*/
+		for (auto& v : ranking)/*範囲for　autoで自動型変換
 		{
-
-			FONT_T()->Draw(SCREEN_WIDTH / 2,SCREEN_HEIGHT /2+i * 64, 0, 0, 0, "%d", v);//仮表示
+			FONT_T()->Draw(SCREEN_WIDTH / 2-500,SCREEN_HEIGHT-100, 1, 1, 1, "%d", v);//仮表示
 				i++;
-		}
+			}if (i == 1) {
+				FONT_T()->Draw(SCREEN_WIDTH / 2 , SCREEN_HEIGHT-150, 1, 1, 1, "%d", v);//仮表示
+				i++;
+			}if (i == 2) {
+				FONT_T()->Draw(SCREEN_WIDTH / 2, SCREEN_HEIGHT-50 , 1, 1, 1, "%d", v);//仮表示
+				i++;
+			}
+		}*/
 		
 }

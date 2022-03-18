@@ -192,7 +192,29 @@ static TexAnim boss2Change[] =
 	{ 5,40 },
 
 };
+static TexAnim boss2Die[] =
+{
+	
+	{ 5,20 },
+	{ 4,20 },
+	{ 3,20 },
+	{ 2,20 },
+	{ 1,20 },
+	{ 0,80 },
+	{ 1,20 },
+	{ 2,20 },
+	{ 3,20 },
+	{ 4,20 },
+	{ 5,20 },
+	{ 30,20 },
+	{ 31,20 },
+	{ 32,20 },
+	{ 33,20 },
+	{ 34,20 },
 
+
+
+};
 TexAnimData boss2_anim_data[] =
 {
 	ANIMDATA(boss2Idle),
@@ -201,6 +223,7 @@ TexAnimData boss2_anim_data[] =
 	ANIMDATA(boss2Attack3),
 	ANIMDATA(boss2Damage),
 	ANIMDATA(boss2Change),
+	ANIMDATA(boss2Die),
 };
 static TexAnim Meteor[] =
 {

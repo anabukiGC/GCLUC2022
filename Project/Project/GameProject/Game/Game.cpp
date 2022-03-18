@@ -23,7 +23,7 @@ Game::~Game()
 {
 	TaskManager::GetInstance()->SetKillAll();
 	new Clear();
-	new UI(CVector2D(0, 400), 3);
+	
 	
 }
 
