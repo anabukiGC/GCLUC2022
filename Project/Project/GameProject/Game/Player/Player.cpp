@@ -10,17 +10,19 @@ Player::Player(int kind,const CVector3D& pos, bool flip) : Base(eType_Player,ePr
 	if (kind == eSword)
 	{
 		m_img = COPY_RESOURCE("SwordPlayer", CImage);
+		m_scale = 1.3;
+		//画像サイズ設定
+		m_img.SetSize(256 * m_scale, 256 * m_scale);
 	}
 	else
 	{
 		m_img = COPY_RESOURCE("GunPlayer", CImage);
+		m_scale = 1.0;
+		//画像サイズ設定
+		m_img.SetSize(256 * m_scale, 256 * m_scale);
 	}
 
-	//画像サイズ設定
-	m_img.SetSize(256, 256);
-	//画像の中心位置設定
-	m_img.SetCenter(128, 256);
-	m_img.ChangeAnimation(0);
+	m_img.ChangeAnimation(eAnimIdle);
 	m_pos = pos;
 	RectRight = RectBox(-80, 0, 40, 238, 32, -32);
 	RectLeft = RectBox(-40, 0, 80, 238, 32, -32);
@@ -93,15 +95,23 @@ void Player::Update()
 		break;
 	case eState_JumpAttack:
 		StateJumpAttack();
+	case eState_SwordAttack1:
+		StateSwordAttack1();
 		break;
-	case eState_Attack1:
-		StateAttack1();
+	case eState_SwordAttack2:
+		StateSwordAttack2();
 		break;
-	case eState_Attack2:
-		StateAttack2();
+	case eState_SwordAttack3:
+		StateSwordAttack3();
 		break;
-	case eState_Attack3:
-		StateAttack3();
+	case eState_GunAttack1:
+		StateGunAttack1();
+		break;
+	case eState_GunAttack2:
+		StateGunAttack2();
+		break;
+	case eState_GunAttack3:
+		StateGunAttack3();
 		break;
 	case eState_Damage:
 		StateDamage();
@@ -168,6 +178,16 @@ void Player::Update()
 
 void Player::Draw()
 {
+	//画像の中心位置設定
+	if (m_flip)
+	{
+		m_img.SetCenter(128 + 24 * m_scale, 256);
+	}
+	else
+	{
+		m_img.SetCenter(128 - 24 * m_scale, 256);
+	}
+
 	if (m_mutekiTime % 20 > 10)
 	{
 		m_img.SetColor(1, 1, 1, 0.5);
@@ -220,7 +240,14 @@ void Player::StateIdle()
 	//攻撃状態に以降
 	if (PUSH_PAD(m_kind, CInput::eButton1))
 	{
-		m_state = eState_Attack1;
+		if (m_kind == eGun)
+		{
+			m_state = eState_GunAttack1;
+		}
+		if (m_kind == eSword)
+		{
+			m_state = eState_SwordAttack1;
+		}
 		m_state_attack = 0;
 		m_state_attack2 = 0;
 		m_state_attack3 = 0;
@@ -229,11 +256,11 @@ void Player::StateIdle()
 	//移動中なら
 	if (MoveFlag) {
 		//歩くアニメーション
-		m_img.ChangeAnimation(2);
+		m_img.ChangeAnimation(eAnimGunWalk);
 	}
 	else {
 		//待機アニメーション
-		m_img.ChangeAnimation(0);
+		m_img.ChangeAnimation(eAnimIdle);
 	}
 }
 
@@ -278,11 +305,11 @@ void Player::StateJump()
 
 	if (m_vec.y >= 0) {
 		//上昇アニメーション
-		m_img.ChangeAnimation(3, false);
+		m_img.ChangeAnimation(eAnimJumpUp, false);
 	}
 	else {
 		//下降アニメーション
-		m_img.ChangeAnimation(5,false);
+		m_img.ChangeAnimation(eAnimJumpDown,false);
 	}
 }
 
@@ -290,7 +317,34 @@ void Player::StateJumpAttack()
 {
 }
 
-void Player::StateAttack1()
+void Player::StateSwordAttack1()
+{
+	m_img.ChangeAnimation(eAnimSwordAttack1, false);
+	if (m_img.CheckAnimationEnd())
+	{
+		m_state = eState_SwordAttack2;
+	}
+}
+
+void Player::StateSwordAttack2()
+{
+	m_img.ChangeAnimation(eAnimSwordAttack2, false);
+	if (m_img.CheckAnimationEnd())
+	{
+		m_state = eState_SwordAttack3;
+	}
+}
+
+void Player::StateSwordAttack3()
+{
+	m_img.ChangeAnimation(eAnimSwordAttack3, false);
+	if (m_img.CheckAnimationEnd())
+	{
+		m_state = eState_Idle;
+	}
+}
+
+void Player::StateGunAttack1()
 {
 	switch (m_state_attack)
 	{
@@ -298,14 +352,14 @@ void Player::StateAttack1()
 		Fire = false;
 		HoldTime = 0;
 		m_secondAttackTime = 0;
-		m_img.ChangeAnimation(6, false);
+		m_img.ChangeAnimation(eAnimGunReady1, false);
 		if (m_img.CheckAnimationEnd())
 		{
 			m_state_attack++;
 		}
 		break;
 	case 1:
-		m_img.ChangeAnimation(7, true);
+		m_img.ChangeAnimation(eAnimGunChrage1, true);
 		HoldTime++;
 		if (FREE_PAD(m_kind,CInput::eButton1))
 		{
@@ -324,7 +378,7 @@ void Player::StateAttack1()
 		}
 		break;
 	case 2:
-		m_img.ChangeAnimation(9, false);
+		m_img.ChangeAnimation(eAnimGunAttack1, false);
 		if (m_img.GetIndex() == 1 && Fire == false)
 		{
 			if (m_flip)
@@ -341,7 +395,7 @@ void Player::StateAttack1()
 		}
 		break;
 	case 3:
-		m_img.ChangeAnimation(8, false);
+		m_img.ChangeAnimation(eAnimGunChrageAttack1, false);
 
 		if (m_img.GetIndex() == 1 && Fire == false)
 		{
@@ -362,7 +416,7 @@ void Player::StateAttack1()
 		m_secondAttackTime++;
 		if (m_secondAttackTime < 120 && HOLD_PAD(m_kind, CInput::eButton1))
 		{
-			m_state = eState_Attack2;
+			m_state = eState_GunAttack2;
 		}
 		else
 		{
@@ -372,7 +426,7 @@ void Player::StateAttack1()
 	}
 }
 
-void Player::StateAttack2()
+void Player::StateGunAttack2()
 {
 	switch (m_state_attack2)
 	{
@@ -380,14 +434,14 @@ void Player::StateAttack2()
 		Fire = false;
 		HoldTime = 0;
 		m_secondAttackTime = 0;
-		m_img.ChangeAnimation(10, false);
+		m_img.ChangeAnimation(eAnimGunWeponChenge1, false);
 		if (m_img.CheckAnimationEnd())
 		{
 			m_state_attack2++;
 		}
 		break;
 	case 1:
-		m_img.ChangeAnimation(11, false);
+		m_img.ChangeAnimation(eAnimGunAttack2, false);
 		if (m_img.GetIndex() == 2 && Fire == false)
 		{
 			if (m_flip)
@@ -444,7 +498,7 @@ void Player::StateAttack2()
 		m_secondAttackTime++;
 		if (m_secondAttackTime < 120 && HOLD_PAD(m_kind, CInput::eButton1))
 		{
-			m_state = eState_Attack3;
+			m_state = eState_GunAttack3;
 		}
 		else
 		{
@@ -454,7 +508,7 @@ void Player::StateAttack2()
 	}
 }
 
-void Player::StateAttack3()
+void Player::StateGunAttack3()
 {
 	switch (m_state_attack3)
 	{
@@ -462,14 +516,14 @@ void Player::StateAttack3()
 		Fire = false;
 		HoldTime = 0;
 		m_secondAttackTime = 0;
-		m_img.ChangeAnimation(12, false);
+		m_img.ChangeAnimation(eAnimGunWeponChenge2, false);
 		if (m_img.CheckAnimationEnd())
 		{
 			m_state_attack3++;
 		}
 		break;
 	case 1:
-		m_img.ChangeAnimation(13, true);
+		m_img.ChangeAnimation(eAnimGunChrage3, true);
 		HoldTime++;
 		if (FREE_PAD(m_kind, CInput::eButton1))
 		{
@@ -484,7 +538,7 @@ void Player::StateAttack3()
 		}
 		break;
 	case 2:
-		m_img.ChangeAnimation(14, false);
+		m_img.ChangeAnimation(eAnimGunAttack3, false);
 		if (m_img.GetIndex() == 1 && Fire == false)
 		{
 			if (m_flip)
@@ -504,7 +558,7 @@ void Player::StateAttack3()
 		}
 		break;
 	case 3:
-		m_img.ChangeAnimation(14, false);
+		m_img.ChangeAnimation(eAnimGunAttack3, false);
 
 		if (m_img.GetIndex() == 1 && Fire == false)
 		{
@@ -530,7 +584,7 @@ void Player::StateAttack3()
 
 void Player::StateDamage()
 {
-	m_img.ChangeAnimation(15, false);
+	m_img.ChangeAnimation(eAnimDamage, false);
 
 	if (m_img.CheckAnimationEnd() && m_hp > 0) 
 	{
@@ -545,7 +599,7 @@ void Player::StateDamage()
 void Player::StateDie()
 {
 	//その場で停止
-	m_img.ChangeAnimation(16, false);
+	m_img.ChangeAnimation(eAnimGunDie, false);
 }
 
 void Player::Collision(Task* t)

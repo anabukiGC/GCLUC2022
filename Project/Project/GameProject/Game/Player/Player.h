@@ -26,6 +26,8 @@ private:
 	void Update();
 	void Draw();
 
+	//画像サイズ拡大割合
+	float m_scale;
 
 	//銃の弾を打ったフラグ
 	bool Fire;
@@ -41,9 +43,12 @@ private:
 		eState_Idle,
 		eState_Jump,
 		eState_JumpAttack,
-		eState_Attack1,
-		eState_Attack2,
-		eState_Attack3,
+		eState_SwordAttack1,
+		eState_SwordAttack2,
+		eState_SwordAttack3,
+		eState_GunAttack1,
+		eState_GunAttack2,
+		eState_GunAttack3,
 		eState_Damage,
 		eState_Die,
 	};
@@ -79,9 +84,12 @@ private:
 	void StateIdle();
 	void StateJump();
 	void StateJumpAttack();
-	void StateAttack1();
-	void StateAttack2();
-	void StateAttack3();
+	void StateSwordAttack1();
+	void StateSwordAttack2();
+	void StateSwordAttack3();
+	void StateGunAttack1();
+	void StateGunAttack2();
+	void StateGunAttack3();
 	void StateDamage();
 	void StateDie();
 
