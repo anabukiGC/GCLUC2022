@@ -14,7 +14,7 @@
     <ClCompile Include="TaskSystem\Task.cpp">
       <Filter>TaskSystem</Filter>
     </ClCompile>
-    <ClCompile Include="Game\BackGround.cpp">
+    <ClCompile Include="Game\Background.cpp">
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="Game\Game.cpp">
@@ -79,6 +79,9 @@
     <ClCompile Include="Game\Enemy\Meteor.cpp">
       <Filter>Game\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Player\PlayerEffect.cpp">
+      <Filter>Game\Palyer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -120,7 +123,7 @@
       <Filter>TaskSystem</Filter>
     </ClInclude>
     <ClInclude Include="Global.h" />
-    <ClInclude Include="Game\BackGround.h">
+    <ClInclude Include="Game\Background.h">
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Game\Game.h">
@@ -183,6 +186,9 @@
     </ClInclude>
     <ClInclude Include="Game\Enemy\Meteor.h">
       <Filter>Game\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Player\PlayerEffect.h">
+      <Filter>Game\Palyer</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

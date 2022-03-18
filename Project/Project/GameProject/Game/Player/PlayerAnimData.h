@@ -10,6 +10,7 @@ enum {
 	eAnimJumpUp,
 	eAnimJumpStand,
 	eAnimJumpDown,
+	eAnimJumpAttack,
 	eAnimGunReady1,
 	eAnimGunChrage1,
 	eAnimSwordAttack1,

@@ -6,7 +6,7 @@
 class Map;
 
 #define GRAVITY (9.8f/60)
-#define GROUND (750)//ТnЦ╩В╠Т▓Ро
+#define GROUND (780)//ТnЦ╩В╠Т▓Ро
 
 class RectBox
 {

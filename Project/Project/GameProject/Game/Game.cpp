@@ -12,7 +12,6 @@
 Game::Game() :Base(eType_Scene,0)
 {
 	new Player(Player::eSword, CVector3D(100, 0, 1000), false);
-	new Player(Player::eGun, CVector3D(200, 0, 1000), false);
 	new EnemyManager();
 	new BackGround();
 	new UI(CVector2D(0,1000),1);//スコア
@@ -29,6 +28,36 @@ Game::~Game()
 
 void Game::Update()
 {
+	DIJOYSTATE2* ps = CInput::GetPadData(Player::eGun);
+	if (!Player::GetPlayer(Player::eGun) && ps)
+	{
+		if (PUSH_PAD(Player::eGun, CInput::eButton1))
+		{
+			if (Player* p = Player::GetPlayer(Player::eSword))
+			{
+				new Player(Player::eGun, p->m_pos + CVector3D(-200, 0, 0), false);
+			}
+		}
+	}
+
+#if _DEBUG
+	if (!Player::GetPlayer(Player::eSword) && PUSH_PAD(0, CInput::eButton7))
+	{
+		new Player(Player::eSword, CVector3D(0, 0, 0), false);
+	}
+	if (!Player::GetPlayer(Player::eGun) && PUSH_PAD(0, CInput::eButton8))
+	{
+		new Player(Player::eGun, CVector3D(0, 0, 0), false);
+	}
+#endif // _DEBUG
+
+
+	if ((!Player::GetPlayer(Player::eSword) || Player::GetPlayer(Player::eSword)->GetHp() <= 0) &&
+		(!Player::GetPlayer(Player::eGun) || Player::GetPlayer(Player::eGun)->GetHp() <= 0))
+	{
+		printf("GameOver\n");
+	}
+
 	g_time++;
 	if (m_clear == true) {//ゲームクリアなら
 		SetKill();

@@ -101,7 +101,7 @@ void TaskManager::UpdatePriority()
 		}
 		Task* Nexttask = Remove(t);
 		Add(t);
-		t->m_priority = t->m_old_priority;
+		t->m_old_priority = t->m_priority;
 		t = Nexttask;
 	}
 }
@@ -177,7 +177,17 @@ Task* TaskManager::GetTask(int id) const
 
 std::list<Task*> TaskManager::GetTasks(int id) const
 {
-	return std::list<Task*>();
+	std::list<Task*>ret;
+	Task* t = mp_head;
+	while (t)
+	{
+		if (t->m_id == id)
+		{
+			ret.push_back(t);
+		}
+		t = t->mp_next;
+	}
+	return ret;
 }
 
 TaskManager* TaskManager::GetInstance()

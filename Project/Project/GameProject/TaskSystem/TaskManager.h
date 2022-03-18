@@ -23,7 +23,7 @@ public:
 	void KillCheckAll();						//リスト削除チェック関数
 	void SetKillAll();							//リスト削除関数
 	void CollisionAll();						//リスト当たり判定完成
-	Task* GetTask(int id) const;				//タスク取得関数
+	Task* GetTask(int id) const;					//タスク取得関数
 	std::list<Task*> GetTasks(int id) const;	//タスクリスト取得関数
 	static TaskManager* GetInstance();			//インスタンス生成取得
 	static void ClearInstance();				//格納されているものを削除

@@ -59,6 +59,13 @@ static TexAnim PlayerJumpDown[] =
 {
 	{ 26,6 },
 };
+//ジャンプアタック
+static TexAnim PlayerJumpAttack[] =
+{
+	{ 52,6 },
+	{ 53,6 },
+	{ 54,6 },
+};
 
 //1段階攻撃かまえモーション
 static TexAnim gunPlayerReady1[] =
@@ -193,19 +200,20 @@ TexAnimData player_anim_data[] =
 	ANIMDATA(PlayerJumpUp),					//4
 	ANIMDATA(PlayerJumpStand),				//5
 	ANIMDATA(PlayerJumpDown),				//6
-	ANIMDATA(gunPlayerReady1),				//7
-	ANIMDATA(gunPlayerChrage1),				//8
-	ANIMDATA(swordPlayerAttack1),			//9
-	ANIMDATA(gunPlayerAttack1),				//10
-	ANIMDATA(gunPlayerChrageAttack1),		//11
-	ANIMDATA(gunPlayerWeponChenge1),		//12
-	ANIMDATA(swordPlayerAttack2),			//13
-	ANIMDATA(gunPlayerAttack2),				//14
-	ANIMDATA(gunPlayerWeponChenge2),		//15
-	ANIMDATA(gunPlayerChrage3),				//16
-	ANIMDATA(swordPlayerAttack3),			//17
-	ANIMDATA(gunPlayerAttack3),				//18
-	ANIMDATA(PlayerDamage),					//19
-	ANIMDATA(swordPlayerDie),				//20
-	ANIMDATA(gunPlayerDie),					//21
+	ANIMDATA(PlayerJumpAttack),				//7
+	ANIMDATA(gunPlayerReady1),				//8
+	ANIMDATA(gunPlayerChrage1),				//9
+	ANIMDATA(swordPlayerAttack1),			//10
+	ANIMDATA(gunPlayerAttack1),				//11
+	ANIMDATA(gunPlayerChrageAttack1),		//12
+	ANIMDATA(gunPlayerWeponChenge1),		//13
+	ANIMDATA(swordPlayerAttack2),			//14
+	ANIMDATA(gunPlayerAttack2),				//15
+	ANIMDATA(gunPlayerWeponChenge2),		//16
+	ANIMDATA(gunPlayerChrage3),				//17
+	ANIMDATA(swordPlayerAttack3),			//18
+	ANIMDATA(gunPlayerAttack3),				//19
+	ANIMDATA(PlayerDamage),					//20
+	ANIMDATA(swordPlayerDie),				//21
+	ANIMDATA(gunPlayerDie),					//22
 };

@@ -3,7 +3,10 @@
 #include "Bullet.h"
 #include "EnemyManager.h"
 #include "Laser.h"
+#include "PlayerEffect.h"
 #include "../Global.h"
+
+std::vector<Player*> Player::m_players(2);
 
 Player::Player(int kind,const CVector3D& pos, bool flip) : Base(eType_Player,ePriorityPlayer)
 {
@@ -58,6 +61,8 @@ Player::Player(int kind,const CVector3D& pos, bool flip) : Base(eType_Player,ePr
 
 	//プレイヤーの種類
 	m_kind = kind;
+
+	m_players[kind] = this;
 }
 
 void Player::Update()
@@ -95,6 +100,7 @@ void Player::Update()
 		break;
 	case eState_JumpAttack:
 		StateJumpAttack();
+		break;
 	case eState_SwordAttack1:
 		StateSwordAttack1();
 		break;
@@ -152,19 +158,39 @@ void Player::Update()
 	m_img.UpdateAnimation();
 
 	//スクロール値設定
-	if (m_kind == 0)
+	if (Player::GetPlayer(Player::eSword))
 	{
-		if (EnemyManager* b = dynamic_cast<EnemyManager*>(TaskManager::GetInstance()->GetTask(eType_EnemyManager)))
+		if (m_kind == eSword)
 		{
-			if (b->GetWave())
+			if (EnemyManager* b = dynamic_cast<EnemyManager*>(TaskManager::GetInstance()->GetTask(eType_EnemyManager)))
 			{
-			}
-			else
-			{
-				m_scroll.x = m_pos.x - SCREEN_WIDTH / 2;
+				if (b->GetWave())
+				{
+				}
+				else
+				{
+					m_scroll.x = m_pos.x - SCREEN_WIDTH / 2;
+				}
 			}
 		}
 	}
+	else
+	{
+		if (m_kind == eGun)
+		{
+			if (EnemyManager* b = dynamic_cast<EnemyManager*>(TaskManager::GetInstance()->GetTask(eType_EnemyManager)))
+			{
+				if (b->GetWave())
+				{
+				}
+				else
+				{
+					m_scroll.x = m_pos.x - SCREEN_WIDTH / 2;
+				}
+			}
+		}
+	}
+	
 	//横移動制限
 	if (m_pos.x <= m_scroll.x - m_rect.m_left)
 	{
@@ -295,7 +321,10 @@ void Player::StateJump()
 	//ジャンプ攻撃
 	if (PUSH_PAD(m_kind , CInput::eButton1))
 	{
-		//m_state = eState_Attack1;
+		if (m_kind == eSword)
+		{
+			m_state = eState_JumpAttack;
+		}
 	}
 
 	if (m_bound)
@@ -315,14 +344,44 @@ void Player::StateJump()
 
 void Player::StateJumpAttack()
 {
+	m_img.ChangeAnimation(eAnimJumpAttack, false);
+	if (m_img.CheckAnimationEnd())
+	{
+		m_state = eState_Jump;
+	}
+	if (m_bound)
+	{
+		m_state = eState_Idle;
+	}
 }
 
 void Player::StateSwordAttack1()
 {
 	m_img.ChangeAnimation(eAnimSwordAttack1, false);
+	
+	if (m_img.GetIndex() == 2)
+	{
+		if (m_flip)
+		{
+			new PlayerEffect(PlayerEffect::eAttack1Effect, CVector3D(m_pos.x + 200, m_pos.y, m_pos.z), m_flip);
+		}
+		if (!m_flip)
+		{
+			new PlayerEffect(PlayerEffect::eAttack1Effect, CVector3D(m_pos.x + 200, m_pos.y, m_pos.z), m_flip);
+		}
+		
+	}
+
 	if (m_img.CheckAnimationEnd())
 	{
-		m_state = eState_SwordAttack2;
+		if (HOLD_PAD(m_kind, CInput::eButton1))
+		{
+			m_state = eState_SwordAttack2;
+		}
+		else
+		{
+			m_state = eState_Idle;
+		}
 	}
 }
 
@@ -331,7 +390,14 @@ void Player::StateSwordAttack2()
 	m_img.ChangeAnimation(eAnimSwordAttack2, false);
 	if (m_img.CheckAnimationEnd())
 	{
-		m_state = eState_SwordAttack3;
+		if (HOLD_PAD(m_kind, CInput::eButton1))
+		{
+			m_state = eState_SwordAttack3;
+		}
+		else
+		{
+			m_state = eState_Idle;
+		}
 	}
 }
 
@@ -340,7 +406,7 @@ void Player::StateSwordAttack3()
 	m_img.ChangeAnimation(eAnimSwordAttack3, false);
 	if (m_img.CheckAnimationEnd())
 	{
-		m_state = eState_Idle;
+			m_state = eState_Idle;
 	}
 }
 
@@ -599,7 +665,10 @@ void Player::StateDamage()
 void Player::StateDie()
 {
 	//その場で停止
-	m_img.ChangeAnimation(eAnimGunDie, false);
+	if(m_kind == eSword)
+	m_img.ChangeAnimation(eAnimSwordDie, false);
+	if (m_kind == eGun)
+		m_img.ChangeAnimation(eAnimGunDie, false);
 }
 
 void Player::Collision(Task* t)
@@ -607,6 +676,7 @@ void Player::Collision(Task* t)
 	switch (t->GetID())
 	{
 	case eType_Enemy:
+	case eType_Boss:
 		if (Base* b = dynamic_cast<Base*>(t))
 		{
 			if (m_mutekiTime > 0)
@@ -618,7 +688,7 @@ void Player::Collision(Task* t)
 				if (CollisionRect(b, this))
 				{
 					m_mutekiTime = 180;
-					m_hp -= 200;
+					m_hp -= 20;
 					m_state = eState_Damage;
 				}
 			}

@@ -54,6 +54,9 @@ void Init(void)
 	CInput::SetButton(0, CInput::eLeft, 'A');
 	CInput::SetButton(0, CInput::eRight, 'D');
 
+	CInput::SetButton(0, CInput::eButton7, 'Z');
+	CInput::SetButton(0, CInput::eButton8, 'X');
+
 	CInput::SetButton(1, CInput::eButton1, VK_LBUTTON);
 	CInput::SetButton(1, CInput::eButton2, VK_RBUTTON);
 	CInput::SetButton(1, CInput::eButton3, VK_SPACE);
@@ -117,6 +120,7 @@ void Init(void)
 	ADD_RESOURCE("ScoreTime", CImage::CreateImage("Image/UI/UI.png"));
 	ADD_RESOURCE("TitleRogo", CImage::CreateImage("Image/UI/TitleRogo.png"));
 	ADD_RESOURCE("Meteor", CImage::CreateImage("Image/Boss/Meteor.png", boss2_meteor_data, 128, 128));
+	ADD_RESOURCE("PlayerEffect", CImage::CreateImage("Image/Player/PlayerEffect.png"));
 	new Title();
 	Ranking::GetInstance()->ReadScore();
 }
