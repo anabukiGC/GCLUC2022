@@ -4,6 +4,7 @@
 #include "Boss2.h"
 #include"TaskManager.h"
 #include"Meteor.h"
+#include "AttackObject.h"
 const float Boss2::speed = 3.0;//‚Ç‚±‚Å‚àŽg‚¦‚é‚æ‚¤‚É
 Boss2::Boss2(const CVector3D& pos) :Base(eType_Boss, 1)
 {
@@ -52,6 +53,9 @@ void Boss2::StateAttack1()
 {
 	m_invin = true;
 	m_img.ChangeAnimation(1, false);//‹ßÚUŒ‚
+	if (m_img.GetIndex() >= 2) {//ˆÚ“®
+		new AttackObject(eType_BossAttack1, CVector3D(m_pos.x - 500, m_pos.y, m_pos.z), m_rect);
+	}
 	if (m_img.CheckAnimationEnd()) {
 		m_invin = false;
 		m_cnt = 240;

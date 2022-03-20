@@ -3,7 +3,7 @@
 #include"EnemyManager.h"
 #include"Bullet.h"
 #include"TaskManager.h"
-
+#include "AttackObject.h"
 const float Boss::speed = 3.0;//‚Ç‚±‚Å‚àg‚¦‚é‚æ‚¤‚É
 Boss::Boss(const CVector3D& pos) :Base(eType_Boss, 1)
 {
@@ -67,7 +67,11 @@ void Boss::StateRun()
 void Boss::StateAttack1()
 {
 	m_invin= true;
-	m_img.ChangeAnimation(1, false);//‰“‹——£UŒ‚
+	m_img.ChangeAnimation(1, false);//‹ß‹——£UŒ‚
+
+	if (m_img.GetIndex() >= 8) {//ˆÚ“®
+		new AttackObject(eType_BossAttack1,CVector3D (m_pos.x-500,m_pos.y,m_pos.z), m_rect);
+	}
 	if (m_img.CheckAnimationEnd()) {
 		m_state = eIdle;
 		m_invin = false;
@@ -79,7 +83,9 @@ void Boss::StateAttack1()
 void Boss::StateAttack2()
 {
 	m_invin = true;
-	m_img.ChangeAnimation(2, false);//‹ßÚUŒ‚
+	m_img.ChangeAnimation(2, false);//‰“‹——£UŒ‚
+
+
 	if (m_img.CheckAnimationEnd()) {
 		m_state = eIdle;
 		m_invin = false;

@@ -2,7 +2,7 @@
 #include"Bullet.h"
 #include"EnemyManager.h"
 #include"../Global.h"
-
+#include "AttackObject.h"
 const float Enemy::speed = 3.0;//どこでも使えるように
 
 Enemy::Enemy(const CVector3D& pos, int k) : Base(eType_Enemy, 1)/*今後タイプ分け*/
@@ -36,12 +36,20 @@ Enemy::Enemy(const CVector3D& pos, int k) : Base(eType_Enemy, 1)/*今後タイプ分け
 		m_img = COPY_RESOURCE("Enemy1", CImage);
 
 
+		m_hp = 200;//変更用
+		m_max_hp = 200;
+		m_shadow_size = CVector2D(256, 256);//画像サイズ用
 		m_pos = pos;
 		m_flip = true;
+		m_bound = false;
 		m_jump = false;
+		m_e_hp = new EnemyHp(this);//ポインター渡すのでthis
+		m_shadow = new Shadow(this, m_shadow_size);//ポインター渡すのでthis
 		m_attack_effect = false;
 		m_state = eRun;
-
+		m_img.ChangeAnimation(0);
+		m_img.SetCenter(128, 256);
+		m_rect = RectBox(-128, 256, 128, 0, 32, -32);
 
 		break;
 	}
@@ -54,6 +62,7 @@ void Enemy::StateIdle()
 
 void Enemy::StateAttack()
 {
+	if(kind== EnemyData::eEnemy1){
 	m_invin = true;
 	const float jump_pow = 10.0f;
 	int jump_time = 10;
@@ -81,9 +90,29 @@ void Enemy::StateAttack()
 	
 	
 	if (m_img.CheckAnimationEnd()) {
+		new AttackObject(eType_EnemyAttack1, CVector3D(m_pos.x - 500, m_pos.y, m_pos.z), m_rect);
 		m_state = eRun;
 		m_invin = false;
 		m_cnt = 0;
+	}
+	}
+	if (kind == EnemyData::eEnemy2) {//遠距離敵
+		m_invin = true;
+
+		m_img.ChangeAnimation(1, false);
+
+		/*if (m_img.GetIndex() >= 2) {//移動
+			if (m_flip == true) {
+				m_pos.x -= speed;
+			}
+			else m_pos.x += speed;
+		}*/
+		if (m_img.CheckAnimationEnd()) {
+		
+			m_state = eRun;
+			m_invin = false;
+			m_cnt = 0;
+		}
 	}
 }
 
@@ -93,12 +122,19 @@ void Enemy::StateRun()
 	
 	m_jump = false;
 	m_img.ChangeAnimation(0);
-
+	if(kind==EnemyData::eEnemy1){
 	if (m_flip == true) {//移動
 		m_pos.x -= speed;
 	}
 	else m_pos.x += speed;
 
+	if (m_scroll.x > m_pos.x) {
+		m_flip = false;
+	}
+	else if (m_scroll.x + 1900 < m_pos.x) {
+		m_flip = true;
+	}
+}
 	
 	if (m_bound == false) {//ジグザグ移動
 		m_pos.z -= speed;
@@ -114,12 +150,7 @@ void Enemy::StateRun()
 		m_bound = false;
 	}
 
-	if (m_scroll.x > m_pos.x) {
-		m_flip = false;
-	}
-	else if (m_scroll.x + 1900 < m_pos.x) {
-		m_flip = true;
-	}
+
 
 
 
