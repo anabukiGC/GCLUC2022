@@ -5,6 +5,7 @@
 #include "Laser.h"
 #include "PlayerEffect.h"
 #include "Enemy.h"
+#include "AttackObject.h"
 #include "../Global.h"
 
 std::vector<Player*> Player::m_players(2);
@@ -704,7 +705,7 @@ void Player::Collision(Task* t)
 	switch (t->GetID())
 	{
 	case eType_EnemyAttack1:
-		if (Base* b = dynamic_cast<Base*>(t))
+		if (AttackObject* Enemy1 = dynamic_cast<AttackObject*>(t))
 		{
 			if (m_mutekiTime > 0)
 			{
@@ -712,12 +713,12 @@ void Player::Collision(Task* t)
 			}
 			if (m_hp >= 0)
 			{
-				if (CollisionRect(b, this))
-				{
+				//if (CollisionRect(Enemy1, this))
+				//{
 					m_mutekiTime = 180;
 					m_hp -= 20;
 					m_state = eState_Damage;
-				}
+				//}
 			}
 		}
 		break;
