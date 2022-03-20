@@ -14,6 +14,8 @@ PlayerEffect::PlayerEffect(int kind, const CVector3D& pos, bool flip): Base(eTyp
 	DleatTime = 0;
 	m_flip = flip;
 	m_kind = kind;
+
+	m_pos = pos;
 }
 
 void PlayerEffect::Update()
