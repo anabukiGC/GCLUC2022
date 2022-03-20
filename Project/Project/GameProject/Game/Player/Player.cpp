@@ -347,6 +347,20 @@ void Player::StateJump()
 void Player::StateJumpAttack()
 {
 	m_img.ChangeAnimation(eAnimJumpAttack, false);
+
+	if (m_img.GetIndex() == 2)
+	{
+		if (m_flip)
+		{
+			new PlayerEffect(PlayerEffect::eAttack1Effect, CVector3D(m_pos.x - 150, m_pos.y + 120, m_pos.z), m_flip);
+		}
+		if (!m_flip)
+		{
+			new PlayerEffect(PlayerEffect::eAttack1Effect, CVector3D(m_pos.x + 170, m_pos.y + 120, m_pos.z), m_flip);
+		}
+
+	}
+
 	if (m_img.CheckAnimationEnd())
 	{
 		m_state = eState_Jump;
@@ -713,12 +727,9 @@ void Player::Collision(Task* t)
 			}
 			if (m_hp >= 0)
 			{
-				//if (CollisionRect(Enemy1, this))
-				//{
 					m_mutekiTime = 180;
 					m_hp -= 20;
 					m_state = eState_Damage;
-				//}
 			}
 		}
 		break;
@@ -731,12 +742,9 @@ void Player::Collision(Task* t)
 			}
 			if (m_hp >= 0)
 			{
-				if (CollisionRect(b, this))
-				{
 					m_mutekiTime = 180;
 					m_hp -= 50;
 					m_state = eState_Damage;
-				}
 			}
 		}
 		break;

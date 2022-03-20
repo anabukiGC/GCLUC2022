@@ -118,6 +118,7 @@ void Init(void)
 	ADD_RESOURCE("Shadow", CImage::CreateImage("Image/UI/Shadow.png"));
 	ADD_RESOURCE("Title", CImage::CreateImage("Image/Scene/Title.png"));
 	ADD_RESOURCE("Clear", CImage::CreateImage("Image/Scene/Clear.png"));
+	ADD_RESOURCE("GameOver", CImage::CreateImage("Image/Scene/GameOver.png"));
 	ADD_RESOURCE("ScoreTime", CImage::CreateImage("Image/UI/UI.png"));
 	ADD_RESOURCE("TitleRogo", CImage::CreateImage("Image/UI/TitleRogo.png"));
 	ADD_RESOURCE("Meteor", CImage::CreateImage("Image/Boss/Meteor.png", boss2_meteor_data, 128, 128));

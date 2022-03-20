@@ -9,6 +9,8 @@
 #include"Ranking.h"
 #include"Clear.h"
 #include"UI.h"
+#include "GameOver.h"
+
 Game::Game() :Base(eType_Scene,0)
 {
 	new Player(Player::eSword, CVector3D(100, 0, 1000), false);
@@ -55,7 +57,7 @@ void Game::Update()
 	if ((!Player::GetPlayer(Player::eSword) || Player::GetPlayer(Player::eSword)->GetHp() <= 0) &&
 		(!Player::GetPlayer(Player::eGun) || Player::GetPlayer(Player::eGun)->GetHp() <= 0))
 	{
-		printf("GameOver\n");
+		new GameOver(CVector2D(0, 0));
 	}
 
 	g_time++;
