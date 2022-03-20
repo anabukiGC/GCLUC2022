@@ -2,20 +2,20 @@
 #include"Enemy.h"
 #include"Boss.h"
 EnemyData _stage1[] = {//出現データをまとめる
-	{CVector3D(1600,0,500),0,EnemyData::eEnemy1},//（座標）、時間（フレーム）
-	{CVector3D(1600,0,500),30,EnemyData::eEnemy1},
-	{CVector3D(1600,0,500),30,EnemyData::eEnemy1},
-	{CVector3D(1600,0,500),30,EnemyData::eEnemy1},
-	{CVector3D(1600,0,500),30,EnemyData::eEnemy1},
-	{CVector3D(1600,0,500),30,EnemyData::eEnemy1},
+	/*{CVector3D(1600,0,500),0,EnemyData::eEnemy1,true},//（座標）、時間（フレーム）,向き
+	{CVector3D(1600,0,500),30,EnemyData::eEnemy1,true},
+	{CVector3D(1600,0,500),30,EnemyData::eEnemy2,true},
+	{CVector3D(1600,0,500),30,EnemyData::eEnemy2,true},
+	{CVector3D(0,0,500),30,EnemyData::eEnemy1,false},
+	{CVector3D(0,0,500),30,EnemyData::eEnemy1,false},*/
+	{CVector3D(0,0,500),30,EnemyData::eEnemy3,false},
 };
 EnemyData _stage2[] = {//出現データをまとめる
-	{CVector3D(1600,0,500),0,EnemyData::eEnemy1},//（座標）、時間（フレーム）
-	{CVector3D(1600,0,500),30,EnemyData::eEnemy1},
-	{CVector3D(1600,0,500),30,EnemyData::eEnemy1},
-	{CVector3D(1600,0,500),30,EnemyData::eEnemy1},
-	{CVector3D(1600,0,500),30,EnemyData::eEnemy1},
-	{CVector3D(1600,0,500),30,EnemyData::eEnemy1},
+	{CVector3D(1600,0,500),0,EnemyData::eEnemy1,true},
+	{CVector3D(1600,0,500),30,EnemyData::eEnemy1,true},
+	{CVector3D(1600,0,500),30,EnemyData::eEnemy1,true},
+	{CVector3D(1600,0,500),30,EnemyData::eEnemy1,true},
+	{CVector3D(1600,0,500),30,EnemyData::eEnemy1,true},
 };
 EnemyData _stage3[] = {//出現データをまとめる
 	{CVector3D(1600,0,250),0,EnemyData::eBoss},//（座標）、時間（フレーム）
@@ -52,7 +52,8 @@ void EnemyManager::Update()
 				{
 				case EnemyData::eEnemy1:
 				case EnemyData::eEnemy2:
-					new Enemy(CVector3D(wave->pos_x + data->pos.x, data->pos.y, data->pos.z), data->type);
+				case EnemyData::eEnemy3:
+					new Enemy(CVector3D(wave->pos_x + data->pos.x, data->pos.y, data->pos.z), data->type,data->flip);
 					break;
 				case EnemyData::eBoss:
  					new Boss(CVector3D(wave->pos_x + data->pos.x, data->pos.y, data->pos.z));

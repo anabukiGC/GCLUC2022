@@ -5,7 +5,7 @@
 class Enemy : public Base
 {
 	enum {//整数番号を振る(0～）
-		eIdle,
+		eAway,
 		eRun,
 		eAttack,
 		eDamage,
@@ -21,6 +21,8 @@ class Enemy : public Base
 	int m_hp = 0;
 	int m_max_hp = 0;
 
+	int m_bonus = 0;//ボーナス用
+
 	bool m_bound;//跳ね返り用
 
 	//ジャンプフラグ
@@ -35,7 +37,7 @@ class Enemy : public Base
 	bool m_attack_effect;
 	//状態分岐
 	
-	void StateIdle();//内部的な（限定的な）処理なのでややこしくならないようにここだけ(void)
+	void StateAway();//内部的な（限定的な）処理なのでややこしくならないようにここだけ(void)
 	void StateRun();
 	void StateAttack();
 	void StateDamage();
@@ -43,7 +45,7 @@ class Enemy : public Base
 	void Update();
 	void Draw();
 public:
-	Enemy(const CVector3D& pos,int k); //k=種類分け番号
+	Enemy(const CVector3D& pos,int k, bool flip); //k=種類分け番号
 
 	int GetHp();//Hpの取得
 	int GetMaxHp();//Hpの取得

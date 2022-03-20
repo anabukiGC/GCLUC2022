@@ -8,10 +8,11 @@ struct EnemyData {//構造体（データをまとめる）
 	enum {
 		eEnemy1,
 		eEnemy2,
+		eEnemy3,
 		eBoss
 	};
 	int type;//種類分け
-
+	bool flip=false;
 };
 
 struct EnemyWave {

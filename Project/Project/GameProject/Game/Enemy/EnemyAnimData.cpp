@@ -10,17 +10,24 @@ static TexAnim enemy1Idle[] =
 
 static TexAnim enemy1Attack[] =
 {
-	{ 4,10 },
-	{ 5,30 },
-	{ 6,50 },
+	{ 5,10 },
+	{ 6,30 },
+	{ 7,50 },
 	
 };
+static TexAnim enemy1Damage[] =
+{
+	{ 14,2 },
+	{ 15,2 },
+	{ 16,2 },
 
+
+};
 static TexAnim enemy1Die[] =
 {
-	{ 8,2 },
-	{ 9,2 },
 	{ 10,2 },
+	{11,2 },
+	{ 12,2 },
 	
 
 };
@@ -29,6 +36,7 @@ TexAnimData enemy1_anim_data[] =
 {
 	ANIMDATA(enemy1Idle),
 	ANIMDATA(enemy1Attack),
+	ANIMDATA(enemy1Damage),
 	ANIMDATA(enemy1Die),
 };
 
@@ -70,6 +78,58 @@ TexAnimData enemy2_anim_data[] =
 	ANIMDATA(enemy2Jump),
 	ANIMDATA(enemy2Damage),
 	ANIMDATA(enemy2Die),
+};
+static TexAnim enemy3Idle[] =
+{
+	{ 6,15 },
+	{ 5,15 },
+	{ 4,15 },
+	{ 3,15 },
+};
+
+static TexAnim enemy3Jump[] =
+{
+	{ 13,10 },
+	{ 12,10 },
+	{ 11,10 },
+	{ 10,10 },
+	{ 9,10 },
+	{ 8,10 },
+	{ 7,10 },
+};
+
+static TexAnim enemy3Damage[] =
+{
+	{ 27,2 },
+	{ 26,2 },
+	{ 25,2 },
+};
+
+static TexAnim enemy3Die[] =
+{
+	{ 20,10 },
+	{ 19,10 },
+	{ 18,10 },
+	{ 17,10 },
+
+};
+static TexAnim enemy3Away[] =
+{
+	{ 34,10 },
+	{ 33,10 },
+	{ 32,10 },
+	{ 31,10 },
+	{ 30,10 },
+	{ 29,10 },
+
+};
+TexAnimData enemy3_anim_data[] =
+{
+	ANIMDATA(enemy3Idle),
+	ANIMDATA(enemy3Jump),
+	ANIMDATA(enemy3Damage),
+	ANIMDATA(enemy3Die),
+	ANIMDATA(enemy3Away),
 };
 
 static TexAnim boss1Idle[] =
