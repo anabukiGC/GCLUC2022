@@ -54,6 +54,7 @@ void Boss2::StateAttack1()
 	m_img.ChangeAnimation(1, false);//‹ßÚUŒ‚
 	if (m_img.CheckAnimationEnd()) {
 		m_invin = false;
+		m_cnt = 240;
 		m_second = 4;
 		m_state = eIdle;
 	}
@@ -65,6 +66,7 @@ void Boss2::StateAttack2()
 	m_img.ChangeAnimation(2, false);//‹ßÚUŒ‚
 	if (m_img.CheckAnimationEnd()) {
 		m_invin = false;
+		m_cnt = 0;
 		m_second = 0;
 		m_state = eIdle;
 	}
