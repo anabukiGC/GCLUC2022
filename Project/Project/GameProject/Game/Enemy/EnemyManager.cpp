@@ -2,12 +2,12 @@
 #include"Enemy.h"
 #include"Boss.h"
 EnemyData _stage1[] = {//出現データをまとめる
-	/*{CVector3D(1600,0,500),0,EnemyData::eEnemy1,true},//（座標）、時間（フレーム）,向き
+	{CVector3D(1600,0,500),0,EnemyData::eEnemy1,true},//（座標）、時間（フレーム）,向き
 	{CVector3D(1600,0,500),30,EnemyData::eEnemy1,true},
 	{CVector3D(1600,0,500),30,EnemyData::eEnemy2,true},
 	{CVector3D(1600,0,500),30,EnemyData::eEnemy2,true},
 	{CVector3D(0,0,500),30,EnemyData::eEnemy1,false},
-	{CVector3D(0,0,500),30,EnemyData::eEnemy1,false},*/
+	{CVector3D(0,0,500),30,EnemyData::eEnemy1,false},
 	{CVector3D(0,0,500),30,EnemyData::eEnemy3,false},
 };
 EnemyData _stage2[] = {//出現データをまとめる
