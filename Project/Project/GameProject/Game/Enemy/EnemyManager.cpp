@@ -22,8 +22,8 @@ EnemyData _stage3[] = {//出現データをまとめる
 	
 };
 EnemyWave wave_data[] = {
-	{512,_stage1,sizeof(_stage1) / sizeof(_stage1[0])},
-	{1200,_stage2,sizeof(_stage2) / sizeof(_stage2[0])},
+	/*{512,_stage1,sizeof(_stage1) / sizeof(_stage1[0])},
+	{1200,_stage2,sizeof(_stage2) / sizeof(_stage2[0])},*/
 	{3000,_stage3,sizeof(_stage3) / sizeof(_stage3[0])}
 };
 EnemyManager::EnemyManager()

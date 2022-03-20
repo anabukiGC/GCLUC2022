@@ -149,10 +149,10 @@ static TexAnim boss2Idle[] =
 
 static TexAnim boss2Attack1[] =//ãﬂê⁄
 {
-	{ 15,30 },
-	{ 16,30 },
-	{ 17,30 },
-	{ 18,50 },
+	{ 10,30 },
+	{ 11,30 },
+	{ 12,30 },
+	
 	
 	
 };
@@ -161,11 +161,11 @@ static TexAnim boss2Attack2[] =
 {
 
 
-	{ 2,60 },
-	{ 4,10 },
-	{ 5,10 },
-	{ 6,120 },
-	{ 5,10 },
+	{ 25,10 },
+	{ 26,10 },
+	{ 27,40 },
+	{ 28,80 },
+	
 };
 static TexAnim boss2Attack3[] =//Ë¶êŒ
 {
@@ -178,8 +178,8 @@ static TexAnim boss2Attack3[] =//Ë¶êŒ
 };
 static TexAnim boss2Damage[] =
 {
-	{ 21,10 },
-	{ 22,10 },
+	{ 20,5 },
+	{ 21,5 },
 };
 
 static TexAnim boss2Change[] =

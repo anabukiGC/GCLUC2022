@@ -18,6 +18,7 @@ Boss2::Boss2(const CVector3D& pos) :Base(eType_Boss, 1)
 	m_invin = true;
 	m_flip = false;
 	m_attack_effect = false;
+	m_img.ChangeAnimation(0);
 	m_state = eChange;
 	m_img.SetCenter(128 * 2, 256 * 2);
 	m_rect = RectBox(-128 * 2, 256 * 2, 128 * 2, 0, 32, -32);
@@ -49,24 +50,35 @@ void Boss2::StateRun()
 
 void Boss2::StateAttack1()
 {
-	
+	m_invin = true;
+	m_img.ChangeAnimation(1, false);//‹ßÚUŒ‚
+	if (m_img.CheckAnimationEnd()) {
+		m_invin = false;
+		m_second = 4;
+		m_state = eIdle;
+	}
 }
 
 void Boss2::StateAttack2()
 {
+	m_invin = true;
 	m_img.ChangeAnimation(2, false);//‹ßÚUŒ‚
 	if (m_img.CheckAnimationEnd()) {
-	
+		m_invin = false;
+		m_second = 0;
+		m_state = eIdle;
 	}
 }
 void Boss2::StateAttack3()
 {
-	
+	m_invin = true;
 	m_img.ChangeAnimation(3, false);//è¦ÎUŒ‚
 	if (m_img.CheckAnimationEnd()) {
 		m_meteo = true;
-		m_state = eIdle;
+		m_second = 0;
 		m_invin = false;
+		m_state = eIdle;
+		
 	}
 }
 void Boss2::StateDamage()
@@ -93,7 +105,7 @@ void Boss2::StateChange()
 	if (m_img.CheckAnimationEnd()) {
 		m_b2_hp = new Boss2Hp(this);//ƒ|ƒCƒ“ƒ^[“n‚·‚Ì‚Åthis
 		m_state = eAttack3;
-		m_invin = false;
+		
 	}
 }
 void Boss2::StateDie()
@@ -118,6 +130,7 @@ void Boss2::StateDie()
 void Boss2::Update()
 {
 	m_cnt++;
+	m_second = m_cnt / 60;//•b”‚É•ÏŠ·
 	//ó‘Ô‚É‚æ‚é•ªŠò§Œä
 	switch (m_state) {
 	case eIdle:
@@ -158,7 +171,7 @@ void Boss2::Update()
 	}
 	if (m_meteo) {//è¦Îˆ—
 		m_meteo_time++;
-			if (m_meteo_time > 30) {
+			if (m_meteo_time > 30) {//è¦ÎŠÔŠu
 				new Meteor( CVector3D(
 					Utility::Rand(m_pos.x-1800.0f, m_pos.x-0.0f),//X
 					1200,//Y
@@ -166,6 +179,20 @@ void Boss2::Update()
 				m_meteo_time = 0;
 			}
 	}
+
+
+	if (m_invin == false && m_second == 3) {//•b”‚Åó‘Ô‘JˆÚ
+
+		m_state = eAttack1;
+	}
+	if (m_invin == false && m_second == 8) {//•b”‚Åó‘Ô‘JˆÚ
+		m_state = eAttack2;
+	}
+
+
+
+
+
 
 	if (m_hp <= 0) {
 		m_state = eDie;

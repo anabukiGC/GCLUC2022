@@ -17,6 +17,7 @@ Boss::Boss(const CVector3D& pos) :Base(eType_Boss, 1)
 		//m_shadow = new Shadow(this,m_shadow_size);//ポインター渡すのでthis
 		m_flip = false;
 		m_attack_effect = false;
+		m_img.ChangeAnimation(0);
 		m_state = eIdle;
 		m_img.SetCenter(128*2, 256*2);
 		m_rect = RectBox(-128*2, 256*2, 128*2, 0, 32, -32);

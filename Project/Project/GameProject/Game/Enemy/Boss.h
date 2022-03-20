@@ -40,7 +40,7 @@ class Boss : public Base
 	void Update();
 	void Draw();
 
-	int m_second = 0;
+	int m_second = 0;//•b”
 	bool m_bound;//’µ‚Ë•Ô‚è—p
 	bool m_invin = false;//UŒ‚’†’f–h~
 public:

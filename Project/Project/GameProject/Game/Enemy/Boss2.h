@@ -42,7 +42,7 @@ class Boss2 : public Base
 	void Update();
 	void Draw();
 	static const float speed;
-	int m_second = 0;
+	int m_second = 0;//•b”
 
 	bool m_bound;//’µ‚Ë•Ô‚è—p
 	bool m_meteo;//è¦Î”­¶
