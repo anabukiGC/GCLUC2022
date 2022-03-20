@@ -32,6 +32,7 @@
     <ClCompile Include="Game\Player\PlayerAnimData.cpp" />
     <ClCompile Include="Game\Player\PlayerEffect.cpp" />
     <ClCompile Include="Game\Player\PlayerHP.cpp" />
+    <ClCompile Include="Game\UI\Debuff.cpp" />
     <ClCompile Include="Game\UI\Ranking.cpp" />
     <ClCompile Include="Game\UI\RankingScore.cpp" />
     <ClCompile Include="Game\UI\Shadow.cpp" />
@@ -64,6 +65,7 @@
     <ClInclude Include="Game\Player\PlayerAnimData.h" />
     <ClInclude Include="Game\Player\PlayerEffect.h" />
     <ClInclude Include="Game\Player\PlayerHP.h" />
+    <ClInclude Include="Game\UI\Debuff.h" />
     <ClInclude Include="Game\UI\Ranking.h" />
     <ClInclude Include="Game\UI\RankingScore.h" />
     <ClInclude Include="Game\UI\Shadow.h" />

@@ -2,7 +2,7 @@
 
 #include"BossHP.h"
 #include"Shadow.h"
-
+#include "Debuff.h"
 class Boss : public Base
 {
 	enum {//整数番号を振る(0～）
@@ -16,9 +16,8 @@ class Boss : public Base
 
 	//状態
 	int m_state;
-
 	
-
+	bool m_on;//デバフ表示用
 	int m_hp = 0;
 	int m_max_hp = 0;
 
@@ -49,7 +48,9 @@ public:
 	int GetMaxHp();//Hpの取得
 	BossHp* m_b_hp;
 	Shadow* m_shadow;
+	Debuff* m_b_debuff;
 	void Collision(Task* t);
-
+	bool m_debuff;
+	
 	CVector2D m_shadow_size;//画像サイズ用
 };

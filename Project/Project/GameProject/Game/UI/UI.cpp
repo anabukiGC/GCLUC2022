@@ -21,26 +21,7 @@ UI::UI(const CVector2D& pos, int k) : Base(eType_UI, 11)
 		m_pos = pos;
 
 		break;
-/*	case 3://リザルト用
-		m_img = COPY_RESOURCE("ScoreTime", CImage);
-		m_pos = pos;
 
-		break;
-	case 4://ランキング１
-		m_img = COPY_RESOURCE("ScoreTime", CImage);
-		m_pos = pos;
-
-		break;
-	case 5://ランキング１
-		m_img = COPY_RESOURCE("ScoreTime", CImage);
-		m_pos = pos;
-
-		break;
-	case 6://ランキング１
-		m_img = COPY_RESOURCE("ScoreTime", CImage);
-		m_pos = pos;
-
-		break;*/
 	}
 }
 

@@ -65,8 +65,7 @@ void AttackObject::Collision(Task* t)
 	{
 		
 	case eType_Player:
-	case eType_Boss:
-		if(GetID()==eType_EnemyAttack1){
+		if(GetID()==eType_EnemyAttack1 || GetID() == eType_BossAttack1){
 		if (Base* b = dynamic_cast<Base*>(t))
 		{
 			if (CollisionRect(b, this))

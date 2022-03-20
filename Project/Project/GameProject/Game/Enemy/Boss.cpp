@@ -14,8 +14,10 @@ Boss::Boss(const CVector3D& pos) :Base(eType_Boss, 1)
 		m_shadow_size = CVector2D(512, 256);//画像サイズ用
 		m_pos = pos;
 		m_b_hp = new BossHp(this);//ポインター渡すのでthis
-		//m_shadow = new Shadow(this,m_shadow_size);//ポインター渡すのでthis
+		m_shadow = new Shadow(this,m_shadow_size);//ポインター渡すのでthis
 		m_flip = false;
+		m_debuff = true;
+		m_on = false;
 		m_attack_effect = false;
 		m_img.ChangeAnimation(0);
 		m_state = eIdle;
@@ -148,7 +150,10 @@ void Boss::Update()
 	}
 
 
-
+	if (m_debuff == true && m_on == false) {//デバフアイコン表示
+		m_b_debuff=new Debuff(CVector2D(this->m_pos.x,this->m_pos.y));
+		m_on = true;
+	}
 
 
 

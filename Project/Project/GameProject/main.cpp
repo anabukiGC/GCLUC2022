@@ -121,6 +121,7 @@ void Init(void)
 	ADD_RESOURCE("TitleRogo", CImage::CreateImage("Image/UI/TitleRogo.png"));
 	ADD_RESOURCE("Meteor", CImage::CreateImage("Image/Boss/Meteor.png", boss2_meteor_data, 128, 128));
 	ADD_RESOURCE("PlayerEffect", CImage::CreateImage("Image/Player/PlayerEffect.png"));
+	ADD_RESOURCE("Debuff", CImage::CreateImage("Image/UI/Debuff.png"));
 	new Title();
 	Ranking::GetInstance()->ReadScore();
 }
