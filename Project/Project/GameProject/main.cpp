@@ -106,6 +106,7 @@ void Init(void)
 	ADD_RESOURCE("Boss2", CImage::CreateImage("Image/Boss/Boss2.png", boss2_anim_data, 512, 512));
 	ADD_RESOURCE("BossHP", CImage::CreateImage("Image/UI/BossBar.png"));
     ADD_RESOURCE("EnemyHP", CImage::CreateImage("Image/UI/EnemyBar.png"));
+	ADD_RESOURCE("Player1HP", CImage::CreateImage("Image/Player/Player1HP.png"));
 	ADD_RESOURCE("Player2HP", CImage::CreateImage("Image/Player/Player2HP.png"));
     ADD_RESOURCE("BackGround1", CImage::CreateImage("Image/Map/BackGround1.png"));
 	ADD_RESOURCE("BackGround2", CImage::CreateImage("Image/Map/BackGround2.png"));

@@ -1,6 +1,7 @@
 #pragma once
 #include "Base.h"
 #include "PlayerHP.h"
+#include "Player2HP.h"
 #include "TaskManager.h"
 #include"Shadow.h"
 
@@ -13,6 +14,7 @@ public:
 	int GetMaxHp();//Hp�̎擾
 
 	PlayerHp* m_p_hp;
+	Player2Hp* m_p_hp2;
 
 	int m_hp = 0;
 	int m_max_hp = 0;

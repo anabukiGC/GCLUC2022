@@ -8,6 +8,7 @@
 #include "AttackObject.h"
 #include "Meteor.h"
 #include "BossLaser.h"
+#include "EnemyBullet.h"
 #include "../Global.h"
 
 std::vector<Player*> Player::m_players(2);
@@ -41,7 +42,10 @@ Player::Player(int kind,const CVector3D& pos, bool flip) : Base(eType_Player,ePr
 	m_hp = 100;//変更用
 	m_max_hp = 100;
 
-	m_p_hp = new PlayerHp(this);//ポインター渡すのでthis
+	if(kind == eSword)
+	m_p_hp = new PlayerHp(eType_Player1HP, this);//ポインター渡すのでthis
+	if(kind == eGun)
+	m_p_hp2 = new Player2Hp(eType_Player2HP, this);//ポインター渡すのでthis
 
 	//反転フラグ
 	m_flip = flip;
@@ -758,7 +762,7 @@ void Player::Collision(Task* t)
 		}
 		break;
 	case eType_EnemyBullet:
-		if (AttackObject* enemy = dynamic_cast<AttackObject*>(t))
+		if (EnemyBullet* enemy = dynamic_cast<EnemyBullet*>(t))
 		{
 			if (CollisionRect(enemy, this))
 			{
