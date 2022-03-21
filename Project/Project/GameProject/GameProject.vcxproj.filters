@@ -75,6 +75,7 @@
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="Game\UI\Select.cpp" />
+    <ClCompile Include="Scene\HowTo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\Background.h" />
@@ -150,6 +151,7 @@
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Game\UI\Select.h" />
+    <ClInclude Include="Scene\HowTo.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="TaskSystem">
