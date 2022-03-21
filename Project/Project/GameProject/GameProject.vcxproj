@@ -36,6 +36,7 @@
     <ClCompile Include="Game\UI\Debuff.cpp" />
     <ClCompile Include="Game\UI\Ranking.cpp" />
     <ClCompile Include="Game\UI\RankingScore.cpp" />
+    <ClCompile Include="Game\UI\Select.cpp" />
     <ClCompile Include="Game\UI\Shadow.cpp" />
     <ClCompile Include="Game\UI\UI.cpp" />
     <ClCompile Include="Global.cpp" />
@@ -71,6 +72,7 @@
     <ClInclude Include="Game\UI\Debuff.h" />
     <ClInclude Include="Game\UI\Ranking.h" />
     <ClInclude Include="Game\UI\RankingScore.h" />
+    <ClInclude Include="Game\UI\Select.h" />
     <ClInclude Include="Game\UI\Shadow.h" />
     <ClInclude Include="Game\UI\UI.h" />
     <ClInclude Include="Global.h" />

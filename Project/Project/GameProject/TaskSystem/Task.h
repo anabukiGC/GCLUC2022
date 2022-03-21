@@ -16,6 +16,7 @@ enum  BaseType {
 	eType_Bullet,
 	eType_Effect,
 	eType_UI,
+	eType_Select,
 	eType_NomalBullet,
 	eType_ChargeBullet,
 	eType_NomalBullet2,
