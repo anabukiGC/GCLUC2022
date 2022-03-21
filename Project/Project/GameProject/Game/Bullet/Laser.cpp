@@ -5,11 +5,13 @@ Laser::Laser(const CVector3D& p, bool flip, int LifeTime): Base(eType_Laser, 2)
 	//画像サイズ設定
 	m_img.SetSize(1000, 200);
 	//画像の中心位置設定
-	m_img.SetCenter(20, 27);
+	m_img.SetCenter(0, 27);
 	m_rect = RectBox(-20, -27, 20, 0, 32, -32);
 	m_pos = p;
 	m_flip = flip;
 	m_lifeTime = LifeTime;
+	Ysize = 0;
+	see = 0;
 }
 
 void Laser::Collision(Task* t)
@@ -18,6 +20,18 @@ void Laser::Collision(Task* t)
 
 void Laser::Update()
 {
+	if (Ysize <= 200)
+	{
+		Ysize += 10;
+	}
+	if (see <= 1 && m_lifeTime >= 90)
+	{
+		m_img.SetColor(1, 1, 1, see += 0.05);
+	}
+	else  if (see >= 0 && m_lifeTime >= 0 && m_lifeTime <= 20)
+	{
+		m_img.SetColor(1, 1, 1, see -= 0.05);
+	}
 	m_lifeTime--;
 	if (m_lifeTime <= 0)
 	{

@@ -711,7 +711,7 @@ void Player::StateDie()
 	if(m_kind == eSword)
 	m_img.ChangeAnimation(eAnimSwordDie, false);
 	if (m_kind == eGun)
-		m_img.ChangeAnimation(eAnimGunDie, false);
+	m_img.ChangeAnimation(eAnimGunDie, false);
 }
 
 void Player::Collision(Task* t)

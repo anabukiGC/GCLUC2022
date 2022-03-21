@@ -12,4 +12,6 @@ private:
 	void Draw();
 
 	int m_lifeTime;
+	float Ysize;
+	float see;
 };
