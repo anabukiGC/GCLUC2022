@@ -1,12 +1,13 @@
 #include "HowTo.h"
-
+#include "Title.h"
 HowTo::HowTo():Base(eType_Scene,13)
 {
-	m_img = COPY_RESOURCE("Title", CImage);
+	m_img = COPY_RESOURCE("HowTo2", CImage);
 }
 
 HowTo::~HowTo()
 {
+	new Title();
 }
 
 void HowTo::Update()

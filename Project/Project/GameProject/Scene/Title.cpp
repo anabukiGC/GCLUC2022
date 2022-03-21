@@ -4,6 +4,7 @@
 #include"../Global.h"
 #include"Clear.h"
 #include"Select.h"
+#include"HowTo.h"
 Title::Title() : Base(eType_Scene, 11)
 {
 	m_img = COPY_RESOURCE("Title", CImage);
@@ -14,11 +15,14 @@ Title::Title() : Base(eType_Scene, 11)
 
 Title::~Title()
 {
-	TaskManager::GetInstance()->SetKillAll();
+	
 	if(m_start == true){
-	new Game();
+		TaskManager::GetInstance()->SetKillAll();
+		new HowTo();
+		
 	}
 	if (m_start == false) {
+		TaskManager::GetInstance()->SetKillAll();
 		new Game();
 	}
 }
@@ -27,13 +31,14 @@ void Title::Update()
 {
 	Select* s = dynamic_cast<Select*>(TaskManager::GetInstance()->GetTask(eType_Select));
 	
-	if (s->m_stop==false && PUSH(CInput::eButton3)) {//あそびかた
+	if (s->m_stop==false && PUSH(CInput::eButton3)) {//スタート
 		m_start = false;
 		SetKill();
 	}
-	if (s->m_stop == true && PUSH(CInput::eButton3)) {//スタート
+	if (s->m_stop == true && PUSH(CInput::eButton3)) {//あそびかた
 		m_start = true;
 		SetKill();
+		
 	}
 
 }
