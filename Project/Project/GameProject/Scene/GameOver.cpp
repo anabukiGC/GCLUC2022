@@ -24,7 +24,8 @@ GameOver::~GameOver()
 
 void GameOver::Update()
 {
-	if (PUSH(CInput::eButton3)) {
+	if (PUSH(CInput::eButton3)) 
+	{
 		SetKill();
 	}
 }

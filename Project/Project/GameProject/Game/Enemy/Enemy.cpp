@@ -354,8 +354,8 @@ void Enemy::Collision(Task* t)
 		}
 		break;
 	case eType_PlayerEffect1:
-		if (PlayerEffect* player = dynamic_cast<PlayerEffect*>(t)) {
-			if (CollisionRect(player, this))
+		if (PlayerEffect* playereffect = dynamic_cast<PlayerEffect*>(t)) {
+			if (CollisionRect(playereffect, this))
 			{
 				if (m_invin == false) {
 					m_state = eDamage;
