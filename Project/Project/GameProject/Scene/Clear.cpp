@@ -63,19 +63,5 @@ void Clear::Draw()
 {
 
 		m_img.Draw();
-		/*auto ranking = Ranking::GetInstance()->GetScore();//ランキングを入れる
-		int i = 0;//座標変更用
-		for (auto& v : ranking)/*範囲for　autoで自動型変換
-		{
-			FONT_T()->Draw(SCREEN_WIDTH / 2-500,SCREEN_HEIGHT-100, 1, 1, 1, "%d", v);//仮表示
-				i++;
-			}if (i == 1) {
-				FONT_T()->Draw(SCREEN_WIDTH / 2 , SCREEN_HEIGHT-150, 1, 1, 1, "%d", v);//仮表示
-				i++;
-			}if (i == 2) {
-				FONT_T()->Draw(SCREEN_WIDTH / 2, SCREEN_HEIGHT-50 , 1, 1, 1, "%d", v);//仮表示
-				i++;
-			}
-		}*/
 		
 }

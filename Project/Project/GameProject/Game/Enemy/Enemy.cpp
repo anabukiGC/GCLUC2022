@@ -1,13 +1,12 @@
 #include "Enemy.h"
 #include"Bullet.h"
+#include"PlayerEffect.h"
 #include"EnemyManager.h"
 #include"../Global.h"
 #include "AttackObject.h"
-#include "PlayerEffect.h"
-
 const float Enemy::speed = 3.0;//どこでも使えるように
 
-Enemy::Enemy(const CVector3D& pos, int k, bool flip) : Base(eType_Enemy, ePriorityPlayer)/*今後タイプ分け*/
+Enemy::Enemy(const CVector3D& pos, int k, bool flip) : Base(eType_Enemy, 1)/*今後タイプ分け*/
 {
 	
 	kind = k;
@@ -29,7 +28,7 @@ Enemy::Enemy(const CVector3D& pos, int k, bool flip) : Base(eType_Enemy, ePriori
 		m_state = eRun;
 		m_img.ChangeAnimation(0);
 		m_img.SetCenter(128, 256);
-		m_rect = RectBox(-128, 256, 128, 0, 32, -32);
+		m_rect = RectBox(-88, 226, 98, 0, 32, -32);
 
 		break;
 	case EnemyData::eEnemy2:
@@ -49,7 +48,7 @@ Enemy::Enemy(const CVector3D& pos, int k, bool flip) : Base(eType_Enemy, ePriori
 		m_state = eRun;
 		m_img.ChangeAnimation(0);
 		m_img.SetCenter(128, 256);
-		m_rect = RectBox(-128, 256, 128, 0, 32, -32);
+		m_rect = RectBox(-88, 226, 98, 0, 32, -32);
 
 		break;
 	
@@ -69,7 +68,7 @@ Enemy::Enemy(const CVector3D& pos, int k, bool flip) : Base(eType_Enemy, ePriori
 		m_state = eRun;
 		m_img.ChangeAnimation(0);
 		m_img.SetCenter(128, 256);
-		m_rect = RectBox(-128, 256, 128, 0, 32, -32);
+		m_rect = RectBox(-88, 226, 98, 0, 32, -32);
 
 		break;
 }
@@ -126,7 +125,8 @@ void Enemy::StateAttack()
 	
 	
 	if (m_img.CheckAnimationEnd()) {
-		new AttackObject(eType_EnemyAttack1, CVector3D(m_pos.x - 500, m_pos.y, m_pos.z), m_rect);
+		new AttackObject(eType_EnemyAttack1, CVector3D(m_pos.x - 200, m_pos.y, m_pos.z), RectBox(-64, 128, 64, 0, 16, -16));
+		new AttackObject(eType_EnemyAttack1, CVector3D(m_pos.x + 200, m_pos.y, m_pos.z), RectBox(-64, 128, 64, 0, 16, -16));
 		m_state = eRun;
 		m_invin = false;
 		m_cnt = 0;
@@ -334,18 +334,17 @@ void Enemy::Update()
 
 	}
 	m_img.UpdateAnimation();
-	
-	//優先度変更
-	ChangePriority(ePriorityEnemy + m_pos.z);
 }
 
 void Enemy::Collision(Task* t)
 {
 	switch (t->GetID())
 	{
+
+	
 	case eType_NomalBullet:
-		if (Bullet* bullet = dynamic_cast<Bullet*>(t))
-		{
+
+		if (Bullet* bullet = dynamic_cast<Bullet*>(t)){
 			if (CollisionRect(bullet, this))
 			{
 				if (m_invin == false) {
@@ -356,16 +355,14 @@ void Enemy::Collision(Task* t)
 			}
 		}
 		break;
-
 	case eType_PlayerEffect1:
-		if (PlayerEffect* player = dynamic_cast<PlayerEffect*>(t))
-		{
+		if (PlayerEffect* player = dynamic_cast<PlayerEffect*>(t)) {
 			if (CollisionRect(player, this))
 			{
 				if (m_invin == false) {
 					m_state = eDamage;
 				}
-				else m_hp -= 200;
+				else m_hp -= 100;
 
 			}
 		}
