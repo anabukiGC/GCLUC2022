@@ -10,4 +10,5 @@ private:
 public:
 	RankingScore(int score, const CVector2D& pos,const float size);
 	void Draw();
+	
 };

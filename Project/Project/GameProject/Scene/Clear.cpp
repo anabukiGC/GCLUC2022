@@ -11,8 +11,8 @@ Clear::Clear() : Base(eType_Scene, 10)
 	int i = 0;//座標変更用
 	const CVector2D pos[3] = {//座標配列
 		CVector2D(500, 900),//１位
-		CVector2D((SCREEN_WIDTH / 2) , SCREEN_HEIGHT - 250),//２
-		CVector2D((SCREEN_WIDTH / 2) , SCREEN_HEIGHT - 150),//３
+		CVector2D((SCREEN_WIDTH / 2) , SCREEN_HEIGHT - 195),//２
+		CVector2D((SCREEN_WIDTH / 2) , SCREEN_HEIGHT - 95),//３
 	};
 	float scale[3] = {//サイズ配列
 		1.0,
@@ -20,7 +20,7 @@ Clear::Clear() : Base(eType_Scene, 10)
 		0.5
 
 	};
-	new RankingScore(g_score, CVector2D((SCREEN_WIDTH / 2 - 200) - i * 150, 475),2);
+	new RankingScore(g_score, CVector2D((SCREEN_WIDTH / 2 - 200) - i * 150, 475),2);//スコア表示
 	for (auto& v : ranking)/*範囲for　autoで自動型変換*/
 	{
 		new RankingScore(v,pos[i],scale[i]);
@@ -28,7 +28,7 @@ Clear::Clear() : Base(eType_Scene, 10)
 
 
 	}
-	new UI(CVector2D(0, 400), 3);
+
 	
 	m_img = COPY_RESOURCE("Clear", CImage);
 	if (g_time / 60 < 60) {//１分以内なら
