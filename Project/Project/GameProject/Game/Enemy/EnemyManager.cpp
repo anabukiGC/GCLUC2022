@@ -33,8 +33,10 @@ EnemyManager::EnemyManager()
 	m_cnt = 0;
 	m_idx = 0;
 	m_wave_size = sizeof(wave_data) / sizeof(wave_data[0]);//全体のウェーブの個数を計算
-	m_img = COPY_RESOURCE("NomalBullet1", CImage);
-	m_img.SetSize(500, 500);
+	m_img = COPY_RESOURCE("EnemyBoad", CImage);
+	m_img.SetSize(256, 256);
+	m_img2 = COPY_RESOURCE("BossBoad", CImage);
+	m_img2.SetSize(256, 256);
 }
 
 void EnemyManager::Update()
@@ -80,8 +82,18 @@ void EnemyManager::Draw()
 	if (!GetWave()) {
 		if (m_wave_idx >= m_wave_size) return;//ウェーブ全体が終わったら終了
 		EnemyWave* wave = &wave_data[m_wave_idx];//ウェーブの値の内容を入れる
+		if(wave->size !=1){
 		m_pos.x = wave->pos_x;//指定地点の値を入れるm_posが看板の場所
+		m_pos.y = 100;//指定地点の値を入れるm_posが看板の場所
 		Draw3D();
+		}
+		else if(wave->size == 1){
+			CVector2D pos2D = Get2DPos(m_pos);
+			m_img2.SetPos(pos2D);
+			m_pos.x = wave->pos_x;//指定地点の値を入れるm_posが看板の場所
+			m_pos.y = 100;//指定地点の値を入れるm_posが看板の場所
+			m_img2.Draw();
+		}
 	}
 }
 

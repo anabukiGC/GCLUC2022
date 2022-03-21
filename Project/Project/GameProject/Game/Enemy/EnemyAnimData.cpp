@@ -145,13 +145,13 @@ static TexAnim boss1Attack1[] =//ãﬂê⁄
 	{ 7,15 },
 	{ 8,15 },
 	{ 9,15 },
-	{ 8,15 },
-	{ 7,15 },
-	{ 8,15 },
-	{ 9,15 },
-	{ 10,15 },
-	{ 11,15 },
-	{ 12,15 },
+	{ 8,5 },
+	{ 7,5 },
+	{ 8,5 },
+	{ 9,5 },
+	{ 10,5 },
+	{ 11,5 },
+	{ 12,5 },
 };
 
 static TexAnim boss1Attack2[] =
@@ -303,4 +303,23 @@ TexAnimData boss2_meteor_data[] =
 	ANIMDATA(Meteor),
 	ANIMDATA(MeteorBreak),
 	
+};
+static TexAnim Laser[] =
+{
+	{ 0,5 },
+	{ 1,5 },
+	{ 2,5 },
+	{ 0,5 },
+	{ 1,5 },
+	{ 2,5 },
+	{ 0,5 },
+	{ 1,5 },
+	{ 2,5 },
+};
+
+TexAnimData boss_laser_data[] =
+{
+	ANIMDATA(Laser),
+	
+
 };

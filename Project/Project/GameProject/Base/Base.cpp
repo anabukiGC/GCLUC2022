@@ -33,6 +33,8 @@ void Base::Draw3D()
 	m_img.SetFlipH(m_flip);
 	m_img.Draw();
 
+
+
 	//デバッグ用　矩形の表示
 	
 

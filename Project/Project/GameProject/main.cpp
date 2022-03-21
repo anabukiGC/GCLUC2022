@@ -126,6 +126,10 @@ void Init(void)
 	ADD_RESOURCE("Debuff", CImage::CreateImage("Image/UI/Debuff.png"));
 	ADD_RESOURCE("ClearScore", CImage::CreateImage("Image/UI/ClearScore.png"));
 	ADD_RESOURCE("1st", CImage::CreateImage("Image/UI/1st.png"));
+	ADD_RESOURCE("BossBoad", CImage::CreateImage("Image/UI/BossBoad.png"));
+	ADD_RESOURCE("EnemyBoad", CImage::CreateImage("Image/UI/EnemyBoad.png"));
+	ADD_RESOURCE("BossLaser", CImage::CreateImage("Image/Boss/BossLaser.png",boss_laser_data,1000,300));
+
 
 	new Title();
 	Ranking::GetInstance()->ReadScore();

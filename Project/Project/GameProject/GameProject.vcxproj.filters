@@ -71,6 +71,9 @@
     <ClCompile Include="Scene\GameOver.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Enemy\BossLaser.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\Background.h" />
@@ -141,6 +144,9 @@
     </ClInclude>
     <ClInclude Include="Scene\GameOver.h">
       <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Enemy\BossLaser.h">
+      <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

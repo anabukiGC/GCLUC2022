@@ -28,7 +28,7 @@ private:
 	int m_idx;//データ位置（０～何番目か）
 	int m_size;//データサイズ(いくつあるのか決める配列の中身的な）
 	bool m_ivent = false;
-
+	CImage m_img2;
 
 	void Update();
 

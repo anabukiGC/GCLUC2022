@@ -4,6 +4,7 @@
 #include"Bullet.h"
 #include"TaskManager.h"
 #include "AttackObject.h"
+#include "BossLaser.h"
 const float Boss::speed = 3.0;//‚Ç‚±‚Å‚àg‚¦‚é‚æ‚¤‚É
 Boss::Boss(const CVector3D& pos) :Base(eType_Boss, 1)
 {
@@ -85,8 +86,12 @@ void Boss::StateAttack2()
 	m_invin = true;
 	m_img.ChangeAnimation(2, false);//‰“‹——£UŒ‚
 
-
+	if (m_img.GetIndex() == 3) {//ˆÚ“®
+		new BossLaser(CVector3D(m_pos.x-500,m_pos.y+300,m_pos.z));
+		}
+	
 	if (m_img.CheckAnimationEnd()) {
+		
 		m_state = eIdle;
 		m_invin = false;
 		m_cnt = 0;

@@ -22,6 +22,7 @@
     <ClCompile Include="Game\Enemy\Boss2.cpp" />
     <ClCompile Include="Game\Enemy\Boss2HP.cpp" />
     <ClCompile Include="Game\Enemy\BossHP.cpp" />
+    <ClCompile Include="Game\Enemy\BossLaser.cpp" />
     <ClCompile Include="Game\Enemy\Enemy.cpp" />
     <ClCompile Include="Game\Enemy\EnemyAnimData.cpp" />
     <ClCompile Include="Game\Enemy\EnemyHP.cpp" />
@@ -56,6 +57,7 @@
     <ClInclude Include="Game\Enemy\Boss2.h" />
     <ClInclude Include="Game\Enemy\Boss2HP.h" />
     <ClInclude Include="Game\Enemy\BossHP.h" />
+    <ClInclude Include="Game\Enemy\BossLaser.h" />
     <ClInclude Include="Game\Enemy\Enemy.h" />
     <ClInclude Include="Game\Enemy\EnemyAnimData.h" />
     <ClInclude Include="Game\Enemy\EnemyHP.h" />
