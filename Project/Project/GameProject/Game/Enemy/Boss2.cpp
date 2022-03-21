@@ -126,6 +126,7 @@ void Boss2::StateChange()
 }
 void Boss2::StateDie()
 {
+	m_invin = true;
 	m_img.ChangeAnimation(6, false);
 
 
