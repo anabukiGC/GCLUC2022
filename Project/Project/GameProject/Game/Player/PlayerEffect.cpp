@@ -1,7 +1,7 @@
 #include "PlayerEffect.h"
 #include "Player.h"
 
-PlayerEffect::PlayerEffect(int kind, const CVector3D& pos, bool flip): Base(eType_PlayerEffect, ePriorityPlayerEffect)
+PlayerEffect::PlayerEffect(BaseType type, const CVector3D& pos, bool flip): Base(type, ePriorityPlayerEffect)
 {
 	Player* p = Player::GetPlayer(Player::eSword);
 
@@ -13,7 +13,6 @@ PlayerEffect::PlayerEffect(int kind, const CVector3D& pos, bool flip): Base(eTyp
 
 	DleatTime = 0;
 	m_flip = flip;
-	m_kind = kind;
 
 	m_pos = pos;
 }

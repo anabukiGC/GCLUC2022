@@ -352,11 +352,11 @@ void Player::StateJumpAttack()
 	{
 		if (m_flip)
 		{
-			new PlayerEffect(PlayerEffect::eAttack1Effect, CVector3D(m_pos.x - 150, m_pos.y + 120, m_pos.z), m_flip);
+			new PlayerEffect(eType_PlayerEffect1, CVector3D(m_pos.x - 150, m_pos.y + 120, m_pos.z), m_flip);
 		}
 		if (!m_flip)
 		{
-			new PlayerEffect(PlayerEffect::eAttack1Effect, CVector3D(m_pos.x + 170, m_pos.y + 120, m_pos.z), m_flip);
+			new PlayerEffect(eType_PlayerEffect1, CVector3D(m_pos.x + 170, m_pos.y + 120, m_pos.z), m_flip);
 		}
 
 	}
@@ -379,11 +379,11 @@ void Player::StateSwordAttack1()
 	{
 		if (m_flip)
 		{
-			new PlayerEffect(PlayerEffect::eAttack1Effect, CVector3D(m_pos.x - 150, m_pos.y + 170, m_pos.z), m_flip);
+			new PlayerEffect(eType_PlayerEffect1, CVector3D(m_pos.x - 150, m_pos.y + 170, m_pos.z), m_flip);
 		}
 		if (!m_flip)
 		{
-			new PlayerEffect(PlayerEffect::eAttack1Effect, CVector3D(m_pos.x + 170, m_pos.y + 170, m_pos.z), m_flip);
+			new PlayerEffect(eType_PlayerEffect1, CVector3D(m_pos.x + 170, m_pos.y + 170, m_pos.z), m_flip);
 		}
 		
 	}
@@ -409,11 +409,11 @@ void Player::StateSwordAttack2()
 	{
 		if (m_flip)
 		{
-			new PlayerEffect(PlayerEffect::eAttack1Effect, CVector3D(m_pos.x - 150, m_pos.y + 120, m_pos.z), m_flip);
+			new PlayerEffect(eType_PlayerEffect2, CVector3D(m_pos.x - 150, m_pos.y + 120, m_pos.z), m_flip);
 		}
 		if (!m_flip)
 		{
-			new PlayerEffect(PlayerEffect::eAttack1Effect, CVector3D(m_pos.x + 170, m_pos.y + 120, m_pos.z), m_flip);
+			new PlayerEffect(eType_PlayerEffect2, CVector3D(m_pos.x + 170, m_pos.y + 120, m_pos.z), m_flip);
 		}
 
 	}
@@ -439,11 +439,11 @@ void Player::StateSwordAttack3()
 	{
 		if (m_flip)
 		{
-			new PlayerEffect(PlayerEffect::eAttack1Effect, CVector3D(m_pos.x - 150, m_pos.y + 100, m_pos.z), m_flip);
+			new PlayerEffect(eType_PlayerEffect3, CVector3D(m_pos.x - 150, m_pos.y + 100, m_pos.z), m_flip);
 		}
 		if (!m_flip)
 		{
-			new PlayerEffect(PlayerEffect::eAttack1Effect, CVector3D(m_pos.x + 170, m_pos.y + 100, m_pos.z), m_flip);
+			new PlayerEffect(eType_PlayerEffect3, CVector3D(m_pos.x + 170, m_pos.y + 100, m_pos.z), m_flip);
 		}
 	}
 

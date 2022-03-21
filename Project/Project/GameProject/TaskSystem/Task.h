@@ -22,7 +22,9 @@ enum  BaseType {
 	eType_ChargeBullet2,
 	eType_Laser,
 	eType_Scene,
-	eType_PlayerEffect,
+	eType_PlayerEffect1,
+	eType_PlayerEffect2,
+	eType_PlayerEffect3,
 };
 
 //—Dæ“x‚Ì—ñ‹“

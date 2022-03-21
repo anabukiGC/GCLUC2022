@@ -340,7 +340,7 @@ void Enemy::Collision(Task* t)
 	switch (t->GetID())
 	{
 	case eType_NomalBullet:
-	case eType_PlayerEffect:
+	case eType_PlayerEffect1:
 		if (Bullet* bullet = dynamic_cast<Bullet*>(t))
 		{
 			if (CollisionRect(bullet, this))
