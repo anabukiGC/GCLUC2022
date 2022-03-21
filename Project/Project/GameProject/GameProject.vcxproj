@@ -43,6 +43,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Scene\Clear.cpp" />
     <ClCompile Include="Scene\GameOver.cpp" />
+    <ClCompile Include="Scene\HowTo.cpp" />
     <ClCompile Include="Scene\Title.cpp" />
     <ClCompile Include="TaskSystem\Task.cpp" />
     <ClCompile Include="TaskSystem\TaskManager.cpp" />
@@ -78,6 +79,7 @@
     <ClInclude Include="Global.h" />
     <ClInclude Include="Scene\Clear.h" />
     <ClInclude Include="Scene\GameOver.h" />
+    <ClInclude Include="Scene\HowTo.h" />
     <ClInclude Include="Scene\Title.h" />
     <ClInclude Include="TaskSystem\Task.h" />
     <ClInclude Include="TaskSystem\TaskManager.h" />
