@@ -26,10 +26,12 @@ void Select::Update()
 {
 	if (m_kind == 1) {
 		if (m_stop == false && PUSH(CInput::eDown)) {
+			SOUND("SE_Select")->Play();
 			m_pos.y -= 160;
 			m_stop = true;
 		}
 		if (m_stop == true && PUSH(CInput::eUp)) {
+			SOUND("SE_Select")->Play();
 			m_pos.y += 160;
 			m_stop = false;
 		}

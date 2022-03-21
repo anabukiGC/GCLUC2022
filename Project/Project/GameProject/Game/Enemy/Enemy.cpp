@@ -37,7 +37,7 @@ Enemy::Enemy(const CVector3D& pos, int k, bool flip) : Base(eType_Enemy, 1)/*¡Œ
 
 		break;
 	case EnemyData::eEnemy2:
-
+		SOUND("SE_Enemy2")->Play();
 		m_img = COPY_RESOURCE("Enemy1", CImage);
 
 		m_flip = flip;//Œü‚«•ÏX
@@ -58,7 +58,7 @@ Enemy::Enemy(const CVector3D& pos, int k, bool flip) : Base(eType_Enemy, 1)/*¡Œ
 		break;
 	
 	case EnemyData::eEnemy3:
-
+		SOUND("SE_Bonus")->Play();
 		m_img = COPY_RESOURCE("Bonus", CImage);
 
 		m_flip = flip;//Œü‚«•ÏX
@@ -148,10 +148,13 @@ void Enemy::StateAttack()
 		{
 			if (!Fire)
 			{
-				if (m_flip)
+				if (m_flip){
 					new EnemyBullet(eType_EnemyBullet, CVector3D(m_pos.x + 100, m_pos.y + 100, m_pos.z), m_flip);
-				else
+				SOUND("SE_Enemy2Bullet")->Play();}
+				else{
 					new EnemyBullet(eType_EnemyBullet, CVector3D(m_pos.x - 100, m_pos.y + 100, m_pos.z), m_flip);
+					SOUND("SE_Enemy2Bullet")->Play();
+				}
 			}
 			Fire = true;
 		}
