@@ -135,6 +135,26 @@ void Init(void)
 	ADD_RESOURCE("BossLaser", CImage::CreateImage("Image/Boss/BossLaser.png",boss_laser_data,1000,300));
 	ADD_RESOURCE("HowTo2", CImage::CreateImage("Image/Scene/HowTo2.png"));
 
+	SOUND("Title")->Load("BGM/BGM_Title.wav");
+	SOUND("Game")->Load("BGM/BGM_Game.wav");
+	SOUND("Clear")->Load("BGM/BGM_Clear.wav");
+	SOUND("GameOver")->Load("BGM/BGM_GameOver.wav");
+	SOUND("Boss")->Load("BGM/BGM_Boss.wav");
+	SOUND("Boss2")->Load("BGM/BGM_Boss2.wav");
+	SOUND("SE_Bonus")->Load("SE/SE_Bonus.wav");
+	SOUND("SE_BossAttack")->Load("SE/SE_BossAttack.wav");
+	SOUND("SE_BossLaser")->Load("SE/SE_BossLaser.wav");
+	SOUND("SE_Charge")->Load("SE/SE_Charge.wav");
+	SOUND("SE_Debuff")->Load("SE/SE_Debuff.wav");
+	SOUND("SE_Enemy1")->Load("SE/SE_Enemy1.wav");
+	SOUND("SE_Enemy2")->Load("SE/SE_Enemy2.wav");
+	SOUND("SE_Enemy2Bullet")->Load("SE/SE_Enemy2Bullet.wav");
+	SOUND("SE_Jump")->Load("SE/SE_Jump.wav");
+	SOUND("SE_Meteo")->Load("SE/SE_Meteo.wav");
+	SOUND("SE_Miss")->Load("SE/SE_Miss.wav");
+	SOUND("SE_Player1")->Load("SE/SE_Player1.wav");
+	SOUND("SE_Player2")->Load("SE/SE_Player2.wav");
+	SOUND("SE_Select")->Load("SE/SE_Select.wav");
 	new Title();
 	Ranking::GetInstance()->ReadScore();
 }

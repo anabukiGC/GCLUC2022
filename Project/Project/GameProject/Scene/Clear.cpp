@@ -7,6 +7,8 @@
 #include"UI.h"
 Clear::Clear() : Base(eType_Scene, 10)
 {
+	SOUND("Boss2")->Stop();
+	SOUND("Clear")->Play(true);
 	auto ranking = Ranking::GetInstance()->GetScore();//ランキングを入れる
 	int i = 0;//座標変更用
 	const CVector2D pos[3] = {//座標配列

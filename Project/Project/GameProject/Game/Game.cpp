@@ -13,6 +13,8 @@
 
 Game::Game() :Base(eType_Scene,0)
 {
+	SOUND("Title")->Stop();
+	SOUND("Game")->Play(true);
 	new Player(Player::eSword, CVector3D(100, 0, 1000), false);
 	new EnemyManager();
 	new BackGround();

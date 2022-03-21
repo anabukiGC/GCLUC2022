@@ -17,6 +17,7 @@ Enemy::Enemy(const CVector3D& pos, int k, bool flip) : Base(eType_Enemy, 1)/*¡Œ
 	switch (kind) {
 		
 	case EnemyData::eEnemy1:
+		SOUND("SE_Enemy1")->Play();
 		m_flip = flip;//Œü‚«•ÏX
 		m_img = COPY_RESOURCE("Enemy2", CImage);
 		m_max_hp = 200;//•ÏX—p

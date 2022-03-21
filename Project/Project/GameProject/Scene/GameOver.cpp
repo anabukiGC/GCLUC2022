@@ -7,6 +7,10 @@
 #include"UI.h"
 GameOver::GameOver() : Base(eType_Scene, 10)
 {
+	SOUND("Game")->Stop();
+	SOUND("Boss2")->Stop();
+	SOUND("Boss")->Stop();
+	SOUND("GameOver")->Play(true);
 	m_img = COPY_RESOURCE("GameOver", CImage);
 }
 
