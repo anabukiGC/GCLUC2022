@@ -11,7 +11,8 @@
 const float Boss2::speed = 3.0;//Ç«Ç±Ç≈Ç‡égÇ¶ÇÈÇÊÇ§Ç…
 Boss2::Boss2(const CVector3D& pos) :Base(eType_Boss, 1)
 {
-
+	SOUND("Boss")->Stop();
+	SOUND("Boss2")->Play(true);
 	m_img = COPY_RESOURCE("Boss2", CImage);
 	m_max_hp = 1000;
 	m_hp = m_max_hp;//ïœçXóp

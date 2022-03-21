@@ -12,6 +12,7 @@ Laser::Laser(const CVector3D& p, bool flip, int LifeTime): Base(eType_Laser, 2)
 	m_lifeTime = LifeTime;
 	Ysize = 0;
 	see = 0;
+	SOUND("SE_BossLaser")->Play();
 }
 
 void Laser::Collision(Task* t)

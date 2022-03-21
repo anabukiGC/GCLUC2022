@@ -292,6 +292,7 @@ void Player::StateIdle()
 		const float JumpPower = 10.0f;
 		m_vec.y = JumpPower;
 		m_bound = false;
+		SOUND("SE_Jump")->Play();
 	}
 
 	//UŒ‚ó‘Ô‚ÉˆÈ~
@@ -382,10 +383,12 @@ void Player::StateJumpAttack()
 		if (m_flip)
 		{
 			new PlayerEffect(eType_PlayerEffect1, CVector3D(m_pos.x - 150, m_pos.y + 120, m_pos.z), m_flip);
+			SOUND("Miss")->Play();
 		}
 		if (!m_flip)
 		{
 			new PlayerEffect(eType_PlayerEffect1, CVector3D(m_pos.x + 170, m_pos.y + 120, m_pos.z), m_flip);
+			SOUND("Miss")->Play();
 		}
 
 	}
@@ -409,10 +412,12 @@ void Player::StateSwordAttack1()
 		if (m_flip)
 		{
 			new PlayerEffect(eType_PlayerEffect1, CVector3D(m_pos.x - 150, m_pos.y + 170, m_pos.z), m_flip);
+			SOUND("SE_Miss")->Play();
 		}
 		if (!m_flip)
 		{
 			new PlayerEffect(eType_PlayerEffect1, CVector3D(m_pos.x + 170, m_pos.y + 170, m_pos.z), m_flip);
+			SOUND("SE_Miss")->Play();
 		}
 		
 	}
@@ -439,10 +444,12 @@ void Player::StateSwordAttack2()
 		if (m_flip)
 		{
 			new PlayerEffect(eType_PlayerEffect2, CVector3D(m_pos.x - 150, m_pos.y + 120, m_pos.z), m_flip);
+			SOUND("SE_Miss")->Play();
 		}
 		if (!m_flip)
 		{
 			new PlayerEffect(eType_PlayerEffect2, CVector3D(m_pos.x + 170, m_pos.y + 120, m_pos.z), m_flip);
+			SOUND("SE_Miss")->Play();
 		}
 
 	}
@@ -469,10 +476,12 @@ void Player::StateSwordAttack3()
 		if (m_flip)
 		{
 			new PlayerEffect(eType_PlayerEffect3, CVector3D(m_pos.x - 150, m_pos.y + 100, m_pos.z), m_flip);
+			SOUND("SE_Miss")->Play();
 		}
 		if (!m_flip)
 		{
 			new PlayerEffect(eType_PlayerEffect3, CVector3D(m_pos.x + 170, m_pos.y + 100, m_pos.z), m_flip);
+			SOUND("SE_Miss")->Play();
 		}
 	}
 
@@ -522,11 +531,13 @@ void Player::StateGunAttack1()
 			if (m_flip)
 			{
 				new Bullet(eType_NomalBullet, CVector3D(m_pos.x - 80, m_pos.y + 171, m_pos.z), m_flip);
+				SOUND("SE_Player2")->Play();
 			}
 
 			if (!m_flip)
 			{
 				new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 80, m_pos.y + 171, m_pos.z), m_flip);
+				SOUND("SE_Player2")->Play();
 			}
 			Fire = true;
 			m_state_attack = 4;
@@ -540,11 +551,13 @@ void Player::StateGunAttack1()
 			if (m_flip)
 			{
 				new Bullet(eType_NomalBullet, CVector3D(m_pos.x - 80, m_pos.y + 171, m_pos.z), m_flip);
+				SOUND("SE_Player2")->Play();
 			}
 
 			if (!m_flip)
 			{
 				new Bullet(eType_NomalBullet, CVector3D(m_pos.x + 80, m_pos.y + 171, m_pos.z), m_flip);
+				SOUND("SE_Player2")->Play();
 			}
 			Fire = true;
 			m_state_attack = 4;
@@ -585,10 +598,12 @@ void Player::StateGunAttack2()
 			if (m_flip)
 			{
 				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x + 66, m_pos.y + 153, m_pos.z), m_flip, DtoR(-30));
+				SOUND("SE_Player2")->Play();
 			}
 			if(!m_flip)
 			{
 				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x - 66, m_pos.y + 153, m_pos.z), m_flip, DtoR(-30));
+				SOUND("SE_Player2")->Play();
 			}
 		}
 		if (m_img.GetIndex() == 4 && Fire == false)
@@ -596,10 +611,12 @@ void Player::StateGunAttack2()
 			if (m_flip)
 			{
 				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x + 74, m_pos.y + 176, m_pos.z), m_flip, DtoR(0));
+				SOUND("SE_Player2")->Play();
 			}
 			if (!m_flip)
 			{
 				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x - 74, m_pos.y + 176, m_pos.z), m_flip, DtoR(0));
+				SOUND("SE_Player2")->Play();
 			}
 		}
 		if (m_img.GetIndex() == 6 && Fire == false)
@@ -607,10 +624,12 @@ void Player::StateGunAttack2()
 			if (m_flip)
 			{
 				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x + 70, m_pos.y + 194, m_pos.z), m_flip, DtoR(60));
+				SOUND("SE_Player2")->Play();
 			}
 			if (!m_flip)
 			{
 				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x - 70, m_pos.y + 194, m_pos.z), m_flip, DtoR(60));
+				SOUND("SE_Player2")->Play();
 			}
 		}
 		if (m_img.GetIndex() == 8 && Fire == false)
@@ -618,10 +637,12 @@ void Player::StateGunAttack2()
 			if (m_flip)
 			{
 				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x + 51, m_pos.y + 232, m_pos.z), m_flip, DtoR(80));
+				SOUND("SE_Player2")->Play();
 			}
 			if (!m_flip)
 			{
 				new Bullet(eType_NomalBullet2, CVector3D(m_pos.x - 51, m_pos.y + 232, m_pos.z), m_flip, DtoR(80));
+				SOUND("SE_Player2")->Play();
 			}
 			Fire = true;
 			m_state_attack2 = 2;
@@ -682,11 +703,13 @@ void Player::StateGunAttack3()
 			if (m_flip)
 			{
 				new Laser(CVector3D(m_pos.x - 1000, m_pos.y + 211, m_pos.z), m_flip, 60 * 2);
+			
 			}
 
 			if (!m_flip)
 			{
 				new Laser(CVector3D(m_pos.x + 200, m_pos.y + 211, m_pos.z), m_flip, 60 * 2);
+			
 			}
 			Fire = true;
 		}
@@ -703,11 +726,13 @@ void Player::StateGunAttack3()
 			if (m_flip)
 			{
 				new Laser(CVector3D(m_pos.x - 2150, m_pos.y + 90, m_pos.z), m_flip, 60 * 2);
+				
 			}
 
 			if (!m_flip)
 			{
 				new Laser(CVector3D(m_pos.x + 120, m_pos.y + 90, m_pos.z), m_flip, 60 * 2);
+			
 			}
 			Fire = true;
 		}

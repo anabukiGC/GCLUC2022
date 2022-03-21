@@ -7,6 +7,9 @@
 #include"HowTo.h"
 Title::Title() : Base(eType_Scene, 11)
 {
+	SOUND("GameOver")->Stop();
+	SOUND("Clear")->Stop();
+	SOUND("Title")->Play(true);
 	m_img = COPY_RESOURCE("Title", CImage);
 	new Select(CVector2D(SCREEN_WIDTH / 2 +150, SCREEN_HEIGHT / 2-450),1);
 	new Select(CVector2D(SCREEN_WIDTH/2-250, SCREEN_HEIGHT/2-450), 3);//Start

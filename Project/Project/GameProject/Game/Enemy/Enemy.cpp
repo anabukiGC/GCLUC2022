@@ -17,6 +17,7 @@ Enemy::Enemy(const CVector3D& pos, int k, bool flip) : Base(eType_Enemy, 1)/*¡Œ
 	switch (kind) {
 		
 	case EnemyData::eEnemy1:
+		SOUND("SE_Enemy1")->Play();
 		m_flip = flip;//Œü‚«•ÏX
 		m_img = COPY_RESOURCE("Enemy2", CImage);
 		m_max_hp = 200;//•ÏX—p
@@ -403,11 +404,12 @@ void Enemy::Collision(Task* t)
 				}
 				if (m_debuff)
 				{
-					m_hp -= 40;
+					m_hp -= 100;
+					SOUND("SE_Charge")->Play();
 				}
 				else if (!m_debuff)
 				{
-					m_hp -= 100;
+					m_hp -= 40;
 				}
 			}
 		}
@@ -439,6 +441,7 @@ void Enemy::Collision(Task* t)
 					m_state = eDamage;
 				}
 				m_hp -= 20;
+				SOUND("SE_Player1")->Play();
 
 			}
 		}
@@ -451,6 +454,7 @@ void Enemy::Collision(Task* t)
 					m_state = eDamage;
 				}
 				m_hp -= 30;
+				SOUND("SE_Player1")->Play();
 			}
 		}
 		break;
@@ -464,6 +468,7 @@ void Enemy::Collision(Task* t)
 				m_hp -= 50;
 				new Debuff(CVector2D(this->m_pos.x, this->m_pos.y));
 				m_debuffTime = 300;
+				SOUND("SE_Player1")->Play();
 			}
 		}
 		break;
