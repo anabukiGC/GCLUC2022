@@ -652,12 +652,12 @@ void Player::StateGunAttack3()
 		{
 			if (m_flip)
 			{
-				new Laser(CVector3D(m_pos.x - 80, m_pos.y + 171, m_pos.z), m_flip, 60 * 2);
+				new Laser(CVector3D(m_pos.x - 1000, m_pos.y + 211, m_pos.z), m_flip, 60 * 2);
 			}
 
 			if (!m_flip)
 			{
-				new Laser(CVector3D(m_pos.x + 80, m_pos.y + 171, m_pos.z), m_flip, 60 * 2);
+				new Laser(CVector3D(m_pos.x + 50, m_pos.y + 211, m_pos.z), m_flip, 60 * 2);
 			}
 			Fire = true;
 		}
@@ -673,12 +673,12 @@ void Player::StateGunAttack3()
 		{
 			if (m_flip)
 			{
-				new Laser(CVector3D(m_pos.x - 80, m_pos.y + 171, m_pos.z), m_flip, 60 * 2);
+				new Laser(CVector3D(m_pos.x - 1000, m_pos.y + 211, m_pos.z), m_flip, 60 * 2);
 			}
 
 			if (!m_flip)
 			{
-				new Laser(CVector3D(m_pos.x + 80, m_pos.y + 171, m_pos.z), m_flip, 60 * 2);
+				new Laser(CVector3D(m_pos.x + 50, m_pos.y + 211, m_pos.z), m_flip, 60 * 2);
 			}
 			Fire = true;
 		}
@@ -719,32 +719,16 @@ void Player::Collision(Task* t)
 	switch (t->GetID())
 	{
 	case eType_EnemyAttack1:
-		if (AttackObject* Enemy1 = dynamic_cast<AttackObject*>(t))
+		if (AttackObject* enemy = dynamic_cast<AttackObject*>(t))
 		{
-			if (m_mutekiTime > 0)
+			if (CollisionRect(enemy, this))
 			{
-				break;
-			}
-			if (m_hp >= 0)
-			{
+				if (m_mutekiTime <= 0)
+				{
 					m_mutekiTime = 180;
 					m_hp -= 20;
 					m_state = eState_Damage;
-			}
-		}
-		break;
-	case eType_BossAttack1:
-		if (Base* b = dynamic_cast<Base*>(t))
-		{
-			if (m_mutekiTime > 0)
-			{
-				break;
-			}
-			if (m_hp >= 0)
-			{
-					m_mutekiTime = 180;
-					m_hp -= 50;
-					m_state = eState_Damage;
+				}
 			}
 		}
 		break;
