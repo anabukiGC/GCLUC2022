@@ -3,10 +3,10 @@ Laser::Laser(const CVector3D& p, bool flip, int LifeTime): Base(eType_Laser, 2)
 {
 	m_img = COPY_RESOURCE("ChargeBullet2", CImage);
 	//画像サイズ設定
-	m_img.SetSize(1000, 200);
+	m_img.SetSize(2000, 100);
 	//画像の中心位置設定
-	m_img.SetCenter(0, 27);
-	m_rect = RectBox(-20, -27, 20, 0, 32, -32);
+	m_img.SetCenter(0, 100);
+	m_rect = RectBox(0, 100, 2000, 0, 32, -32);
 	m_pos = p;
 	m_flip = flip;
 	m_lifeTime = LifeTime;

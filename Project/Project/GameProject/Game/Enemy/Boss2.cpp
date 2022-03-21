@@ -1,11 +1,13 @@
-
-
+#include "PlayerEffect.h"
+#include "Debuff.h"
 #include"Bullet.h"
 #include "Boss2.h"
 #include"TaskManager.h"
 #include"Meteor.h"
 #include "AttackObject.h"
 #include "BossLaser.h"
+#include "Laser.h"
+
 const float Boss2::speed = 3.0;//‚Ç‚±‚Å‚àŽg‚¦‚é‚æ‚¤‚É
 Boss2::Boss2(const CVector3D& pos) :Base(eType_Boss, 1)
 {
@@ -25,6 +27,8 @@ Boss2::Boss2(const CVector3D& pos) :Base(eType_Boss, 1)
 	m_img.SetCenter(128 * 2, 256 * 2);
 	m_rect = RectBox(-128 * 2, 256 * 2, 128 * 2, 0, 32, -32);
 	
+	m_debuffTime = 0; 
+	m_debuff = false;
 }
 void Boss2::StateIdle()
 {
@@ -237,15 +241,102 @@ void Boss2::Collision(Task* t)
 	switch (t->GetID())
 	{
 	case eType_NomalBullet:
-		if (Bullet* bullet = dynamic_cast<Bullet*>(t))
-		{
+
+		if (Bullet* bullet = dynamic_cast<Bullet*>(t)) {
 			if (CollisionRect(bullet, this))
 			{
 				if (m_invin == false) {
 					m_state = eDamage;
 				}
-				else
-					m_hp -= 200;
+				m_hp -= 20;
+
+			}
+		}
+		break;
+	case eType_NomalBullet2:
+
+		if (Bullet* bullet = dynamic_cast<Bullet*>(t)) {
+			if (CollisionRect(bullet, this))
+			{
+				if (m_invin == false) {
+					m_state = eDamage;
+				}
+				m_hp -= 15;
+
+			}
+		}
+		break;
+	case eType_ChargeBullet:
+
+		if (Bullet* bullet = dynamic_cast<Bullet*>(t)) {
+			if (CollisionRect(bullet, this))
+			{
+				if (m_invin == false) {
+					m_state = eDamage;
+				}
+				if (m_debuff)
+				{
+					m_hp -= 40;
+				}
+				else if (!m_debuff)
+				{
+					m_hp -= 100;
+				}
+			}
+		}
+		break;
+	case eType_Laser:
+
+		if (Laser* bullet = dynamic_cast<Laser*>(t)) {
+			if (CollisionRect(bullet, this))
+			{
+				if (m_invin == false) {
+					m_state = eDamage;
+				}
+				if (m_debuff)
+				{
+					m_hp -= 4;
+				}
+				else if (!m_debuff)
+				{
+					m_hp -= 2;
+				}
+			}
+		}
+		break;
+	case eType_PlayerEffect1:
+		if (PlayerEffect* player = dynamic_cast<PlayerEffect*>(t)) {
+			if (CollisionRect(player, this))
+			{
+				if (m_invin == false) {
+					m_state = eDamage;
+				}
+				m_hp -= 20;
+
+			}
+		}
+		break;
+	case eType_PlayerEffect2:
+		if (PlayerEffect* player = dynamic_cast<PlayerEffect*>(t)) {
+			if (CollisionRect(player, this))
+			{
+				if (m_invin == false) {
+					m_state = eDamage;
+				}
+				m_hp -= 30;
+			}
+		}
+		break;
+	case eType_PlayerEffect3:
+		if (PlayerEffect* player = dynamic_cast<PlayerEffect*>(t)) {
+			if (CollisionRect(player, this))
+			{
+				if (m_invin == false) {
+					m_state = eDamage;
+				}
+				m_hp -= 50;
+				new Debuff(CVector2D(this->m_pos.x, this->m_pos.y));
+				m_debuffTime = 300;
 			}
 		}
 		break;

@@ -76,6 +76,9 @@
     </ClCompile>
     <ClCompile Include="Game\UI\Select.cpp" />
     <ClCompile Include="Scene\HowTo.cpp" />
+    <ClCompile Include="Game\EnemyBullet.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game\Background.h" />
@@ -152,6 +155,9 @@
     </ClInclude>
     <ClInclude Include="Game\UI\Select.h" />
     <ClInclude Include="Scene\HowTo.h" />
+    <ClInclude Include="Game\EnemyBullet.h">
+      <Filter>Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="TaskSystem">

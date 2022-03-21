@@ -6,6 +6,8 @@
 #include "PlayerEffect.h"
 #include "Enemy.h"
 #include "AttackObject.h"
+#include "Meteor.h"
+#include "BossLaser.h"
 #include "../Global.h"
 
 std::vector<Player*> Player::m_players(2);
@@ -204,6 +206,11 @@ void Player::Update()
 	if (m_pos.x >= m_scroll.x + SCREEN_WIDTH)
 	{
 		m_pos.x = m_scroll.x + SCREEN_WIDTH;
+	}
+
+	if (m_pos.x >= 4300)
+	{
+		m_pos.x = 4300;
 	}
 }
 
@@ -675,7 +682,7 @@ void Player::StateGunAttack3()
 
 			if (!m_flip)
 			{
-				new Laser(CVector3D(m_pos.x + 50, m_pos.y + 211, m_pos.z), m_flip, 60 * 2);
+				new Laser(CVector3D(m_pos.x + 200, m_pos.y + 211, m_pos.z), m_flip, 60 * 2);
 			}
 			Fire = true;
 		}
@@ -691,12 +698,12 @@ void Player::StateGunAttack3()
 		{
 			if (m_flip)
 			{
-				new Laser(CVector3D(m_pos.x - 1000, m_pos.y + 211, m_pos.z), m_flip, 60 * 2);
+				new Laser(CVector3D(m_pos.x - 2150, m_pos.y + 90, m_pos.z), m_flip, 60 * 2);
 			}
 
 			if (!m_flip)
 			{
-				new Laser(CVector3D(m_pos.x + 50, m_pos.y + 211, m_pos.z), m_flip, 60 * 2);
+				new Laser(CVector3D(m_pos.x + 120, m_pos.y + 90, m_pos.z), m_flip, 60 * 2);
 			}
 			Fire = true;
 		}
@@ -737,6 +744,33 @@ void Player::Collision(Task* t)
 	switch (t->GetID())
 	{
 	case eType_EnemyAttack1:
+		if (AttackObject* enemy = dynamic_cast<AttackObject*>(t))
+		{
+			if (CollisionRect(enemy, this))
+			{
+				if (m_mutekiTime <= 0)
+				{
+					m_mutekiTime = 180;
+					m_hp -= 20;
+					m_state = eState_Damage;
+				}
+			}
+		}
+		break;
+	case eType_EnemyBullet:
+		if (AttackObject* enemy = dynamic_cast<AttackObject*>(t))
+		{
+			if (CollisionRect(enemy, this))
+			{
+				if (m_mutekiTime <= 0)
+				{
+					m_mutekiTime = 180;
+					m_hp -= 10;
+					m_state = eState_Damage;
+				}
+			}
+		}
+		break;
 	case eType_BossAttack1:
 		if (AttackObject* enemy = dynamic_cast<AttackObject*>(t))
 		{
@@ -744,8 +778,36 @@ void Player::Collision(Task* t)
 			{
 				if (m_mutekiTime <= 0)
 				{
-					m_mutekiTime = 0;
+					m_mutekiTime = 180;
 					m_hp -= 20;
+					m_state = eState_Damage;
+				}
+			}
+		}
+		break;
+	case eType_BossBullet1:
+		if (BossLaser* enemy = dynamic_cast<BossLaser*>(t))
+		{
+			if (CollisionRect(enemy, this))
+			{
+				if (m_mutekiTime <= 0)
+				{
+					m_mutekiTime = 30;
+					m_hp -= 10;
+					m_state = eState_Damage;
+				}
+			}
+		}
+		break;
+	case eType_Boss_Meteo:
+		if (Meteor* enemy = dynamic_cast<Meteor*>(t))
+		{
+			if (CollisionRect(enemy, this))
+			{
+				if (m_mutekiTime <= 0)
+				{
+					m_mutekiTime = 30;
+					m_hp -= 10;
 					m_state = eState_Damage;
 				}
 			}

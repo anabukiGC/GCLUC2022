@@ -48,6 +48,9 @@ class Boss2 : public Base
 	bool m_meteo;//è¦Î”­¶
 	bool m_invin = false;//UŒ‚’†’f–h~
 	int m_meteo_time = 0;
+
+	int m_debuffTime;
+	bool m_debuff;
 public:
 	Boss2(const CVector3D& pos); //k=í—Ş•ª‚¯”Ô†
 	int GetHp();//Hp‚Ìæ“¾

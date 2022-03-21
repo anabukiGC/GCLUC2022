@@ -42,6 +42,9 @@ class Boss : public Base
 	int m_second = 0;//•b”
 	bool m_bound;//’µ‚Ë•Ô‚è—p
 	bool m_invin = false;//UŒ‚’†’f–h~
+
+	int m_debuffTime;
+	bool m_debuff;
 public:
 	Boss(const CVector3D& pos); //k=í—Ş•ª‚¯”Ô†
 	int GetHp();//Hp‚Ìæ“¾
@@ -50,7 +53,6 @@ public:
 	Shadow* m_shadow;
 	Debuff* m_b_debuff;
 	void Collision(Task* t);
-	bool m_debuff;
 	
 	CVector2D m_shadow_size;//‰æ‘œƒTƒCƒY—p
 };

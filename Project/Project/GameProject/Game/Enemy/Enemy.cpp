@@ -5,6 +5,8 @@
 #include"../Global.h"
 #include "AttackObject.h"
 #include "Debuff.h"
+#include "Laser.h"
+#include "EnemyBullet.h"
 
 const float Enemy::speed = 3.0;//‚Ç‚±‚Å‚àŽg‚¦‚é‚æ‚¤‚É
 
@@ -76,6 +78,7 @@ Enemy::Enemy(const CVector3D& pos, int k, bool flip) : Base(eType_Enemy, 1)/*¡Œ
 }
 	m_debuff = false;
 	m_debuffTime = 0;
+	Fire = false;
 }
 
 void Enemy::StateAway()
@@ -140,6 +143,17 @@ void Enemy::StateAttack()
 		m_invin = true;
 
 		m_img.ChangeAnimation(1, false);
+		if (m_img.GetIndex() >= 2)
+		{
+			if (!Fire)
+			{
+				if (m_flip)
+					new EnemyBullet(eType_EnemyBullet, CVector3D(m_pos.x + 100, m_pos.y + 100, m_pos.z), m_flip);
+				else
+					new EnemyBullet(eType_EnemyBullet, CVector3D(m_pos.x - 100, m_pos.y + 100, m_pos.z), m_flip);
+			}
+			Fire = true;
+		}
 		if (m_img.CheckAnimationEnd()) {
 		
 			m_state = eRun;
@@ -224,10 +238,6 @@ void Enemy::StateDamage()
 	if (m_img.CheckAnimationEnd() && m_hp > 0) {
 		m_state = eRun;
 		m_cnt = 0;
-		if (m_debuff)
-			m_hp -= 200;
-		else
-			m_hp -= 50;
 	}
 	if (m_img.CheckAnimationEnd() && m_hp <= 0) {
 		m_state = eDie;
@@ -330,6 +340,7 @@ void Enemy::Update()
 
 	if (kind == EnemyData::eEnemy2 && m_cnt == 240) {//•b”‚Åó‘Ô‘JˆÚ
 		m_state = eAttack;
+		Fire = false;
 	}
 	 
 	if (kind == EnemyData::eEnemy3 && m_bonus == 4) {
@@ -364,8 +375,59 @@ void Enemy::Collision(Task* t)
 				if (m_invin == false) {
 					m_state = eDamage;
 				}
-				else m_hp -= 20;
+				m_hp -= 20;
 				
+			}
+		}
+		break;
+	case eType_NomalBullet2:
+
+		if (Bullet* bullet = dynamic_cast<Bullet*>(t)) {
+			if (CollisionRect(bullet, this))
+			{
+				if (m_invin == false) {
+					m_state = eDamage;
+				}
+				m_hp -= 15;
+
+			}
+		}
+		break;
+	case eType_ChargeBullet:
+
+		if (Bullet* bullet = dynamic_cast<Bullet*>(t)) {
+			if (CollisionRect(bullet, this))
+			{
+				if (m_invin == false) {
+					m_state = eDamage;
+				}
+				if (m_debuff)
+				{
+					m_hp -= 40;
+				}
+				else if (!m_debuff)
+				{
+					m_hp -= 100;
+				}
+			}
+		}
+		break;
+	case eType_Laser:
+
+		if (Laser* bullet = dynamic_cast<Laser*>(t)) {
+			if (CollisionRect(bullet, this))
+			{
+				if (m_invin == false) {
+					m_state = eDamage;
+				}
+				if (m_debuff)
+				{
+					m_hp -= 4;
+				}
+				else if (!m_debuff)
+				{
+					m_hp -= 2;
+				}
 			}
 		}
 		break;
@@ -376,7 +438,7 @@ void Enemy::Collision(Task* t)
 				if (m_invin == false) {
 					m_state = eDamage;
 				}
-				else m_hp -= 20;
+				m_hp -= 20;
 
 			}
 		}
@@ -388,7 +450,7 @@ void Enemy::Collision(Task* t)
 				if (m_invin == false) {
 					m_state = eDamage;
 				}
-				else m_hp -= 30;
+				m_hp -= 30;
 			}
 		}
 		break;
@@ -399,7 +461,7 @@ void Enemy::Collision(Task* t)
 				if (m_invin == false) {
 					m_state = eDamage;
 				}
-				else m_hp -= 50;
+				m_hp -= 50;
 				new Debuff(CVector2D(this->m_pos.x, this->m_pos.y));
 				m_debuffTime = 300;
 			}

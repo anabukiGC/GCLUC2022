@@ -39,6 +39,8 @@ class Enemy : public Base
 	int m_debuffTime;
 	bool m_debuff;
 
+	bool Fire;
+
 	//状態分岐
 	
 	void StateAway();//内部的な（限定的な）処理なのでややこしくならないようにここだけ(void)
