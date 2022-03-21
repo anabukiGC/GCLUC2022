@@ -17,7 +17,7 @@ Game::Game() :Base(eType_Scene,0)
 	new EnemyManager();
 	new BackGround();
 	new UI(CVector2D(0,1000),1);//スコア
-	new UI(CVector2D(0, 1000), 2);//タイム
+	new UI(CVector2D(0, 100), 2);//タイム
 }
 
 Game::~Game()
