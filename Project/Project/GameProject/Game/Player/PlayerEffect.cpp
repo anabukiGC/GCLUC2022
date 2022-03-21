@@ -37,10 +37,7 @@ void PlayerEffect::Collision(Task* t)
 	case eType_Boss:
 		if (Base* b = dynamic_cast<Base*>(t))
 		{
-			if (CollisionRect(b, this))
-			{
 				SetKill();
-			}
 		}
 		break;
 	}

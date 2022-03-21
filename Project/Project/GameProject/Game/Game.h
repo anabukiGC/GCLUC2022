@@ -10,4 +10,6 @@ public:
 private:
 	void Update();
 	void Draw();
+
+	bool m_gameOver;
 };

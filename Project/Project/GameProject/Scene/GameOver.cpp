@@ -5,11 +5,9 @@
 #include "Ranking.h"
 #include "RankingScore.h"
 #include"UI.h"
-GameOver::GameOver(const CVector2D& pos) : Base(eType_Scene, 10000)
+GameOver::GameOver() : Base(eType_Scene, 10)
 {
 	m_img = COPY_RESOURCE("GameOver", CImage);
-	m_pos = pos;
-	m_img.SetSize(1920, 1080);
 }
 
 GameOver::~GameOver()
@@ -24,8 +22,7 @@ GameOver::~GameOver()
 
 void GameOver::Update()
 {
-	if (PUSH(CInput::eButton3)) 
-	{
+	if (PUSH(CInput::eButton3)) {
 		SetKill();
 	}
 }

@@ -2,7 +2,7 @@
 #include "Base.h"
 class GameOver : public Base {
 public:
-	GameOver(const CVector2D& pos);
+	GameOver();
 	~GameOver();
 private:
 	void Update();

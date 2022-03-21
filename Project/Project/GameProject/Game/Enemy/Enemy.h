@@ -35,6 +35,10 @@ class Enemy : public Base
 
 	//攻撃エフェクトフラグ
 	bool m_attack_effect;
+
+	int m_debuffTime;
+	bool m_debuff;
+
 	//状態分岐
 	
 	void StateAway();//内部的な（限定的な）処理なのでややこしくならないようにここだけ(void)

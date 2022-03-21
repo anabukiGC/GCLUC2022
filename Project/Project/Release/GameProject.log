@@ -1,40 +1,75 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(504,5): warning MSB8004: Intermediate ディレクトリの末尾がスラッシュではありません。Intermediate ディレクトリが適切に評価されるようにするために、このビルド インスタンスによってスラッシュが追加されます。
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(505,5): warning MSB8004: Output ディレクトリの末尾がスラッシュではありません。Output ディレクトリが適切に評価されるようにするために、このビルド インスタンスによってスラッシュが追加されます。
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(498,5): warning MSB8004: Intermediate ディレクトリの末尾がスラッシュではありません。Intermediate ディレクトリが適切に評価されるようにするために、このビルド インスタンスによってスラッシュが追加されます。
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(499,5): warning MSB8004: Output ディレクトリの末尾がスラッシュではありません。Output ディレクトリが適切に評価されるようにするために、このビルド インスタンスによってスラッシュが追加されます。
   Base.cpp
   CharaBase.cpp
-  BackGround.cpp
-C:\Users\aaron\OneDrive\デスクトップ\GCLUC\GCLUC2022\Project\Project\GameProject\Game\BackGround.cpp(26,37): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\aaron\OneDrive\デスクトップ\GCLUC\GCLUC2022\Project\Project\GameProject\Game\BackGround.cpp(31,29): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
-  Boss.cpp
-  BossHP.cpp
-C:\Users\aaron\OneDrive\デスクトップ\GCLUC\GCLUC2022\Project\Project\GameProject\Game\BossHP.cpp(10,29): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\aaron\OneDrive\デスクトップ\GCLUC\GCLUC2022\Project\Project\GameProject\Game\BossHP.cpp(16,32): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\aaron\OneDrive\デスクトップ\GCLUC\GCLUC2022\Project\Project\GameProject\Game\BossHP.cpp(19,10): warning C4244: '初期化中': 'int' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\aaron\OneDrive\デスクトップ\GCLUC\GCLUC2022\Project\Project\GameProject\Game\BossHP.cpp(26,32): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+  AttackObject.cpp
+  Background.cpp
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\Game\Background.cpp(25,37): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\Game\Background.cpp(29,28): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\Game\Background.cpp(29,18): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
   Bullet.cpp
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\Game\Bullet\Bullet.cpp(47,33): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\Game\Bullet\Bullet.cpp(47,23): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+  Laser.cpp
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\Game\Bullet\Laser.cpp(29,38): warning C4305: '+=': 'double' から 'float' へ切り詰めます。
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\Game\Bullet\Laser.cpp(33,38): warning C4305: '-=': 'double' から 'float' へ切り詰めます。
+  Boss.cpp
+  Boss2.cpp
+  Boss2HP.cpp
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\Game\Enemy\Boss2HP.cpp(19,10): warning C4244: '初期化中': 'int' から 'float' への変換です。データが失われる可能性があります。
+  BossHP.cpp
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\Game\Enemy\BossHP.cpp(19,10): warning C4244: '初期化中': 'int' から 'float' への変換です。データが失われる可能性があります。
+  BossLaser.cpp
   Enemy.cpp
   EnemyAnimData.cpp
-C:\Users\aaron\OneDrive\デスクトップ\GCLUC\GCLUC2022\Project\Project\GameProject\Game\EnemyAnimData.cpp(1,9): warning C4067: プリプロセッサ ディレクティブの後に余分な文字がありました - 改行が必要です
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\Game\Enemy\EnemyAnimData.cpp(1,9): warning C4067: プリプロセッサ ディレクティブの後に余分な文字がありました - 改行が必要です
   EnemyHP.cpp
-C:\Users\aaron\OneDrive\デスクトップ\GCLUC\GCLUC2022\Project\Project\GameProject\Game\EnemyHP.cpp(12,31): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\aaron\OneDrive\デスクトップ\GCLUC\GCLUC2022\Project\Project\GameProject\Game\EnemyHP.cpp(20,33): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\aaron\OneDrive\デスクトップ\GCLUC\GCLUC2022\Project\Project\GameProject\Game\EnemyHP.cpp(23,10): warning C4244: '初期化中': 'int' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\aaron\OneDrive\デスクトップ\GCLUC\GCLUC2022\Project\Project\GameProject\Game\EnemyHP.cpp(30,33): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\Game\Enemy\EnemyHP.cpp(19,33): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\Game\Enemy\EnemyHP.cpp(22,10): warning C4244: '初期化中': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\Game\Enemy\EnemyHP.cpp(29,33): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
   EnemyManager.cpp
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\Game\Enemy\EnemyManager.cpp(86,17): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\Game\Enemy\EnemyManager.cpp(93,18): warning C4244: '=': 'int' から 'float' への変換です。データが失われる可能性があります。
+  Meteor.cpp
+  Game.cpp
   Player.cpp
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\Game\Player\Player.cpp(18,16): warning C4305: '=': 'double' から 'float' へ切り詰めます。
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\Game\Player\Player.cpp(160,33): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
   PlayerAnimData.cpp
+  PlayerEffect.cpp
+  コードを生成中...
+  コンパイル中...
   PlayerHP.cpp
-C:\Users\aaron\OneDrive\デスクトップ\GCLUC\GCLUC2022\Project\Project\GameProject\Game\PlayerHP.cpp(10,31): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\aaron\OneDrive\デスクトップ\GCLUC\GCLUC2022\Project\Project\GameProject\Game\PlayerHP.cpp(17,34): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
-C:\Users\aaron\OneDrive\デスクトップ\GCLUC\GCLUC2022\Project\Project\GameProject\Game\PlayerHP.cpp(23,11): warning C4244: '初期化中': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\Game\Player\PlayerHP.cpp(10,31): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\Game\Player\PlayerHP.cpp(16,37): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\Game\Player\PlayerHP.cpp(22,11): warning C4244: '初期化中': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\Game\Player\PlayerHP.cpp(29,19): warning C4244: '引数': 'double' から 'float' への変換です。データが失われる可能性があります。
+  Debuff.cpp
+  Ranking.cpp
+  RankingScore.cpp
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\Game\UI\RankingScore.cpp(15,35): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\Game\UI\RankingScore.cpp(15,19): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+  Shadow.cpp
+  UI.cpp
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\Game\UI\UI.cpp(44,36): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\Game\UI\UI.cpp(44,20): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\Game\UI\UI.cpp(45,37): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\Game\UI\UI.cpp(60,37): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\Game\UI\UI.cpp(60,19): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\Game\UI\UI.cpp(61,37): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+  Global.cpp
   main.cpp
-C:\Users\aaron\OneDrive\デスクトップ\GCLUC\GCLUC2022\Project\Project\GameProject\main.cpp(47,41): warning C4309: '引数': 定数値が切り捨てられました。
-C:\Users\aaron\OneDrive\デスクトップ\GCLUC\GCLUC2022\Project\Project\GameProject\main.cpp(56,41): warning C4309: '引数': 定数値が切り捨てられました。
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\main.cpp(51,41): warning C4309: '引数': 定数値が切り捨てられました。
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\main.cpp(63,41): warning C4309: '引数': 定数値が切り捨てられました。
+  Clear.cpp
+C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\GameProject\Scene\Clear.cpp(23,63): warning C4244: '引数': 'int' から 'float' への変換です。データが失われる可能性があります。
+  GameOver.cpp
+  Title.cpp
   Task.cpp
   TaskManager.cpp
   コードを生成中...
   glew.lib(glew.obj) : MSIL .netmodule または /GL を伴ってコンパイルされたモジュールが見つかりました。/LTCG を使用して再開始してください。リンカーのパフォーマンスを向上させるためには、コマンドラインに /LTCG を追加してください。
-     ライブラリ C:\Users\aaron\OneDrive\デスクトップ\GCLUC\GCLUC2022\Project\Project\../Game\GameProject.lib とオブジェクト C:\Users\aaron\OneDrive\デスクトップ\GCLUC\GCLUC2022\Project\Project\../Game\GameProject.exp を作成中
+     ライブラリ C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\../Game\GameProject.lib とオブジェクト C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Project\../Game\GameProject.exp を作成中
   コード生成しています。
   コード生成が終了しました。
 LINK : warning LNK4286: シンボル 'alcCreateContext' ('OpenAL32.lib(ALc.obj)' で定義) が 'alut.lib(alutInit.obj)' によってインポートされています
@@ -49,4 +84,4 @@ LINK : warning LNK4286: シンボル 'alGetError' ('OpenAL32.lib(alError.obj)' �
 LINK : warning LNK4286: シンボル 'alGetError' ('OpenAL32.lib(alError.obj)' で定義) が 'alut.lib(alutBufferData.obj)' によってインポートされています
 LINK : warning LNK4286: シンボル 'alGenBuffers' ('OpenAL32.lib(alBuffer.obj)' で定義) が 'alut.lib(alutBufferData.obj)' によってインポートされています
 LINK : warning LNK4286: シンボル 'alBufferData' ('OpenAL32.lib(alBuffer.obj)' で定義) が 'alut.lib(alutBufferData.obj)' によってインポートされています
-  GameProject.vcxproj -> C:\Users\aaron\OneDrive\デスクトップ\GCLUC\GCLUC2022\Project\Game\GameProject.exe
+  GameProject.vcxproj -> C:\Users\yamas\OneDrive\デスクトップ\GCLUC\GCLUC\Project\Game\GameProject.exe

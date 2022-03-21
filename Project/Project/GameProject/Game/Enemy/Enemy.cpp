@@ -4,6 +4,8 @@
 #include"EnemyManager.h"
 #include"../Global.h"
 #include "AttackObject.h"
+#include "Debuff.h"
+
 const float Enemy::speed = 3.0;//‚Ç‚±‚Å‚àŽg‚¦‚é‚æ‚¤‚É
 
 Enemy::Enemy(const CVector3D& pos, int k, bool flip) : Base(eType_Enemy, 1)/*¡Œãƒ^ƒCƒv•ª‚¯*/
@@ -72,6 +74,8 @@ Enemy::Enemy(const CVector3D& pos, int k, bool flip) : Base(eType_Enemy, 1)/*¡Œ
 
 		break;
 }
+	m_debuff = false;
+	m_debuffTime = 0;
 }
 
 void Enemy::StateAway()
@@ -219,8 +223,11 @@ void Enemy::StateDamage()
 
 	if (m_img.CheckAnimationEnd() && m_hp > 0) {
 		m_state = eRun;
-		m_hp -= 200;
 		m_cnt = 0;
+		if (m_debuff)
+			m_hp -= 200;
+		else
+			m_hp -= 50;
 	}
 	if (m_img.CheckAnimationEnd() && m_hp <= 0) {
 		m_state = eDie;
@@ -334,6 +341,15 @@ void Enemy::Update()
 
 	}
 	m_img.UpdateAnimation();
+
+	if (m_debuffTime < 0)
+	{
+		m_debuff = true;
+	}
+	else
+	{
+		m_debuff = false;
+	}
 }
 
 void Enemy::Collision(Task* t)
@@ -348,7 +364,7 @@ void Enemy::Collision(Task* t)
 				if (m_invin == false) {
 					m_state = eDamage;
 				}
-				else m_hp -= 200;
+				else m_hp -= 20;
 				
 			}
 		}
@@ -360,8 +376,32 @@ void Enemy::Collision(Task* t)
 				if (m_invin == false) {
 					m_state = eDamage;
 				}
-				else m_hp -= 100;
+				else m_hp -= 20;
 
+			}
+		}
+		break;
+	case eType_PlayerEffect2:
+		if (PlayerEffect* player = dynamic_cast<PlayerEffect*>(t)) {
+			if (CollisionRect(player, this))
+			{
+				if (m_invin == false) {
+					m_state = eDamage;
+				}
+				else m_hp -= 30;
+			}
+		}
+		break;
+	case eType_PlayerEffect3:
+		if (PlayerEffect* player = dynamic_cast<PlayerEffect*>(t)) {
+			if (CollisionRect(player, this))
+			{
+				if (m_invin == false) {
+					m_state = eDamage;
+				}
+				else m_hp -= 50;
+				new Debuff(CVector2D(this->m_pos.x, this->m_pos.y));
+				m_debuffTime = 300;
 			}
 		}
 		break;

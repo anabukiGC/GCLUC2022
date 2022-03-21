@@ -7,6 +7,7 @@ class Debuff :public Base {
 public:
 	Debuff(const CVector2D& pos);//‘ÎÛ‚Ì“G‚ğ“n‚¹‚é—p]
 	
+	int LifeTime;
 
 
 	

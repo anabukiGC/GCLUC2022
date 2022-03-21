@@ -18,14 +18,17 @@ Game::Game() :Base(eType_Scene,0)
 	new BackGround();
 	new UI(CVector2D(0,1000),1);//スコア
 	new UI(CVector2D(0, 100), 2);//タイム
+
+	m_gameOver = false;
 }
 
 Game::~Game()
 {
 	TaskManager::GetInstance()->SetKillAll();
-	new Clear();
-	
-	
+	if (m_gameOver)
+		new GameOver();
+	else
+		new Clear();
 }
 
 void Game::Update()
@@ -57,7 +60,8 @@ void Game::Update()
 	if ((!Player::GetPlayer(Player::eSword) || Player::GetPlayer(Player::eSword)->GetHp() <= 0) &&
 		(!Player::GetPlayer(Player::eGun) || Player::GetPlayer(Player::eGun)->GetHp() <= 0))
 	{
-		new GameOver(CVector2D(0, 0));
+		m_gameOver = true;
+		SetKill();
 	}
 
 	g_time++;
