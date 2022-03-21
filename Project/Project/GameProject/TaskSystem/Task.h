@@ -22,6 +22,7 @@ enum  BaseType {
 	eType_NomalBullet2,
 	eType_ChargeBullet2,
 	eType_Laser,
+	eType_BossLaser,
 	eType_Scene,
 	eType_PlayerEffect1,
 	eType_PlayerEffect2,

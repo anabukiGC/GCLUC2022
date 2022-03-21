@@ -785,14 +785,14 @@ void Player::Collision(Task* t)
 			}
 		}
 		break;
-	case eType_BossBullet1:
+	case eType_BossLaser:
 		if (BossLaser* enemy = dynamic_cast<BossLaser*>(t))
 		{
 			if (CollisionRect(enemy, this))
 			{
 				if (m_mutekiTime <= 0)
 				{
-					m_mutekiTime = 30;
+					m_mutekiTime = 180;
 					m_hp -= 10;
 					m_state = eState_Damage;
 				}
@@ -806,7 +806,7 @@ void Player::Collision(Task* t)
 			{
 				if (m_mutekiTime <= 0)
 				{
-					m_mutekiTime = 30;
+					m_mutekiTime = 180;
 					m_hp -= 10;
 					m_state = eState_Damage;
 				}

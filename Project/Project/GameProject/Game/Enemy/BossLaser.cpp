@@ -1,5 +1,5 @@
 #include "BossLaser.h"
-BossLaser::BossLaser(const CVector3D& p) : Base(eType_Laser, 2)
+BossLaser::BossLaser(const CVector3D& p) : Base(eType_BossLaser, 2)
 {
 	m_img = COPY_RESOURCE("BossLaser", CImage);
 	//‰æ‘œƒTƒCƒYİ’è
