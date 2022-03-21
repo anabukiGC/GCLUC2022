@@ -79,7 +79,7 @@
     <ClCompile Include="Game\EnemyBullet.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="Game\Player2HP.cpp">
+    <ClCompile Include="Game\Player\Player2HP.cpp">
       <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
@@ -161,7 +161,7 @@
     <ClInclude Include="Game\EnemyBullet.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="Game\Player2HP.h">
+    <ClInclude Include="Game\Player\Player2HP.h">
       <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
