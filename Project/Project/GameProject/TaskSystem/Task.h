@@ -27,6 +27,8 @@ enum  BaseType {
 	eType_PlayerEffect1,
 	eType_PlayerEffect2,
 	eType_PlayerEffect3,
+	eType_Player1HP,
+	eType_Player2HP,
 };
 
 //—Dæ“x‚Ì—ñ‹“
