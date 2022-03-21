@@ -157,7 +157,7 @@ void Boss::Update()
 
 
 	if (m_debuff == true && m_on == false) {//デバフアイコン表示
-		m_b_debuff=new Debuff(CVector2D(this->m_pos.x,this->m_pos.y));
+		m_b_debuff=new Debuff(CVector2D(this->m_pos.x, this->m_pos.y));
 		m_on = true;
 	}
 

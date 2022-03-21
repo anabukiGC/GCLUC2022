@@ -3,9 +3,11 @@
 #include"EnemyManager.h"
 #include"../Global.h"
 #include "AttackObject.h"
+#include "PlayerEffect.h"
+
 const float Enemy::speed = 3.0;//どこでも使えるように
 
-Enemy::Enemy(const CVector3D& pos, int k, bool flip) : Base(eType_Enemy, 1)/*今後タイプ分け*/
+Enemy::Enemy(const CVector3D& pos, int k, bool flip) : Base(eType_Enemy, ePriorityPlayer)/*今後タイプ分け*/
 {
 	
 	kind = k;
@@ -333,6 +335,8 @@ void Enemy::Update()
 	}
 	m_img.UpdateAnimation();
 	
+	//優先度変更
+	ChangePriority(ePriorityEnemy + m_pos.z);
 }
 
 void Enemy::Collision(Task* t)
@@ -340,7 +344,6 @@ void Enemy::Collision(Task* t)
 	switch (t->GetID())
 	{
 	case eType_NomalBullet:
-	case eType_PlayerEffect1:
 		if (Bullet* bullet = dynamic_cast<Bullet*>(t))
 		{
 			if (CollisionRect(bullet, this))
@@ -350,6 +353,20 @@ void Enemy::Collision(Task* t)
 				}
 				else m_hp -= 200;
 				
+			}
+		}
+		break;
+
+	case eType_PlayerEffect1:
+		if (PlayerEffect* player = dynamic_cast<PlayerEffect*>(t))
+		{
+			if (CollisionRect(player, this))
+			{
+				if (m_invin == false) {
+					m_state = eDamage;
+				}
+				else m_hp -= 200;
+
 			}
 		}
 		break;
