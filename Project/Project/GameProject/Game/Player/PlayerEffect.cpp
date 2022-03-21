@@ -7,8 +7,8 @@ PlayerEffect::PlayerEffect(BaseType type, const CVector3D& pos, bool flip): Base
 
 	m_img = COPY_RESOURCE("PlayerEffect", CImage);
 	m_img.SetSize(40, 40);
-	m_img.SetCenter(0, 0);
-	m_rect = RectBox(0,0,40,-40,-32,32);
+	m_img.SetCenter(20, 40);
+	m_rect = RectBox(-20,40,20,0,-32,32);
 
 
 	DleatTime = 0;

@@ -29,8 +29,8 @@ Player::Player(int kind,const CVector3D& pos, bool flip) : Base(eType_Player,ePr
 
 	m_img.ChangeAnimation(eAnimIdle);
 	m_pos = pos;
-	RectRight = RectBox(-80, 0, 40, 238, 32, -32);
-	RectLeft = RectBox(-40, 0, 80, 238, 32, -32);
+	RectRight = RectBox(-80, 238, 40, 0, 32, -32);
+	RectLeft = RectBox(-40, 238, 80, 0, 32, -32);
 	m_rect = RectRight;
 	time = 0;
 	//ボタンの押し時間
@@ -65,6 +65,9 @@ Player::Player(int kind,const CVector3D& pos, bool flip) : Base(eType_Player,ePr
 	m_kind = kind;
 
 	m_players[kind] = this;
+
+	m_shadow_size = CVector2D(256, 256);//画像サイズ用
+	m_shadow = new Shadow(this, m_shadow_size);//ポインター渡すのでthis
 }
 
 void Player::Update()
@@ -207,13 +210,28 @@ void Player::Update()
 void Player::Draw()
 {
 	//画像の中心位置設定
-	if (m_flip)
+	if (m_kind == eGun)
 	{
-		m_img.SetCenter(128 + 24 * m_scale, 256);
+		if (m_flip)
+		{
+			m_img.SetCenter(128 + 40 * m_scale, 256);
+		}
+		else
+		{
+			m_img.SetCenter(128 - 24 * m_scale, 256);
+		}
 	}
-	else
+
+	if (m_kind == eSword)
 	{
-		m_img.SetCenter(128 - 24 * m_scale, 256);
+		if (m_flip)
+		{
+			m_img.SetCenter(128 + 70 * m_scale, 256);
+		}
+		else
+		{
+			m_img.SetCenter(128 - 20 * m_scale, 256);
+		}
 	}
 
 	if (m_mutekiTime % 20 > 10)
@@ -719,13 +737,14 @@ void Player::Collision(Task* t)
 	switch (t->GetID())
 	{
 	case eType_EnemyAttack1:
+	case eType_BossAttack1:
 		if (AttackObject* enemy = dynamic_cast<AttackObject*>(t))
 		{
 			if (CollisionRect(enemy, this))
 			{
 				if (m_mutekiTime <= 0)
 				{
-					m_mutekiTime = 180;
+					m_mutekiTime = 0;
 					m_hp -= 20;
 					m_state = eState_Damage;
 				}

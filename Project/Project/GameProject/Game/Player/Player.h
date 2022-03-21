@@ -2,6 +2,7 @@
 #include "Base.h"
 #include "PlayerHP.h"
 #include "TaskManager.h"
+#include"Shadow.h"
 
 class Player : public Base
 {
@@ -27,6 +28,9 @@ public:
 	{
 		return m_players[kind];
 	}
+
+	Shadow* m_shadow;
+	CVector2D m_shadow_size;//画像サイズ用
 private:
 	static std::vector<Player*>m_players;
 	void Update();

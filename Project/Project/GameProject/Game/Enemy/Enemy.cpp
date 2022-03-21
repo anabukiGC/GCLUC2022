@@ -340,8 +340,6 @@ void Enemy::Collision(Task* t)
 {
 	switch (t->GetID())
 	{
-
-	
 	case eType_NomalBullet:
 
 		if (Bullet* bullet = dynamic_cast<Bullet*>(t)){
