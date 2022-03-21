@@ -77,7 +77,7 @@ void Boss::StateAttack1()
 	m_invin= true;
 	m_img.ChangeAnimation(1, false);//‹ß‹——£UŒ‚
 
-	if (m_img.GetIndex() >= 8) {//ˆÚ“®
+	if (m_img.GetIndex() == 8) {//ˆÚ“®
 		new AttackObject(eType_BossAttack1,CVector3D (m_pos.x-500,m_pos.y,m_pos.z), m_rect);
 	}
 	if (m_img.CheckAnimationEnd()) {

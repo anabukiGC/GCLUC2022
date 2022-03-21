@@ -59,7 +59,7 @@ void Boss2::StateAttack1()
 {
 	m_invin = true;
 	m_img.ChangeAnimation(1, false);//‹ßÚUŒ‚
-	if (m_img.GetIndex() >= 2) {//ˆÚ“®
+	if (m_img.GetIndex() == 2) {//ˆÚ“®
 		new AttackObject(eType_BossAttack1, CVector3D(m_pos.x - 500, m_pos.y, m_pos.z), m_rect);
 	}
 	if (m_img.CheckAnimationEnd()) {
@@ -76,6 +76,7 @@ void Boss2::StateAttack2()
 	m_img.ChangeAnimation(2, false);//‹ßÚUŒ‚
 	if (m_img.GetIndex() == 3) {//ˆÚ“®
 		new BossLaser(CVector3D(m_pos.x - 500, m_pos.y + 300, m_pos.z));
+	
 	}
 	if (m_img.CheckAnimationEnd()) {
 		m_invin = false;

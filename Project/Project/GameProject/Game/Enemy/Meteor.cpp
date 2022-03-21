@@ -27,6 +27,7 @@ void Meteor::Update()
 		m_vec.y = 0;
 		m_img.ChangeAnimation(1,false);
 		if (m_img.CheckAnimationEnd()) {
+			SOUND("SE_Meteo")->Play();
 			SetKill();
 		}
 	}

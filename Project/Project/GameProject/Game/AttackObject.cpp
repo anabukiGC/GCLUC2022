@@ -2,6 +2,7 @@
 
 AttackObject::AttackObject(BaseType type, const CVector3D& p, const RectBox& rect):Base(type,1)
 {
+	SOUND("SE_BossAttack")->Play();
 	m_pos = p;
 	m_rect = rect;
 }

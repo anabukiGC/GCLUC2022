@@ -35,10 +35,12 @@ void Title::Update()
 	Select* s = dynamic_cast<Select*>(TaskManager::GetInstance()->GetTask(eType_Select));
 	
 	if (s->m_stop==false && PUSH(CInput::eButton3)) {//スタート
+		SOUND("SE_Select")->Play();
 		m_start = false;
 		SetKill();
 	}
 	if (s->m_stop == true && PUSH(CInput::eButton3)) {//あそびかた
+		SOUND("SE_Select")->Play();
 		m_start = true;
 		SetKill();
 		

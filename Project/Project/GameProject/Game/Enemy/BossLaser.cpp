@@ -1,6 +1,7 @@
 #include "BossLaser.h"
 BossLaser::BossLaser(const CVector3D& p) : Base(eType_BossLaser, 2)
 {
+	SOUND("SE_BossLaser")->Play();
 	m_img = COPY_RESOURCE("BossLaser", CImage);
 	//‰æ‘œƒTƒCƒYİ’è
 	m_img.SetSize(1000, 300);
