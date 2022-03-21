@@ -133,7 +133,7 @@ void Init(void)
 	ADD_RESOURCE("BossBoad", CImage::CreateImage("Image/UI/BossBoad.png"));
 	ADD_RESOURCE("EnemyBoad", CImage::CreateImage("Image/UI/EnemyBoad.png"));
 	ADD_RESOURCE("BossLaser", CImage::CreateImage("Image/Boss/BossLaser.png",boss_laser_data,1000,300));
-
+	ADD_RESOURCE("HowTo2", CImage::CreateImage("Image/Scene/HowTo2.png"));
 
 	new Title();
 	Ranking::GetInstance()->ReadScore();

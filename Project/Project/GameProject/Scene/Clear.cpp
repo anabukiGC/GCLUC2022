@@ -31,7 +31,10 @@ Clear::Clear() : Base(eType_Scene, 10)
 
 	
 	m_img = COPY_RESOURCE("Clear", CImage);
-	if (g_time / 60 < 60) {//‚P•ªˆÈ“à‚È‚ç
+	if (g_time / 60 < 120) {//2•ªˆÈ“à‚È‚ç
+		g_score += 2000;
+	}
+	if (g_time / 60 < 180) {//3•ªˆÈ“à‚È‚ç
 		g_score += 1000;
 	}
 
