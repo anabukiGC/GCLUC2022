@@ -20,7 +20,7 @@ class Boss2 : public Base
 
 
 
-	int m_hp = 0;
+	float m_hp = 0;
 	int m_max_hp = 0;
 
 	int m_cnt = 0;//ŠÔ”»•Ê—p
@@ -48,7 +48,7 @@ class Boss2 : public Base
 	bool m_meteo;//è¦Î”­¶
 	bool m_invin = false;//UŒ‚’†’f–h~
 	int m_meteo_time = 0;
-
+	bool Fire = false;
 	int m_debuffTime;
 	bool m_debuff;
 public:

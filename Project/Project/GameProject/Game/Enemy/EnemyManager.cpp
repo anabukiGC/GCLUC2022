@@ -2,20 +2,27 @@
 #include"Enemy.h"
 #include"Boss.h"
 EnemyData _stage1[] = {//出現データをまとめる
-	{CVector3D(1600,0,500),0,EnemyData::eEnemy1,true},//（座標）、時間（フレーム）,向き
-	{CVector3D(1600,0,500),30,EnemyData::eEnemy1,true},
-	{CVector3D(1600,0,500),30,EnemyData::eEnemy2,true},
-	{CVector3D(1600,0,500),30,EnemyData::eEnemy2,true},
+	{CVector3D(1900,0,500),0,EnemyData::eEnemy1,true},//（座標）、時間（フレーム）,向き
+	{CVector3D(1900,0,500),30,EnemyData::eEnemy1,true},
+	{CVector3D(1900,0,500),30,EnemyData::eEnemy2,true},
+	{CVector3D(1900,0,500),30,EnemyData::eEnemy2,true},
 	{CVector3D(0,0,500),30,EnemyData::eEnemy1,false},
 	{CVector3D(0,0,500),30,EnemyData::eEnemy1,false},
-	{CVector3D(0,0,500),30,EnemyData::eEnemy3,false},
+	
 };
 EnemyData _stage2[] = {//出現データをまとめる
-	{CVector3D(1600,0,500),0,EnemyData::eEnemy1,true},
-	{CVector3D(1600,0,500),30,EnemyData::eEnemy1,true},
-	{CVector3D(1600,0,500),30,EnemyData::eEnemy1,true},
-	{CVector3D(1600,0,500),30,EnemyData::eEnemy1,true},
-	{CVector3D(1600,0,500),30,EnemyData::eEnemy1,true},
+	{CVector3D(1900,0,500),0,EnemyData::eEnemy1,true},
+	{CVector3D(1900,0,400),10,EnemyData::eEnemy1,true},
+	{CVector3D(1900,0,300),10,EnemyData::eEnemy1,true},
+	{CVector3D(1900,0,200),10,EnemyData::eEnemy1,true},
+	{CVector3D(1900,0,100),10,EnemyData::eEnemy1,true},
+	{CVector3D(200,0,500),0,EnemyData::eEnemy2,false},
+	{CVector3D(200,0,400),0,EnemyData::eEnemy2,false},
+	{CVector3D(200,0,300),0,EnemyData::eEnemy2,false},
+	{CVector3D(200,0,200),0,EnemyData::eEnemy2,false},
+	{CVector3D(200,0,100),0,EnemyData::eEnemy2,false},
+
+	{CVector3D(0,0,100),120,EnemyData::eEnemy3,false},
 };
 EnemyData _stage3[] = {//出現データをまとめる
 	{CVector3D(1600,0,250),0,EnemyData::eBoss},//（座標）、時間（フレーム）

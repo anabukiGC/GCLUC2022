@@ -10,7 +10,7 @@
 
 const float Enemy::speed = 3.0;//どこでも使えるように
 
-Enemy::Enemy(const CVector3D& pos, int k, bool flip) : Base(eType_Enemy, 1)/*今後タイプ分け*/
+Enemy::Enemy(const CVector3D& pos, int k, bool flip) : Base(eType_Enemy, ePriorityEnemy)/*今後タイプ分け*/
 {
 	
 	kind = k;
@@ -365,6 +365,8 @@ void Enemy::Update()
 	{
 		m_debuff = false;
 	}
+	//優先度変更
+	ChangePriority(ePriorityEnemy + m_pos.z);
 }
 
 void Enemy::Collision(Task* t)

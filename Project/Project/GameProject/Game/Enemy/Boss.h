@@ -18,7 +18,7 @@ class Boss : public Base
 	int m_state;
 	
 	bool m_on;//ƒfƒoƒt•\¦—p
-	int m_hp = 0;
+	float m_hp = 0;
 	int m_max_hp = 0;
 
 	int m_cnt = 0;//ŠÔ”»•Ê—p
@@ -42,7 +42,7 @@ class Boss : public Base
 	int m_second = 0;//•b”
 	bool m_bound;//’µ‚Ë•Ô‚è—p
 	bool m_invin = false;//UŒ‚’†’f–h~
-
+	bool Fire = false;//UŒ‚ˆê‰ñ
 	int m_debuffTime;
 	bool m_debuff;
 public:

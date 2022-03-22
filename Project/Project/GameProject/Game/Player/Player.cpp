@@ -73,7 +73,10 @@ Player::Player(int kind,const CVector3D& pos, bool flip) : Base(eType_Player,ePr
 	m_players[kind] = this;
 
 	m_shadow_size = CVector2D(256, 256);//画像サイズ用
+	if (kind == eSword)
 	m_shadow = new Shadow(this, m_shadow_size);//ポインター渡すのでthis
+	if (kind == eGun)
+		m_shadow = new Shadow(this, m_shadow_size);//ポインター渡すのでthis
 }
 
 void Player::Update()
@@ -169,38 +172,38 @@ void Player::Update()
 	m_img.UpdateAnimation();
 
 	//スクロール値設定
-	if (Player::GetPlayer(Player::eSword))
-	{
-		if (m_kind == eSword)
+		if (Player::GetPlayer(Player::eSword) && Player::GetPlayer(Player::eSword)->m_hp > 0)
 		{
-			if (EnemyManager* b = dynamic_cast<EnemyManager*>(TaskManager::GetInstance()->GetTask(eType_EnemyManager)))
+			if (m_kind == eSword)
 			{
-				if (b->GetWave())
+					if (EnemyManager* b = dynamic_cast<EnemyManager*>(TaskManager::GetInstance()->GetTask(eType_EnemyManager)))
+					{
+						if (b->GetWave())
+						{
+						}
+						else
+						{
+							m_scroll.x += ((m_pos.x - SCREEN_WIDTH / 2) - m_scroll.x) / 10;
+						}
+					}
+			}
+		}
+		else
+		{
+			if (m_kind == eGun)
+			{
+				if (EnemyManager* b = dynamic_cast<EnemyManager*>(TaskManager::GetInstance()->GetTask(eType_EnemyManager)))
 				{
-				}
-				else
-				{
-					m_scroll.x = m_pos.x - SCREEN_WIDTH / 2;
+					if (b->GetWave())
+					{
+					}
+					else
+					{
+						m_scroll.x += ((m_pos.x - SCREEN_WIDTH / 2) - m_scroll.x) / 10;
+					}
 				}
 			}
 		}
-	}
-	else
-	{
-		if (m_kind == eGun)
-		{
-			if (EnemyManager* b = dynamic_cast<EnemyManager*>(TaskManager::GetInstance()->GetTask(eType_EnemyManager)))
-			{
-				if (b->GetWave())
-				{
-				}
-				else
-				{
-					m_scroll.x = m_pos.x - SCREEN_WIDTH / 2;
-				}
-			}
-		}
-	}
 	
 	//横移動制限
 	if (m_pos.x <= m_scroll.x - m_rect.m_left)
@@ -237,11 +240,11 @@ void Player::Draw()
 	{
 		if (m_flip)
 		{
-			m_img.SetCenter(128 + 70 * m_scale, 256);
+			m_img.SetCenter(128 + 70 * m_scale, 256*m_scale);
 		}
 		else
 		{
-			m_img.SetCenter(128 - 20 * m_scale, 256);
+			m_img.SetCenter(128 - 20 * m_scale, 256 * m_scale);
 		}
 	}
 
@@ -702,13 +705,13 @@ void Player::StateGunAttack3()
 		{
 			if (m_flip)
 			{
-				new Laser(CVector3D(m_pos.x - 1000, m_pos.y + 211, m_pos.z), m_flip, 60 * 2);
+				new Laser(CVector3D(m_pos.x - 1000, m_pos.y + 111, m_pos.z), m_flip, 60 * 2);
 			
 			}
 
 			if (!m_flip)
 			{
-				new Laser(CVector3D(m_pos.x + 200, m_pos.y + 211, m_pos.z), m_flip, 60 * 2);
+				new Laser(CVector3D(m_pos.x + 200, m_pos.y + 111, m_pos.z), m_flip, 60 * 2);
 			
 			}
 			Fire = true;

@@ -9,6 +9,7 @@ BossLaser::BossLaser(const CVector3D& p) : Base(eType_BossLaser, 2)
 	m_img.SetCenter(500,150);
 	m_rect = RectBox(-500, 0, 500,-100, 32, -32); 
 	m_pos = p;
+	m_img.ChangeAnimation(0, false);
 
 	
 	

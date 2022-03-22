@@ -9,12 +9,12 @@
 #include "Laser.h"
 
 const float Boss2::speed = 3.0;//‚Ç‚±‚Å‚àg‚¦‚é‚æ‚¤‚É
-Boss2::Boss2(const CVector3D& pos) :Base(eType_Boss, 1)
+Boss2::Boss2(const CVector3D& pos) :Base(eType_Boss, ePriorityEnemy)
 {
 	SOUND("Boss")->Stop();
 	SOUND("Boss2")->Play(true);
 	m_img = COPY_RESOURCE("Boss2", CImage);
-	m_max_hp = 1000;
+	m_max_hp = 3000;
 	m_hp = m_max_hp;//•ÏX—p
 	m_size = 512;
 	m_pos = pos;
@@ -59,8 +59,9 @@ void Boss2::StateAttack1()
 {
 	m_invin = true;
 	m_img.ChangeAnimation(1, false);//‹ßÚUŒ‚
-	if (m_img.GetIndex() == 2) {//ˆÚ“®
+	if (m_img.GetIndex() == 2 && Fire == false) {//ˆÚ“®
 		new AttackObject(eType_BossAttack1, CVector3D(m_pos.x - 500, m_pos.y, m_pos.z), m_rect);
+		Fire = true;
 	}
 	if (m_img.CheckAnimationEnd()) {
 		m_invin = false;
@@ -74,9 +75,9 @@ void Boss2::StateAttack2()
 {
 	m_invin = true;
 	m_img.ChangeAnimation(2, false);//‹ßÚUŒ‚
-	if (m_img.GetIndex() == 3) {//ˆÚ“®
+	if (m_img.GetIndex() == 3 && Fire == false) {//ˆÚ“®
 		new BossLaser(CVector3D(m_pos.x - 500, m_pos.y + 300, m_pos.z));
-	
+		Fire = true;
 	}
 	if (m_img.CheckAnimationEnd()) {
 		m_invin = false;
@@ -103,7 +104,7 @@ void Boss2::StateDamage()
 
 	if (m_img.CheckAnimationEnd() && m_hp > 0) {
 
-		m_hp -= 200;
+	
 		m_cnt = 0;
 		m_state = eIdle;
 	}
@@ -199,10 +200,11 @@ void Boss2::Update()
 
 
 	if (m_invin == false && m_second == 3) {//•b”‚Åó‘Ô‘JˆÚ
-
+		Fire = false;
 		m_state = eAttack1;
 	}
 	if (m_invin == false && m_second == 8) {//•b”‚Åó‘Ô‘JˆÚ
+		Fire = false;
 		m_state = eAttack2;
 	}
 
@@ -216,6 +218,8 @@ void Boss2::Update()
 
 	}
 	m_img.UpdateAnimation();
+	//—Dæ“x•ÏX
+	ChangePriority(ePriorityEnemy + m_pos.z);
 }
 
 void Boss2::Draw()
@@ -298,11 +302,11 @@ void Boss2::Collision(Task* t)
 				}
 				if (m_debuff)
 				{
-					m_hp -= 4;
+					m_hp -= 4.0;
 				}
 				else if (!m_debuff)
 				{
-					m_hp -= 2;
+					m_hp -= 2.0;
 				}
 			}
 		}
