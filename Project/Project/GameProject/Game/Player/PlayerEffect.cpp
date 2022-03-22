@@ -12,7 +12,7 @@ PlayerEffect::PlayerEffect(BaseType type, const CVector3D& pos, bool flip) : Bas
 	m_pos = pos;
 	m_flip = flip;
 
-	m_lifeTime = 120;
+	m_lifeTime = 10;
 }
 
 void PlayerEffect::Update()
